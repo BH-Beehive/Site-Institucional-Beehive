@@ -10,7 +10,8 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <script src="js/cadastro.js"></script>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin
+        <script src="https://kit.fontawesome.com/9b5324f6a3.js" crossorigin="anonymous"></script>>
         <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap"
             rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
@@ -40,49 +41,47 @@
                     <input type="password" id="inputConfirmarSenha" placeholder="Confirme a senha"
                         class="inputConfirmacaoSenha">
                 </div>
-
-                <button onclick="proximaEtapa()" class="botaoProximaEtapa" type="button" id="botaoProximaEtapa">Próxima etapa</button>
-
-                <!-- <h5 class="temConta">Já tem uma conta?</h5>
-            <div class="link_entrar">
-                <a href="login.html" class="link-cadastro">Entrar</a>
-            </div> -->
-            </div>
-            <div id="campoCadastro2" class="campoCadastro" style="display: none;">
                 <div class="emailCadastro">
                     <input type="email" id="inputEmail" class="inputEmail" placeholder="Email">
                 </div>
+                <div class="telefone">
+                    <input type="tel" id="inputTelefone" class="inputTelefone" placeholder="Telefone">
+                </div>
+
+                <button onclick="proximaEtapa()" class="botaoProximaEtapa" type="button" id="botaoProximaEtapa">Próxima
+                    etapa</button>
+
+
+            </div>
+            <div id="campoCadastro2" class="campoCadastro" style="display: none;">
+
                 <div class="cnpj">
-                    
                     <input type="text" id="inputCnpj" class="inputCnpj" placeholder="CNPJ">
                 </div>
                 <div class="cep">
                     <input type="text" id="inputCep" class="inputCep" placeholder="CEP">
                 </div>
-                <div class="telefone">
-                    <input type="tel" id="inputTelefone" class="inputTelefone" placeholder="Telefone">
-                </div>
+
                 <div class="estado">
                     <input type="text" id="inputEstado" class="inputEstado" placeholder="Estado">
                 </div>
                 <div class="cidade">
                     <input type="text" id="inputCidade" class="inputCidade" placeholder="Cidade">
                 </div>
-                <div class="Rua">
+                <div class="rua">
                     <input type="text" id="inputRua" class="inputRua" placeholder="Rua">
                 </div>
 
 
 
-                <button onclick="anteriorEtapa()" class="botaoAnteriorEtapa" type="button" id="botaoAnteriorEtapa"><button onclick="cadastrar()" class="botaoCadastrar" type="button">Cadastrar</button>
+                <button onclick="anteriorEtapa()" class="botaoAnteriorEtapa" type="button" id="botaoAnteriorEtapa">Etapa
+                    anterior</button>
+                <button onclick="cadastrar()" class="botaoCadastrar" type="button"
+                    id="botaoCadastrar">Cadastrar</button>
             </div>
 
         </main>
     </body>
 
-    </html></body>
 
     </html>
-
-    
-    -*/

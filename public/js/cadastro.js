@@ -8,19 +8,23 @@ function revelar() {
         senha_revel.type = "password";
     }
 }
-let etapa = 0;
+
+var etapa = 0;
+
 function proximaEtapa() {
     if (etapa == 0) {
-        for (var i = 1; i > etapa; etapa++)
-            campoCadastro1.style.display == "none";
-        campoCadastro2.style.display == "";
+        for (var contador = 1; contador > etapa; etapa++){
+            console.log(contador)
+        campoCadastro1.style.display = "none";
+        campoCadastro2.style.display = "";
     }
+}
 }
 function anteriorEtapa() {
     if (etapa == 1) {
-        for (var i = 1; i == etapa; etapa--) {
-            campoCadastro2.style.display == "none";
-            campoCadastro1.style.display == "";
+        for (var contador = 1; contador == etapa; etapa--) {
+            campoCadastro2.style.display = "none";
+            campoCadastro1.style.display = "";
         }
     }
 }
