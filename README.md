@@ -1,2 +1,2 @@
-# Site-Institucional-Beehave
-Site responsivo sobre a organização Beehave
+# Site-Institucional-Beehive
+Site responsivo sobre a organização Beehive
