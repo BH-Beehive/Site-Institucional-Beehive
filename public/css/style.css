@@ -1,7 +1,7 @@
+
 body{
     margin: 0;
     padding: 0;
-    background-color: rgb(26, 20, 20);
     font-family: 'Dosis', sans-serif;
     font-family: 'Quicksand', sans-serif;
 }
@@ -9,13 +9,13 @@ body{
 .header{
     display: flex;
     align-items: center;
-    box-shadow: 0px 0px 20px 5px #000000;
+    background-color: #EF3A5D;
 }
 
-.container{
+.header .container{
     width: 90%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin: 0 auto;
 }
@@ -27,18 +27,30 @@ body{
 }
 
 .beehive_logo{
-    width: 58px;
-    height: 58px;
+    width: 40px;
+    height: 40px;
 }
 
 .p_beehive{
     margin: 0;
     padding: 0;
-    font-size: 25px;
+    font-size: 20px;
     color: white;
+}
+
+.banner .container{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 }
 
 .banner{
     height: 400px;
-    background-color: white;
+}
+
+.beehive_banner_img{
+    width: 400px;
+    height: 400px;
 }

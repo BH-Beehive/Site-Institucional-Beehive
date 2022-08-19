@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/icons/Beehive-icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/icons/Beehive.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap"
+        rel="stylesheet">
     <title>Beehive</title>
 </head>
+
 <body>
     <div class="header">
 
@@ -18,9 +21,9 @@
 
             <div class="beehive_home">
 
-                <img class="beehive_logo" src="assets/icons/Beehive-icon.png">
+                <img class="beehive_logo" src="assets/icons/Beehive.png">
                 <p class="p_beehive">Beehive</p>
-
+                <a href="Cadastro.html">CADASTRO</a>"
             </div>
 
         </div>
@@ -31,55 +34,8 @@
 
         <div class="container">
 
-            <img src="" alt="">
-
         </div>
 
     </div>
-
-    
 </body>
 </html>
-<script>
-
-function enviarDados(){
-    var nome = nome_in.value
-var email = email_in.value
-var senha = senha_in.value 
-console.log("Tabela de inputs"+nome + email + senha)
-    fetch("/usuario/cadastrar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
-                    nomeServer: nome,
-                    emailServer: email,
-                    senhaServer: senha,
-                 
-                })
-            }).then(function (resposta) {
-
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-
-
-                        console.log("Conectado com o banco!")
-
-
-
-                } else {
-                    throw ("Houve um erro ao tentar realizar o cadastro!");
-                }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-
-            });
-
-
-}
-
-</script>
