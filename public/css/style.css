@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(26, 20, 20);
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 20px 5px #000000;
+}
+
+.container{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.beehive_home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.beehive_logo{
+    width: 58px;
+    height: 58px;
+}
+
+.p_beehive{
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    color: white;
+}
+
+.banner{
+    height: 400px;
+    background-color: white;
+}
