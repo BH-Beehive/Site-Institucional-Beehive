@@ -1,0 +1,88 @@
+<body>
+    <!DOCTYPE html>
+    <html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="assets/icons/Beehive-icon.png" type="image/x-icon">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <script src="js/cadastro.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap"
+            rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
+        <title>Beehive|Cadastro</title>
+    </head>
+
+    <body>
+        <main class="main">
+            <div class="textoCadastrar">
+                <h3>
+                    O primeiro passo é se cadastrar.
+                </h3>
+                <h4>
+                    Preencha os campos abaixo!
+                </h4>
+            </div>
+            <div id="campoCadastro1" class="campoCadastro">
+                <div class="nomeCadastro">
+                    <input type="text" id="inputNome" placeholder="Nome" class="inputNome">
+                </div>
+                <div class="senhaCadastro">
+                    <input type="password" id="inputSenha" placeholder="Senha" class="inputSenha">
+                    <span class="mostrar_botao"><button class="button_icone" id="button_icon" onclick="revelar()"><i
+                                class="fas fa-eye"></i></button></span>
+                </div>
+                <div class="confirmacaoSenha">
+                    <input type="password" id="inputConfirmarSenha" placeholder="Confirme a senha"
+                        class="inputConfirmacaoSenha">
+                </div>
+
+                <button onclick="proximaEtapa()" class="botaoProximaEtapa" type="button" id="botaoProximaEtapa">Próxima etapa</button>
+
+                <!-- <h5 class="temConta">Já tem uma conta?</h5>
+            <div class="link_entrar">
+                <a href="login.html" class="link-cadastro">Entrar</a>
+            </div> -->
+            </div>
+            <div id="campoCadastro2" class="campoCadastro" style="display: none;">
+                <div class="emailCadastro">
+                    <input type="email" id="inputEmail" class="inputEmail" placeholder="Email">
+                </div>
+                <div class="cnpj">
+                    
+                    <input type="text" id="inputCnpj" class="inputCnpj" placeholder="CNPJ">
+                </div>
+                <div class="cep">
+                    <input type="text" id="inputCep" class="inputCep" placeholder="CEP">
+                </div>
+                <div class="telefone">
+                    <input type="tel" id="inputTelefone" class="inputTelefone" placeholder="Telefone">
+                </div>
+                <div class="estado">
+                    <input type="text" id="inputEstado" class="inputEstado" placeholder="Estado">
+                </div>
+                <div class="cidade">
+                    <input type="text" id="inputCidade" class="inputCidade" placeholder="Cidade">
+                </div>
+                <div class="Rua">
+                    <input type="text" id="inputRua" class="inputRua" placeholder="Rua">
+                </div>
+
+
+
+                <button onclick="anteriorEtapa()" class="botaoAnteriorEtapa" type="button" id="botaoAnteriorEtapa"><button onclick="cadastrar()" class="botaoCadastrar" type="button">Cadastrar</button>
+            </div>
+
+        </main>
+    </body>
+
+    </html></body>
+
+    </html>
+
+    
+    -*/
