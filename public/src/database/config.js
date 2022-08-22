@@ -6,14 +6,27 @@ var mySqlConfig = {
     host: "localhost",
     database: "Beehive",
     user: "root",
-    password: "",
+    password: "1470",
 };
-setTimeout(() => {
-    
-}, );
 
 function executar(instrucao) {
-  if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+    // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        return new Promise(function (resolve, reject) {
+            sql.connect(sqlServerConfig).then(function () {
+                return sql.query(instrucao);
+            }).then(function (resultados) {
+                console.log(resultados);
+                resolve(resultados.recordset);
+            }).catch(function (erro) {
+                reject(erro);
+                console.log('ERRO: ', erro);
+            });
+            sql.on('error', function (erro) {
+                return ("ERRO NO SQL SERVER (Azure): ", erro);
+            });
+        });
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         return new Promise(function (resolve, reject) {
             var conexao = mysql.createConnection(mySqlConfig);
             conexao.connect();
