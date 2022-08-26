@@ -1,0 +1,11 @@
+:root{
+    --background-color-yellow:#ffcc29;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+}
+
