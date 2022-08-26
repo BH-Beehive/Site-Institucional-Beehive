@@ -9,6 +9,7 @@ body{
     display: flex;
     align-items: center;
     background-color: #ffcc29;
+    padding: 10px;
 }
 
 .header .container{
@@ -33,7 +34,7 @@ body{
 .banner .container{
     width: 90%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: 0 auto;
 }
@@ -50,23 +51,23 @@ body{
     height: 400px;
 }
 
-.navbar ul {
+/*.navbar ul {
     display: flex;
     list-style-type: none;
     width: 400px;
     padding: 0;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
-.item-navbar{
+/*.item-navbar{
     background-color: white;
-    /*border: 1px solid black;*/
+    border: 1px solid black;
     padding: 3px 10px 3px 10px;
     border-radius: 3px;
     cursor: pointer;
     box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
-}
+}*/
 
 /*.item-navbar:hover{
     background-color: black;
@@ -95,7 +96,7 @@ button:hover{
 }
 
 .title-banner{
-    width: 100%;
+    width: 60%;
     height: 450px;
     display: flex;
     flex-direction: column;
