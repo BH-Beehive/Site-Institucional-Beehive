@@ -1,7 +1,7 @@
 .header{
     display: flex;
     align-items: center;
-    background-color: #ffcc29;
+    background: linear-gradient(to right, #f7cd46, #fdfdfd);
     padding: 10px;
 }
 
@@ -34,7 +34,7 @@
 
 .banner{
     height: 500px;
-    background: linear-gradient(#ffcc29, #fcc100); 
+    background: linear-gradient(to right, #f7cd46, #fdfdfd); 
     display: flex;
     justify-content: flex-end;   
 }
@@ -44,7 +44,7 @@
     height: 400px;
 }
 
-/*.navbar ul {
+.navbar ul {
     display: flex;
     list-style-type: none;
     width: 400px;
@@ -52,19 +52,11 @@
     align-items: center;
     justify-content: space-evenly;
 }
-/*.item-navbar{
-    background-color: white;
-    border: 1px solid black;
-    padding: 3px 10px 3px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
-}*/
 
-/*.item-navbar:hover{
-    background-color: black;
-    color: white;
-}*/
+.item-navbar:hover{
+    font-weight: bold;
+    cursor: pointer;
+}
 
 button{
     width: 90px;
@@ -74,18 +66,34 @@ button{
     background-color: black;
     color: white;
     cursor: pointer;
+    font-size: 15px;
     box-shadow: 2px 4px 40px 2px rgb(0, 0, 0, 0.2);
 }
 
 button:hover{
-    color: #ffcc29;
+    color: #f7cd46;
 }
 
-.item-navbar-icon{
-    width: 25px;
-    height: 25px;
-    padding-top: 5px;
+.button-login{
+    background-color: transparent;
+    color: black; 
+    border: none;
+    box-shadow: none;
 }
+
+.button-cadastro{
+    border-radius: 20px;
+    width: 120px;
+}
+
+.button-login:hover{
+    color: #f7cd46;
+}
+
+.button-vermais{
+    border-radius: 20px;
+}
+
 
 .title-banner{
     width: 60%;
@@ -103,14 +111,15 @@ button:hover{
 }
 
 .p1-banner{
-    font-size: 75px;
+    font-size: 40px;
+    width: 500px;
     color: black;
     margin: 0;
 }
 
 .p2-banner{
-    width: 350px;
-    font-size: 35px;
+    width: 450px;
+    font-size: 20px;
     color: black;
     margin: 20;
 }
@@ -123,16 +132,31 @@ button:hover{
     width: 45%;
 }
 
-.icon-banner{
-    width: 40px;
-    height: 40px;
+.redes-sociais-icons{
+    width: 30px;
+    height: 30px;
     cursor: pointer;
+    margin-left: 10px;
+    margin-top: 20px;
 }
 
+.beehive_nome{
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    margin-left: 10px;
+}
 
 .img-banner-destaque{
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 350px;
+}
+
+.redes-sociais-itens{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .div-button-banner button{
