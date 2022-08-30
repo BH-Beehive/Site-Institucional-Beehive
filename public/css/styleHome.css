@@ -1,7 +1,9 @@
+/*Header e banner*/
+
 .header{
     display: flex;
     align-items: center;
-    background: linear-gradient(to right, #f7cd46, #fdfdfd);
+    background: linear-gradient(to right, #fcdf82, #fdfdfd);
     padding: 10px;
 }
 
@@ -27,14 +29,14 @@
 .banner .container{
     width: 90%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 0 auto;
 }
 
 .banner{
     height: 500px;
-    background: linear-gradient(to right, #f7cd46, #fdfdfd); 
+    background: linear-gradient(to right, #fcdf82, #fdfdfd); 
     display: flex;
     justify-content: flex-end;   
 }
@@ -71,7 +73,7 @@ button{
 }
 
 button:hover{
-    color: #f7cd46;
+    color: #fcdf82;
 }
 
 .button-login{
@@ -87,7 +89,7 @@ button:hover{
 }
 
 .button-login:hover{
-    color: #f7cd46;
+    color: #fcdf82;
 }
 
 .button-vermais{
@@ -163,8 +165,85 @@ button:hover{
     width: 150px;
 }
 
-/*.post-banner{
-    border: 0;
-    border-bottom: 1px solid black;
-    padding-bottom: 5px;
-}*/
+/*Contéudo do site - Pós banner*/
+
+.content-servicos{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-servicos .container{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+span{
+    color: #ecb500;
+}
+
+.title-servicos{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.title-servicos p{
+    border-bottom: 2px solid #ecb500;
+    font-size: 25px;
+    font-weight: bolder;
+    padding-bottom: 20px;
+    margin: 0;
+}
+
+
+.subtitle-servicos{
+    width: 550px;
+}
+
+.subtitle-servicos p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.cards-servico{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+}
+
+.card-item{
+    background-color: white;
+    /*box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);*/
+    border-radius: 10px;
+    width: 380px;
+    height: 300px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-acesso-remoto{
+    background-color: rgb(117, 117, 117);
+    color: white;
+}
+
+.card-item p{
+    font-size: 16px;
+}
+
+.img-card-item{
+    width: 100px;
+    height: 100px;
+}
