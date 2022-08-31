@@ -1,13 +1,13 @@
 /*Header e banner*/
 
-.header{
+.header {
     display: flex;
     align-items: center;
-    background: linear-gradient(to right, #fcdf82, #fdfdfd);
+    background: linear-gradient(102.23deg, #EECF6A -4.96%, rgba(245, 242, 229, 0) 93.17%);
     padding: 10px;
 }
 
-.header .container{
+.header .container {
     width: 90%;
     display: flex;
     justify-content: space-between;
@@ -15,18 +15,24 @@
     margin: 0 auto;
 }
 
-.beehive_home{
+.beehive_home {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.beehive_logo{
-    width: 40px;
-    height: 40px;
+.beehive_home p{
+    font-size: 1.3rem;
 }
 
-.banner .container{
+.beehive_logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 13%;
+    margin-left: 15%;
+}
+
+.banner .container {
     width: 90%;
     display: flex;
     justify-content: space-around;
@@ -34,14 +40,14 @@
     margin: 0 auto;
 }
 
-.banner{
+.banner {
     height: 500px;
-    background: linear-gradient(to right, #fcdf82, #fdfdfd); 
+    background: linear-gradient(102.23deg, #EECF6A -4.96%, rgba(245, 242, 229, 0) 93.17%);
     display: flex;
-    justify-content: flex-end;   
+    justify-content: flex-end;
 }
 
-.beehive_banner_img{
+.beehive_banner_img {
     width: 400px;
     height: 400px;
 }
@@ -49,18 +55,27 @@
 .navbar ul {
     display: flex;
     list-style-type: none;
+    font-weight: 600;
+    font-size: 1.23rem;
     width: 400px;
     padding: 0;
     align-items: center;
     justify-content: space-evenly;
+    gap: 15%;
+    color: #625C5C;
 }
 
-.item-navbar:hover{
-    font-weight: bold;
+.item-navbar {
+    transition: 500ms;
+}
+
+.item-navbar:hover {
+    font-weight: bolder;
     cursor: pointer;
+    color: #35342F;
 }
 
-button{
+button {
     width: 90px;
     height: 35px;
     border: 1px solid black;
@@ -72,32 +87,43 @@ button{
     box-shadow: 2px 4px 40px 2px rgb(0, 0, 0, 0.2);
 }
 
-button:hover{
+button:hover {
     color: #fcdf82;
 }
 
-.button-login{
+.button-login {
     background-color: transparent;
-    color: black; 
+    color: #625C5C;
+    font-size: 1.1rem;
     border: none;
     box-shadow: none;
 }
 
-.button-cadastro{
+.button-cadastro {
     border-radius: 20px;
     width: 120px;
 }
 
-.button-login:hover{
+.button-login:hover {
     color: #fcdf82;
 }
 
-.button-vermais{
+.button-vermais {
     border-radius: 20px;
+    padding:20px;
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 100;
+    border: none;
+    background: #35342F;
+    box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.3), 10px 10px 20px #8D8786;
+    border-radius: 50px;
 }
 
 
-.title-banner{
+.title-banner {
     width: 60%;
     height: 450px;
     display: flex;
@@ -105,28 +131,29 @@ button:hover{
     justify-content: center;
 }
 
-.text-banner{
+.text-banner {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
 }
 
-.p1-banner{
+.p1-banner {
     font-size: 40px;
     width: 500px;
-    color: black;
+    color: #625C5C;
     margin: 0;
 }
 
-.p2-banner{
+.p2-banner {
     width: 450px;
     font-size: 20px;
-    color: black;
-    margin: 20;
+    color: #625C5C;
+    margin-top: 2%;
+    margin-bottom: 4%;
 }
 
-.itens-icons-banner{
+.itens-icons-banner {
     background-color: transparent;
     display: flex;
     justify-content: space-between;
@@ -134,7 +161,7 @@ button:hover{
     width: 45%;
 }
 
-.redes-sociais-icons{
+.redes-sociais-icons {
     width: 30px;
     height: 30px;
     cursor: pointer;
@@ -142,32 +169,36 @@ button:hover{
     margin-top: 20px;
 }
 
-.beehive_nome{
+.beehive_nome {
     margin: 0;
     padding: 0;
     font-size: 18px;
     margin-left: 10px;
+    font-weight: bold;
 }
 
-.img-banner-destaque{
-    width: 450px;
-    height: 350px;
+.img-banner-destaque {
+    width:93%;
+    margin-top: -10%;
+    margin-left: -10%;
+    /* height: 350px; */
+    margin-right: 10px;
 }
 
-.redes-sociais-itens{
+.redes-sociais-itens {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.div-button-banner button{
+.div-button-banner button {
     width: 150px;
 }
 
 /*Contéudo do site - Pós banner*/
 
-.content-servicos{
+.content-servicos {
     width: 100%;
     height: 500px;
     display: flex;
@@ -175,7 +206,7 @@ button:hover{
     align-items: center;
 }
 
-.content-servicos .container{
+.content-servicos .container {
     width: 90%;
     display: flex;
     justify-content: center;
@@ -184,17 +215,17 @@ button:hover{
     flex-direction: column;
 }
 
-span{
+span {
     color: #ecb500;
 }
 
-.title-servicos{
+.title-servicos {
     text-align: center;
     display: flex;
     justify-content: center;
 }
 
-.title-servicos p{
+.title-servicos p {
     border-bottom: 2px solid #ecb500;
     font-size: 25px;
     font-weight: bolder;
@@ -203,16 +234,16 @@ span{
 }
 
 
-.subtitle-servicos{
+.subtitle-servicos {
     width: 550px;
 }
 
-.subtitle-servicos p{
+.subtitle-servicos p {
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.cards-servico{
+.cards-servico {
     width: 100%;
     height: 300px;
     display: flex;
@@ -221,7 +252,7 @@ span{
     margin-top: 1%;
 }
 
-.card-item{
+.card-item {
     background-color: white;
     /*box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);*/
     border-radius: 10px;
@@ -234,16 +265,16 @@ span{
     flex-direction: column;
 }
 
-.card-acesso-remoto{
+.card-acesso-remoto {
     background-color: rgb(117, 117, 117);
     color: white;
 }
 
-.card-item p{
+.card-item p {
     font-size: 16px;
 }
 
-.img-card-item{
+.img-card-item {
     width: 100px;
     height: 100px;
 }
