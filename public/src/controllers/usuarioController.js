@@ -1,6 +1,6 @@
-var usuarioModel = require("../models/usuarioModel");
+let usuarioModel = require("../models/usuarioModel");
 
-var sessoes = [];
+let sessoes = [];
 
 function testar(req, res) {
     console.log("ENTRAMOS NA usuarioController");
@@ -9,15 +9,16 @@ function testar(req, res) {
 
 
 function entrar(req, res) {
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+
+    let email = req.body.emailServer;
+    let senha = req.body.senhaServer;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        
+
         usuarioModel.entrar(email, senha)
             .then(
                 function (resultado) {
@@ -43,18 +44,56 @@ function entrar(req, res) {
     }
 
 }
+function cadastrarEndereco(req, res) {
 
-function cadastrar(req, res) {
+    let cep = req.body.cepServer;
+    let estado = req.body.estadoServer;
+    let cidade = req.body.cidadeServer;
+    let nomeRua = req.body.nomeRuaServer;
+    let numeroRua= req.body.numeroRuaServer;   
+    
+    if (cep == undefined) {
+        res.status(400).send("Sua cep está undefined!");
+    } else if (estado == undefined) {
+        res.status(400).send("Sua estado está undefined!");
+    } else if (cidade == undefined) {
+        res.status(400).send("Sua cidade está undefined!");
+    } else if (nomeRua == undefined) {
+        res.status(400).send("Sua rua está undefined!");
+    }
+    else if (numeroRua == undefined) {
+        res.status(400).send("Sua rua está undefined!");
+    }
+    else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarEndereco(cep, estado, cidade,nomeRua,numeroRua)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro do endereco! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
+function cadastrarEmpresa(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nome = req.body.nomeServer;
-    var senha = req.body.senhaServer;
-    var email = req.body.emailServer;
-    var telefone = req.body.telefoneServer;
-    var cnpj = req.body.cnpjServer;
-    var cep = req.body.cepServer;
-    var estado = req.body.estadoServer;
-    var cidade = req.body.cidadeServer;
-    var rua = req.body.ruaServer;
+    let nome = req.body.nomeServer;
+    let senha = req.body.senhaServer;
+    let email = req.body.emailServer;
+    let telefone = req.body.telefoneServer;
+    let cnpj = req.body.cnpjServer;
+
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -66,19 +105,11 @@ function cadastrar(req, res) {
         res.status(400).send("Sua telefone está undefined!");
     } else if (cnpj == undefined) {
         res.status(400).send("Sua cnpj está undefined!");
-    } else if (cep == undefined) {
-        res.status(400).send("Sua cep está undefined!");
-    } else if (estado == undefined) {
-        res.status(400).send("Sua estado está undefined!");
-    } else if (cidade == undefined) {
-        res.status(400).send("Sua cidade está undefined!");
-    } else if (rua == undefined) {
-        res.status(400).send("Sua rua está undefined!");
     }
- else {
-        
+    else {
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, senha, email, telefone, cnpj, cep, estado, cidade, rua)
+        usuarioModel.cadastrarEmpresa(nome, senha, email, telefone, cnpj)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -98,6 +129,7 @@ function cadastrar(req, res) {
 
 module.exports = {
     entrar,
-    cadastrar,
+    cadastrarEndereco,
+    cadastrarEmpresa,
     testar
 }
