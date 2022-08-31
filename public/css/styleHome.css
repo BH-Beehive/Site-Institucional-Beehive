@@ -204,6 +204,7 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 5%;
 }
 
 .content-servicos .container {
@@ -249,7 +250,7 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1%;
+    margin-top: 5%;
 }
 
 .card-item {
@@ -257,8 +258,9 @@ span {
     box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
     border-radius: 10px;
     width: 380px;
-    height: 300px;
+    height: 320px;
     margin-left: 10px;
+    padding: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -290,7 +292,7 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1%;
+    margin-top: 10%;
 }
 
 .card-solucoes .container {
