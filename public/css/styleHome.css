@@ -1,68 +1,52 @@
-/*Header e banner*/
+/*Header*/
 
 .header {
     display: flex;
     align-items: center;
-    background: linear-gradient(102.23deg, #EECF6A -4.96%, rgba(245, 242, 229, 0) 93.17%);
-    padding: 10px;
+    justify-content: center;
+    background: linear-gradient(to right, #EECF6A, rgba(245, 242, 229, 0));
 }
 
 .header .container {
-    width: 90%;
+    width: 85%;
     display: flex;
-    justify-content: space-between;
+    padding-top: 1%;
     align-items: center;
-    margin: 0 auto;
+
 }
 
 .beehive_home {
     display: flex;
-    justify-content: center;
     align-items: center;
+    width: 25%;
+    padding-left: 2%;
 }
 
-.beehive_home p{
+.beehive_home p {
     font-size: 1.3rem;
 }
 
 .beehive_logo {
     width: 40px;
     height: 40px;
-    margin-right: 13%;
-    margin-left: 15%;
 }
 
-.banner .container {
-    width: 90%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-}
-
-.banner {
-    height: 500px;
-    background: linear-gradient(102.23deg, #EECF6A -4.96%, rgba(245, 242, 229, 0) 93.17%);
-    display: flex;
-    justify-content: flex-end;
-}
-
-.beehive_banner_img {
-    width: 400px;
-    height: 400px;
+.navbar {
+    width: 50%;
 }
 
 .navbar ul {
     display: flex;
     list-style-type: none;
-    font-weight: 600;
-    font-size: 1.23rem;
-    width: 400px;
-    padding: 0;
+    font-weight: 400;
+    font-size: 1.10rem;
+    justify-content: center;
+    gap: 10%;
+
+
     align-items: center;
-    justify-content: space-evenly;
-    gap: 15%;
     color: #625C5C;
+    padding: 0;
 }
 
 .item-navbar {
@@ -70,21 +54,26 @@
 }
 
 .item-navbar:hover {
-    font-weight: bolder;
     cursor: pointer;
     color: #35342F;
 }
 
+.buttons-navbar {
+    width: 25%;
+    display: flex;
+    align-items: center;
+}
+
 button {
-    width: 90px;
-    height: 35px;
-    border: 1px solid black;
+    width: 50%;
+    height: 10px;
     border-radius: 3px;
-    background-color: black;
+    background-color: #35342F;
     color: white;
     cursor: pointer;
     font-size: 15px;
     box-shadow: 2px 4px 40px 2px rgb(0, 0, 0, 0.2);
+
 }
 
 button:hover {
@@ -92,26 +81,58 @@ button:hover {
 }
 
 .button-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: transparent;
     color: #625C5C;
     font-size: 1.1rem;
     border: none;
     box-shadow: none;
+    padding: 10%;
 }
 
 .button-cadastro {
-    border-radius: 20px;
-    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    padding: 8%;
 }
 
 .button-login:hover {
     color: #fcdf82;
 }
 
+/* banner */
+
+.banner {
+    height: 80vh;
+    width: 100%;
+    background: linear-gradient(to right, #EECF6A, rgba(245, 242, 229, 0));
+    display: flex;
+}
+
+.banner .container {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    /* margin: 0 auto; */
+}
+
+
+
+.beehive_banner_img {
+    width: 400px;
+    height: 400px;
+}
+
+
+
 .button-vermais {
     border-radius: 20px;
-    padding:20px;
-    display:flex ;
+    padding: 20px;
+    display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1rem;
@@ -125,6 +146,8 @@ button:hover {
 
 .title-banner {
     width: 60%;
+    padding-left: 3%;
+    padding-bottom: 3%;
     height: 450px;
     display: flex;
     flex-direction: column;
@@ -139,18 +162,21 @@ button:hover {
 }
 
 .p1-banner {
-    font-size: 40px;
-    width: 500px;
+    font-size: 2.5rem;
+    font-weight: 100;
     color: #625C5C;
     margin: 0;
+    margin-bottom: 2%;
 }
 
 .p2-banner {
     width: 450px;
-    font-size: 20px;
+    font-size: 1rem;
     color: #625C5C;
+    font-weight: 100;
     margin-top: 2%;
     margin-bottom: 4%;
+    line-height: 150%;
 }
 
 .itens-icons-banner {
@@ -172,24 +198,41 @@ button:hover {
 .beehive_nome {
     margin: 0;
     padding: 0;
-    font-size: 18px;
+    font-size: 1.0rem;
     margin-left: 10px;
-    font-weight: bold;
+    font-weight: 500;
+}
+
+.img-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .img-banner-destaque {
-    width:93%;
+
+    width: 82%;
+    min-width: 300px;
     margin-top: -10%;
     margin-left: -10%;
-    /* height: 350px; */
     margin-right: 10px;
 }
 
 .redes-sociais-itens {
+    color: #625C5C;
+    font-size: 1.3rem;
+    gap: 10%;
+    width: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    transition: 500ms;
+}
+
+.redes-sociais-itens i:hover {
+    cursor: pointer;
+    color: #474747;
 }
 
 .div-button-banner button {
@@ -281,12 +324,12 @@ span {
     height: 150px;
 }
 
-.text-card{
+.text-card {
     width: 90%;
     text-align: center;
 }
 
-.card-solucoes{
+.card-solucoes {
     width: 100%;
     height: 500px;
     display: flex;
@@ -305,16 +348,16 @@ span {
 }
 
 
-.image-solucao-beehive img{
+.image-solucao-beehive img {
     width: 300px;
     height: 400px;
     box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
     border-radius: 5px;
 }
 
-.text-solucao{
+.text-solucao {
     width: 45%;
-    height: 400px; 
+    height: 400px;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -322,22 +365,22 @@ span {
     color: #474747;
 }
 
-.text-solucao p{
+.text-solucao p {
     font-size: 30px;
 }
 
-.text-solucao .subtitle{
+.text-solucao .subtitle {
     font-size: 16px;
 }
 
-.text-separation{
+.text-separation {
     width: 60px;
     height: 2px;
     background-color: #ecb500;
     border-radius: 30px;
 }
 
-.card-atendimento{
+.card-atendimento {
     width: 100%;
     height: 500px;
     display: flex;
@@ -357,7 +400,7 @@ span {
     flex-direction: row;
 }
 
-.image-atendimento-beehive img{
+.image-atendimento-beehive img {
     width: 500px;
     height: 400px;
     box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
@@ -365,9 +408,9 @@ span {
 }
 
 
-.text-atendimento{
+.text-atendimento {
     width: 40%;
-    height: 400px; 
+    height: 400px;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -375,15 +418,15 @@ span {
     color: #474747;
 }
 
-.text-atendimento p{
+.text-atendimento p {
     font-size: 30px;
 }
 
-.text-atendimento .subtitle{
+.text-atendimento .subtitle {
     font-size: 16px;
 }
 
-.text-separation-atendimento{
+.text-separation-atendimento {
     width: 60px;
     height: 2px;
     background-color: white;
@@ -391,65 +434,63 @@ span {
 }
 
 
-.team-beehive{
+/* Time */
+.text-team {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 5%;
+
+}
+
+.title-contact-us {
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.title-team {
+    font-size: 30px;
+    font-weight: bolder;
+    margin: 0;
+    margin-bottom: 5%;
+}
+
+.team-beehive {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 
 .team-beehive .container {
     width: 90%;
+    gap: 5%;
+    row-gap: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.text-team{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin-top: 5%;
-}
-
-.title-contact-us{
-    font-size: 15px;
-    font-weight: bolder;
-}
-
-.title-team{
-    font-size: 30px;
-    font-weight: bolder;
-    margin: 0;
-}
-
-.cards-team{
-   display: flex;
-   justify-content: center;
-   /*align-items: center;*/
-   float: left;
-   width: 80%;
-   margin-top: 5%;
-}
-
-.card-membro{
-    width: 300px;
-    height: 200px;
+.card-membro {
     border-radius: 20px;
-    padding: 20px;
     display: flex;
+    padding: 4%;
+    min-width: 150px;
     flex-direction: row;
+    transition: 500ms;
+
 }
 
-.card-membro:hover{
+.card-membro:hover {
     box-shadow: 3px 3px 15px 3px rgba(0, 0, 0, 0.425);
+    cursor: pointer;
 }
 
 .card-membro .container {
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -457,7 +498,7 @@ span {
     flex-direction: column;
 }
 
-.image-membro-william{
+.image-membro-william {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -466,7 +507,7 @@ span {
     background-size: cover;
 }
 
-.image-membro-gustavo{
+.image-membro-gustavo {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -475,7 +516,7 @@ span {
     background-size: cover;
 }
 
-.image-membro-maxuel{
+.image-membro-maxuel {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -484,7 +525,7 @@ span {
     background-size: cover;
 }
 
-.image-membro-patricio{
+.image-membro-patricio {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -493,7 +534,7 @@ span {
     background-size: cover;
 }
 
-.image-membro-leo{
+.image-membro-leo {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -503,7 +544,7 @@ span {
 }
 
 
-.image-membro-andrew{
+.image-membro-andrew {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -512,25 +553,75 @@ span {
     background-size: cover;
 }
 
-.nome-membro{
+.nome-membro {
     font-size: 25px;
     font-weight: bolder;
 }
 
-.funcao-membro{
+.funcao-membro {
     font-size: 20px;
     margin: 0;
 }
 
-.icons-membro{
+.icons-membro {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     flex-direction: column;
 }
 
-.icons-membro img{
+.icons-membro img {
     margin-top: 5px;
     width: 20px;
     height: 20px;
+}
+
+
+/* footer */
+
+footer {
+    display: flex;
+    width: 100%;
+    height: 60vh;
+    background-color: #EECF6A;
+    margin-top: 20vh;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.footerContainer {
+    width: 70%;
+    height: 60%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.itemFooter {
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+
+}
+
+.itemFooter h3 {
+    font-size: 1.3rem;
+    color: #8C766D;
+    font-weight: 900;
+    font-weight: bold;
+}
+
+.itemFooter span {
+    font-size: 1.2rem;
+    font-weight: 200;
+    cursor: pointer;
+    color: #575757;
+    transition: 300ms;
+}
+
+.itemFooter span:hover {
+    color: #35342F;
+    font-weight: 500;
 }

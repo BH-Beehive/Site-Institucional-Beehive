@@ -1,11 +1,14 @@
 :root{
     --background-color-yellow:#ffcc29;
 }
-
 body{
     margin: 0;
     padding: 0;
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
     font-family: 'Dosis', sans-serif;
     font-family: 'Quicksand', sans-serif;
+    border-color: red;
 }
 
