@@ -1,0 +1,122 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(108.6deg, #FEFFFA 11.64%, rgba(255, 204, 41, 0.95) 103.5%);
+}
+
+.main{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 75%;
+    height: 75%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
+}
+
+.form-logo-icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.form-logo-icon p{
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 0;
+    margin-left: 15px;
+}
+
+.form-logo-icon img{
+    width: 50px;
+    height: 50px;
+}
+
+.form-title-cadastro{
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.form-elements{
+    height: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.elements-cadastro{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-cadastro img{
+    width: 320px;
+    height: 320px;
+}
+
+.input-form{
+    border: none;
+    width: 300px;
+    border-bottom: 1px solid #D2CACA;
+    font-size: 18px;
+    outline: none;
+    margin: 15px;
+    background-color: transparent;
+}
+
+.button_icone{
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.button-form{
+    width: 100px;
+    height: 35px;
+    background-color: #35342F;
+    color: white;
+    border-radius: 20px;
+    font-size: 18px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    margin-left: 10%;
+}
+
+.icon-proximo-etapa{
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.button-form-proximo{
+    width: 130px;
+    height: 35px;
+    background-color: #35342F;
+    color: white;
+    border-radius: 20px;
+    font-size: 18px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+}

@@ -6,82 +6,94 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="assets/icons/Beehive-icon.png" type="image/x-icon">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/stylecadastro.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="shortcut icon" href="assets/icons/Beehive_logo.png" type="image/x-icon">
         <script src="js/cadastro.js"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <script src="https://kit.fontawesome.com/9b5324f6a3.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap"
             rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
-        <title>Beehive|Cadastro</title>
+        <title>Beehive | Cadastro</title>
     </head>
 
     <body>
-        <main class="main">
-            <div class="textoCadastrar">
-                <h3>
-                    O primeiro passo é se cadastrar.
-                </h3>
-                <h4>
-                    Preencha os campos abaixo!
-                </h4>
+        <div class="main">
+        <div class="form">
+            <div class="form-logo-icon">
+               <img src="assets/icons/Beehive_logo.png">
+               <p>Beehive</p>
             </div>
+
+            <p class="form-title-cadastro">Cadastre-se</p>
+
+            <div class="form-elements">
+
+            <div class="elements-cadastro"> 
+
             <div id="campoCadastro1" class="campoCadastro">
                 <div class="nomeCadastro">
-                    <input type="text" id="inputNome" placeholder="Nome" class="inputNome">
+                    <input type="text" id="inputNome" placeholder="Nome" class="inputNome input-form">
                 </div>
                 <div class="senhaCadastro">
-                    <input type="password" id="inputSenha" placeholder="Senha" class="inputSenha">
+                    <input type="password" id="inputSenha" placeholder="Senha" class="inputSenha input-form">
                     <span class="mostrar_botao"><button class="button_icone" id="button_icon" onclick="revelar()"><i
                                 class="fas fa-eye"></i></button></span>
                 </div>
                 <div class="confirmacaoSenha">
                     <input type="password" id="inputConfirmarSenha" placeholder="Confirme a senha"
-                        class="inputConfirmacaoSenha">
+                        class="inputConfirmacaoSenha input-form">
                 </div>
                 <div class="emailCadastro">
-                    <input type="email" id="inputEmail" class="inputEmail" placeholder="Email">
+                    <input type="email" id="inputEmail" class="inputEmail input-form" placeholder="Email">
                 </div>
                 <div class="telefone">
-                    <input type="tel" id="inputTelefone" class="inputTelefone" placeholder="Telefone">
+                    <input type="tel" id="inputTelefone" class="inputTelefone input-form" placeholder="Telefone">
                 </div>
 
-                <button onclick="proximaEtapa()" class="botaoProximaEtapa" type="button" id="botaoProximaEtapa">Próxima
-                    etapa</button>
+                <button onclick="proximaEtapa()" class="botaoProximaEtapa button-form-proximo" type="button" id="botaoProximaEtapa"><img class="icon-proximo-etapa" src="assets/icons/icon_proximo.png">Próximo</button>
 
 
             </div>
             <div id="campoCadastro2" class="campoCadastro" style="display: none;">
 
                 <div class="cnpj">
-                    <input type="text" id="inputCnpj" class="inputCnpj" placeholder="CNPJ">
+                    <input type="text" id="inputCnpj" class="inputCnpj input-form" placeholder="CNPJ">
                 </div>
                 <div class="cep">
-                    <input type="text" id="inputCep" class="inputCep" placeholder="CEP" onblur="pesquisacep(this.value);">
+                    <input type="text" id="inputCep" class="inputCep input-form" placeholder="CEP" onblur="pesquisacep(this.value);">
                 </div>
 
                 <div class="estado">
-                    <input type="text" id="inputEstado" class="inputEstado" placeholder="Estado">
+                    <input type="text" id="inputEstado" class="inputEstado input-form" placeholder="Estado">
                 </div>
                 <div class="cidade">
-                    <input type="text" id="inputCidade" class="inputCidade" placeholder="Cidade">
+                    <input type="text" id="inputCidade" class="inputCidade input-form" placeholder="Cidade">
                 </div>
                 <div class="rua">
-                    <input type="text" id="inputRua" class="inputRua" placeholder="Rua">
+                    <input type="text" id="inputRua" class="inputRua input-form" placeholder="Rua">
                 </div>
 
 
 
-                <button onclick="anteriorEtapa()" class="botaoAnteriorEtapa" type="button" id="botaoAnteriorEtapa">Etapa
-                    anterior</button>
+                <button onclick="anteriorEtapa()" class="botaoAnteriorEtapa button-form" type="button" id="botaoAnteriorEtapa">Voltar</button>
                     
-                <button onclick="cadastrar()" class="botaoCadastrar" type="button"
+                <button onclick="cadastrar()" class="botaoCadastrar button-form" type="button"
                     id="botaoCadastrar">Cadastrar</button>
             </div>
 
-        </main>
+            </div>
+
+            <div class="image-cadastro">
+
+                <img src="assets/img/image-cadastro-bg.png">
+
+            </div>
+
+        </div>
+    </div>
+        </div>
     </body>
 
 
