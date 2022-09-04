@@ -85,7 +85,7 @@ function entrar(req, res) {
  
 }*/
 
-function cadastrarEmpresa(req, res) {
+function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     let email = req.body.emailServer;
     let senha = req.body.senhaServer;
@@ -120,13 +120,10 @@ function cadastrarEmpresa(req, res) {
     } else if (nomeRua == undefined) {
         res.status(400).send("Sua rua está undefined!");
     }
-    else if (numeroRua == undefined) {
-        res.status(400).send("Sua rua está undefined!");
-    }
     else {
-
+        
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarEmpresa(email, senha, nome, cnpj, celular, telefone, cep, estado, cidade,nomeRua,numeroRua)
+        usuarioModel.cadastrar(email, senha, nome, cnpj, celular, telefone, cep, estado, cidade, nomeRua)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -146,7 +143,6 @@ function cadastrarEmpresa(req, res) {
 
 module.exports = {
     entrar,
-    /* cadastrarEndereco, */
-    cadastrarEmpresa,
+    cadastrar,
     testar
 }

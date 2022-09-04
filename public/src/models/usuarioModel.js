@@ -18,12 +18,9 @@ function entrar(email, senha) {
     return database.executar(instrucao);
 }
 
-// Coloque os mesmos parâmetros aqui. Vá para a var instrucao
- async function cadastrarEmpresa(nome, cnpj, telefone, celular, email, senha, cep, estado, cidade, nomeRua) {
+ async function cadastrar(nome, cnpj, telefone, celular, email, senha, cep, estado, cidade, nomeRua) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, cnpj, telefone, celular, email, senha, cep, estado, cidade, nomeRua);
     
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
     let instrucao = `
         INSERT INTO empresa (nome_empresa, cnpj, telefone_fixo, telefone_celular, email, senha)
          VALUES ('${nome}', '${cnpj}', '${telefone}', '${celular}', '${email}', '${senha}');
@@ -53,7 +50,6 @@ function entrar(email, senha) {
 
 module.exports = {
     entrar,
-    cadastrarEndereco,
-    cadastrarEmpresa,
-    listar,
+    cadastrar,
+    listar
 };

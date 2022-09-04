@@ -149,7 +149,7 @@ function pesquisacep(valor) {
 };
 
 
-function cadastrarEmpresa() {
+function cadastrar() {
     let emailVar = inputEmail.value;
     let senhaVar = inputSenha.value;
     let nomeVar = inputRazaoSocial.value;
@@ -163,7 +163,7 @@ function cadastrarEmpresa() {
    
 
 
-    fetch("usuario/cadastrarEmpresa", {
+    fetch("/usuario/cadastrar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
