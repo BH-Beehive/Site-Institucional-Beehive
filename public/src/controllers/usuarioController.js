@@ -44,7 +44,7 @@ function entrar(req, res) {
     }
 
 }
-function cadastrarEndereco(req, res) {
+/* function cadastrarEndereco(req, res) {
 
     let cep = req.body.cepServer;
     let estado = req.body.estadoServer;
@@ -82,8 +82,8 @@ function cadastrarEndereco(req, res) {
                 }
             );
     }
-
-}
+ 
+}*/
 
 function cadastrarEmpresa(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -93,6 +93,10 @@ function cadastrarEmpresa(req, res) {
     let cnpj = req.body.cnpjServer;
     let celular = req.body.celularServer;
     let telefone = req.body.telefoneServer;
+    let cep = req.body.cepServer;
+    let estado = req.body.estadoServer;
+    let cidade = req.body.cidadeServer;
+    let nomeRua = req.body.nomeRuaServer;
 
     // Faça as validações dos valores
     if (email == undefined) {
@@ -107,11 +111,22 @@ function cadastrarEmpresa(req, res) {
         res.status(400).send("Seu celular está undefined!");
     }else if (telefone == undefined) {
         res.status(400).send("Seu telefone está undefined!");
+    }else if (cep == undefined) {
+        res.status(400).send("Sua cep está undefined!");
+    } else if (estado == undefined) {
+        res.status(400).send("Sua estado está undefined!");
+    } else if (cidade == undefined) {
+        res.status(400).send("Sua cidade está undefined!");
+    } else if (nomeRua == undefined) {
+        res.status(400).send("Sua rua está undefined!");
+    }
+    else if (numeroRua == undefined) {
+        res.status(400).send("Sua rua está undefined!");
     }
     else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarEmpresa(email, senha, nome, cnpj, celular, telefone)
+        usuarioModel.cadastrarEmpresa(email, senha, nome, cnpj, celular, telefone, cep, estado, cidade,nomeRua,numeroRua)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -131,7 +146,7 @@ function cadastrarEmpresa(req, res) {
 
 module.exports = {
     entrar,
-    cadastrarEndereco,
+    /* cadastrarEndereco, */
     cadastrarEmpresa,
     testar
 }

@@ -1,15 +1,20 @@
 function revelar() {
+    let icon_revel=document.getElementById("button_icon");
     let senha_revel = document.getElementById("inputSenha");
-
-    if (senha_revel.type == "password") {
+    if (senha_revel.type == "password" ) {
         senha_revel.type = "text";
+        icon_revel.innerHTML='<i class="fa fa-sharp fa-solid fa-eye-slash"></i>';
+        
     }
     else {
+        
 
         senha_revel.type = "password";
+        icon_revel.innerHTML='<i class="fas fa-eye"></i>';
 
     }
 }
+
 
 
 
@@ -151,28 +156,34 @@ function cadastrarEmpresa() {
     let cnpjVar = inputCnpj.value;
     let celularVar = inputCelular.value;
     let telefoneVar = inputTelefone.value;
+    let cepVar = inputCep.value;
+    let estadoVar = inputEstado.value;
+    let cidadeVar = inputCidade.value;
+    let ruaVar = inputRua.value;
    
 
 
-    fetch("/usuario/cadastrarEmpresa", {
+    fetch("usuario/cadastrarEmpresa", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
             emailServer: emailVar,
             senhaServer: senhaVar,
             nomeServer: nomeVar,
             cnpjServer: cnpjVar,
             celularServer: celularVar,
-            telefoneServer: telefoneVar
+            telefoneServer: telefoneVar,
+            cepServer: cepVar,
+            estadoServer: estadoVar,
+            cidadeServer: cidadeVar,
+            ruaServer: ruaVar
             
             
         })
     }).then(function (resposta) {
-
+        
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
@@ -200,11 +211,10 @@ function cadastrarEmpresa() {
         console.log(`#ERRO: ${resposta}`);
     });
 
-    return false;
 }
 
 
-function cadastrarEndereco() {
+ /* async function cadastrarEndereco() {
     let cepVar = inputCep.value;
     let estadoVar = inputEstado.value;
     let cidadeVar = inputCidade.value;
@@ -253,4 +263,4 @@ function cadastrarEndereco() {
     });
 
     return false;
-}
+} */

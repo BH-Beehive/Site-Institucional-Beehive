@@ -14,110 +14,122 @@
         <script src="https://kit.fontawesome.com/9b5324f6a3.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap"
             rel="stylesheet">
-            <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
         <title>Beehive | Cadastro</title>
     </head>
 
-    <body style = "font-family: poppins">
+    <body style="font-family: poppins">
         <div class="main">
-        <div class="form">
-            <div class="form-logo-icon">
-               <img src="assets/icons/Beehive_logo.png">
-               <p>Beehive</p>
-            </div>
-
-            <p class="form-title-cadastro">Cadastre-se</p>
-
-            <div class="form-elements">
-
-            <div class="elements-cadastro"> 
-
-            <div id="campoCadastro1" class="campoCadastro1">
-                <!-- <div class="nomeCadastro">
-                    <input type="text" id="inputNome" placeholder="Nome" class="inputNome input-form">
-                </div> -->
-                <div class="emailCadastro">
-                    <input type="email" id="inputEmail" class="inputEmail input-form" placeholder="Email">
-                </div>
-                <div class="senhaCadastro">
-                    <input type="password" id="inputSenha" placeholder="Senha" class="inputSenha input-form">
-                    <span class="mostrar_botao"><button class="button_icone" id="button_icon" onclick="revelar()"><i
-                                class="fas fa-eye"></i></button></span>
-                </div>
-                <div class="confirmacaoSenha">
-                    <input type="password" id="inputConfirmarSenha" placeholder="Confirme a senha"
-                        class="inputConfirmacaoSenha input-form">
-                </div>
-                
-               
-                <button onclick="proximaEtapa()" class="botaoProximaEtapa button-form-proximo" type="button" id="botaoProximaEtapa"><!-- <img class="icon-proximo-etapa" src="assets/icons/icon_proximo.png" -->Próximo</button>
-
-                <div class="divPossuiConta">
-                    <p class="possuiConta"> Já possui uma conta?<a href="Login.html" class="link-entrar"> Entre!</a></p>
-                </div>
-            </div>
-            <div id="campoCadastro2" class="campoCadastro2" style="display: none;">
-                <div class="razaoSocial">
-                    <input type="text" id="inputRazaoSocial" class="inputRazaoSocial input-form" placeholder="Razão Social">
-                </div>
-                <div class="cnpj">
-                    <input type="number" id="inputCnpj" class="inputCnpj input-form" placeholder="CNPJ">
-                </div>
-                 <div class="celular">
-                    <input type="number" id="inputCelular" class="inputCelular input-form" placeholder="Celular">
-                </div>
-                  <div class="telefone">
-                    <input type="number" id="inputTelefone" class="inputTelefone input-form" placeholder="Telefone">
+            <div class="form">
+                <div class="form-logo-icon">
+                    <img src="assets/icons/Beehive_logo.png">
+                    <p>Beehive</p>
                 </div>
 
+                <p class="form-title-cadastro">Cadastre-se</p>
+
+                <div class="form-elements">
+
+                    <div class="elements-cadastro">
+
+                        <div id="campoCadastro1" class="campoCadastro1">
+                            <div class="emailCadastro">
+                                <input type="email" id="inputEmail" class="inputEmail input-form" placeholder="Email">
+                            </div>
+                            <div class="senhaCadastro">
+                                <input type="password" id="inputSenha" placeholder="Senha"
+                                    class="inputSenha input-form">
+                                <span class="mostrar_botao"><button class="button_icone" id="button_icon"
+                                        onclick="revelar()"><i class="fas fa-eye"></i></button></span>
+                            </div>
+                            <div class="confirmacaoSenha">
+                                <input type="password" id="inputConfirmarSenha" placeholder="Confirme a senha"
+                                    class="inputConfirmacaoSenha input-form">
+                            </div>
 
 
-                <button onclick="anteriorEtapa()" class="botaoAnteriorEtapa button-form" type="button" id="botaoAnteriorEtapa">Voltar</button>
-                    
-                <button onclick="proximaEtapa2()" class="botaoProximaEtapa button-form" type="button"
-                    id="botaoProximaEtapa2">Próximo</button>
-                    <div class="divPossuiConta">
-                        <p class="possuiConta"> Já possui uma conta?<a href="Login.html" class="link-entrar"> Entre!</a></p>
+                            <button onclick="proximaEtapa()" class="botaoProximaEtapa button-form-proximo" type="button"
+                                id="botaoProximaEtapa">
+                                <!-- <img class="icon-proximo-etapa" src="assets/icons/icon_proximo.png" -->Próximo
+                            </button>
+
+                            <div class="divPossuiConta">
+                                <p class="possuiConta"> Já possui uma conta?<a href="Login.html" class="link-entrar">
+                                        Entre!</a></p>
+                            </div>
+                        </div>
+                        <div id="campoCadastro2" class="campoCadastro2" style="display: none;">
+                            <div class="razaoSocial">
+                                <input type="text" id="inputRazaoSocial" class="inputRazaoSocial input-form"
+                                    placeholder="Razão Social">
+                            </div>
+                            <div class="cnpj">
+                                <input type="number" id="inputCnpj" class="inputCnpj input-form" placeholder="CNPJ">
+                            </div>
+                            <div class="celular">
+                                <input type="number" id="inputCelular" class="inputCelular input-form"
+                                    placeholder="Celular">
+                            </div>
+                            <div class="telefone">
+                                <input type="number" id="inputTelefone" class="inputTelefone input-form"
+                                    placeholder="Telefone">
+                            </div>
+
+
+
+                            <button onclick="anteriorEtapa()" class="botaoAnteriorEtapa button-form" type="button"
+                                id="botaoAnteriorEtapa">Voltar</button>
+
+                            <button onclick="proximaEtapa2()" class="botaoProximaEtapa button-form" type="button"
+                                id="botaoProximaEtapa2">Próximo</button>
+                            <div class="divPossuiConta">
+                                <p class="possuiConta"> Já possui uma conta?<a href="Login.html" class="link-entrar">
+                                        Entre!</a></p>
+                            </div>
+                        </div>
+                        <div id="campoCadastro3" class="campoCadastro3" style="display: none">
+
+                            <div class="cep">
+                                <input type="text" id="inputCep" class="inputCep input-form" placeholder="CEP"
+                                    onblur="pesquisacep(this.value);">
+                            </div>
+
+                            <div class="estado">
+                                <input type="text" id="inputEstado" class="inputEstado input-form" placeholder="Estado">
+                            </div>
+                            <div class="cidade">
+                                <input type="text" id="inputCidade" class="inputCidade input-form" placeholder="Cidade">
+                            </div>
+                            <div class="rua">
+                                <input type="text" id="inputRua" class="inputRua input-form" placeholder="Rua">
+                            </div>
+
+                            <button onclick="anteriorEtapa2()" class="botaoAnteriorEtapa button-form" type="button"
+                                id="botaoAnteriorEtapa">Voltar</button>
+
+                            <button onclick="cadastrarEmpresa()" class="botaoCadastrar button-form"
+                                type="button" id="botaoCadastrar">Cadastrar</button>
+                            <div class="divPossuiConta">
+                                <p class="possuiConta"> Já possui uma conta?<a href="Login.html" class="link-entrar">
+                                        Entre!</a></p>
+                            </div>
+                        </div>
+
                     </div>
-            </div>
-            <div id="campoCadastro3" class="campoCadastro3" style="display: none">
 
-                <div class="cep">
-                    <input type="text" id="inputCep" class="inputCep input-form" placeholder="CEP" onblur="pesquisacep(this.value);">
-                </div>
+                    <div class="image-cadastro">
 
-                 <div class="estado">
-                    <input type="text" id="inputEstado" class="inputEstado input-form" placeholder="Estado">
-                </div> 
-                 <div class="cidade">
-                    <input type="text" id="inputCidade" class="inputCidade input-form" placeholder="Cidade">
-                </div> 
-                 <div class="rua">
-                    <input type="text" id="inputRua" class="inputRua input-form" placeholder="Rua">
-                </div>
+                        <img id="imagemCadastro" src="assets/img/imgCadastro1.svg">
 
-                <button onclick="anteriorEtapa2()" class="botaoAnteriorEtapa button-form" type="button" id="botaoAnteriorEtapa">Voltar</button>
-                    
-                <button onclick="cadastrarEmpresa(), cadastrarEndereco()" class="botaoCadastrar button-form" type="button"
-                    id="botaoCadastrar">Cadastrar</button>
-                    <div class="divPossuiConta">
-                        <p class="possuiConta"> Já possui uma conta?<a href="Login.html" class="link-entrar"> Entre!</a></p>
                     </div>
+
+                </div>
             </div>
-            
-            </div>
-
-            <div class="image-cadastro">
-
-                <img id="imagemCadastro" src="assets/img/imgCadastro1.svg">
-
-            </div>
-
-        </div>
-    </div>
         </div>
     </body>
 
