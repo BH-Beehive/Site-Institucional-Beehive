@@ -3,18 +3,11 @@
 }
 
 body{
-    background-image: url('../assets/img/Rectangle\ 49.svg');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: bottom;
-    background-position-x: 0px ;
-    background-position-y: 50vh;
-    overflow-x: hidden;
-    overflow-y: hidden;
     margin: 0;
     padding: 0;
     font-family: 'Dosis', sans-serif;
     font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(108.6deg, #FEFFFA 11.64%, rgba(255, 204, 41, 0.95) 103.5%);
     
 
 }
@@ -54,12 +47,23 @@ border-radius: 4px 10px 10px 4px;
 #imgLogin{
     margin-top: 18%;
 }
+#imgLogin:hover{
+    transform: scale(1.10,1.10);
+    transition: all 0.3s;
+}
 .form input{
     outline: none;
     border: none;
     background-color: rgba(255, 255, 255, 0);
      border-bottom: 0.4px solid #D2CACA;
      width: 15vw;
+}
+
+.form-logo-icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 
@@ -70,13 +74,24 @@ border-radius: 4px 10px 10px 4px;
     width: 9vw;
     border: none;
     cursor: pointer;
+    transition-duration: 0.4s;
 }
+
+#btnEntrar:hover{
+    background-color: #FFCC29;
+}
+
+#btnEntrar p:hover{
+    color: black;
+}
+
 
 #btnEntrar p{
     font-family: 'Inter';
 font-style: normal;
 font-size: 15px;
-color: #FFCC29;
+color: #ffffff;
+padding: 5px;
 
     
 }
@@ -86,6 +101,10 @@ color: #FFCC29;
     text-decoration: none;
     color: black;
     font-weight: bold;
+}
+
+.link-cadastro:hover{
+    color: #ffcc29;
 }
 
 #entrar h2{
@@ -106,4 +125,14 @@ color: #35342F;
 }
 .logo a{
    font-weight: bold;
+}
+
+.button_icone{
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    position:block;
+}
+#inputEmailLogin{
+    margin-right: 30px;
 }
