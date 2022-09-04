@@ -96,7 +96,7 @@ function cadastrar(req, res) {
     let cep = req.body.cepServer;
     let estado = req.body.estadoServer;
     let cidade = req.body.cidadeServer;
-    let nomeRua = req.body.nomeRuaServer;
+    let nomeRua = req.body.ruaServer;
 
     // Faça as validações dos valores
     if (email == undefined) {

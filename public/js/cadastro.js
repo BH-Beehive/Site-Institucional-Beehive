@@ -160,7 +160,7 @@ function cadastrar() {
     let estadoVar = inputEstado.value;
     let cidadeVar = inputCidade.value;
     let ruaVar = inputRua.value;
-   
+   console.log(emailVar,senhaVar,nomeVar,cnpjVar,celularVar,telefoneVar,cepVar,celularVar,estadoVar,cidadeVar,ruaVar)
 
 
     fetch("/usuario/cadastrar", {
@@ -170,15 +170,15 @@ function cadastrar() {
         },
         body: JSON.stringify({
             emailServer: emailVar,
-            senhaServer: senhaVar,
-            nomeServer: nomeVar,
-            cnpjServer: cnpjVar,
-            celularServer: celularVar,
-            telefoneServer: telefoneVar,
-            cepServer: cepVar,
-            estadoServer: estadoVar,
-            cidadeServer: cidadeVar,
-            ruaServer: ruaVar
+            senhaServer:senhaVar,
+            nomeServer:nomeVar,
+            cnpjServer:cnpjVar,
+            celularServer:celularVar,
+            telefoneServer:telefoneVar,
+            cepServer:cepVar,
+            estadoServer:estadoVar,
+            cidadeServer:cidadeVar,
+            ruaServer:ruaVar
             
             
         })

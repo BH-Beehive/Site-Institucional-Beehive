@@ -22,53 +22,49 @@ function revelar() {
 
 
 function entrar() {
-    aguardar();
-
-    let formulario = new URLSearchParams(new FormData(document.getElementById("form_login")));
-
-    console.log("FORM LOGIN: ", formulario.get("login"));
-    console.log("FORM SENHA: ", formulario.get("senha"));
-
+    let email = inputEmailLogin.value
+    let senha = inputEmailLogin.value
+    
     fetch("/usuario/autenticar", {
         method: "POST",
-        body: formulario
-    }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-
-        if (resposta.ok) {
-            console.log(resposta);
-
-            resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-
-                sessionStorage.LOGIN_USUARIO = json.login;
-                sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_USUARIO = json.id;
-
-                setTimeout(function () {
-                    window.location = "/index.html";
-                }, 1000);
-            });
-
-        } else {
-
-            console.log("Erro de login!");
-
-            resposta.text().then(texto => {
-                console.error(texto);
-                
-                finalizarAguardar(texto);
-                
-            });
-        }
-
-    }).catch(function (erro) {
-        console.log(erro);
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            emailServer: email,
+            senhaServer: senha,
+        }),
     })
+        .then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!");
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then((json) => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+
+                    setTimeout(function () {
+                        window.location = "Login.html";
+                    }, 1000); // apenas para exibir o loading
+                });
+            } else {
+                console.log("Houve um erro ao tentar realizar o login!");
+                resposta.text().then((texto) => {
+                    console.error(texto);
+                });
+            }
+        })
+        .catch(function (erro) {
+            console.log(erro);
+        });
 
     return false;
 }
+
 
 function validarSessao() {
     aguardar();
@@ -86,11 +82,4 @@ function validarSessao() {
     } else {
         window.location = "login.html";
     }
-}
-
-function sair() {
-    aguardar();
-    sessionStorage.clear();
-    finalizarAguardar();
-    window.location = "login.html";
 }
