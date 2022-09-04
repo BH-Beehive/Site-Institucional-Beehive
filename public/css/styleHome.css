@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
     background: linear-gradient(to right, #EECF6A, rgba(245, 242, 229, 0));
+    transition: 20ms;
 }
 
 .header .container {
@@ -44,21 +45,25 @@
 
 .navbar ul {
     display: flex;
-    list-style-type: none;
+    list-style: none;
     font-weight: 400;
     font-size: 1.20rem;
     justify-content: center;
     gap: 10%;
     align-items: center;
-    color: #625C5C;
     padding: 0;
 }
 
-.item-navbar {
+.navbar ul a {
+    text-decoration: none;
+    color: #625C5C;
+}
+
+.navbar ul a {
     transition: 500ms;
 }
 
-.item-navbar:hover {
+.navbar ul a:hover {
     cursor: pointer;
     color: #35342F;
     font-weight: 500;
@@ -77,13 +82,19 @@ button {
     background-color: #35342F;
     color: white;
     cursor: pointer;
-    font-size: 15px;
     box-shadow: 2px 4px 40px 2px rgb(0, 0, 0, 0.2);
     border: none;
-    transition: 400ms;
+    transition: 300ms;
 }
 
-button:hover {
+button a {
+    color: white;
+    border: none;
+    transition: 400ms;
+    font-size: 15px;
+}
+
+button a:hover {
     color: #fcdf82;
 }
 
@@ -92,11 +103,19 @@ button:hover {
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    color: #625C5C;
-    font-size: 1.1rem;
     border: none;
     box-shadow: none;
     padding: 10%;
+}
+
+.button-login a {
+    color: #625C5C;
+    font-size: 1.1rem;
+    transition: 300ms;
+}
+
+.button-login a:hover {
+    color: #fcdf82;
 }
 
 .button-cadastro {
@@ -107,9 +126,7 @@ button:hover {
     padding: 20px;
 }
 
-.button-login:hover {
-    color: #fcdf82;
-}
+
 
 /* banner */
 
@@ -301,7 +318,7 @@ span {
     min-width: 300px;
     height: 50vh;
     margin-left: 10px;
-    padding: 15px;
+    padding: 1%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -401,7 +418,8 @@ span {
     align-items: center;
     flex-wrap: wrap;
 }
-.image-atendimento-beehive{
+
+.image-atendimento-beehive {
     /* width: 50%; */
     display: flex;
     justify-content: center;
@@ -416,11 +434,11 @@ span {
     min-width: 200px;
     /* height: 400px; */
     box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
-    border-radius: 5px; 
+    border-radius: 5px;
 }
 
 .text-atendimento {
-    width: 30%;     
+    width: 30%;
     padding: 8%;
     display: flex;
     justify-content: flex-start;
@@ -612,7 +630,7 @@ footer {
     height: 60%;
     display: flex;
     justify-content: flex-start;
-   
+
 }
 
 .itemFooter {
@@ -621,7 +639,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 5%;
-    
+
 }
 
 .itemFooter h3 {
@@ -643,7 +661,7 @@ footer {
     font-weight: 500;
 }
 
-.copyFooter{
+.copyFooter {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -656,20 +674,23 @@ footer {
     color: #625C5C;
     padding-bottom: 0.5%;
 }
-.copyFooter h3{
+
+.copyFooter h3 {
     font-weight: 200;
 }
-.copyFooter img{
+
+.copyFooter img {
     width: 4%;
 }
 
-.copyFooter h4{
+.copyFooter h4 {
     font-weight: 100;
 }
+
 /* medias queries */
 
-@media (max-width:822px){
-    .image-atendimento-beehive{
+@media (max-width:822px) {
+    .image-atendimento-beehive {
         order: 0;
         margin-top: 5%;
         width: 80%;
@@ -733,33 +754,123 @@ footer {
     .div-button-banner button {
         width: 150px;
     }
-    
-    .footerContainer{
+
+    .footerContainer {
         justify-content: space-around;
     }
 }
 
-@media (max-width:682px){
-    
+@media (max-width:682px) {
+
     .text-solucao {
         width: 50%;
     }
-    
+
     .text-solucao p {
         font-size: 30px;
     }
-    
+
     .text-solucao .subtitle {
         font-size: 16px;
     }
-    
+
 }
 
-@media (max-width:644px){
-    .button-cadastro{
+.menuHamburguer {
+    display: none;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media (max-width:660px) {
+
+    /* menu hamburguer */
+    .navbar ul {
         display: none;
     }
-    .img-banner{
+
+    .buttons-navbar {
         display: none;
+    }
+
+    .beehive_home {
+        padding-top: 2%;
+    }
+
+    .header .container {
+        justify-content: space-around;
+    }
+
+    .menuHamburguer {
+        display: flex;
+        cursor: pointer;
+    }
+
+    /* Header hamburguer ativo */
+    .header.active {
+        position: fixed;
+        width: 100%;
+        background: none;
+        background-color: #EECF6A;
+        z-index: 100;
+        bottom: 0;
+        top: 0;
+        transition: 500ms;
+    }
+
+
+    .header.active .container {
+        display: block;
+        height: 100vh;
+    }
+
+    .header.active .container .beehive_home {
+        width: 100%;
+        /* justify-content: center; */
+    }
+
+    .header.active .menuHamburguer {
+        font-size: 1.5rem;
+    }
+
+    .header.active .navbar {
+        width: 100%;
+    }
+
+    .header.active .navbar ul {
+        display: block;
+    }
+
+    .header.active .navbar ul a {
+        display: block;
+        padding: 2%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .header.active .navbar ul a:hover {
+        background-color: #e1c158;
+    }
+
+    .header.active .buttons-navbar {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-bottom: 5%;
+    }
+
+    .header.active .button-login {
+        width: 40%;
+    }
+
+    .header.active .button-login:hover {
+        color: #474747;
+    }
+
+    .header.active .button-cadastro {
+        width: 40%;
     }
 }

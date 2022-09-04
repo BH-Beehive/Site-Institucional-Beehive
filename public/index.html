@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/icons/Beehive.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/a12fad1086.js" crossorigin="anonymous"></script>
+    <script src="js/utils-layout/menuHamburguer.js"></script>
 
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/styleHome.css">
@@ -18,7 +19,7 @@
 </head>
 
 <body>
-    <div class="header">
+    <div id="headerHamb" class="header">
 
         <div class="container">
 
@@ -26,26 +27,27 @@
                 <img class="beehive_logo" src="assets/icons/Beehive_logo.png">
                 <p class="beehive_nome">Bee<span>Hive</span></p>
             </div>
-
             <div class="navbar">
                 <ul>
-                    <li class="item-navbar">Inicío</li>
-                    <li class="item-navbar">Serviços</li>
-                    <li class="item-navbar">Sobre nós</li>
+                    <a onclick="removeActiveHamburguer()" href="#" class="item-navbar">Inicío</a>
+                    <a onclick="removeActiveHamburguer()" href="#servicos" class="item-navbar">Serviços</a>
+                    <a onclick="removeActiveHamburguer()" href="#" class="item-navbar">Sobre nós</a>
                 </ul>
             </div>
 
             <div class="buttons-navbar">
-                <button class="button-login"><b>Login</b></button>
-                <button class="button-cadastro"><b>Cadastrar</b></button>
+                <button onclick="removeActiveHamburguer()" class="button-login"><a href="Login.html">Login</a></button>
+                <button onclick="removeActiveHamburguer()" class="button-cadastro"><a href="Cadastro.html">Cadastrar</a></button>
             </div>
-
+            <div class="menuHamburguer">
+                <i onclick="toggleMenu()" class="fa-solid fa-bars"></i>
+            </div>
         </div>
-
     </div>
 
-    <div class="banner">
 
+
+    <div class="banner">
         <div class="redes-sociais-itens">
             <i class="fa-brands fa-linkedin"></i>
             <i class="fa-solid fa-phone"></i>
@@ -77,7 +79,7 @@
     </div>
 
 
-    <div class="content-servicos">
+    <div id="servicos" class="content-servicos">
 
         <div class="container">
 

@@ -1,6 +1,10 @@
 :root{
     --background-color-yellow:#ffcc29;
 }
+html{
+    scroll-behavior: smooth;
+    /* overflow-y: scroll; */
+}
 body{
     margin: 0;
     padding: 0;
@@ -10,5 +14,8 @@ body{
     font-family: 'Dosis', sans-serif;
     font-family: 'Quicksand', sans-serif;
     border-color: red;
+}
+a{
+    text-decoration: none;
 }
 
