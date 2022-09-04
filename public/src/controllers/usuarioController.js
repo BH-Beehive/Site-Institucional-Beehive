@@ -50,7 +50,6 @@ function cadastrarEndereco(req, res) {
     let estado = req.body.estadoServer;
     let cidade = req.body.cidadeServer;
     let nomeRua = req.body.nomeRuaServer;
-    let numeroRua= req.body.numeroRuaServer;   
     
     if (cep == undefined) {
         res.status(400).send("Sua cep está undefined!");
@@ -88,28 +87,31 @@ function cadastrarEndereco(req, res) {
 
 function cadastrarEmpresa(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    let nome = req.body.nomeServer;
-    let senha = req.body.senhaServer;
     let email = req.body.emailServer;
-    let telefone = req.body.telefoneServer;
+    let senha = req.body.senhaServer;
+    let nome = req.body.nomeServer;
     let cnpj = req.body.cnpjServer;
+    let celular = req.body.celularServer;
+    let telefone = req.body.telefoneServer;
 
     // Faça as validações dos valores
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
+    if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
-        res.status(400).send("Seu senha está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Sua email está undefined!");
-    } else if (telefone == undefined) {
-        res.status(400).send("Sua telefone está undefined!");
+        res.status(400).send("Sua senha está undefined!");
+    } else if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
     } else if (cnpj == undefined) {
-        res.status(400).send("Sua cnpj está undefined!");
+        res.status(400).send("Seu cnpj está undefined!");
+    } else if (celular == undefined) {
+        res.status(400).send("Seu celular está undefined!");
+    }else if (telefone == undefined) {
+        res.status(400).send("Seu telefone está undefined!");
     }
     else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarEmpresa(nome, senha, email, telefone, cnpj)
+        usuarioModel.cadastrarEmpresa(email, senha, nome, cnpj, celular, telefone)
             .then(
                 function (resultado) {
                     res.json(resultado);

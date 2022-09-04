@@ -14,11 +14,14 @@
         <script src="https://kit.fontawesome.com/9b5324f6a3.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap"
             rel="stylesheet">
+            <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
         <title>Beehive | Cadastro</title>
     </head>
 
-    <body>
+    <body style = "font-family: poppins">
         <div class="main">
         <div class="form">
             <div class="form-logo-icon">
@@ -32,9 +35,12 @@
 
             <div class="elements-cadastro"> 
 
-            <div id="campoCadastro1" class="campoCadastro">
-                <div class="nomeCadastro">
+            <div id="campoCadastro1" class="campoCadastro1">
+                <!-- <div class="nomeCadastro">
                     <input type="text" id="inputNome" placeholder="Nome" class="inputNome input-form">
+                </div> -->
+                <div class="emailCadastro">
+                    <input type="email" id="inputEmail" class="inputEmail input-form" placeholder="Email">
                 </div>
                 <div class="senhaCadastro">
                     <input type="password" id="inputSenha" placeholder="Senha" class="inputSenha input-form">
@@ -45,49 +51,68 @@
                     <input type="password" id="inputConfirmarSenha" placeholder="Confirme a senha"
                         class="inputConfirmacaoSenha input-form">
                 </div>
-                <div class="emailCadastro">
-                    <input type="email" id="inputEmail" class="inputEmail input-form" placeholder="Email">
+                
+               
+                <button onclick="proximaEtapa()" class="botaoProximaEtapa button-form-proximo" type="button" id="botaoProximaEtapa"><!-- <img class="icon-proximo-etapa" src="assets/icons/icon_proximo.png" -->Próximo</button>
+
+                <div class="divPossuiConta">
+                    <p class="possuiConta"> Já possui uma conta?<a href="Login.html" class="link-entrar"> Entre!</a></p>
                 </div>
-                <div class="telefone">
-                    <input type="tel" id="inputTelefone" class="inputTelefone input-form" placeholder="Telefone">
-                </div>
-
-                <button onclick="proximaEtapa()" class="botaoProximaEtapa button-form-proximo" type="button" id="botaoProximaEtapa"><img class="icon-proximo-etapa" src="assets/icons/icon_proximo.png">Próximo</button>
-
-
             </div>
-            <div id="campoCadastro2" class="campoCadastro" style="display: none;">
-
+            <div id="campoCadastro2" class="campoCadastro2" style="display: none;">
+                <div class="razaoSocial">
+                    <input type="text" id="inputRazaoSocial" class="inputRazaoSocial input-form" placeholder="Razão Social">
+                </div>
                 <div class="cnpj">
-                    <input type="text" id="inputCnpj" class="inputCnpj input-form" placeholder="CNPJ">
+                    <input type="number" id="inputCnpj" class="inputCnpj input-form" placeholder="CNPJ">
                 </div>
-                <div class="cep">
-                    <input type="text" id="inputCep" class="inputCep input-form" placeholder="CEP" onblur="pesquisacep(this.value);">
+                 <div class="celular">
+                    <input type="number" id="inputCelular" class="inputCelular input-form" placeholder="Celular">
                 </div>
-
-                <div class="estado">
-                    <input type="text" id="inputEstado" class="inputEstado input-form" placeholder="Estado">
-                </div>
-                <div class="cidade">
-                    <input type="text" id="inputCidade" class="inputCidade input-form" placeholder="Cidade">
-                </div>
-                <div class="rua">
-                    <input type="text" id="inputRua" class="inputRua input-form" placeholder="Rua">
+                  <div class="telefone">
+                    <input type="number" id="inputTelefone" class="inputTelefone input-form" placeholder="Telefone">
                 </div>
 
 
 
                 <button onclick="anteriorEtapa()" class="botaoAnteriorEtapa button-form" type="button" id="botaoAnteriorEtapa">Voltar</button>
                     
-                <button onclick="cadastrar()" class="botaoCadastrar button-form" type="button"
-                    id="botaoCadastrar">Cadastrar</button>
+                <button onclick="proximaEtapa2()" class="botaoProximaEtapa button-form" type="button"
+                    id="botaoProximaEtapa2">Próximo</button>
+                    <div class="divPossuiConta">
+                        <p class="possuiConta"> Já possui uma conta?<a href="Login.html" class="link-entrar"> Entre!</a></p>
+                    </div>
             </div>
+            <div id="campoCadastro3" class="campoCadastro3" style="display: none">
 
+                <div class="cep">
+                    <input type="text" id="inputCep" class="inputCep input-form" placeholder="CEP" onblur="pesquisacep(this.value);">
+                </div>
+
+                 <div class="estado">
+                    <input type="text" id="inputEstado" class="inputEstado input-form" placeholder="Estado">
+                </div> 
+                 <div class="cidade">
+                    <input type="text" id="inputCidade" class="inputCidade input-form" placeholder="Cidade">
+                </div> 
+                 <div class="rua">
+                    <input type="text" id="inputRua" class="inputRua input-form" placeholder="Rua">
+                </div>
+
+                <button onclick="anteriorEtapa2()" class="botaoAnteriorEtapa button-form" type="button" id="botaoAnteriorEtapa">Voltar</button>
+                    
+                <button onclick="cadastrarEmpresa(), cadastrarEndereco()" class="botaoCadastrar button-form" type="button"
+                    id="botaoCadastrar">Cadastrar</button>
+                    <div class="divPossuiConta">
+                        <p class="possuiConta"> Já possui uma conta?<a href="Login.html" class="link-entrar"> Entre!</a></p>
+                    </div>
+            </div>
+            
             </div>
 
             <div class="image-cadastro">
 
-                <img src="assets/img/image-cadastro-bg.png">
+                <img id="imagemCadastro" src="assets/img/imgCadastro1.svg">
 
             </div>
 

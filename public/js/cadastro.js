@@ -11,25 +11,84 @@ function revelar() {
     }
 }
 
-let etapa = 0;
+
 
 function proximaEtapa() {
-    if (etapa == 0) {
-        for (let contador = 1; contador > etapa; etapa++) {
-            console.log(contador)
-            campoCadastro1.style.display = "none";
-            campoCadastro2.style.display = "";
+    if (inputEmail.value == "" || inputSenha.value == "" || inputConfirmarSenha.value == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Preencha os campos!',
+            text: 'Por favor, preencha os campos!',
+        })
+    }
+    else if (inputEmail.value.indexOf('@' && '.com') == - 1) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Email Inválido!',
+            text: 'Por favor, informe um email válido!',
+        })
+    } else if(inputSenha.value != inputConfirmarSenha.value){
+        Swal.fire({
+            icon: 'error',
+            title: 'Senhas não coincidem!',
+            text: 'Por favor, confira as senhas!',
+        })
+    } 
+    else {
+    campoCadastro1.style.display = "none";
+    campoCadastro2.style.display = "";
+    imagemCadastro.src = "assets/img/imgCadastro2.svg";
         }
+}
+
+function proximaEtapa2() {
+    if (inputRazaoSocial.value == "" || inputCnpj.value.length == 0 || inputCelular.value.length == 0 || inputTelefone.value.length == 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Preencha os campos',
+            text: 'Por favor, preencha os campos!',
+        })
+    }
+    else if (inputCnpj.value.length != 14) {
+        Swal.fire({
+            icon: 'error',
+            title: 'CNPJ inválido!',
+            text: 'Por favor, insira um cnpj válido!',
+        })
+    }
+    else if (inputCelular.value.length != 11) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Numero de celular inválido!',
+            text: 'Por favor, insira um numero válido!',
+        })
+    } else if (inputTelefone.value.length != 8) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Telefone inválido!',
+            text: 'Por favor, insira um telefone válido!',
+        })
+    }
+    else {
+        campoCadastro1.style.display = "none";
+        campoCadastro2.style.display = "none";
+        campoCadastro3.style.display = "";
+        imagemCadastro.src = "assets/img/imgCadastro3.svg";
     }
 }
 function anteriorEtapa() {
-    if (etapa == 1) {
-        for (let contador = 1; contador == etapa; etapa--) {
-            campoCadastro2.style.display = "none";
-            campoCadastro1.style.display = "";
-        }
-    }
+    campoCadastro2.style.display = "none";
+    campoCadastro1.style.display = "";
+    imagemCadastro.src = "assets/img/imgCadastro1.svg";
 }
+function anteriorEtapa2() {
+    campoCadastro3.style.display = "none";
+    campoCadastro2.style.display = "";
+    imagemCadastro.src = "assets/img/imgCadastro2.svg";
+}
+
+
+
 
 
 function limpa_formu_cep() {
@@ -86,12 +145,13 @@ function pesquisacep(valor) {
 
 
 function cadastrarEmpresa() {
-
-    let nomeVar = inputNome.value;
-    let senhaVar = inputSenha.value;
     let emailVar = inputEmail.value;
-    let telefoneVar = inputTelefone.value;
+    let senhaVar = inputSenha.value;
+    let nomeVar = inputRazaoSocial.value;
     let cnpjVar = inputCnpj.value;
+    let celularVar = inputCelular.value;
+    let telefoneVar = inputTelefone.value;
+   
 
 
     fetch("/usuario/cadastrarEmpresa", {
@@ -102,11 +162,14 @@ function cadastrarEmpresa() {
         body: JSON.stringify({
             // crie um atributo que recebe o valor recuperado aqui
             // Agora vá para o arquivo routes/usuario.js
-            nomeServer: nomeVar,
-            senhaServer: senhaVar,
             emailServer: emailVar,
-            telefoneServer: telefoneVar,
-            cnpjServer: cnpjVar
+            senhaServer: senhaVar,
+            nomeServer: nomeVar,
+            cnpjServer: cnpjVar,
+            celularServer: celularVar,
+            telefoneServer: telefoneVar
+            
+            
         })
     }).then(function (resposta) {
 

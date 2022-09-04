@@ -20,10 +20,14 @@ body{
     flex-direction: column;
     justify-content: flex-start;
     width: 75%;
-    height: 75%;
+    height: 70%;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
+    border-radius: 35px;
+    box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.5);
+    
+        background-color: white;
+        background: linear-gradient(90deg, rgb(255, 255, 255), rgb(238, 207, 106)180%);
+    
 }
 
 .form-logo-icon{
@@ -43,6 +47,11 @@ body{
 .form-logo-icon img{
     width: 50px;
     height: 50px;
+    transition: all 0.6s  cubic-bezier(0.125, 0.54, 0.24, 1);
+}
+img:hover{
+    transform: scale(1.10,1.10);
+    transition: all 0.3s;
 }
 
 .form-title-cadastro{
@@ -58,11 +67,20 @@ body{
     align-items: flex-start;
 }
 
+.campoCadastro1{
+ margin-top: 35px;
+}
+.campoCadastro2{
+    margin-top: 20px;
+   }
+
+
 .elements-cadastro{
     width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
 }
 
 .image-cadastro img{
@@ -86,6 +104,10 @@ body{
     cursor: pointer;
 }
 
+/* #button{
+    margin-top: 60px;
+} */
+
 .button-form{
     width: 100px;
     height: 35px;
@@ -97,21 +119,21 @@ body{
     cursor: pointer;
     border: none;
     margin-left: 10%;
+    font-style: normal;
+    font-weight: 275px;
 }
 
-.icon-proximo-etapa{
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-}
+
 
 .button-form-proximo{
-    width: 130px;
-    height: 35px;
+    width: 150px;
+    height: 46px;
     background-color: #35342F;
     color: white;
     border-radius: 20px;
     font-size: 18px;
+    font-style: normal;
+    font-weight: 275px;
     outline: none;
     cursor: pointer;
     border: none;
@@ -119,4 +141,41 @@ body{
     justify-content: center;
     align-items: center;
     margin-left: 25%;
+    margin-top: 20px;
 }
+
+#botaoAnteriorEtapa{
+    margin-top: 30px;
+    width: 100px;
+    height: 45px;
+}
+.link-entrar{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.divPossuiConta{
+    margin-left: 50px;
+}
+
+#botaoProximaEtapa2{
+    width: 140px;
+    height: 45px;
+}
+
+#botaoCadastrar{
+    width: 140px;
+    height: 45px;
+}
+
+button{
+    transition: all 0.3s;
+}
+
+button:hover{
+    color: #FFCC29;
+    transition: all 0.3s;
+}
+
+
