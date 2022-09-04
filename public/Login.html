@@ -14,43 +14,72 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap"
             rel="stylesheet">
-            <script src="./js/login.js"></script>
+        <script src="./js/login.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
         <title>Beehive|Login</title>
     </head>
 
     <body>
-       
-            
+        <div class="header">
+
+            <div class="container">
+
+                <div class="beehive_home">
+                    
+                    <p class="beehive_nome">Bee<span>Hive</span></p>
+                </div>
+
+                <div class="navbar">
+                    <ul>
+                        <li class="item-navbar"><a href="index.html" class="link_inicio">Inicío</a></li>
+                        <li class="item-navbar">Serviços</li>
+                        <li class="item-navbar">Sobre nós</li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div> 
+
+
         <div class="painel-login">
             <div class="form">
                 <div class="logo">
 
-                    <img class="" src="./assets/img/Beehive_logo 22 (1).svg" width="35%"  alt=""><a>  Bee<span style="color:#EBB70D;">hive</span></a>
+                    <img class="" src="./assets/img/Beehive_logo 22 (1).svg" width="35%" alt="" style="transition: all 0.6s  cubic-bezier(0.125, 0.54, 0.24, 1);"><a> Bee<span
+                            style="color:#EBB70D;">hive</span></a>
                 </div>
-                <div id="entrar"><h2>Entrar</h2></div>
+                <div id="entrar">
+                    <h2>Entrar</h2>
+                </div>
                 <div class="Email">
                     <input type="text" id="inputEmailLogin" placeholder="E-mail">
                 </div>
                 <div class="senha">
                     <input type="password" id="inputSenhaLogin" placeholder="Senha">
-                    <span class="mostrar_botao"><button class="button_icone" id="button_icon_revel" onclick="revelar()" ><i
-                        class="fas fa-eye"></i></button></span>
-                        
+                    <span class="mostrar_botao"><button class="button_icone" id="button_icon_revel"
+                            onclick="revelar()"><i class="fas fa-eye"></i></button></span>
+
                 </div>
-                
+
                 <div>
-                    <button onclick="entrar()" id="btnEntrar"><p>Entrar</p></button>
+                    <button onclick="entrar()" id="btnEntrar">
+                        <p>Entrar</p>
+                    </button>
                 </div>
 
                 <div>
 
                     <div class="link_entrar">
-                        <p class="naoTemConta"> Não possui uma conta?<a href="Cadastro.html" class="link-cadastro"> Cadastre-se!</a></p>
+                        <p class="naoTemConta"> Não possui uma conta?<a href="Cadastro.html" class="link-cadastro">
+                                Cadastre-se!</a></p>
                     </div>
                 </div>
             </div>
             <div id="div_gradient">
-                <img  id="imgLogin"src="./assets/img/undraw_access_account_re_8spm_1.svg" alt="" width="80%" style="transition: all 0.6s  cubic-bezier(0.125, 0.54, 0.24, 1);">
+                <img id="imgLogin" src="./assets/img/undraw_access_account_re_8spm_1.svg" alt="" width="80%"
+                    style="transition: all 0.6s  cubic-bezier(0.125, 0.54, 0.24, 1);">
             </div>
         </div>
     </body>

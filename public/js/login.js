@@ -7,6 +7,7 @@ function revelar() {
         
     }
     else {
+        
 
         senha_revel.type = "password";
         icon_revel.innerHTML='<i class="fas fa-eye"></i>';
@@ -58,6 +59,7 @@ function entrar() {
                 console.error(texto);
                 
                 finalizarAguardar(texto);
+                
             });
         }
 
