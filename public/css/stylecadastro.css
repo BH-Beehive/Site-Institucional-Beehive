@@ -24,10 +24,8 @@ body{
     padding: 20px;
     border-radius: 35px;
     box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.5);
-    
-        background-color: white;
-        background: linear-gradient(90deg, rgb(255, 255, 255), rgb(238, 207, 106)180%);
-    
+    background-color: white;
+    background: linear-gradient(90deg, rgb(255, 255, 255), rgb(238, 207, 106)180%);
 }
 
 .form-logo-icon{
@@ -122,7 +120,6 @@ img:hover{
     font-style: normal;
     font-weight: 275px;
 }
-
 
 
 .button-form-proximo{
