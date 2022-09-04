@@ -39,11 +39,9 @@
     display: flex;
     list-style-type: none;
     font-weight: 400;
-    font-size: 1.10rem;
+    font-size: 1.20rem;
     justify-content: center;
     gap: 10%;
-
-
     align-items: center;
     color: #625C5C;
     padding: 0;
@@ -56,6 +54,8 @@
 .item-navbar:hover {
     cursor: pointer;
     color: #35342F;
+    font-weight: 500;
+    transform: translateY(-1px);
 }
 
 .buttons-navbar {
@@ -73,7 +73,8 @@ button {
     cursor: pointer;
     font-size: 15px;
     box-shadow: 2px 4px 40px 2px rgb(0, 0, 0, 0.2);
-
+    border: none;
+    transition: 400ms;
 }
 
 button:hover {
@@ -107,7 +108,7 @@ button:hover {
 /* banner */
 
 .banner {
-    height: 80vh;
+    /* height: 80vh; */
     width: 100%;
     background: linear-gradient(to right, #EECF6A, rgba(245, 242, 229, 0));
     display: flex;
@@ -117,17 +118,12 @@ button:hover {
     width: 90%;
     display: flex;
     align-items: center;
-    /* margin: 0 auto; */
 }
-
-
 
 .beehive_banner_img {
     width: 400px;
     height: 400px;
 }
-
-
 
 .button-vermais {
     border-radius: 20px;
@@ -243,7 +239,6 @@ button:hover {
 
 .content-servicos {
     width: 100%;
-    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -255,7 +250,7 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     flex-direction: column;
 }
 
@@ -280,6 +275,11 @@ span {
 
 .subtitle-servicos {
     width: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
 }
 
 .subtitle-servicos p {
@@ -289,7 +289,7 @@ span {
 
 .cards-servico {
     width: 100%;
-    height: 300px;
+    flex-wrap: wrap;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -300,8 +300,10 @@ span {
     background-color: white;
     box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
     border-radius: 10px;
-    width: 380px;
-    height: 320px;
+    width: 25%;
+    margin-bottom: 5%;
+    min-width: 300px;
+    height: 50vh;
     margin-left: 10px;
     padding: 15px;
     display: flex;
@@ -331,15 +333,17 @@ span {
 
 .card-solucoes {
     width: 100%;
-    height: 500px;
+    /* height: 500px; */
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     margin-top: 10%;
 }
 
 .card-solucoes .container {
-    width: 90%;
+    flex-wrap: wrap;
+    /* width: 90%; */
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -382,7 +386,7 @@ span {
 
 .card-atendimento {
     width: 100%;
-    height: 500px;
+    /* height: 500px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -390,11 +394,11 @@ span {
     background-color: #EECF6A;
 }
 
-
 .card-atendimento .container {
     width: 90%;
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     align-items: center;
     margin: 0 auto;
     flex-direction: row;
@@ -406,7 +410,6 @@ span {
     box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
     border-radius: 5px;
 }
-
 
 .text-atendimento {
     width: 40%;
@@ -456,16 +459,13 @@ span {
 }
 
 .team-beehive {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
 
-
 .team-beehive .container {
-    width: 90%;
     gap: 5%;
     row-gap: 5%;
     display: flex;
@@ -475,12 +475,18 @@ span {
 }
 
 .card-membro {
+    width: 20%;
     border-radius: 20px;
     display: flex;
-    padding: 4%;
+    padding-left: 8%;
+    /* padding-right: -10%; */
+    padding-top: 3%;
+    padding-bottom: 3%;
     min-width: 150px;
-    flex-direction: row;
+    gap: 3%;
+    /* flex-direction: row; */
     transition: 500ms;
+    margin-bottom: 5%;
 
 }
 
@@ -490,11 +496,12 @@ span {
 }
 
 .card-membro .container {
-    width: 100%;
+    /* width: 90%; */
     display: flex;
+    margin-right: 8%;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     flex-direction: column;
 }
 
@@ -543,7 +550,6 @@ span {
     background-size: cover;
 }
 
-
 .image-membro-andrew {
     width: 80px;
     height: 80px;
@@ -554,13 +560,18 @@ span {
 }
 
 .nome-membro {
-    font-size: 25px;
+    font-size: 1.3rem;
     font-weight: bolder;
 }
 
 .funcao-membro {
-    font-size: 20px;
+    font-size: 1.2rem;
     margin: 0;
+
+}
+
+.funcao-membro p {
+    word-wrap: break-word;
 }
 
 .icons-membro {
@@ -568,6 +579,8 @@ span {
     justify-content: flex-end;
     align-items: center;
     flex-direction: column;
+    width:20% ;
+    left: 0;
 }
 
 .icons-membro img {
@@ -584,7 +597,7 @@ footer {
     width: 100%;
     height: 60vh;
     background-color: #EECF6A;
-    margin-top: 20vh;
+    margin-top: 10vh;
     justify-content: center;
     align-items: center;
 

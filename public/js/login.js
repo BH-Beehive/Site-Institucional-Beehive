@@ -1,3 +1,25 @@
+function revelar() {
+    let icon_revel=document.getElementById("button_icon_revel");
+    let senha_revel = document.getElementById("inputSenhaLogin");
+    if (senha_revel.type == "password" ) {
+        senha_revel.type = "text";
+        icon_revel.innerHTML='<i class="fa fa-sharp fa-solid fa-eye-slash"></i>';
+        
+    }
+    else {
+
+        senha_revel.type = "password";
+        icon_revel.innerHTML='<i class="fas fa-eye"></i>';
+
+    }
+}
+
+
+
+
+
+
+
 function entrar() {
     aguardar();
 
