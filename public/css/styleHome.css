@@ -774,6 +774,8 @@ footer {
         font-size: 16px;
     }
 
+
+
 }
 
 .menuHamburguer {
@@ -873,4 +875,27 @@ footer {
     .header.active .button-cadastro {
         width: 40%;
     }
+
+}
+
+@media (max-width:550px) {
+    .img-banner {
+        display: none;
+    }
+}
+
+@media(max-width:375px){
+    .p1-banner{
+        font-size: 2rem;
+    }
+    .p2-banner{
+        font-size: 0.7rem;
+    }
+
+    .text-solucao .title{
+        font-size: 1.5rem;
+    }
+    .text-solucao .subtitle{
+        font-size: 0.8rem;
+    }   
 }
