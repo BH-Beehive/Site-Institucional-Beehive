@@ -150,17 +150,17 @@ function pesquisacep(valor) {
 
 
 function cadastrar() {
-    let emailVar = inputEmail.value;
-    let senhaVar = inputSenha.value;
     let nomeVar = inputRazaoSocial.value;
     let cnpjVar = inputCnpj.value;
-    let celularVar = inputCelular.value;
     let telefoneVar = inputTelefone.value;
+    let celularVar = inputCelular.value;
+    let emailVar = inputEmail.value;
+    let senhaVar = inputSenha.value;
     let cepVar = inputCep.value;
     let estadoVar = inputEstado.value;
     let cidadeVar = inputCidade.value;
-    let ruaVar = inputRua.value;
-   
+    let ruaVar = inputRua.value;    
+   console.log(emailVar,senhaVar,nomeVar,cnpjVar,celularVar,telefoneVar)
 
 
     fetch("/usuario/cadastrar", {
@@ -170,15 +170,15 @@ function cadastrar() {
         },
         body: JSON.stringify({
             emailServer: emailVar,
-            senhaServer: senhaVar,
-            nomeServer: nomeVar,
-            cnpjServer: cnpjVar,
-            celularServer: celularVar,
-            telefoneServer: telefoneVar,
-            cepServer: cepVar,
-            estadoServer: estadoVar,
-            cidadeServer: cidadeVar,
-            ruaServer: ruaVar
+            senhaServer:senhaVar,
+            nomeServer:nomeVar,
+            cnpjServer:cnpjVar,
+            celularServer:celularVar,
+            telefoneServer:telefoneVar,
+            cepServer:cepVar,
+            estadoServer:estadoVar,
+            cidadeServer:cidadeVar,
+            ruaServer:ruaVar
             
             
         })
@@ -214,53 +214,49 @@ function cadastrar() {
 }
 
 
- /* async function cadastrarEndereco() {
-    let cepVar = inputCep.value;
-    let estadoVar = inputEstado.value;
-    let cidadeVar = inputCidade.value;
-    let ruaVar = inputRua.value;
-
-    fetch("/usuario/cadastrarEndereco", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            cepServer: cepVar,
-            estadoServer: estadoVar,
-            cidadeServer: cidadeVar,
-            ruaServer: ruaVar
-        })
-    }).then(function (resposta) {
-
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Cadastro bem-sucedido!',
-                showConfirmButton: false,
-                timer: 1500
+ /* fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nome,
+                cnpjServer: cnpj,
+                fantasyNameServer: fantasyName,
+                razaoSocialServer: razaoSocial,
+                emailServer: email,
+                passwordServer: password,
+                tellphoneServer: tellphone,
+                cepServer: cep,
+                cidadeServer: cidade,
+                stateServer: state,
+                logradouroServer: logradouro,
+                numberServer: number,
             })
-
-            setTimeout(() => {
-                window.location = "login.html";
-            }, "2000")
-
-            limparFormulario();
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Erro no cadastro!',
-                text: 'Por favor, verfique as informações e tente novamente!'
-            })
-        }
-    }).catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-    });
-
-    return false;
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        setInterval(() => {
+                            window.location.href = 'login.html'
+                        }, 1500);
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: 'cadastrado com sucesso!'
+                })
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+}
 } */

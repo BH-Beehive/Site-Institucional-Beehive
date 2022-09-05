@@ -96,7 +96,7 @@ function cadastrar(req, res) {
     let cep = req.body.cepServer;
     let estado = req.body.estadoServer;
     let cidade = req.body.cidadeServer;
-    let nomeRua = req.body.nomeRuaServer;
+    let nomeRua = req.body.ruaServer;
 
     // Faça as validações dos valores
     if (email == undefined) {
@@ -123,7 +123,7 @@ function cadastrar(req, res) {
     else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(email, senha, nome, cnpj, celular, telefone, cep, estado, cidade, nomeRua)
+        usuarioModel.cadastrar(nome, cnpj, telefone, celular, email, senha, cep, estado, cidade, nomeRua)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -144,5 +144,5 @@ function cadastrar(req, res) {
 module.exports = {
     entrar,
     cadastrar,
-    testar
+    testar,
 }
