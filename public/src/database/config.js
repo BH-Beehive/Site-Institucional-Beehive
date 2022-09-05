@@ -6,7 +6,7 @@ var mySqlConfig = {
     host: "localhost",
     database: "Beehive",
     user: "root",
-    password: "",
+    password: "1470",
 };
 
 function executar(instrucao) {

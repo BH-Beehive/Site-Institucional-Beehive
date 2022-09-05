@@ -43,13 +43,21 @@ function entrar() {
                 resposta.json().then((json) => {
                     console.log(json);
                     console.log(JSON.stringify(json));
+                    
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Logado com sucesso!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
 
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
 
                     setTimeout(function () {
-                        window.location = "Login.html";
-                    }, 1000); // apenas para exibir o loading
+                        window.location = "index.html";
+                    }, 1000); 
                 });
             } else {
                 console.log("Houve um erro ao tentar realizar o login!");

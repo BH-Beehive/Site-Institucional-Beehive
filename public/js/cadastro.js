@@ -196,7 +196,7 @@ function cadastrar() {
             })
 
             setTimeout(() => {
-                window.location = "login.html";
+                window.location = "Login.html";
             }, "2000")
 
             limparFormulario();
