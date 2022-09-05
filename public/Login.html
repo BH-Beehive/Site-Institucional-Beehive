@@ -6,9 +6,10 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="assets/icons/Beehive_navegator.png" type="image/x-icon">
+        <link rel="shortcut icon" href="assets/icons/Beehive_logo.png" type="image/x-icon">
         <link rel="stylesheet" href="css/default.css">
         <link rel="stylesheet" href="css/stylelogin.css">
+
         <script src="https://kit.fontawesome.com/9b5324f6a3.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,53 +17,57 @@
             rel="stylesheet">
         <script src="./js/login.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
-        <title>Beehive|Login</title>
+
+        <title>Beehive | Login</title>
     </head>
 
     <body>
 
         <div class="main">
 
-        <div class="painel-login">
-            <div class="form">
-                <div class="logo">
+            <div class="painel-login">
+                <div class="form">
+                    <div class="logo">
 
-                    <img class="img-icon" src="./assets/img/Beehive_logo 22 (1).svg" width="35%" alt="" style="transition: all 0.6s  cubic-bezier(0.125, 0.54, 0.24, 1);"><a> Bee<span
-                            style="color:#EBB70D;">hive</span></a>
-                </div>
-                <div id="entrar">
-                    <h2>Entrar</h2>
-                </div>
-                <div class="Email">
-                    <input type="text" id="inputEmailLogin" placeholder="E-mail">
-                </div>
-                <div class="senha">
-                    <input type="password" id="inputSenhaLogin" placeholder="Senha">
-                    <span class="mostrar_botao"><button class="button_icone" id="button_icon_revel"
-                            onclick="revelar()"><i class="fas fa-eye"></i></button></span>
+                        <img class="img-icon" src="./assets/img/Beehive_logo 22 (1).svg" alt=""
+                            style="transition: all 0.6s  cubic-bezier(0.125, 0.54, 0.24, 1);">
+                        <a> Bee<span style="color:#EBB70D;">hive</span></a>
+                        
+                    </div>
+                    <div id="entrar">
+                        <h2>Entrar</h2>
+                    </div>
+                    <div class="Email">
+                        <input type="text" id="inputEmailLogin" placeholder="E-mail">
+                    </div>
+                    <div class="senha">
+                        <input type="password" id="inputSenhaLogin" placeholder="Senha">
+                        <span class="mostrar_botao"><button class="button_icone" id="button_icon_revel"
+                                onclick="revelar()"><i class="fas fa-eye"></i></button></span>
 
-                </div>
+                    </div>
 
-                <div>
-                    <button onclick="entrar()" id="btnEntrar">
-                        <p>Entrar</p>
-                    </button>
-                </div>
+                    <div>
+                        <button onclick="entrar()" id="btnEntrar">
+                            <p>Entrar</p>
+                        </button>
+                    </div>
 
-                <div>
+                    <div>
 
-                    <div class="link_entrar">
-                        <p class="naoTemConta"> Não possui uma conta?<a href="Cadastro.html" class="link-cadastro">
-                                Cadastre-se!</a></p>
+                        <div class="link_entrar">
+                            <p class="naoTemConta"> Não possui uma conta?<a href="Cadastro.html" class="link-cadastro">
+                                    Cadastre-se!</a></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="div_gradient">
-                <img id="imgLogin" src="./assets/img/undraw_access_account_re_8spm_1.svg" alt="" width="80%"
-                    style="transition: all 0.6s  cubic-bezier(0.125, 0.54, 0.24, 1);">
+
+                <div id="div_gradient">
+                    <img id="imgLogin" src="./assets/img/undraw_access_account_re_8spm_1.svg" alt="" width="80%"
+                        style="transition: all 0.6s  cubic-bezier(0.125, 0.54, 0.24, 1);">
+                </div>
             </div>
         </div>
-    </div>
     </body>
 
     </html>
