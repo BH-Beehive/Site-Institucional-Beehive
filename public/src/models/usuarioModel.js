@@ -26,15 +26,16 @@ function entrar(email, senha) {
          VALUES ('${nome}', '${cnpj}', '${telefone}', '${celular}', '${email}', '${senha}');
     `;
     await database.executar(instrucao);
-    return cadastrarEndereco(cep, estado, cidade, nomeRua)
+    console.log(cep, estado, cidade, nomeRua)
+    return cadastrarEndereco(cep, estado, cidade, nomeRua, cnpj)
 }
 
-    async function cadastrarEndereco(cep, estado, cidade, nomeRua){
+    async function cadastrarEndereco(cep, estado, cidade, nomeRua, cnpj){
 
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", cep, estado, cidade, nomeRua);
     
     var instrucaoSelect = `
-    SELECT id_empresa FROM empresa WHERE cnpj = '${cnpj}'`
+    SELECT id_empresa FROM empresa WHERE cnpj = '${cnpj}';`
     await database.executar(instrucaoSelect).then(async (empresa) => {
         var fk_empresa = Object.values(JSON.parse(JSON.stringify(empresa)))
         var id_empresa = fk_empresa[0].id_empresa
