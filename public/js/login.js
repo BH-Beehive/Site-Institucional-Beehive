@@ -23,7 +23,7 @@ function revelar() {
 
 function entrar() {
     let email = inputEmailLogin.value
-    let senha = inputEmailLogin.value
+    let senha = inputSenhaLogin.value
     
     fetch("/usuario/autenticar", {
         method: "POST",
@@ -63,23 +63,4 @@ function entrar() {
         });
 
     return false;
-}
-
-
-function validarSessao() {
-    aguardar();
-
-   let login = sessionStorage.LOGIN_USUARIO;
-   let nome = sessionStorage.NOME_USUARIO;
-
-   let h1Titulo = document.getElementById("h1_titulo");
-
-    if (login != null && nome != null) {
-        // window.alert(`Seja bem-vindo, ${nome}!`);
-        h1Titulo.innerHTML = `${login}`;
-
-        finalizarAguardar();
-    } else {
-        window.location = "login.html";
-    }
 }
