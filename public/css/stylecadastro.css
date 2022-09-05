@@ -14,7 +14,6 @@ body{
 }
 
 .form{
-    background-color: white;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -22,9 +21,9 @@ body{
     width: 75%;
     height: 70%;
     padding: 20px;
-    border-radius: 35px;
+    border-radius: 5px;
     box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.5);
-    background-color: white;
+    background-color: red;
     background: linear-gradient(90deg, rgb(255, 255, 255), rgb(238, 207, 106)180%);
 }
 
@@ -56,6 +55,7 @@ img:hover{
     text-align: center;
     font-weight: bold;
     font-size: 30px;
+    margin: 0;
 }
 
 .form-elements{
