@@ -23,7 +23,7 @@ function entrar(email, senha) {
     
     let instrucao = `
         INSERT INTO empresa (nome_empresa, cnpj, telefone_fixo, telefone_celular, email, senha, cep, nome_rua, estado, cidade)
-         VALUES ('${nome}', '${cnpj}', '${telefone}', '${celular}', '${email}', '${senha}', '${cep}', '${nomeRua}', '${estado}', '${cidade}');
+         VALUES ('${nome}', '${cnpj}', '${telefone}', '${celular}', '${email}', '${senha}', '${cep}', '${cidade}', '${estado}', '${nomeRua}');
     `;
     await database.executar(instrucao);
 }
