@@ -175,4 +175,28 @@ button:hover{
     transition: all 0.3s;
 }
 
+@media (max-width:677px){
+
+    .form{
+        height: 75%;
+    }
+
+    .image-cadastro{
+        display: none;
+    }
+
+    .form-logo-icon img{
+        width: 30px;
+        height: 30px;
+    }
+
+    .form-logo-icon p{
+        font-size: 15px;
+    }
+
+    .form-title-cadastro{
+        font-size: 20px;
+    }
+
+}
 
