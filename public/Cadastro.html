@@ -27,7 +27,7 @@
         <div class="main">
             <div class="form">
                 <div class="form-logo-icon">
-                    <a href="index.html"><img src="assets/icons/Beehive_logo.png"></a>
+                    <img src="assets/icons/Beehive_logo.png">
                     <p>Beehive</p>
                 </div>
 
@@ -69,15 +69,15 @@
                                     placeholder="Razão Social">
                             </div>
                             <div class="cnpj">
-                                <input type="number" id="inputCnpj" class="inputCnpj input-form" placeholder="CNPJ">
+                                <input  type="text" maxlength="18" id="inputCnpj" class="inputCnpj input-form" placeholder="CNPJ">
                             </div>
                             <div class="celular">
-                                <input type="number" id="inputCelular" class="inputCelular input-form"
-                                    placeholder="Celular">
+                                <input type="tel" id="inputCelular" class="inputCelular input-form" maxlength="14"
+                                    placeholder="Celular" onkeypress="MascaraCelular(this)";>
                             </div>
                             <div class="telefone">
-                                <input type="number" id="inputTelefone" class="inputTelefone input-form"
-                                    placeholder="Telefone">
+                                <input type="tel" id="inputTelefone" class="inputTelefone input-form" maxlength="9"
+                                    placeholder="Telefone" onkeypress="MascaraTelefone(this)";>
                             </div>
 
 

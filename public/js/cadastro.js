@@ -1,14 +1,17 @@
 function revelar() {
     let icon_revel=document.getElementById("button_icon");
     let senha_revel = document.getElementById("inputSenha");
-    if (senha_revel.type == "password" ) {
+    let senha__confirm_revel = document.getElementById("inputConfirmarSenha");
+   
+    if (senha_revel.type == "password" ) {  
+        senha__confirm_revel.type="text";
         senha_revel.type = "text";
         icon_revel.innerHTML='<i class="fa fa-sharp fa-solid fa-eye-slash"></i>';
-        
+       
     }
     else {
-        
-
+       
+        senha__confirm_revel.type="password";
         senha_revel.type = "password";
         icon_revel.innerHTML='<i class="fas fa-eye"></i>';
 
@@ -17,28 +20,53 @@ function revelar() {
 
 
 
+function MascaraCelular(objeto){
+    if(objeto.value.length == 0)
+      objeto.value = '(' + objeto.value;
+ 
+    if(objeto.value.length == 3)
+       objeto.value = objeto.value + ')';
+ 
+  if(objeto.value.length == 9)
+      objeto.value = objeto.value + '-';
+ }
+
+function MascaraTelefone(objeto){
+  if(objeto.value.length == 4)
+      objeto.value = objeto.value + '-';
+ }
+ 
+
 
 function proximaEtapa() {
-    if (inputEmail.value == "" || inputSenha.value == "" || inputConfirmarSenha.value == "") {
+    var regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){1})(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
+    if (inputEmail.value.trim() == "" || inputSenha.value == "" || inputConfirmarSenha.value == "") {
         Swal.fire({
             icon: 'error',
             title: 'Preencha os campos!',
             text: 'Por favor, preencha os campos!',
         })
     }
-    else if (inputEmail.value.indexOf('@' && '.com') == - 1) {
+    else if (inputEmail.value.trim().indexOf('@' && '.com') == - 1) {
         Swal.fire({
             icon: 'error',
             title: 'Email Inválido!',
             text: 'Por favor, informe um email válido!',
         })
-    } else if(inputSenha.value != inputConfirmarSenha.value){
+    } else if(inputSenha.value.trim() != inputConfirmarSenha.value){
         Swal.fire({
             icon: 'error',
             title: 'Senhas não coincidem!',
             text: 'Por favor, confira as senhas!',
         })
-    } 
+    }
+    else if (inputSenha.length< 8 ||  !regex.exec(inputSenha.value)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Senha inválida!',
+            text: 'Digite uma senha maior que 7 digitos e com caracteres especiais!',
+        })
+    }
     else {
     campoCadastro1.style.display = "none";
     campoCadastro2.style.display = "";
@@ -47,6 +75,9 @@ function proximaEtapa() {
 }
 
 function proximaEtapa2() {
+   
+   
+
     if (inputRazaoSocial.value == "" || inputCnpj.value.length == 0 || inputCelular.value.length == 0 || inputTelefone.value.length == 0) {
         Swal.fire({
             icon: 'error',
@@ -91,6 +122,7 @@ function anteriorEtapa2() {
     campoCadastro2.style.display = "";
     imagemCadastro.src = "assets/img/imgCadastro2.svg";
 }
+
 
 
 
