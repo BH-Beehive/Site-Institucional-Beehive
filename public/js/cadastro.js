@@ -92,13 +92,13 @@ function proximaEtapa2() {
             text: 'Por favor, insira um cnpj válido!',
         })
     }
-    else if (inputCelular.value.length != 11) {
+    else if (inputCelular.value.length != 14) {
         Swal.fire({
             icon: 'error',
             title: 'Numero de celular inválido!',
             text: 'Por favor, insira um numero válido!',
         })
-    } else if (inputTelefone.value.length != 8) {
+    } else if (inputTelefone.value.length < 8) {
         Swal.fire({
             icon: 'error',
             title: 'Telefone inválido!',
