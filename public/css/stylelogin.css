@@ -35,12 +35,11 @@ body {
 }
 
 .form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     height: 100%;
-    padding-left: 1%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
 }
 
 input {
@@ -59,10 +58,10 @@ input {
    width: 70%;
 }
 #imgLogin img {
-    /* margin-top: %; */
-    /* display: flex;
+    /* margin-top: %;  */
+    display: flex;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
 }
 
 #imgLogin:hover {
@@ -158,6 +157,7 @@ input {
     margin-right: 45%;
 }
 
+
 .logo a {
     font-weight: bold;
 }
@@ -196,6 +196,10 @@ input {
         width: 80%;
     }
 }
+
+
+
+
 /*Header*/
 
 .header {
