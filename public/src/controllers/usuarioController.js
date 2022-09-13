@@ -32,6 +32,12 @@ function entrar(req, res) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Mais de um usuário com o mesmo login e senha!',
+                            text: 'Por favor, verfique as informações e tente novamente!'
+                        })
+                        
                     }
                 }
             ).catch(
