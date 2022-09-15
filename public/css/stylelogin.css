@@ -40,6 +40,8 @@ body {
     justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
+    width: 40%;
+    font-size: 20px;
 }
 
 input {
@@ -75,6 +77,7 @@ input {
     background-color: rgba(255, 255, 255, 0);
     border-bottom: 0.4px solid #D2CACA;
     width: 15vw;
+    font-size: 17px;
 }
 
 .form-logo-icon {
@@ -111,7 +114,7 @@ input {
 #btnEntrar p {
     font-family: 'Inter';
     font-style: normal;
-    font-size: 15px;
+    font-size: 20px;
     display: flex;
     text-align: center;
     margin: 0 auto;
@@ -124,8 +127,8 @@ input {
     width: 100%;
     flex-wrap: wrap;
     text-align: center;
-    
 }
+
 .link-cadastro {
     text-decoration: none;
     color: black;
@@ -135,30 +138,38 @@ input {
     /* justify-content: center; */
     align-self: center;
     /* text-align: center; */
+    font-size: 20px;
 }
 
 .link-cadastro:hover {
     color: #ffcc29;
 }
 
-#entrar h2 {
+h2 {
     color: black;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 22px;
+    font-size: 38px;
     line-height: 12px;
     color: #35342F;
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 18%;
     width: 40%;
-
     margin-right: 45%;
+    font-size: 30px;
 }
 
+.logo img{
+    width: 250%;
+}
 
 .logo a {
+    
     font-weight: bold;
 }
 
@@ -194,6 +205,35 @@ input {
     
     .painel-login{
         width: 80%;
+    }
+
+    .form {
+        width: 80%;
+        font-size: 20px;
+    }
+    
+    .form input {
+        font-size: 17px;
+    }
+    
+    #btnEntrar p {
+        font-size: 10px;
+    }
+    
+    .link-cadastro {
+        font-size: 15px;
+    }
+    
+    h2 {
+        font-size: 22px;
+    }
+    
+    .logo {
+        font-size: 15px;
+    }
+    
+    .logo img{
+        width: 150%;
     }
 }
 
