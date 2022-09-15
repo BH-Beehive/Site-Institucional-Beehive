@@ -1,41 +1,77 @@
 function revelar() {
-    let icon_revel=document.getElementById("button_icon");
+    let icon_revel = document.getElementById("button_icon");
     let senha_revel = document.getElementById("inputSenha");
     let senha__confirm_revel = document.getElementById("inputConfirmarSenha");
-   
-    if (senha_revel.type == "password" ) {  
-        senha__confirm_revel.type="text";
+
+    if (senha_revel.type == "password") {
+        senha__confirm_revel.type = "text";
         senha_revel.type = "text";
-        icon_revel.innerHTML='<i class="fa fa-sharp fa-solid fa-eye-slash"></i>';
-       
+        icon_revel.innerHTML = '<i class="fa fa-sharp fa-solid fa-eye-slash"></i>';
+
     }
     else {
-       
-        senha__confirm_revel.type="password";
+
+        senha__confirm_revel.type = "password";
         senha_revel.type = "password";
-        icon_revel.innerHTML='<i class="fas fa-eye"></i>';
+        icon_revel.innerHTML = '<i class="fas fa-eye"></i>';
 
     }
 }
 
 
 
-function MascaraCelular(objeto){
-    if(objeto.value.length == 0)
-      objeto.value = '(' + objeto.value;
- 
-    if(objeto.value.length == 3)
-       objeto.value = objeto.value + ')';
- 
-  if(objeto.value.length == 9)
-      objeto.value = objeto.value + '-';
- }
+function MascaraCelular(objeto, evt) {
+    var theEvent = evt || window.event;
+    var key = theEvent.keyCode || theEvent.which;
+    key = String.fromCharCode(key);
+    var regex = /^[0-9.]+$/;
+    if (!regex.test(key)) {
+        theEvent.returnValue = false;
+        if (theEvent.preventDefault) theEvent.preventDefault();
+    }
 
-function MascaraTelefone(objeto){
-  if(objeto.value.length == 4)
-      objeto.value = objeto.value + '-';
- }
- 
+    if (objeto.value.length == 0)
+        objeto.value = '(' + objeto.value;
+
+    if (objeto.value.length == 3)
+        objeto.value = objeto.value + ')';
+
+    if (objeto.value.length == 9)
+        objeto.value = objeto.value + '-';
+}
+
+function MascaraTelefone(objeto, evt) {
+    var theEvent = evt || window.event;
+    var key = theEvent.keyCode || theEvent.which;
+    key = String.fromCharCode(key);
+    var regex = /^[0-9.]+$/;
+    if (!regex.test(key)) {
+        theEvent.returnValue = false;
+        if (theEvent.preventDefault) theEvent.preventDefault();
+    }
+
+    if (objeto.value.length == 4)
+        objeto.value = objeto.value + '-';
+}
+function MascaraCnpj(objeto, evt) {
+    var theEvent = evt || window.event;
+    var key = theEvent.keyCode || theEvent.which;
+    key = String.fromCharCode(key);
+    var regex = /^[0-9.]+$/;
+    if (!regex.test(key)) {
+        theEvent.returnValue = false;
+        if (theEvent.preventDefault) theEvent.preventDefault();
+    }
+
+    if (objeto.value.length == 2)
+        objeto.value = objeto.value + '.';
+    if (objeto.value.length == 6)
+        objeto.value = objeto.value + '.';
+    if (objeto.value.length == 10)
+        objeto.value = objeto.value + '/';
+    if (objeto.value.length == 15)
+        objeto.value = objeto.value + '-';
+}
 
 
 function proximaEtapa() {
@@ -53,14 +89,14 @@ function proximaEtapa() {
             title: 'Email Inválido!',
             text: 'Por favor, informe um email válido!',
         })
-    } else if(inputSenha.value.trim() != inputConfirmarSenha.value){
+    } else if (inputSenha.value.trim() != inputConfirmarSenha.value) {
         Swal.fire({
             icon: 'error',
             title: 'Senhas não coincidem!',
             text: 'Por favor, confira as senhas!',
         })
     }
-    else if (inputSenha.length< 8 ||  !regex.exec(inputSenha.value)) {
+    else if (inputSenha.length < 8 || !regex.exec(inputSenha.value)) {
         Swal.fire({
             icon: 'error',
             title: 'Senha inválida!',
@@ -68,15 +104,15 @@ function proximaEtapa() {
         })
     }
     else {
-    campoCadastro1.style.display = "none";
-    campoCadastro2.style.display = "";
-    imagemCadastro.src = "assets/img/imgCadastro2.svg";
-        }
+        campoCadastro1.style.display = "none";
+        campoCadastro2.style.display = "";
+        imagemCadastro.src = "assets/img/imgCadastro2.svg";
+    }
 }
 
 function proximaEtapa2() {
-   
-   
+
+
 
     if (inputRazaoSocial.value == "" || inputCnpj.value.length == 0 || inputCelular.value.length == 0 || inputTelefone.value.length == 0) {
         Swal.fire({
@@ -85,7 +121,7 @@ function proximaEtapa2() {
             text: 'Por favor, preencha os campos!',
         })
     }
-    else if (inputCnpj.value.length != 14) {
+    else if (inputCnpj.value.length != 18) {
         Swal.fire({
             icon: 'error',
             title: 'CNPJ inválido!',
@@ -191,8 +227,8 @@ function cadastrar() {
     let cepVar = inputCep.value;
     let estadoVar = inputEstado.value;
     let cidadeVar = inputCidade.value;
-    let ruaVar = inputRua.value;    
-   console.log(emailVar,senhaVar,nomeVar,cnpjVar,celularVar,telefoneVar)
+    let ruaVar = inputRua.value;
+    console.log(emailVar, senhaVar, nomeVar, cnpjVar, celularVar, telefoneVar)
 
 
     fetch("/usuario/cadastrar", {
@@ -202,20 +238,20 @@ function cadastrar() {
         },
         body: JSON.stringify({
             emailServer: emailVar,
-            senhaServer:senhaVar,
-            nomeServer:nomeVar,
-            cnpjServer:cnpjVar,
-            celularServer:celularVar,
-            telefoneServer:telefoneVar,
-            cepServer:cepVar,
-            estadoServer:estadoVar,
-            cidadeServer:cidadeVar,
-            ruaServer:ruaVar
-            
-            
+            senhaServer: senhaVar,
+            nomeServer: nomeVar,
+            cnpjServer: cnpjVar,
+            celularServer: celularVar,
+            telefoneServer: telefoneVar,
+            cepServer: cepVar,
+            estadoServer: estadoVar,
+            cidadeServer: cidadeVar,
+            ruaServer: ruaVar
+
+
         })
     }).then(function (resposta) {
-        
+
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
@@ -246,49 +282,49 @@ function cadastrar() {
 }
 
 
- /* fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                nomeServer: nome,
-                cnpjServer: cnpj,
-                fantasyNameServer: fantasyName,
-                razaoSocialServer: razaoSocial,
-                emailServer: email,
-                passwordServer: password,
-                tellphoneServer: tellphone,
-                cepServer: cep,
-                cidadeServer: cidade,
-                stateServer: state,
-                logradouroServer: logradouro,
-                numberServer: number,
-            })
-        }).then(function (resposta) {
-            if (resposta.ok) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 1500,
-                    timerProgressBar: true,
-                    didOpen: () => {
-                        setInterval(() => {
-                            window.location.href = 'login.html'
-                        }, 1500);
-                    }
-                })
-                Toast.fire({
-                    icon: 'success',
-                    title: 'cadastrado com sucesso!'
-                })
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    }
+/* fetch("/usuarios/cadastrar", {
+           method: "POST",
+           headers: {
+               "Content-Type": "application/json"
+           },
+           body: JSON.stringify({
+               nomeServer: nome,
+               cnpjServer: cnpj,
+               fantasyNameServer: fantasyName,
+               razaoSocialServer: razaoSocial,
+               emailServer: email,
+               passwordServer: password,
+               tellphoneServer: tellphone,
+               cepServer: cep,
+               cidadeServer: cidade,
+               stateServer: state,
+               logradouroServer: logradouro,
+               numberServer: number,
+           })
+       }).then(function (resposta) {
+           if (resposta.ok) {
+               const Toast = Swal.mixin({
+                   toast: true,
+                   position: 'top-end',
+                   showConfirmButton: false,
+                   timer: 1500,
+                   timerProgressBar: true,
+                   didOpen: () => {
+                       setInterval(() => {
+                           window.location.href = 'login.html'
+                       }, 1500);
+                   }
+               })
+               Toast.fire({
+                   icon: 'success',
+                   title: 'cadastrado com sucesso!'
+               })
+           } else {
+               throw ("Houve um erro ao tentar realizar o cadastro!");
+           }
+       }).catch(function (resposta) {
+           console.log(`#ERRO: ${resposta}`);
+       });
+   }
 }
 } */

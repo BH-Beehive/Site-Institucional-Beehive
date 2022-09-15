@@ -69,15 +69,16 @@
                                     placeholder="Razão Social">
                             </div>
                             <div class="cnpj">
-                                <input  type="text" maxlength="14" id="inputCnpj" class="inputCnpj input-form" placeholder="CNPJ">
+                                <input  type="text" maxlength="18" id="inputCnpj" class="inputCnpj input-form" placeholder="CNPJ"
+                                 onkeypress="return MascaraCnpj(this)";> 
                             </div>
                             <div class="celular">
                                 <input type="tel" id="inputCelular" class="inputCelular input-form" maxlength="14"
-                                    placeholder="Celular" onkeypress="MascaraCelular(this)";>
+                                    placeholder="Celular" onkeypress="return MascaraCelular(this)";>
                             </div>
                             <div class="telefone">
                                 <input type="tel" id="inputTelefone" class="inputTelefone input-form" maxlength="9"
-                                    placeholder="Telefone" onkeypress="MascaraTelefone(this)";>
+                                    placeholder="Telefone" onkeypress="return MascaraTelefone(this)";>
                             </div>
 
 
