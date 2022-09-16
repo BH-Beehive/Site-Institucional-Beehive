@@ -1,3 +1,8 @@
+let emailExistente = false;
+let cnpjExistente = false;
+let celularExistente = false;
+let telefoneExistente = false;
+
 function revelar() {
     let icon_revel = document.getElementById("button_icon");
     let senha_revel = document.getElementById("inputSenha");
@@ -76,7 +81,16 @@ function MascaraCnpj(objeto, evt) {
 
 function proximaEtapa() {
     var regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){1})(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
-    if (inputEmail.value.trim() == "" || inputSenha.value == "" || inputConfirmarSenha.value == "") {
+    if(emailExistente == true){
+        Swal.fire({
+            icon: 'error',
+            title: 'Email existente!',
+            text: 'Email já cadastrado!',
+        })
+    }
+    
+    
+    else if (inputEmail.value.trim() == "" || inputSenha.value == "" || inputConfirmarSenha.value == "") {
         Swal.fire({
             icon: 'error',
             title: 'Preencha os campos!',
@@ -121,6 +135,13 @@ function proximaEtapa2() {
             text: 'Por favor, preencha os campos!',
         })
     }
+    else if (cnpjExistente == true) {
+        Swal.fire({
+            icon: 'error',
+            title: 'CNPJ já cadastrado!',
+            text: 'O cnpj inserido já está cadastrado!',
+        })
+    }
     else if (inputCnpj.value.length != 18) {
         Swal.fire({
             icon: 'error',
@@ -134,13 +155,28 @@ function proximaEtapa2() {
             title: 'Numero de celular inválido!',
             text: 'Por favor, insira um numero válido!',
         })
-    } else if (inputTelefone.value.length < 8) {
+    }
+    else if (celularExistente == true) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Numero de celular já cadastrado!',
+            text: 'O numero de celular inserido já está cadastrado!',
+        })
+    } 
+    else if (inputTelefone.value.length < 8) {
         Swal.fire({
             icon: 'error',
             title: 'Telefone inválido!',
             text: 'Por favor, insira um telefone válido!',
         })
     }
+    else if (telefoneExistente == true) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Numero de telefone já cadastrado!',
+            text: 'O numero de telefone inserido já está cadastrado!',
+        })
+    } 
     else {
         campoCadastro1.style.display = "none";
         campoCadastro2.style.display = "none";
@@ -282,49 +318,119 @@ function cadastrar() {
 }
 
 
-/* fetch("/usuarios/cadastrar", {
-           method: "POST",
-           headers: {
-               "Content-Type": "application/json"
-           },
-           body: JSON.stringify({
-               nomeServer: nome,
-               cnpjServer: cnpj,
-               fantasyNameServer: fantasyName,
-               razaoSocialServer: razaoSocial,
-               emailServer: email,
-               passwordServer: password,
-               tellphoneServer: tellphone,
-               cepServer: cep,
-               cidadeServer: cidade,
-               stateServer: state,
-               logradouroServer: logradouro,
-               numberServer: number,
-           })
-       }).then(function (resposta) {
-           if (resposta.ok) {
-               const Toast = Swal.mixin({
-                   toast: true,
-                   position: 'top-end',
-                   showConfirmButton: false,
-                   timer: 1500,
-                   timerProgressBar: true,
-                   didOpen: () => {
-                       setInterval(() => {
-                           window.location.href = 'login.html'
-                       }, 1500);
-                   }
-               })
-               Toast.fire({
-                   icon: 'success',
-                   title: 'cadastrado com sucesso!'
-               })
-           } else {
-               throw ("Houve um erro ao tentar realizar o cadastro!");
-           }
-       }).catch(function (resposta) {
-           console.log(`#ERRO: ${resposta}`);
-       });
-   }
+function validarEmail() {
+    let email = inputEmail.value
+    console.log('Entrei no validar email. Validando o email a seguir: ', email)
+
+    if ((email) && (email.indexOf('@') > 1) && (email.indexOf('.') > 1)) {
+        fetch("/usuario/validarEmail", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: email
+            })
+        }).then(function (resposta) {
+            if (!resposta.ok) {
+                resposta.json().then(json => {
+                    const data = JSON.stringify(json)
+                    if (data.length) {
+                        emailExistente = true 
+                    }
+                });
+            } else {
+                emailExistente = false
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    }
 }
-} */
+
+function validarCnpj() {
+    let cnpj = inputCnpj.value
+    console.log('Entrei no validar CNPJ. Validando o CNPJ a seguir: ', cnpj)
+    if (cnpj) {
+        fetch("/usuario/validarCnpj", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                cnpjServer: cnpj
+            })
+        }).then(function (resposta) {
+            if (!resposta.ok) {
+                resposta.json().then(json => {
+                    const data = JSON.stringify(json)
+                    if (data.length) {
+                        cnpjExistente = true
+                    }
+                });
+            } else {
+                cnpjExistente = false
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    }
+}
+
+function validarCelular() {
+    let celular = inputCelular.value;
+    console.log('Entrei no validar Celular. Validando o celular a seguir: ', celular)
+    if (celular) {
+        fetch("/usuario/validarCelular", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                celularServer: celular
+            })
+        }).then(function (resposta) {
+            if (!resposta.ok) {
+                resposta.json().then(json => {
+                    const data = JSON.stringify(json)
+                    if (data.length) {
+                        celularExistente = true
+                    }
+                });
+            } else {
+                celularExistente = false
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    }
+}
+
+function validarTelefone() {
+    let telefone = inputTelefone.value;
+    console.log('Entrei no validar telefone. Validando o telefone a seguir: ', telefone)
+    if (telefone) {
+        fetch("/usuario/validarTelefone", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                telefoneServer: telefone
+            })
+        }).then(function (resposta) {
+            if (!resposta.ok) {
+                resposta.json().then(json => {
+                    const data = JSON.stringify(json)
+                    if (data.length) {
+                        telefoneExistente = true
+                    }
+                });
+            } else {
+                telefoneExistente = false
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    }
+}

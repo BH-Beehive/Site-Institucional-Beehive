@@ -4,7 +4,7 @@ use Beehive;
 create table empresa(
 id_empresa int primary key auto_increment,
 nome_empresa varchar(100) not null,
-cnpj char(14) unique not null,
+cnpj char(20) unique not null,
 telefone_fixo varchar(9) unique not null,
 telefone_celular varchar(15) unique not null,
 email varchar(150) unique not null,

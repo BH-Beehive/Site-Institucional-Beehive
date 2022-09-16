@@ -28,9 +28,33 @@ function entrar(email, senha) {
     await database.executar(instrucao);
 }
 
+function validarEmail(email){
+    let instrucao = `SELECT email FROM empresa WHERE email = '${email}';`;
+    return database.executar(instrucao);
+}
+
+function validarCnpj(cnpj){
+    let instrucao = `SELECT cnpj FROM empresa WHERE cnpj = '${cnpj}';`;
+    return database.executar(instrucao);
+}
+
+function validarCelular(celular){
+    let instrucao = `SELECT telefone_celular FROM empresa WHERE telefone_celular = '${celular}';`;
+    return database.executar(instrucao);
+}
+
+function validarTelefone(telefone){
+    let instrucao = `SELECT telefone_fixo FROM empresa WHERE telefone_fixo = '${telefone}';`;
+    return database.executar(instrucao);
+}
+
 
 module.exports = {
     entrar,
+    validarEmail,
+    validarCnpj,
+    validarCelular,
+    validarTelefone,
     cadastrar,
     listar
 };

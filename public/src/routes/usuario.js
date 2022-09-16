@@ -11,12 +11,26 @@ router.get("/listar", function (req, res) {
     usuarioController.listar(req, res);
 });
 
-
-
-//Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 })
+
+router.post("/validarEmail", function (req, res) {
+    usuarioController.validarEmail(req, res);
+});
+
+router.post("/validarCelular", function (req, res) {
+    usuarioController.validarCelular(req, res);
+});
+
+router.post("/validarTelefone", function (req, res) {
+    usuarioController.validarTelefone(req, res);
+});
+
+router.post("/validarCnpj", function (req, res) {
+    usuarioController.validarCnpj(req, res);
+});
+
 
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);

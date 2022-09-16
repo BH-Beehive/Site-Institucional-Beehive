@@ -39,7 +39,7 @@
 
                         <div id="campoCadastro1" class="campoCadastro1">
                             <div class="emailCadastro">
-                                <input type="email" id="inputEmail" class="inputEmail input-form" placeholder="Email">
+                                <input type="email" id="inputEmail" class="inputEmail input-form" placeholder="Email" onkeyup="validarEmail()">
                             </div>
                             <div class="senhaCadastro">
                                 <input type="password" id="inputSenha" placeholder="Senha"
@@ -70,15 +70,15 @@
                             </div>
                             <div class="cnpj">
                                 <input  type="text" maxlength="18" id="inputCnpj" class="inputCnpj input-form" placeholder="CNPJ"
-                                 onkeypress="return MascaraCnpj(this)";> 
+                                 onkeypress="return MascaraCnpj(this)" onkeyup="validarCnpj()"> 
                             </div>
                             <div class="celular">
                                 <input type="tel" id="inputCelular" class="inputCelular input-form" maxlength="14"
-                                    placeholder="Celular" onkeypress="return MascaraCelular(this)";>
+                                    placeholder="Celular" onkeypress="return MascaraCelular(this)" onkeyup="validarCelular()">
                             </div>
                             <div class="telefone">
                                 <input type="tel" id="inputTelefone" class="inputTelefone input-form" maxlength="9"
-                                    placeholder="Telefone" onkeypress="return MascaraTelefone(this)";>
+                                    placeholder="Telefone" onkeypress="return MascaraTelefone(this)" onkeyup="validarTelefone()">
                             </div>
 
 
