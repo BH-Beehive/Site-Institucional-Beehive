@@ -126,8 +126,6 @@ function proximaEtapa() {
 
 function proximaEtapa2() {
 
-
-
     if (inputRazaoSocial.value == "" || inputCnpj.value.length == 0 || inputCelular.value.length == 0 || inputTelefone.value.length == 0) {
         Swal.fire({
             icon: 'error',
