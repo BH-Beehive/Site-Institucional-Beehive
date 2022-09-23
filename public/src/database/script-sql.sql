@@ -10,7 +10,7 @@ telefone_celular varchar(15) unique not null,
 email varchar(150) unique not null,
 senha varchar(15) not null,
 cep char(8) not null,
-nome_rua varchar(145) not null,
+logradouro varchar(145) not null,
 estado varchar(45) not null,
 cidade varchar(45) not null
 );
