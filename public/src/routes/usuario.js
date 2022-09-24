@@ -36,5 +36,9 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.post("/cadastrarSuporte", function (req, res) {
+    gerenciarContasController.cadastrarSuporte(req, res);
+})
+
 
 module.exports = router; 

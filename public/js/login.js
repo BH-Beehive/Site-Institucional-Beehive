@@ -83,8 +83,9 @@ function entrar() {
                             timer: 1500
                         })
 
+                        sessionStorage.ID_EMPRESA = json.id_empresa;
                         sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.NOME_USUARIO = json.nome_empresa;
 
                         setTimeout(function () {
                             window.location = "index.html";
