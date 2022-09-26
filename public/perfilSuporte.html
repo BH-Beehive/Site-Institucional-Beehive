@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/perfilSuporte.css">
+    <title>Meu perfil</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="menuLateral">
+            <div class="logo">
+                <img class="img-icon" src="./assets/img/Beehive_logo 22 (1).svg" alt=""
+                    style="transition: all 0.6s  cubic-bezier(0.125, 0.54, 0.24, 1);">
+                <span class="nomeBeehive">Beehive</span>
+            </div>
+            <hr>
+            <div class="itens">
+                <h2 class="item"><img src="assets/icons/icon_home.png">Home</h2>
+                <h2 class="item"><img src="assets/icons/dashboard_icon.png" style="color: white;">Dashboard</h2>
+                <h2 class="item"><img src="assets/icons/gerenciarContas_icon.png">Relatórios</h2>
+                <h2 class="item"><img src="assets/icons/suporte_icon.png">Suporte</h2>
+            </div>
+            <hr>
+            <div class="sair">
+                <a href="index.html"><img src="assets/icons/saida_icon.png"></a>
+            </div>
+
+        </div>
+        <div class="ladoEsquerdo">
+
+        </div>
+    </div>
+    <div class="cabecalho">
+        <button class="botoes" id="btnDownload"><a href="">Download client</a></button>
+        <div id="imagemPerfil">
+            <img id="fotoDefault" src="./assets/img/icone-avatar-default.png" alt="Avatar padrao">
+        </div>
+    </div>
+    <div class="containerExibicaoPerfil">
+        <img id="fotoDefaultPrincipal" src="./assets/img/icone-avatar-default.png" alt="Avatar padrao">
+        <div class="dadosPerfil">
+            <h2>Anderson Silva Toscani</h2>
+            <h4 id="emailPerfil">anderson.toscani@gmail.com</h4><br>
+            <button class="botoes" id="btnAlterarDados">Alterar meus dados</button>
+        </div>
+    </div>
+
+    <div class="containerInputs">
+        <div class="divsDados" id="nomeDiv">
+            <span>Nome completo</span><br>
+            <input type="text" placeholder="Anderson Silva Toscani"><br>
+        </div>
+        <div class="divsDados" id="emailDiv">
+            <span>Email pessoal</span><br>
+            <input type="text" placeholder="andersilva@outlook.com"><br>
+        </div>
+        <div class="divsDados" id="senhaDiv">
+            <span>Senha</span><br>
+            <input type="password" placeholder="*********">
+        </div>
+    </div>
+    <div class="containerInputs">
+        <div class="divsDados" id="slackDiv">
+            <span>Email(Slack)</span><br>
+            <input type="text" placeholder="anderson.alpe@alpenet.com"><br>
+        </div>
+        <div class="divsDados" id="telefoneDiv">
+            <span>Telefone</span><br>
+            <input type="text" placeholder="(11) 4002-8922"><br>
+        </div>
+        <div class="divsDados" id="celularDiv">
+            <span>Celular</span><br>
+            <input type="tel" placeholder="(11) 97787-7623">
+        </div>
+    </div>
+    <div id="divBtnSalvar"><button id="btnSalvar">Salvar</button></div>
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    float: left;
+    display: flex;
+    width: 15%;
+}
+
+.menuLateral {
+    /* border: 2px solid red; */
+    background-color: #35342F;
+    height: 100vh;
+    width: 100%;
+}
+
+.logo {
+    gap: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 17%;
+}
+
+.img-icon {
+    height: 6vh;
+}
+
+.nomeBeehive {
+    font-size: 20px;
+    color: white;
+    height: 10%;
+}
+
+hr {
+    margin-top: 10%;
+    margin-left: 10%;
+    width: 80%;
+}
+
+.itens {
+    gap: 5%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10%;
+    color: white;
+    justify-content: space-around;
+    height: 60%;
+}
+
+.itens :hover {
+    color: #FFCC29;
+    cursor: pointer;
+}
+
+.sair {
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+
+.cabecalho {
+    width: 85%;
+    height: 10vh;
+    /* background-color: red; */
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.botoes {
+    height: 30%;
+    background-color: #35342F;
+    border-radius: 4px;
+    margin-right: 20px;
+    border: none;
+}
+
+.botoes:hover {
+    height: 30%;
+    background-color: #35342F;
+    border-radius: 4px;
+    margin-right: 20px;
+    background-color: #FFCC29;
+}
+
+.botoes a {
+    padding: 15px;
+    padding-top: 30px;
+    color: white;
+    text-decoration: none;
+}
+
+.botoes a:hover {
+    color: black;
+}
+
+#btnAlterarDados {
+
+    color: white;
+    height: 13%;
+    padding: 10px 10px 10px 10px;
+    margin-top: 15%;
+    margin-left: 20%;
+}
+
+
+#fotoDefault {
+    width: 60px;
+    margin-right: 20px;
+
+}
+
+#fotoDefault:hover {
+    cursor: pointer;
+}
+
+#fotoDefaultPrincipal {
+    width: 250px;
+}
+
+.containerExibicaoPerfil {
+    display: flex;
+    margin-left: 20%;
+    height: 30%;
+
+}
+
+.containerExibicaoPerfil h2 {
+    margin-left: 20%;
+    margin-top: 25%;
+}
+
+#emailPerfil {
+    margin-left: 20%;
+    margin-top: 10%;
+    color: red;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    text-decoration-line: underline;
+
+    color: #616161;
+}
+
+.containerInputs {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 5%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+}
+
+.containerInputs input {
+    margin-top: 10px;
+    border: none;
+    width: 20vw;
+    height: 4vh;
+    background: #EEEDED;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+}
+#nomeDiv{
+    margin-right: 10%;
+}
+#emailDiv{
+    margin-right: 10%;
+}
+
+#slackDiv{
+    margin-right: 10%;
+}
+#telefoneDiv{
+    margin-right: 10%;
+}
+#divBtnSalvar{
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#btnSalvar{
+    background-color: #000000;
+    color: white;
+    width: 20vw;
+    height: 3vh;
+    border-radius: 4px;
+}
