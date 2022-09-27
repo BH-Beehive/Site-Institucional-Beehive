@@ -1,4 +1,8 @@
 /*Header*/
+body{
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+}
 
 .header {
     display: flex;

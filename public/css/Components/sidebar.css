@@ -1,3 +1,8 @@
+body{
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+}
+
 .menuLateral {
     /* border: 2px solid red; */
     background-color: #35342F;

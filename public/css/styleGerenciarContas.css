@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+body{
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+}
+
 .container {
     display: flex
 }
