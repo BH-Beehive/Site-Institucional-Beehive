@@ -40,6 +40,10 @@ hr {
     width: 80%;
 }
 
+.icones{
+    margin-right: 10px;
+}
+
 .itens {
     gap: 5%;
     display: flex;
@@ -106,7 +110,9 @@ hr {
     margin-top: 15%;
     margin-left: 20%;
 }
-
+#btnAlterarDados:hover{
+    cursor: pointer;
+}
 
 #fotoDefault {
     width: 60px;
@@ -161,6 +167,17 @@ hr {
     color: #000000;
 }
 
+#line{
+    margin-top: 3%;
+    width: 99.8%;
+    height: 10px;
+    border-color: rgb(0, 0, 0);
+    border-bottom: 1px;
+    border-style: solid;
+    border-top: none;
+    border-right: none;
+}
+
 .containerInputs input {
     margin-top: 10px;
     border: none;
@@ -195,4 +212,22 @@ hr {
     width: 20vw;
     height: 3vh;
     border-radius: 4px;
+    font-weight: bold;
+}
+#btnSalvar:hover{
+    border: none;
+    cursor: pointer;
+    background-color: #FFCC29;
+    
+}
+input::placeholder{
+    padding: 10px;
+}
+
+span{
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
 }
