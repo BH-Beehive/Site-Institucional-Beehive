@@ -41,9 +41,14 @@ router.post("/cadastrarSuporte", function (req, res) {
     gerenciarContasController.cadastrarSuporte(req, res);
 })
 
+router.put("/editarSuporte", function (req, res) {
+    gerenciarContasController.editarSuporte(req, res);
+})
+
 router.put("/atualizarSuporte", function (req, res) {
     atualizarSuporteController.atualizarSuporte(req, res);
 })
+
 
 
 module.exports = router; 
