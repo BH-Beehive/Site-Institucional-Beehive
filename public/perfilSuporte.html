@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/perfilSuporte.css">
+    <script src="js/atualizarSuporte.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
     <title>Meu perfil</title>
 </head>
 
@@ -52,32 +54,32 @@
     <div class="containerInputs">
         <div class="divsDados" id="nomeDiv">
             <span>Nome completo</span><br>
-            <input type="text" placeholder="Anderson Silva Toscani"><br>
+            <input type="text" placeholder="Anderson Silva Toscani" id="inputNomeSuporte"><br>
         </div>
         <div class="divsDados" id="emailDiv">
             <span>Email pessoal</span><br>
-            <input type="text" placeholder="andersilva@outlook.com"><br>
+            <input type="text" placeholder="andersilva@outlook.com" id="inputEmailSuporte"><br>
         </div>
         <div class="divsDados" id="senhaDiv">
             <span>Senha</span><br>
-            <input type="password" placeholder="*********">
+            <input type="password" placeholder="*********" id="inputSenhaSuporte">
         </div>
     </div>
     <div class="containerInputs">
         <div class="divsDados" id="slackDiv">
             <span>Email(Slack)</span><br>
-            <input type="text" placeholder="anderson.alpe@alpenet.com"><br>
+            <input type="text" placeholder="anderson.alpe@alpenet.com" id="inputSlackSuporte"><br>
         </div>
         <div class="divsDados" id="telefoneDiv">
             <span>Telefone</span><br>
-            <input type="text" placeholder="(11) 4002-8922"><br>
+            <input type="text" placeholder="(11) 4002-8922" id="inputTelefoneSuporte" onkeypress="return MascaraTelefone(this)"><br>
         </div>
         <div class="divsDados" id="celularDiv">
             <span>Celular</span><br>
-            <input type="tel" placeholder="(11) 97787-7623">
+            <input type="tel" placeholder="(11) 97787-7623" id="inputCelularSuporte" onkeypress="return MascaraCelular(this)" >
         </div>
     </div>
-    <div id="divBtnSalvar"><button id="btnSalvar">Salvar</button></div>
+    <div id="divBtnSalvar"><button id="btnSalvar" onclick="atualizarSuporte()">Salvar</button></div>
 </body>
 
 </html>

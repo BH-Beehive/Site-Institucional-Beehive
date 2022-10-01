@@ -2,6 +2,7 @@ let express = require("express");
 let router = express.Router();
 
 let usuarioController = require("../controllers/usuarioController");
+let atualizarSuporteController = require("../controllers/atualizarSuporteController");
 
 router.get("/", function (req, res) {
     usuarioController.testar(req, res);
@@ -38,6 +39,10 @@ router.post("/autenticar", function (req, res) {
 
 router.post("/cadastrarSuporte", function (req, res) {
     gerenciarContasController.cadastrarSuporte(req, res);
+})
+
+router.put("/atualizarSuporte", function (req, res) {
+    atualizarSuporteController.atualizarSuporte(req, res);
 })
 
 
