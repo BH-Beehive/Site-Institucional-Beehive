@@ -15,13 +15,23 @@ async function editarSuporte(nomeSuporte, email, senha, emailSlack, telefone, ce
     console.log("ACESSEI O GERENCIAR CONTAS MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarSuporte():", nomeSuporte, email, senha, emailSlack, telefone, celular, cpf, idEmpresa);
     
     let instrucao = `
-    UPDATE usuario_suporte SET  nome_suporte = '${nomeSuporte}', email = '${email}', senha = '${senha}', email_slack = '${emailSlack}', 
-    telefone = '${telefone}',  celular = '${celular}', cpf = '${cpf}' WHERE fk_empresa = ${idEmpresa};
+        UPDATE usuario_suporte SET  nome_suporte = '${nomeSuporte}', email = '${email}', senha = '${senha}', email_slack = '${emailSlack}', 
+        telefone = '${telefone}',  celular = '${celular}', cpf = '${cpf}' WHERE fk_empresa = ${idEmpresa};
+    `;
+    await database.executar(instrucao);
+}
+
+async function deletarSuporte(emailSlack) {
+    console.log("ACESSEI O GERENCIAR CONTAS MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarSuporte():", emailSlack);
+    
+    let instrucao = `
+        DELETE FROM usuario_suporte WHERE email_slack = '${emailSlack}';
     `;
     await database.executar(instrucao);
 }
 
 module.exports = {
     cadastrarSuporte,
-    editarSuporte
+    editarSuporte,
+    deletarSuporte
 };

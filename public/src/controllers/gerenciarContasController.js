@@ -103,10 +103,36 @@ function editarSuporte(req, res) {
     }
 }
 
+function deletarSuporte(req, res) {
+    let emailSlack = req.body.emailSlackServer;
 
+    // Faça as validações dos valores
+    if (emailSlack == undefined) {
+        res.status(400).send("Email slack está undefined!");
+    } 
+    else {
+        
+        usuarioModel.cadastrar(emailSlack)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
 
 module.exports = {
     cadastrarSuporte,
     testar,
-    editarSuporte
+    editarSuporte,
+    deletarSuporte
 }

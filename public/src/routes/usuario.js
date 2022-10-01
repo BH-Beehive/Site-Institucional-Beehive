@@ -45,6 +45,10 @@ router.put("/editarSuporte", function (req, res) {
     gerenciarContasController.editarSuporte(req, res);
 })
 
+router.put("/deletarSuporte", function (req, res) {
+    gerenciarContasController.deletarSuporte(req, res);
+})
+
 router.put("/atualizarSuporte", function (req, res) {
     atualizarSuporteController.atualizarSuporte(req, res);
 })
