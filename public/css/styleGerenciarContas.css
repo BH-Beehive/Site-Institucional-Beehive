@@ -9,11 +9,132 @@ body{
 }
 
 .container {
-    display: flex
+    display: flex;
 }
 
-.ladoEsquerdo {
-    /* border: 2px solid blue; */
-    height: 100vh;
-    width: 90%;
+.components-navbar{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding:10px;
+    flex-direction: column;
+}
+
+.itens-navbar{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.button-navbar{
+    background-color:#35342F;
+    color: white;
+    border-radius: 3px;
+    width: 130px;
+    height: 30px;
+    outline: none;
+    border: none;
+    margin-right: 15px;
+}
+
+.img-navbar{
+    width: 45px;
+    height: 45px;
+}
+
+.filter{
+    margin-top: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+}
+
+th{
+    background-color: #EDF2F7;
+}
+
+table{
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    border: 1px solid #e4eef8;
+    border-bottom: none;
+    border-radius: 3px;
+}
+
+td{
+    border-bottom: 1px solid #e4eef8;
+}
+
+.button-table{
+    width: 50px;
+    height: 40px;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    color: white;
+}
+
+.editar{
+    background-color: green;
+}
+
+.excluir{
+    background-color: red;
+}
+
+.itens-table{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+}
+
+.new{
+    background-color:#35342F;
+    color: white;
+    border-radius: 3px;
+    width: 80px;
+    font-size: 16px;
+    height: 35px;
+    outline: none;
+    border: none;
+}
+
+.campos-search{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    margin-right: 5%;
+}
+
+.campos-search input{
+    outline: none;
+    border: 1px solid #E2E8F0;
+    height: 35px;
+    padding-left: 5px;
+    margin-right: 2%;
+}
+
+.campos-search input::placeholder{
+    padding-left: 5px;
+    color: #E2E8F0;
+}
+
+.icon-button-editar{
+    width: 28px;
+    height: 28px;
+}
+
+.icon-button-deletar{
+    width: 28px;
+    height: 28px;
 }

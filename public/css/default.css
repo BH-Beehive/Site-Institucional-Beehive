@@ -17,5 +17,17 @@ body{
 }
 a{
     text-decoration: none;
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+}
+
+span{
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+}
+
+button{
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 
