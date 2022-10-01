@@ -1,4 +1,4 @@
-let usuarioModel = require("../models/gerenciarContasModel");
+let gerenciarContasModel = require("../models/gerenciarContasModel");
 
 let sessoes = [];
 
@@ -37,7 +37,7 @@ function cadastrarSuporte(req, res) {
     }
     else {
         
-        usuarioModel.cadastrar(nomeSuporte, email, senha, emailSlack, telefone, celular, cpf, idEmpresa)
+        gerenciarContasModel.cadastrar(nomeSuporte, email, senha, emailSlack, telefone, celular, cpf, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -85,7 +85,7 @@ function editarSuporte(req, res) {
     }
     else {
         
-        usuarioModel.cadastrar(nomeSuporte, email, senha, emailSlack, telefone, celular, cpf, idEmpresa)
+        gerenciarContasModel.editarSuporte(nomeSuporte, email, senha, emailSlack, telefone, celular, cpf, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -94,7 +94,7 @@ function editarSuporte(req, res) {
                 function (erro) {
                     console.log(erro);
                     console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        "\nHouve um erro ao editar suporte! Erro: ",
                         erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage);
@@ -112,7 +112,7 @@ function deletarSuporte(req, res) {
     } 
     else {
         
-        usuarioModel.cadastrar(emailSlack)
+        gerenciarContasModel.deletarSuporte(emailSlack)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -121,7 +121,7 @@ function deletarSuporte(req, res) {
                 function (erro) {
                     console.log(erro);
                     console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        "\nHouve um erro ao deletar suporte! Erro: ",
                         erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage);
@@ -130,9 +130,31 @@ function deletarSuporte(req, res) {
     }
 }
 
+function listarSuporte(req, res) {
+    var id_empresa = req.query.idEmpresa
+    console.log(req.query.idEmpresa)
+    console.log(id_empresa, "id na controller do dispositivo")
+
+    gerenciarContasModel.listarSuporte(id_empresa)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     cadastrarSuporte,
     testar,
     editarSuporte,
-    deletarSuporte
+    deletarSuporte,
+    listarSuporte
 }

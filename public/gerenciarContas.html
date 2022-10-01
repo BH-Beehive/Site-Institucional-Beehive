@@ -14,11 +14,13 @@
     <!-- css's components -->
     <link rel="stylesheet" href="css/Components/sidebar.css">
 
-    <!--  -->
+    <!-- script -->
+    <script src="js/gerenciarContas.js"></script>
+
     <title>Gerenciar contas</title>
 </head>
 
-<body>
+<body onload="listandoSuportes()">
     <div class="container">
 
         <!-- Component sideBar -->
@@ -55,7 +57,7 @@
         <!--Component sideBar  -->
 
         <div class="main-content">
-
+            <div id="listarSuporte" class="listaSuporte"></div>
         </div>
     </div>
 </body>
