@@ -46,6 +46,30 @@ function atualizarSuporte(req, res) {
     }
 }
 
+function pegarSuporte() {
+    let id_usuario = req.query.id_usuario;
+    console.log(req.query.id_usuario)
+    console.log(id_usuario, "id na controller do dispositivo")
+
+    atualizarSuporteModel.pegarSuporte(id_usuario)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+
+
 module.exports = {
-    atualizarSuporte
+    atualizarSuporte,
+    pegarSuporte
 }

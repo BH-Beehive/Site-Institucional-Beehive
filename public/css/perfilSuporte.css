@@ -3,15 +3,10 @@
     padding: 0;
 }
 
-body{
-    font-family: 'Dosis', sans-serif;
-    font-family: 'Quicksand', sans-serif;
-}
-
 .container {
     float: left;
     display: flex;
-    width: 15%;
+    width: 13vw;
 }
 
 .menuLateral {
@@ -195,7 +190,7 @@ hr {
 #nomeDiv{
     margin-right: 10%;
 }
-#emailDiv{
+#identificacaoDiv{
     margin-right: 10%;
 }
 

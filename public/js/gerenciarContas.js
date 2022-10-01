@@ -163,7 +163,7 @@ function deletarSuporte() {
 
 function listandoSuportes() {
         listarSuporte.innerHTML = ''
-        var idEmpresa = sessionStorage.ID_EMPRESA
+        let idEmpresa = sessionStorage.ID_EMPRESA
         fetch(`/usuario/listarSuporte?idEmpresa=${idEmpresa}`).then(function (resposta) {
           if (resposta.ok) {
             resposta.json().then(function (resposta) {
