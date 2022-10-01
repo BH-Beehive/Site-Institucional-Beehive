@@ -1,8 +1,17 @@
+function alterarDados(){
+    let senhaSuporte = document.getElementById("inputSenhaSuporte");
+    let telefoneSuporte = document.getElementById("inputTelefoneSuporte");
+    let celularSuporte = document.getElementById("inputCelularSuporte");
+    senhaSuporte.disabled = false;
+    telefoneSuporte.disabled = false;
+    celularSuporte.disabled = false;
+}
+
 function MascaraCelular(objeto, evt) {
-    var theEvent = evt || window.event;
-    var key = theEvent.keyCode || theEvent.which;
+    let theEvent = evt || window.event;
+    let key = theEvent.keyCode || theEvent.which;
     key = String.fromCharCode(key);
-    var regex = /^[0-9.]+$/;
+    let regex = /^[0-9.]+$/;
     if (!regex.test(key)) {
         theEvent.returnValue = false;
         if (theEvent.preventDefault) theEvent.preventDefault();
@@ -19,10 +28,10 @@ function MascaraCelular(objeto, evt) {
 }
 
 function MascaraTelefone(objeto, evt) {
-    var theEvent = evt || window.event;
-    var key = theEvent.keyCode || theEvent.which;
+    let theEvent = evt || window.event;
+    let key = theEvent.keyCode || theEvent.which;
     key = String.fromCharCode(key);
-    var regex = /^[0-9.]+$/;
+    let regex = /^[0-9.]+$/;
     if (!regex.test(key)) {
         theEvent.returnValue = false;
         if (theEvent.preventDefault) theEvent.preventDefault();
@@ -34,6 +43,14 @@ function MascaraTelefone(objeto, evt) {
 
 
 function atualizarSuporte() {
+    let senhaSuporte = document.getElementById("inputSenhaSuporte");
+    let telefoneSuporte = document.getElementById("inputTelefoneSuporte");
+    let celularSuporte = document.getElementById("inputCelularSuporte");
+    
+    senhaSuporte.disabled = true;
+    telefoneSuporte.disabled = true;
+    celularSuporte.disabled = true;
+
     let nomeSuporteVar = inputNomeSuporte.value;
     let emailVar = inputEmailSuporte.value;
     let senhaVar = inputSenhaSuporte.value;
@@ -113,3 +130,20 @@ function atualizarSuporte() {
     });
 }
 }
+
+function pegarSuporte() {
+    let id_usuario = sessionStorage.ID_USUARIO
+    fetch(`/usuario/pegarSuporte?id_usuario=${id_usuario}`).then(function (resposta) {
+      if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+        });
+      } else {
+        console.log("Houve um erro ao tentar listar suportes!");
+        resposta.text().then(texto => {
+          console.error(texto);
+        });
+      }
+    })
+}
+
+

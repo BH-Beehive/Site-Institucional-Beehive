@@ -56,7 +56,11 @@ router.get("/listarSuporte", function (req, res) {
 
 router.put("/atualizarSuporte", function (req, res) {
     atualizarSuporteController.atualizarSuporte(req, res);
-})
+});
+
+router.put("/pegarSuporte", function (req, res) {
+    atualizarSuporteController.pegarSuporte(req, res);
+});
 
 
 

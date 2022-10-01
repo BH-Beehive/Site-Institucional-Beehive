@@ -48,36 +48,36 @@
         <div class="dadosPerfil">
             <h2>Anderson Silva Toscani</h2>
             <h4 id="emailPerfil">anderson.toscani@gmail.com</h4><br>
-            <button class="botoes" id="btnAlterarDados">Alterar meus dados</button>
+            <button class="botoes" id="btnAlterarDados" onclick="alterarDados()">Alterar meus dados</button>
         </div>
     </div>
 <div id="line"></div>
     <div class="containerInputs">
         <div class="divsDados" id="nomeDiv">
             <span>Nome completo</span><br>
-            <input type="text" placeholder="Anderson Silva Toscani" id="inputNomeSuporte"><br>
+            <input type="text" placeholder="Anderson Silva Toscani" id="inputNomeSuporte" disabled><br>
         </div>
-        <div class="divsDados" id="emailDiv">
-            <span>Email pessoal</span><br>
-            <input type="text" placeholder="andersilva@outlook.com" id="inputEmailSuporte"><br>
+        <div class="divsDados" id="identificacaoDiv">
+            <span>Identificação</span><br>
+            <input type="text" placeholder="1001" id="inputIdentificacao" disabled><br>
         </div>
         <div class="divsDados" id="senhaDiv">
             <span>Senha</span><br>
-            <input type="password" placeholder="*********" id="inputSenhaSuporte">
+            <input type="password" placeholder="*********" id="inputSenhaSuporte" disabled>
         </div>
     </div>
     <div class="containerInputs">
         <div class="divsDados" id="slackDiv">
             <span>Email(Slack)</span><br>
-            <input type="text" placeholder="anderson.alpe@alpenet.com" id="inputSlackSuporte"><br>
+            <input type="text" placeholder="anderson.alpe@alpenet.com" id="inputSlackSuporte" disabled><br>
         </div>
         <div class="divsDados" id="telefoneDiv">
             <span>Telefone</span><br>
-            <input type="text" placeholder="(11) 4002-8922" id="inputTelefoneSuporte" onkeypress="return MascaraTelefone(this)"><br>
+            <input type="text" placeholder="(11) 4002-8922" id="inputTelefoneSuporte" onkeypress="return MascaraTelefone(this)" disabled><br>
         </div>
         <div class="divsDados" id="celularDiv">
             <span>Celular</span><br>
-            <input type="tel" placeholder="(11) 97787-7623" id="inputCelularSuporte" onkeypress="return MascaraCelular(this)" >
+            <input type="tel" placeholder="(11) 97787-7623" id="inputCelularSuporte" onkeypress="return MascaraCelular(this)"  disabled>
         </div>
     </div>
     <div id="divBtnSalvar"><button id="btnSalvar" onclick="atualizarSuporte()">Salvar</button></div>
