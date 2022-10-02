@@ -12,6 +12,8 @@
     align-items: center;
     width: 100%;
     height: 87vh;
+    color: #4D4D4D;
+    ;
 }
 
 .backGroundDash .content {
@@ -72,8 +74,290 @@
     background-color: #35342F;
 }
 
-.buttons .iconButton{
+.buttons .iconButton {
     margin-right: 5px;
     font-size: 2.5rem;
     font-weight: 1;
+}
+
+/*  */
+
+.dashboards {
+    display: flex;
+    width: 100%;
+    height: 90%;
+}
+
+.leftDashboard {
+    width: 50%;
+    height: 100%;
+}
+
+.pieChartscontent {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 50%;
+}
+
+.piesCharts {
+    width: 48%;
+    height: 95%;
+    background: #FFFFFF;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #EFF0F6;
+    color: #4D4D4D;
+}
+
+.piesCharts .content {
+    width: 90%;
+    height: 90%;
+}
+
+.piesCharts .content .texts {
+    width: 100%;
+}
+
+.piesCharts .content .texts h2 {
+    margin: 0;
+    margin-top: 2%;
+    color: #000000;
+}
+
+.piesCharts .content .texts h4 {
+    margin: 0;
+    margin-top: 2%;
+}
+
+.piesCharts .content .metricasContent {
+    width: 100%;
+    height: 70%;
+    background-color: rebeccapurple;
+    display: flex;
+}
+
+.piesCharts .content .metricasContent .metricas {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+}
+
+.piesCharts .content .metricasContent .chart {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listContentMaquinasDiv {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listContentMaquinasDiv .listContentMaquinasBackground {
+    width: 98%;
+    height: 95%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #EFF0F6;
+    background-color: #FFFFFF;
+}
+
+.listContentMaquinasBackground .content {
+    width: 93%;
+    height: 95%;
+}
+
+.listContentMaquinasBackground .content .title {
+    width: 100%;
+    height: 18%;
+    display: flex;
+    align-items: center;
+    border-bottom: 0.8px solid #E4E5E7;
+}
+
+.listContentMaquinasBackground .content .topics {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    margin-top: 3%;
+    justify-content: center;
+    align-items: center;
+    gap: 23%;
+
+}
+
+.listContentMaquinasBackground .content .topics h4 {
+    margin: 0;
+    font-weight: 200;
+    font-size: 1rem
+}
+
+.ItensMaquinasContent {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    margin-top: 2%;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 2%;
+}
+
+.itemMaquina {
+    width: 95%;
+    height: 35px;
+    min-height: 35px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+
+.itemMaquina .nomesMaquina .divAlerta {
+    width: 18px;
+    height: 18px;
+    border-radius: 30px;
+    background-color: #000000;
+    margin-right: 8%;
+}
+
+.itemMaquina .nomesMaquina {
+    display: flex;
+    align-items: center;
+    width: 36%;
+    justify-content: center;
+}
+
+.itemMaquina .setorTopic {
+    width: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divVerMaquina {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+}
+
+
+/*  */
+
+
+.rightDashboard {
+    width: 50%;
+    height: 100%;
+}
+
+.infoSetoresEmaquinasCriticasBackground {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.infoSetoresEmaquinasCriticasBackground .background {
+    width: 80%;
+    height: 100%;
+    margin-left: 1%;
+    display: flex;
+    align-items: center;
+}
+
+.infoSetoresEmaquinasCriticasBackground .background .content {
+    width: 100%;
+    height: 95%;
+}
+
+.backgroundKPIS {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.itemKPI {
+    width: 32%;
+    height: 90%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow-x: auto;
+}
+
+.itemKPI p{
+    margin:0;
+    width: 50%;
+    margin-bottom: 5%;
+}
+
+.itemKPI h2{
+    margin: 0;
+    color: #000000;
+    font-size: 1.5rem;
+    overflow-wrap: break-word;
+}
+
+.normal {
+    background: rgba(8, 235, 205, 0.12);
+    border: 1px solid #08EBCD;
+    border-radius: 20px;
+}
+
+.alerta {
+    background: rgba(252, 184, 89, 0.12);
+    border: 1px solid #FCB859;
+    border-radius: 20px;
+}
+
+.critico {
+    background: rgba(242, 200, 237, 0.12);
+    border: 1px solid #FF0000;
+    border-radius: 20px;
+}
+
+.contentMAquinasCriticas {
+    width: 100%;
+    height: 50%;
+    background: #FFFFFF;
+    border: 1px solid #EFF0F6;
+    border-radius: 20px;
+    display: flex;
+}
+
+/*  */
+
+.dashboardSetoresBackground {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.dashboardSetoresBackground .background {
+    width: 99%;
+    height: 95%;
+    background: #FFFFFF;
+    border: 1px solid #EFF0F6;
+    border-radius: 20px;
 }
