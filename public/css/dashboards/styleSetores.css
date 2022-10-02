@@ -1,0 +1,79 @@
+/* APAGAR MOCK */
+.mockHeader {
+    height: 13vh;
+    background-color: red;
+}
+
+/* APAGAR MOCK */
+
+.backGroundDash {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 87vh;
+}
+
+.backGroundDash .content {
+    width: 95%;
+    height: 93%;
+}
+
+.selectAndButtons {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.selectAndButtons select {
+    width: 25%;
+    cursor: pointer;
+    outline: none;
+    padding: 0.3% 3% 0.3% 1%;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    border: 1px solid #EFF0F6;
+    margin-right: 3%;
+}
+
+.radiosButton {
+    display: flex;
+    align-items: baseline;
+    font-size: 1.1rem;
+    margin-right: 5%;
+}
+
+.radiosButton .inputRadios {
+    display: flex;
+    align-items: center;
+    margin-right: 3%;
+}
+
+.buttonAdd {
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    width: 50%;
+    height: 100%;
+}
+
+.buttons {
+    width: 35%;
+    height: 80%;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #EFF0F6;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background-color: #35342F;
+}
+
+.buttons .iconButton{
+    margin-right: 5px;
+    font-size: 2.5rem;
+    font-weight: 1;
+}
