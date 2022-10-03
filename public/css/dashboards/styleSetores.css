@@ -304,13 +304,13 @@
     overflow-x: auto;
 }
 
-.itemKPI p{
-    margin:0;
+.itemKPI p {
+    margin: 0;
     width: 50%;
     margin-bottom: 5%;
 }
 
-.itemKPI h2{
+.itemKPI h2 {
     margin: 0;
     color: #000000;
     font-size: 1.5rem;
@@ -335,13 +335,57 @@
     border-radius: 20px;
 }
 
-.contentMAquinasCriticas {
+.contentMaquinasCriticas {
     width: 100%;
     height: 50%;
     background: #FFFFFF;
     border: 1px solid #EFF0F6;
     border-radius: 20px;
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentMaquinasCriticas .content1 {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contentMaquinasCriticas .content1 .itemMaquinasCriticas {
+    height: 95%;
+    width: 49%;
+}
+
+.itemMaquinasCriticas h5{
+    margin: 0;
+    height: 20%;
+    margin-bottom: 5%;
+    margin-top: 3%;
+}
+
+.itemMaquinasCriticas .info{
+    width: 100%;
+    height: 60%;
+    border-left: #FF0000 3px solid;
+}
+
+.itemMaquinasCriticas .info h3{
+    margin: 0;
+    margin-left: 3%;
+    font-weight: 700;
+    color: #000000;
+    padding-top:5% ;
+    font-size: 1rem;
+}
+
+.itemMaquinasCriticas .info p{
+    margin: 0;
+    margin-left: 3%;
+    margin-top: 3%;
+    font-size: 0.9rem;
 }
 
 /*  */
