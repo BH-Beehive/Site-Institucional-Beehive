@@ -93,3 +93,29 @@ hr {
 .main-content{
     margin-left: 15%;
 }
+
+/* Haeader */
+
+.itens-navbar{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.button-navbar{
+    background-color:#35342F;
+    color: white;
+    border-radius: 3px;
+    width: 130px;
+    height: 30px;
+    outline: none;
+    border: none;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.img-navbar{
+    width: 45px;
+    height: 45px;
+}
