@@ -119,3 +119,8 @@ hr {
     width: 45px;
     height: 45px;
 }
+
+.item-sidebar a {
+    text-decoration: none;
+    color: #ffff;
+}
