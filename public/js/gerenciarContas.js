@@ -169,9 +169,10 @@ function listandoSuportes() {
             resposta.json().then(function (resposta) {
               for (var posicao = 0; posicao < resposta.length; posicao++) {
                 listarSuporte.innerHTML += `
-                     <div id="listarSuporte" class="listaSuporte">${resposta[posicao].nome_suporte}, ${resposta[posicao].email_slack}</div>
-                     
+                     <div id="listarSuporte" class="listaSuporte">${resposta[posicao].id_suporte}, ${resposta[posicao].nome_suporte}, ${resposta[posicao].email_slack}</div>
+
                     `
+                    console.log(`${resposta[posicao].id_suporte}, ${resposta[posicao].nome_suporte}, ${resposta[posicao].email_slack}`);
               }
             });
           } else {

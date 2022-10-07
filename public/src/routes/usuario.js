@@ -58,7 +58,7 @@ router.put("/atualizarSuporte", function (req, res) {
     atualizarSuporteController.atualizarSuporte(req, res);
 });
 
-router.put("/pegarSuporte", function (req, res) {
+router.get("/pegarSuporte", function (req, res) {
     atualizarSuporteController.pegarSuporte(req, res);
 });
 

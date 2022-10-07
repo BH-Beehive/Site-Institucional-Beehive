@@ -5,7 +5,7 @@ let sessoes = [];
 
 function atualizarSuporte(req, res) {
     let nomeSuporte = req.body.nomeSuporteServer;
-    let email = req.body.emailServer;
+    let id = req.body.idServer;
     let senha = req.body.senhaServer;
     let slack = req.body.slackServer;
     let telefone = req.body.telefoneServer;
@@ -15,8 +15,8 @@ function atualizarSuporte(req, res) {
     
     if (nomeSuporte == undefined) {
         res.status(400).send("O nome do suporte está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
+    } else if (id == undefined) {
+        res.status(400).send("Seu id está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else if (slack == undefined) {
@@ -28,7 +28,7 @@ function atualizarSuporte(req, res) {
     }
     else {
         
-        atualizarSuporteModel.atualizarSuporte(nomeSuporte, email, senha, slack, telefone, celular)
+        atualizarSuporteModel.atualizarSuporte(nomeSuporte, id, senha, slack, telefone, celular)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -46,12 +46,12 @@ function atualizarSuporte(req, res) {
     }
 }
 
-function pegarSuporte() {
-    let id_usuario = req.query.id_usuario;
-    console.log(req.query.id_usuario)
-    console.log(id_usuario, "id na controller do dispositivo")
+function pegarSuporte(req, res) {
+    let id_empresa = req.query.idEmpresa
+    console.log(req.query.idEmpresa)
+    console.log(id_empresa, "id na controller")
 
-    atualizarSuporteModel.pegarSuporte(id_usuario)
+    atualizarSuporteModel.pegarSuporte(id_empresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
