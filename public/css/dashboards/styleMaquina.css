@@ -1,0 +1,10 @@
+.background{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.background .content{
+    width: 98%;
+}
