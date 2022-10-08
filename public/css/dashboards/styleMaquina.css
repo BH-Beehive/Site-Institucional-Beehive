@@ -58,6 +58,7 @@
     width: 95%;
     height: 95%;
     background-color: white;
+    border: 1px solid #EFF0F6;
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -132,11 +133,76 @@ h3 {
     font-size: 1.2rem;
 }
 
+/*  */
 
 .lineChartBackground {
     width: 75%;
     height: 100%;
     background-color: aquamarine;
+    justify-content: center;
     display: flex;
     align-items: center;
+}
+
+.lineChartBackground .content {
+    width: 98%;
+    height: 95%;
+    background-color: white;
+    border: 1px solid #EFF0F6;
+    border-radius: 20px;
+}
+
+.lineChartBackground .content .infosOfLineChart {
+    width: 90%;
+    margin: auto;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    border-bottom: 0.8px solid #E4E5E7;
+    justify-content: space-between;
+}
+
+.lineChartBackground .content .infosOfLineChart h3 {
+    margin: 0;
+    color: #4D4D4D;
+    font-size: 1rem;
+}
+
+.lineChartBackground .content .infosOfLineChart span {
+    margin: 0;
+    color: #0F2552;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.lineChartBackground .content .infosOfLineChart .selects {
+    display: flex;
+    align-items: center;
+    gap: 3%;
+}
+
+.lineChartBackground .content .infosOfLineChart .selects select {
+    outline: none;
+    background-color: none;
+    border: none;
+    cursor: pointer;
+    color: #0F2552;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.chartline {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 20px 20px;
+}
+
+/* Parte que contém a porcentagem dos componentes / processos e os serviços */
+
+.bottomPart{
+    width: 100%;
+    
 }
