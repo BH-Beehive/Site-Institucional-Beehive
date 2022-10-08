@@ -97,18 +97,18 @@ hr {
 /* Haeader */
 
 .itens-navbar{
-    width: 130px;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-left: 10%;
+    gap:1%;
 }
 
-.button-navbar button{
+.button-navbar {
     background-color:#35342F;
     color: white;
     border-radius: 3px;
-    width: 130px;
+    width:  13%;
     height: 30px;
     outline: none;
     border: none;
