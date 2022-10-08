@@ -1,10 +1,142 @@
-.background{
+.background {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 3%;
 }
 
-.background .content{
+.background .content {
     width: 98%;
+}
+
+.informationAndInputs {
+    height: 5vw;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.iconBack {
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 1.5rem;
+}
+
+.informationAndInputs select {
+    width: 20%;
+    cursor: pointer;
+    outline: none;
+    padding: 0.3% 3% 0.3% 1%;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    border: 1px solid #EFF0F6;
+    margin-right: 3%;
+}
+
+/*  */
+
+.cardAndChartBackground {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+}
+
+.cardInfoMaquinaBackground {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+}
+
+.cardInfoMaquinaBackground .content {
+    width: 95%;
+    height: 95%;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cardInfoMaquinaBackground .content h2 {
+    margin: 0;
+    margin-top: 3%;
+}
+
+.cardInfoMaquinaBackground .content .infosMaquina {
+    width: 90%;
+    height: 60%;
+    gap: 5%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.cardInfoMaquinaBackground .content .infosMaquina .itemInfoMaquina {
+    width: 38%;
+    height: 45%;
+    background: #FFFFFF;
+    border: 1px solid #EFF0F6;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5%;
+    color: #4D4D4D;
+}
+
+.cardInfoMaquinaBackground .content .infosMaquina .itemInfoMaquina h4 {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.cardInfoMaquinaBackground .content .infosMaquina .itemInfoMaquina p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.cardInfoMaquinaBackground .content .activeTime {
+    width: 100%;
+    height: 26%;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 20px 20px;
+}
+
+.cardInfoMaquinaBackground .content .activeTime h4,
+h3 {
+    margin: 0;
+}
+
+.cardInfoMaquinaBackground .content .activeTime h4 {
+    color: #B0B0B0;
+    font-weight: 300;
+    margin-bottom: 1%;
+    margin-top: 1.5%;
+}
+
+.cardInfoMaquinaBackground .content .activeTime h3 {
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+
+.lineChartBackground {
+    width: 75%;
+    height: 100%;
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
 }
