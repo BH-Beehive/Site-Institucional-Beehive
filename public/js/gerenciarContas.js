@@ -2,15 +2,23 @@ function cadastrarSuporte() {
     let nomeSuporteVar = inputNome.value;
     let emailVar = inputEmail.value;
     let senhaVar = inputSenha.value;
-    let emailSlackVar = inputEmailSlack;
-    let telefoneVar = inputTelefone;
+    if (inputEmailSlack.value.indexOf(".br") == -1) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Email inválido!',
+            text: 'Emails de suporte devem conter ".br" no fim!',
+        })
+    } else {
+    let emailSlackVar = inputEmailSlack.value;
+    }
+    let telefoneVar = inputTelefone.value;
     let celularVar = inputCelular;
     let cpfVar = inputCpf.value;
     let idEmpresaVar = sessionStorage.ID_EMPRESA;
     
     console.log(nomeSuporteVar, emailVar, senhaVar, emailSlackVar, telefoneVar, celularVar, cpfVar, idEmpresaVar)
 
-
+    if (emailSlackVar != null) {
     fetch("/usuario/cadastrarSuporte", {
         method: "POST",
         headers: {
@@ -54,7 +62,7 @@ function cadastrarSuporte() {
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
     });
-
+    }
 }
 
 function editarSuporte() {

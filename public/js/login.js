@@ -48,13 +48,10 @@ function isInputsOk() {
     return true;
 }
 
-
-
 function entrar() {
 
     let email = inputEmailLogin.value
     let senha = inputSenhaLogin.value
-
     if (isInputsOk()) {
         fetch("/usuario/autenticar", {
             method: "POST",
@@ -84,11 +81,12 @@ function entrar() {
                         })
 
                         sessionStorage.ID_EMPRESA = json.id_empresa;
-                        sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.NOME_USUARIO = json.nome_empresa;
-
+                        sessionStorage.EMAIL_EMPRESA = json.email;
+                        sessionStorage.NOME_EMPRESA = json.nome_empresa;
+                        sessionStorage.ID_SUPORTE = null;
+                        sessionStorage.NOME_SUPORTE = null;
                         setTimeout(function () {
-                            window.location = "index.html";
+                            window.location = "gerenciarContas.html";
                         }, 1000);
                     });
                 } else {
@@ -111,4 +109,75 @@ function entrar() {
 
 
     return false;
+}
+
+function entrarSuporte() {
+
+    let email = inputEmailLogin.value
+    let senha = inputSenhaLogin.value
+    if (isInputsOk()) {
+        fetch("/usuario/autenticarSuporte", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                emailServer: email,
+                senhaServer: senha,
+            }),
+        })
+            .then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!");
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then((json) => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Logado com sucesso!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+
+                        sessionStorage.ID_EMPRESA = json.fk_empresa;
+                        sessionStorage.EMAIL_EMPRESA = null;
+                        sessionStorage.NOME_EMPRESA = null;
+                        sessionStorage.ID_SUPORTE = json.id_usuario;
+                        sessionStorage.NOME_SUPORTE = json.nome_suporte;
+                        setTimeout(function () {
+                            window.location = "perfilSuporte.html";
+                        }, 1000);
+                    });
+                } else {
+                    console.log("Houve um erro ao tentar realizar o login!");
+                    resposta.text().then((texto) => {
+                        console.error(texto);
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Email e/ou senha inválidos',
+                            text: 'Verifique e tente novamente!',
+                        })
+                    });
+                }
+            })
+            .catch(function (erro) {
+                console.log(erro);
+            });
+    }
+
+
+    return false;
+}
+
+function login() {
+    if (inputEmailLogin.value.indexOf('.br') == -1) {
+        entrar();
+    } else {
+        entrarSuporte();
+    }
 }

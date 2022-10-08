@@ -62,9 +62,10 @@ function atualizarSuporte() {
     let slackVar = inputSlackSuporte.value;
     let telefoneVar = inputTelefoneSuporte.value;
     let celularVar = inputCelularSuporte.value;
-    console.log(nomeSuporteVar, idVar, senhaVar, slackVar, telefoneVar, celularVar)
+    let id_usuario = sessionStorage.ID_SUPORTE;
+    console.log(nomeSuporteVar, idVar, senhaVar, slackVar, telefoneVar, celularVar, id_usuario)
 
-    if (nomeSuporteVar.trim() == "" || idVar.trim() == "" || senhaVar.trim() == "" || slackVar.trim() == "" || telefoneVar.trim() == "" || celularVar.trim() == "") {
+    if (nomeSuporteVar.trim() == "" || idVar.trim() == "" || senhaVar.trim() == "" || slackVar.trim() == "" || telefoneVar.trim() == "" || celularVar.trim() == "" || id_usuario.trim() == "") {
         Swal.fire({
             icon: 'info',
             title: 'Preencha os campos!',
@@ -107,7 +108,8 @@ function atualizarSuporte() {
             senhaServer: senhaVar,
             slackServer: slackVar,
             telefoneServer: telefoneVar,
-            celularServer: celularVar
+            celularServer: celularVar,
+            id_usuarioServer: id_usuario
         })
     }).then(function (resposta) {
 
@@ -137,7 +139,7 @@ function atualizarSuporte() {
 }
 
 function pegarSuporte() {
-    let id_usuario = "";
+    let id_usuario = sessionStorage.ID_SUPORTE;
     let nome_suporte = "";
     let senha_suporte = "";
     let slack = "";
@@ -146,7 +148,7 @@ function pegarSuporte() {
     let cpf = "";
     let fk_empresa = "";
     let idEmpresa = sessionStorage.ID_EMPRESA
-    fetch(`/usuario/pegarSuporte?idEmpresa=${idEmpresa}`).then(function (resposta) {
+    fetch(`/usuario/pegarSuporte?id_usuario=${id_usuario}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (var posicao = 0; posicao < resposta.length; posicao++) {
