@@ -357,8 +357,153 @@ h3 {
 .componentsAndProcessos .backgroundProcessos {
     width: 100%;
     height: 40vh;
-    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.backgroundProcessos .background {
+    width: 98%;
+    height: 94%;
+    display: flex;
+    margin: auto;
+    background: #FFFFFF;
+    border: 1px solid #EFF0F6;
+    border-radius: 10px;
+}
+
+.backgroundProcessos .background .content {
+    width: 93%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.backgroundProcessos .background .content .infoProcessos {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.8px solid #E4E5E7;
+}
+
+.labelsProcessos {
+    width: 100%;
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: #87888C;
+}
+
+.labelsProcessos :nth-child(1) {
+    width: 10%;
+}
+
+.labelsProcessos :nth-child(2) {
+    width: 15%;
+}
+
+.labelsProcessos :nth-child(3) {
+    width: 37%;
+}
+
+.contentOfProgressBarProcess {
+    width: 100%;
+    height: 64%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    gap: 7%;
+}
+
+.itemProgressBarProcess {
+    display: flex;
+    align-items: center;
+    height: 30%;
+    min-height: 30%;
+}
+
+.itemProgressBarProcess h4 {
+    width: 13%;
+}
+
+.itemProgressBarProcess h5 {
+    width: 19%;
+}
+
+.progressBarFullProcess {
+    width: 30%;
+    height: 13%;
+    background-color: #87888C33;
+    margin-right: 2%;
+    border-radius: 20px;
+}
+
+.progressBarInsideProcess {
+    width: 10%;
+    height: 100%;
+}
+
+.divAmarelaComponent {
+    border-radius: 20px;
+    background-color: #FCB859;
+}
+
+.divAzulClaroComponent {
+    border-radius: 20px;
+    background-color: #08EBCD;
+}
+
+.divAzulEscuroComponent {
+    border-radius: 20px;
+    background-color: #28AEF3;
+}
+
+.divVermelhoComponent {
+    border-radius: 20px;
+    background-color: #FF0000;
+}
+
+.porcentProcess {
+    margin-right: 4%;
+    width: 10%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.porcentComponentAmarelo {
+    background: rgba(252, 184, 89, 0.12);
+    border: 0.5px solid #FCB859;
+    color: #FCB859;
+}
+
+.porcentComponentAzulClaro {
+    background: rgba(169, 223, 216, 0.12);
+    border: 0.5px solid #08EBCD;
+    color: #08EBCD;
+}
+
+.porcentComponentAzulEscuro {
+    background: rgba(40, 174, 243, 0.12);
+    border: 0.5px solid #28AEF3;
+    color: #28AEF3;
+}
+
+.porcentComponentVermelho {
+    background: rgba(242, 200, 237, 0.12);
+    border: 0.5px solid #FF0000;
+    color: #FF0000;
+}
+
+
+
 
 /*  */
 
