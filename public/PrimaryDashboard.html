@@ -10,6 +10,25 @@
     <!-- css's -->
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/dashboards/styleSetores.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap"
+        rel="stylesheet">
+    <!--  -->
+
+    <!-- Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--  -->
+
+    <!-- js's -->
+    <script src="js/dashBoards/verMachina.js"></script>
+    <!--  -->
+    <!-- fontAwesome -->
+    <script src="https://kit.fontawesome.com/7d521e6e81.js" crossorigin="anonymous"></script>
+    <!--  -->
+
     <!-- css's components -->
     <link rel="stylesheet" href="css/Components/sidebar.css">
     <!-- script -->
@@ -138,7 +157,10 @@
                                                     <p><span>13%</span> Crítico</p>
                                                 </div>
                                             </div>
-                                            <div class="chart"></div>
+                                            <div class="chart">
+                                                <canvas id="chart1"></canvas>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +188,9 @@
                                                     <p><span>13%</span> Crítico</p>
                                                 </div>
                                             </div>
-                                            <div class="chart"></div>
+                                            <div class="chart">
+                                                <canvas id="chart2"></canvas>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -197,7 +221,7 @@
                                                 <h5 class="setorTopic">setor 1</h5>
 
                                                 <div class="divVerMaquina">
-                                                    teste
+                                                    <i onclick="verMachine()" class="fa regular fa-arrow-up-right-from-square"></i>
                                                 </div>
                                             </div>
 
@@ -212,7 +236,7 @@
                                                 <h5 class="setorTopic">setor 1</h5>
 
                                                 <div class="divVerMaquina">
-                                                    teste
+                                                    <i onclick="verMachine()" class="fa regular fa-arrow-up-right-from-square"></i>
                                                 </div>
                                             </div>
 
@@ -227,7 +251,7 @@
                                                 <h5 class="setorTopic">setor 1</h5>
 
                                                 <div class="divVerMaquina">
-                                                    teste
+                                                    <i onclick="verMachine()" class="fa regular fa-arrow-up-right-from-square"></i>
                                                 </div>
                                             </div>
 
@@ -321,3 +345,5 @@
 </body>
 
 </html>
+<script src="js/charts/doughtnutjs/chartsDoughnut1.js"></script>
+<script src="js/charts/doughtnutjs/chartsDoughnut2.js"></script>

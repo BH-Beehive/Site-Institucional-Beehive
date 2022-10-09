@@ -9,6 +9,17 @@
     <!-- fontAwesome -->
     <script src="https://kit.fontawesome.com/7d521e6e81.js" crossorigin="anonymous"></script>
     <!--  -->
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap"
+        rel="stylesheet">
+    <!--  -->
+
+    <!-- Js chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--  -->
     <!-- css's -->
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/dashboards/styleMaquina.css">
@@ -74,7 +85,8 @@
             <div class="background">
                 <div class="content">
                     <div class="informationAndInputs">
-                        <div class="iconBack"><i class="fa-solid fa-arrow-left"></i></div>
+                        <div class="iconBack"><a href="PrimaryDashboard.html"><i class="fa-solid fa-arrow-left"></i></a>
+                        </div>
                         <select name="" id="">
                             <option value="">Setor: todos</option>
                             <option value="">Setor: setor 1</option>
@@ -140,8 +152,39 @@
                                 </div>
 
                                 <div class="chartline">
-
+                                    <canvas height="70%"  id="myChart"></canvas>
                                 </div>
+                                <script>
+                                    const labels = [
+                                        'January',
+                                        'February',
+                                        'March',
+                                        'April',
+                                        'May',
+                                        'June',
+                                    ];
+
+                                    const data = {
+                                        labels: labels,
+                                        datasets: [{
+                                            label: 'My First dataset',
+                                            backgroundColor: 'rgb(255, 99, 132)',
+                                            borderColor: 'rgb(255, 99, 132)',
+                                            data: [0, 10, 5, 2, 20, 30, 45],
+                                        }]
+                                    };
+
+                                    const config = {
+                                        type: 'line',
+                                        data: data,
+                                        options: {}
+                                    };
+
+                                    const myChart = new Chart(
+                                        document.getElementById('myChart'),
+                                        config
+                                    );
+                                </script>
                             </div>
                         </div>
                     </div>

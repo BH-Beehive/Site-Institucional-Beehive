@@ -24,6 +24,11 @@
     align-items: center;
     height: 100%;
     font-size: 1.5rem;
+    color: black;
+}
+
+.iconBack i {
+   color: black;
 }
 
 .informationAndInputs select {
@@ -197,6 +202,7 @@ h3 {
     justify-content: center;
     border-radius: 0 0 20px 20px;
 }
+
 
 /* Parte que contém a porcentagem dos componentes / processos e os serviços */
 

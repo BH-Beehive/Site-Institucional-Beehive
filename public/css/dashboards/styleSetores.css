@@ -270,7 +270,20 @@
     align-items: center;
     justify-content: center;
     width: 33%;
+    font-size: 1.2rem;
 }
+
+.divVerMaquina i{
+    cursor: pointer;
+}
+
+.divVerMaquina {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+}
+
 
 
 /*  */
