@@ -335,7 +335,6 @@
 
 .itemKPI p {
     margin: 0;
-    
     width: 55%;
     margin-bottom: 5%;
 }
@@ -497,8 +496,8 @@
 }
 
 .backgroundCharts{
-    width: 100%;
+    max-width: 100%;
     height: 68%;
-    background-color: #FF0000;
     overflow-x: auto;
+    display: flex;
 }
