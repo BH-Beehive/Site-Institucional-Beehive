@@ -331,12 +331,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* overflow-x: auto; */
 }
 
 .itemKPI p {
     margin: 0;
-    width: 50%;
+    
+    width: 55%;
     margin-bottom: 5%;
 }
 
