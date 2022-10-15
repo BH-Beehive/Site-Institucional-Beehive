@@ -1,14 +1,9 @@
 const labels2 = [
-    'January',
-    'February',
-    'March',
-    'March',
-    'March',
-    'March',
-    'March',
-    'March',
-    'March',
-    'March',
+    'Setor 1',
+    'Setor 1',
+    'Setor 1',
+    'Setor 1',
+    'Setor 1',
 ];
 
 const data2 = {
@@ -35,7 +30,8 @@ const config2 = {
             y: {
                 beginAtZero: true,
             }
-        }
+        },
+        responsive:false
     },
 };
 

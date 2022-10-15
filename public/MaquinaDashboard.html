@@ -53,7 +53,8 @@
                     </a>
                 </div>
                 <div class="item-sidebar">
-                    <a href="gerenciarContas.html"><!--<img class="img-gerenciar-user"
+                    <a href="gerenciarContas.html">
+                        <!--<img class="img-gerenciar-user"
                             src="assets/icons/icon_gerenciar_user.png">-->
                         <h2 class="item">Gerenciar contas</h2>
                     </a>
@@ -87,16 +88,15 @@
                         <div class="iconBack"><a href="PrimaryDashboard.html"><i class="fa-solid fa-arrow-left"></i></a>
                         </div>
                         <select name="" id="">
-                            <option value="">Setor: todos</option>
-                            <option value="">Setor: setor 1</option>
-                            <option value="">Setor: setor 2</option>
-                            <option value="">Setor: setor 3</option>
+                            <option value="">Setor 1</option>
+                            <option value="">Setor 2</option>
+                            <option value="">Setor 3</option>
                         </select>
                         <select name="" id="">
-                            <option value="">Setor: todos</option>
-                            <option value="">Setor: setor 1</option>
-                            <option value="">Setor: setor 2</option>
-                            <option value="">Setor: setor 3</option>
+                            <option value="">Maquina 4</option>
+                            <option value="">Maquina 2</option>
+                            <option value="">Maquina 3</option>
+                            <option value="">Maquina 1</option>
                         </select>
                         <div class="nowMaquina">
                             <h2>Visualizando máquina <span>4</span></h2>
@@ -151,25 +151,28 @@
                                 </div>
 
                                 <div class="chartline">
-                                    <canvas height="70%"  id="myChart"></canvas>
+                                    <canvas height="70%" id="myChart"></canvas>
                                 </div>
                                 <script>
                                     const labels = [
-                                        'January',
-                                        'February',
-                                        'March',
-                                        'April',
-                                        'May',
-                                        'June',
+                                        '00:00',
+                                        '01:00',
+                                        '02:00',
+                                        '03:00',
+                                        '04:00',
+                                        '05:00',
+                                        '06:00',
+                                        '07:00',
+
                                     ];
 
                                     const data = {
                                         labels: labels,
                                         datasets: [{
                                             label: 'My First dataset',
-                                            backgroundColor: 'rgb(255, 99, 132)',
-                                            borderColor: 'rgb(255, 99, 132)',
-                                            data: [0, 10, 5, 2, 20, 30, 45],
+                                            backgroundColor: '#28AEF3',
+                                            borderColor: '#28AEF3',
+                                            data: [0, 10, 5, 2, 20, 30, 45,30],
                                         }]
                                     };
 
@@ -212,19 +215,33 @@
                                                 <h4>01</h4>
                                                 <h5>RAM</h5>
                                                 <div class="progressBarFullComponent">
-                                                    <div class="progressBarInsideComponent divAmarelaComponent">
+                                                    <div class="progressBarInsideComponent divVermelhoComponent">
 
                                                     </div>
                                                 </div>
 
-                                                <div class="porcentComponent porcentComponentAmarelo">
+                                                <div class="porcentComponent porcentComponentVermelho">
                                                     <span>46</span>%
                                                 </div>
                                             </div>
 
                                             <div class="itemProgressBarComponents">
                                                 <h4>01</h4>
-                                                <h5>RAM</h5>
+                                                <h5>CPU</h5>
+                                                <div class="progressBarFullComponent">
+                                                    <div class="progressBarInsideComponent divAzulClaroComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentComponent porcentComponentAzulClaro">
+                                                    <span>46</span>%
+                                                </div>
+                                            </div>
+
+                                            <div class="itemProgressBarComponents">
+                                                <h4>01</h4>
+                                                <h5>Disco</h5>
                                                 <div class="progressBarFullComponent">
                                                     <div class="progressBarInsideComponent divAmarelaComponent">
 
@@ -238,21 +255,7 @@
 
                                             <div class="itemProgressBarComponents">
                                                 <h4>01</h4>
-                                                <h5>RAM</h5>
-                                                <div class="progressBarFullComponent">
-                                                    <div class="progressBarInsideComponent divAmarelaComponent">
-
-                                                    </div>
-                                                </div>
-
-                                                <div class="porcentComponent porcentComponentAmarelo">
-                                                    <span>46</span>%
-                                                </div>
-                                            </div>
-
-                                            <div class="itemProgressBarComponents">
-                                                <h4>01</h4>
-                                                <h5>RAM</h5>
+                                                <h5>Temperatura</h5>
                                                 <div class="progressBarFullComponent">
                                                     <div class="progressBarInsideComponent divAmarelaComponent">
 
@@ -290,22 +293,22 @@
                                                 <h4>01</h4>
                                                 <h5>Processo</h5>
                                                 <div class="progressBarFullProcess">
-                                                    <div class="progressBarInsideProcess divAmarelaComponent">
+                                                    <div class="progressBarInsideProcess divVermelhoComponent">
 
                                                     </div>
                                                 </div>
 
-                                                <div class="porcentProcess porcentComponentAmarelo">
+                                                <div class="porcentProcess porcentComponentVermelho">
                                                     <span>46</span>%
                                                 </div>
 
                                                 <div class="progressBarFullProcess">
-                                                    <div class="progressBarInsideProcess divAmarelaComponent">
+                                                    <div class="progressBarInsideProcess divVermelhoComponent">
 
                                                     </div>
                                                 </div>
 
-                                                <div class="porcentProcess porcentComponentAmarelo">
+                                                <div class="porcentProcess porcentComponentVermelho">
                                                     <span>46</span>%
                                                 </div>
                                             </div>
@@ -315,22 +318,22 @@
                                                 <h4>01</h4>
                                                 <h5>Processo</h5>
                                                 <div class="progressBarFullProcess">
-                                                    <div class="progressBarInsideProcess divAmarelaComponent">
+                                                    <div class="progressBarInsideProcess divAzulClaroComponent">
 
                                                     </div>
                                                 </div>
 
-                                                <div class="porcentProcess porcentComponentAmarelo">
+                                                <div class="porcentProcess porcentComponentAzulClaro">
                                                     <span>46</span>%
                                                 </div>
 
                                                 <div class="progressBarFullProcess">
-                                                    <div class="progressBarInsideProcess divAmarelaComponent">
+                                                    <div class="progressBarInsideProcess divAzulClaroComponent">
 
                                                     </div>
                                                 </div>
 
-                                                <div class="porcentProcess porcentComponentAmarelo">
+                                                <div class="porcentProcess porcentComponentAzulClaro">
                                                     <span>46</span>%
                                                 </div>
                                             </div>
