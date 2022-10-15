@@ -73,8 +73,8 @@ hr {
 
 
 .cabecalho {
-    height: 10vh;
-    /* background-color: red; */
+    padding: 10px;
+    height: 10vh; 
     display: flex;
     justify-content: end;
     align-items: center;
@@ -88,9 +88,12 @@ hr {
     border: none;
 }
 
+.botoes.btn-download{
+    height: 35px;
+}
+
 .botoes:hover {
-    height: 30%;
-    background-color: #35342F;
+    color: #35342F;
     border-radius: 4px;
     margin-right: 20px;
     background-color: #FFCC29;
@@ -108,21 +111,20 @@ hr {
 }
 
 #btnAlterarDados {
-
     color: white;
     height: 13%;
     padding: 10px 10px 10px 10px;
-    margin-top: 15%;
+    margin-top: 5%;
     margin-left: 20%;
 }
 #btnAlterarDados:hover{
     cursor: pointer;
+    color: black;
 }
 
 #fotoDefault {
-    width: 60px;
+    width: 50px;
     margin-right: 20px;
-
 }
 
 #fotoDefault:hover {
@@ -148,7 +150,6 @@ hr {
 #emailPerfil {
     margin-left: 20%;
     margin-top: 10%;
-    color: red;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -172,6 +173,11 @@ hr {
     color: #000000;
     width: 75vh;
     margin-left: 38%;
+}
+
+.foto-default-principal{
+    width: 200px;
+    height: 250px;
 }
 
 .agora{
@@ -239,7 +245,7 @@ input::placeholder{
 }
 
 span{
-    font-family: 'Roboto';
+font-family: 'Roboto';
 font-style: normal;
 font-weight: 400;
 font-size: 16px;

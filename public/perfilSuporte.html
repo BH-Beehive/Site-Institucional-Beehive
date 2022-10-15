@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/icons/Beehive.png" type="image/x-icon">
     <link rel="stylesheet" href="css/perfilSuporte.css">
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/Components/sidebar.css">
@@ -30,17 +31,28 @@
                 <hr>
                 <div class="itens">
                     <div class="item-sidebar">
-                        <a href="index.html"><h2 class="item"><img src="assets/icons/icon_home.png">Home</h2></a>
+                        <img src="assets/icons/icon_home.png">
+                        <a href="index.html">
+                            <h2 class="item">Home</h2>
+                        </a>
                     </div>
                     <div class="item-sidebar">
-                        <a href="PrimaryDashboard.html"><h2 class="item"><img src="assets/icons/icon_dashboard.png">Dashboard</h2></a>
+                        <img src="assets/icons/icon_dashboard.png">
+                        <a href="PrimaryDashboard.html">
+                            <h2 class="item">Dashboard</h2>
+                        </a>
                     </div>
                     <div class="item-sidebar">
+                        <img class="img-gerenciar-user" src="assets/icons/icon_gerenciar_user.png">
                         <a href="gerenciarContas.html">
-                            <h2 class="item"><img class="img-gerenciar-user" src="assets/icons/icon_gerenciar_user.png">Gerenciar contas</h2></a>
+                            <h2 class="item">Gerenciar</h2>
+                        </a>
                     </div>
                     <div class="item-sidebar agora">
-                        <a href="perfilSuporte.html"><h2 class="item"><img class="img-gerenciar-user" src="assets/icons/suporte_icon.png">Suporte</h2></a>
+                        <img class="img-gerenciar-user" src="assets/icons/suporte_icon.png">
+                        <a href="perfilSuporte.html">
+                            <h2 class="item">Suporte</h2>
+                        </a>
                     </div>
                 </div>
                 <hr>
@@ -53,14 +65,14 @@
 </div>
     </div>
     <div class="cabecalho">
-        <button class="botoes" id="btnDownload"><a href="">Download client</a></button>
+        <button class="botoes btn-download" id="btnDownload"><a href="">Download client</a></button>
         <div id="imagemPerfil">
             <img id="fotoDefault" src="./assets/img/icone-avatar-default.png" alt="Avatar padrao">
         </div>
     </div>
     <div class="containerExibicaoPerfil">
-        <img id="fotoDefaultPrincipal" src="./assets/img/icone-avatar-default.png" alt="Avatar padrao">
-        <div class="dadosPerfil">
+        <img id="fotoDefaultPrincipal" class="foto-default-principal" src="./assets/img/icone-avatar-default.png" alt="Avatar padrao">
+        <div class="dadosPerfil"> 
             <h2 id="h2Suporte">Anderson Silva Toscani</h2>
             <h4 id="emailPerfil">anderson.toscani@gmail.com</h4><br>
             <button class="botoes" id="btnAlterarDados" onclick="alterarDados()">Alterar meus dados</button>
@@ -95,7 +107,7 @@
             <input type="tel" placeholder="(11) 97787-7623" id="inputCelularSuporte" onkeypress="return MascaraCelular(this)"  disabled>
         </div>
     </div>
-    <div id="divBtnSalvar"><button id="btnSalvar" onclick="atualizarSuporte()">Salvar</button></div>
+    <div id="divBtnSalvar"><button id="btnSalvar" class="btn-salvar" onclick="atualizarSuporte()">Salvar</button></div>
 </body>
 
 </html>

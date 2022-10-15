@@ -99,6 +99,11 @@ td{
     background-color: white;
 }
 
+.button-table:hover{
+    background-color: black;
+    transition: 0.5s;
+}
+
 .new{
     background-color:#35342F;
     color: white;
