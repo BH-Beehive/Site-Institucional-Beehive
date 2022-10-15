@@ -1,3 +1,8 @@
+body{
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +18,8 @@
     /* border: 2px solid red; */
     background-color: #35342F;
     height: 100vh;
-    width: 100%;
+    width: 15%;
+    position: fixed;
 }
 
 .logo {
@@ -67,7 +73,6 @@ hr {
 
 
 .cabecalho {
-    width: 85%;
     height: 10vh;
     /* background-color: red; */
     display: flex;
@@ -158,13 +163,21 @@ hr {
     align-items: center;
     justify-content: center;
     display: flex;
-    margin-top: 5%;
+    margin-top: 4%;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
     color: #000000;
+    width: 75vh;
+    margin-left: 38%;
+}
+
+.agora{
+    border-left: 5px solid #FFCC29;
+    color: #FFCC29;
+    cursor: pointer;
 }
 
 #line{
@@ -201,7 +214,7 @@ hr {
     margin-right: 10%;
 }
 #divBtnSalvar{
-    margin-top: 5%;
+    margin-top: 3%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -210,9 +223,10 @@ hr {
     background-color: #000000;
     color: white;
     width: 20vw;
-    height: 3vh;
+    height: 5vh;
     border-radius: 4px;
     font-weight: bold;
+    margin-left: 180px;
 }
 #btnSalvar:hover{
     border: none;
@@ -230,4 +244,9 @@ font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 19px;
+}
+
+.itens a {
+    text-decoration: none;
+    color: #ffff;
 }

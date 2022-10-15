@@ -14,6 +14,11 @@
     <!-- css's components -->
     <link rel="stylesheet" href="css/Components/sidebar.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap"
+        rel="stylesheet">
+
     <!-- script -->
     <script src="js/gerenciarContas.js"></script>
 
@@ -33,19 +38,24 @@
             <hr>
             <div class="itens">
                 <div class="item-sidebar">
-                    <h2 class="item"><img class="img-home" src="assets/icons/icon_home.png">Home</h2>
+                    <a href="index.html">
+                        <h2 class="item"><img src="assets/icons/icon_home.png">Home</h2>
+                    </a>
                 </div>
                 <div class="item-sidebar">
-                    <h2 class="item"><img src="assets/icons/icon_dashboard.png">Dashboard</h2>
+                    <a href="PrimaryDashboard.html">
+                        <h2 class="item"><img src="assets/icons/icon_dashboard.png">Dashboard</h2>
+                    </a>
                 </div>
                 <div class="item-sidebar agora">
-                    <img class="img-gerenciar-user" src="assets/icons/icon_gerenciar_user.png">
-                    <h2 class="item">Gerenciar contas</h2>
+                    <a href="gerenciarContas.html">
+                        <h2 class="item"><img class="img-gerenciar-user" src="assets/icons/icon_gerenciar_user.png">Gerenciar contas</h2>
+                    </a>
                 </div>
                 <div class="item-sidebar">
-                    <h2 class="item">
-                        <!--img src="assets/icons/suporte_icon.png">-->Suporte
-                    </h2>
+                    <a href="perfilSuporte.html">
+                        <h2 class="item"> <img class="img-gerenciar-user" src="assets/icons/suporte_icon.png">Suporte</h2>
+                    </a>
                 </div>
             </div>
             <hr>

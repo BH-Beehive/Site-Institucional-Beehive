@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/icons/Beehive.png" type="image/x-icon">
+    <!-- fontAwesome -->
+    <script src="https://kit.fontawesome.com/7d521e6e81.js" crossorigin="anonymous"></script>
+    <!--  -->
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap"
+        rel="stylesheet">
+    <!--  -->
+
+    <!-- Js chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--  -->
+    <!-- css's -->
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/dashboards/styleMaquina.css">
+    <!-- css's components -->
+    <link rel="stylesheet" href="css/Components/sidebar.css">
+    <!-- script -->
+
+    <title>Dashboard | Máquina</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Component sideBar -->
+        <div class="menuLateral">
+            <div class="logo">
+                <img class="img-icon" src="./assets/img/Beehive_logo 22 (1).svg" alt=""
+                    style="transition: all 0.6s  cubic-bezier(0.125, 0.54, 0.24, 1);">
+                <span class="nomeBeehive">Beehive</span>
+            </div>
+            <hr>
+            <div class="itens">
+                <div class="item-sidebar">
+                    <a href="index.html">
+                        <h2 class="item"><img src="assets/icons/icon_home.png">Home</h2>
+                    </a>
+                </div>
+                <div class="item-sidebar agora">
+                    <a href="PrimaryDashboard.html">
+                        <h2 class="item"><img src="assets/icons/icon_dashboard.png">Dashboard</h2>
+                    </a>
+                </div>
+                <div class="item-sidebar">
+                    <a href="gerenciarContas.html">
+                        <!--<img class="img-gerenciar-user"
+                            src="assets/icons/icon_gerenciar_user.png">-->
+                        <h2 class="item">Gerenciar contas</h2>
+                    </a>
+                </div>
+                <div class="item-sidebar">
+                    <a href="perfilSuporte.html">
+                        <img class="img-gerenciar-user" src="assets/icons/suporte_icon.png">
+                        <h2 class="item">Suporte</h2>
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="sair">
+                <a href="index.html"><img src="assets/icons/saida_icon.png"></a>
+            </div>
+
+        </div>
+        <!--Component sideBar  -->
+        <div class="main-content" style="background-color: #f9f9f9;">
+
+            <!-- Component header -->
+            <div class="itens-navbar">
+                <button class="button-navbar">Download Cliente</button>
+                <img class="img-navbar" src="../public/assets/img/icone-avatar-default.png">
+            </div>
+            <!-- Component header -->
+
+            <div class="background">
+                <div class="content">
+                    <div class="informationAndInputs">
+                        <div class="iconBack"><a href="PrimaryDashboard.html"><i class="fa-solid fa-arrow-left"></i></a>
+                        </div>
+                        <select name="" id="">
+                            <option value="">Setor 1</option>
+                            <option value="">Setor 2</option>
+                            <option value="">Setor 3</option>
+                        </select>
+                        <select name="" id="">
+                            <option value="">Maquina 4</option>
+                            <option value="">Maquina 2</option>
+                            <option value="">Maquina 3</option>
+                            <option value="">Maquina 1</option>
+                        </select>
+                        <div class="nowMaquina">
+                            <h2>Visualizando máquina <span>4</span></h2>
+                        </div>
+                    </div>
+
+                    <div class="cardAndChartBackground">
+                        <div class="cardInfoMaquinaBackground">
+                            <div class="content">
+                                <h2>Maquina 2</h2>
+                                <div class="infosMaquina">
+                                    <div class="itemInfoMaquina">
+                                        <h4>Fabricante</h4>
+                                        <p>Microsoft</p>
+                                    </div>
+
+                                    <div class="itemInfoMaquina">
+                                        <h4>Arquitetura</h4>
+                                        <p>64 bits</p>
+                                    </div>
+                                    <div class="itemInfoMaquina">
+                                        <h4>SO</h4>
+                                        <p>Windows</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="activeTime">
+                                    <h4>Tempo de atividade</h4>
+                                    <h3>10:00:10</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lineChartBackground">
+                            <div class="content">
+                                <div class="infosOfLineChart">
+                                    <h3>
+                                        Grafico do componente
+                                    </h3>
+
+                                    <div class="selects">
+                                        <h3>Componente:</h3>
+                                        <select name="" id="">
+                                            <option value=""> RAM</option>
+                                            <option value=""> CPU</option>
+                                            <option value=""> Disco</option>
+                                            <option value=""> Temperatura</option>
+                                        </select>
+                                    </div>
+                                    <span>Maquina 4</span>
+                                </div>
+
+                                <div class="chartline">
+                                    <canvas height="70%" id="myChart"></canvas>
+                                </div>
+                                <script>
+                                    const labels = [
+                                        '00:00',
+                                        '01:00',
+                                        '02:00',
+                                        '03:00',
+                                        '04:00',
+                                        '05:00',
+                                        '06:00',
+                                        '07:00',
+
+                                    ];
+
+                                    const data = {
+                                        labels: labels,
+                                        datasets: [{
+                                            label: 'My First dataset',
+                                            backgroundColor: '#28AEF3',
+                                            borderColor: '#28AEF3',
+                                            data: [0, 10, 5, 2, 20, 30, 45,30],
+                                        }]
+                                    };
+
+                                    const config = {
+                                        type: 'line',
+                                        data: data,
+                                        options: {}
+                                    };
+
+                                    const myChart = new Chart(
+                                        document.getElementById('myChart'),
+                                        config
+                                    );
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bottomPart">
+
+                        <div class="componentsAndProcessos">
+
+                            <div class="backgroundComponents">
+                                <div class="background">
+                                    <div class="content">
+                                        <div class="infoComponents">
+                                            <p>Componentes</p>
+                                            <h3>Máquina 3</h3>
+                                        </div>
+
+                                        <div class="labelsComponents">
+                                            <p>#</p>
+                                            <p>Nome</p>
+                                            <p>Porcentagem</p>
+                                        </div>
+
+                                        <div class="contentOfProgressBarComponents">
+
+                                            <div class="itemProgressBarComponents">
+                                                <h4>01</h4>
+                                                <h5>RAM</h5>
+                                                <div class="progressBarFullComponent">
+                                                    <div class="progressBarInsideComponent divVermelhoComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentComponent porcentComponentVermelho">
+                                                    <span>46</span>%
+                                                </div>
+                                            </div>
+
+                                            <div class="itemProgressBarComponents">
+                                                <h4>01</h4>
+                                                <h5>CPU</h5>
+                                                <div class="progressBarFullComponent">
+                                                    <div class="progressBarInsideComponent divAzulClaroComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentComponent porcentComponentAzulClaro">
+                                                    <span>46</span>%
+                                                </div>
+                                            </div>
+
+                                            <div class="itemProgressBarComponents">
+                                                <h4>01</h4>
+                                                <h5>Disco</h5>
+                                                <div class="progressBarFullComponent">
+                                                    <div class="progressBarInsideComponent divAmarelaComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentComponent porcentComponentAmarelo">
+                                                    <span>46</span>%
+                                                </div>
+                                            </div>
+
+                                            <div class="itemProgressBarComponents">
+                                                <h4>01</h4>
+                                                <h5>Temperatura</h5>
+                                                <div class="progressBarFullComponent">
+                                                    <div class="progressBarInsideComponent divAmarelaComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentComponent porcentComponentAmarelo">
+                                                    <span>46</span>%
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="backgroundProcessos">
+
+                                <div class="background">
+                                    <div class="content">
+                                        <div class="infoProcessos">
+                                            <p>Processos</p>
+                                        </div>
+
+                                        <div class="labelsProcessos">
+                                            <p>PID</p>
+                                            <p>Nome</p>
+                                            <p>Uso CPU</p>
+                                            <p>Uso Memória</p>
+                                        </div>
+
+                                        <div class="contentOfProgressBarProcess">
+                                            <!-- Item Processo -->
+                                            <div class="itemProgressBarProcess">
+                                                <h4>01</h4>
+                                                <h5>Processo</h5>
+                                                <div class="progressBarFullProcess">
+                                                    <div class="progressBarInsideProcess divVermelhoComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentProcess porcentComponentVermelho">
+                                                    <span>46</span>%
+                                                </div>
+
+                                                <div class="progressBarFullProcess">
+                                                    <div class="progressBarInsideProcess divVermelhoComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentProcess porcentComponentVermelho">
+                                                    <span>46</span>%
+                                                </div>
+                                            </div>
+                                            <!--  -->
+                                            <!-- Item Processo -->
+                                            <div class="itemProgressBarProcess">
+                                                <h4>01</h4>
+                                                <h5>Processo</h5>
+                                                <div class="progressBarFullProcess">
+                                                    <div class="progressBarInsideProcess divAzulClaroComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentProcess porcentComponentAzulClaro">
+                                                    <span>46</span>%
+                                                </div>
+
+                                                <div class="progressBarFullProcess">
+                                                    <div class="progressBarInsideProcess divAzulClaroComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentProcess porcentComponentAzulClaro">
+                                                    <span>46</span>%
+                                                </div>
+                                            </div>
+                                            <!--  -->
+                                            <!-- Item Processo -->
+                                            <div class="itemProgressBarProcess">
+                                                <h4>01</h4>
+                                                <h5>Processo</h5>
+                                                <div class="progressBarFullProcess">
+                                                    <div class="progressBarInsideProcess divAmarelaComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentProcess porcentComponentAmarelo">
+                                                    <span>46</span>%
+                                                </div>
+
+                                                <div class="progressBarFullProcess">
+                                                    <div class="progressBarInsideProcess divAmarelaComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentProcess porcentComponentAmarelo">
+                                                    <span>46</span>%
+                                                </div>
+                                            </div>
+                                            <!--  -->
+                                            <!-- Item Processo -->
+                                            <div class="itemProgressBarProcess">
+                                                <h4>01</h4>
+                                                <h5>Processo</h5>
+                                                <div class="progressBarFullProcess">
+                                                    <div class="progressBarInsideProcess divAmarelaComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentProcess porcentComponentAmarelo">
+                                                    <span>46</span>%
+                                                </div>
+
+                                                <div class="progressBarFullProcess">
+                                                    <div class="progressBarInsideProcess divAmarelaComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentProcess porcentComponentAmarelo">
+                                                    <span>46</span>%
+                                                </div>
+                                            </div>
+                                            <!--  -->
+                                            <!-- Item Processo -->
+                                            <div class="itemProgressBarProcess">
+                                                <h4>01</h4>
+                                                <h5>Processo</h5>
+                                                <div class="progressBarFullProcess">
+                                                    <div class="progressBarInsideProcess divAmarelaComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentProcess porcentComponentAmarelo">
+                                                    <span>46</span>%
+                                                </div>
+
+                                                <div class="progressBarFullProcess">
+                                                    <div class="progressBarInsideProcess divAmarelaComponent">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="porcentProcess porcentComponentAmarelo">
+                                                    <span>46</span>%
+                                                </div>
+                                            </div>
+                                            <!--  -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="KpisAndServicos">
+                            <div class="backgroundKPIS">
+                                <div class="itemKPI">
+                                    <h4>Processos</h4>
+                                    <h2>30</h2>
+                                </div>
+                                <div class="itemKPI">
+                                    <h4>Serviços</h4>
+                                    <h2>40</h2>
+                                </div>
+                            </div>
+
+                            <div class="backgroundServicos">
+                                <div class="background">
+                                    <div class="legendaServicos">
+
+                                        <h4>Serviços</h4>
+
+                                        <div class="divItens">
+                                            <div class="itemLegenda">
+                                                <div class="radius divVerde"></div>
+                                                <p>Rodando</p>
+                                            </div>
+
+                                            <div class="itemLegenda">
+                                                <div class="radius divCinza"></div>
+                                                <p>Parado</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="contentServices">
+
+                                        <div class="servicoItem">
+                                            <div class="divisActive divVerde"></div>
+                                            <div class="content">
+                                                <h4>Mysql</h4>
+                                                <p>PID</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="servicoItem">
+                                            <div class="divisActive divVerde"></div>
+                                            <div class="content">
+                                                <h4>Mysql</h4>
+                                                <p>PID</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="servicoItem">
+                                            <div class="divisActive divVerde"></div>
+                                            <div class="content">
+                                                <h4>Mysql</h4>
+                                                <p>PID</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="servicoItem">
+                                            <div class="divisActive divVerde"></div>
+                                            <div class="content">
+                                                <h4>Mysql</h4>
+                                                <p>PID</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="servicoItem">
+                                            <div class="divisActive divVerde"></div>
+                                            <div class="content">
+                                                <h4>Mysql</h4>
+                                                <p>PID</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

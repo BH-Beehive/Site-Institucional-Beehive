@@ -58,7 +58,6 @@ hr {
 
 .agora{
     border-left: 5px solid #FFCC29;
-    color: #FFCC29;
     cursor: pointer;
 }
 
@@ -101,13 +100,14 @@ hr {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    gap:1%;
 }
 
-.button-navbar{
+.button-navbar {
     background-color:#35342F;
     color: white;
     border-radius: 3px;
-    width: 130px;
+    width:  13%;
     height: 30px;
     outline: none;
     border: none;
@@ -119,3 +119,16 @@ hr {
     width: 45px;
     height: 45px;
 }
+
+.item-sidebar a {
+    text-decoration: none;
+    color: #ffff;
+    margin: 0;
+    padding: 0;
+}
+
+.agora a{
+    margin: 0;
+    padding: 0;
+}
+

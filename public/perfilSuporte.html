@@ -7,32 +7,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/perfilSuporte.css">
     <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/Components/sidebar.css">
     <script src="js/atualizarSuporte.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap"
+        rel="stylesheet">
+        
     <title>Meu perfil</title>
 </head>
 
-<body>
+<body onload="pegarSuporte()">
     <div class="container">
-        <div class="menuLateral">
-            <div class="logo">
-                <img class="img-icon" src="./assets/img/Beehive_logo 22 (1).svg" alt=""
-                    style="transition: all 0.6s  cubic-bezier(0.125, 0.54, 0.24, 1);">
-                <span class="nomeBeehive">Beehive</span>
+            <div class="menuLateral">
+                <div class="logo">
+                    <img class="img-icon" src="./assets/img/Beehive_logo 22 (1).svg" alt=""
+                        style="transition: all 0.6s  cubic-bezier(0.125, 0.54, 0.24, 1);">
+                    <span class="nomeBeehive">Beehive</span>
+                </div>
+                <hr>
+                <div class="itens">
+                    <div class="item-sidebar">
+                        <a href="index.html"><h2 class="item"><img src="assets/icons/icon_home.png">Home</h2></a>
+                    </div>
+                    <div class="item-sidebar">
+                        <a href="PrimaryDashboard.html"><h2 class="item"><img src="assets/icons/icon_dashboard.png">Dashboard</h2></a>
+                    </div>
+                    <div class="item-sidebar">
+                        <a href="gerenciarContas.html">
+                            <h2 class="item"><img class="img-gerenciar-user" src="assets/icons/icon_gerenciar_user.png">Gerenciar contas</h2></a>
+                    </div>
+                    <div class="item-sidebar agora">
+                        <a href="perfilSuporte.html"><h2 class="item"><img class="img-gerenciar-user" src="assets/icons/suporte_icon.png">Suporte</h2></a>
+                    </div>
+                </div>
+                <hr>
+                <div class="sair">
+                    <a href="index.html"><img src="assets/icons/saida_icon.png"></a>
+                </div>
+    
             </div>
-            <hr>
-            <div class="itens">
-                <h2 class="item"><img class="icones" src="./assets/icons/icon_home.png" >Home</h2>
-                <h2 class="item"><img class="icones" src="./assets/icons/icon_dashboard.png" style="color: white;">Dashboard</h2>
-                <h2 class="item"><img class="icones" src="./assets/icons/icon_dashboard-amarelo.png">Relatórios</h2>
-                <h2 class="item"><img class="icones" src="assets/icons/suporte_icon.png">Suporte</h2>
-            </div>
-            <hr>
-            <div class="sair">
-                <a href="index.html"><img src="assets/icons/saida_icon.png"></a>
-            </div>
-
-        </div>
         <div class="main-content">
 </div>
     </div>
@@ -45,7 +61,7 @@
     <div class="containerExibicaoPerfil">
         <img id="fotoDefaultPrincipal" src="./assets/img/icone-avatar-default.png" alt="Avatar padrao">
         <div class="dadosPerfil">
-            <h2>Anderson Silva Toscani</h2>
+            <h2 id="h2Suporte">Anderson Silva Toscani</h2>
             <h4 id="emailPerfil">anderson.toscani@gmail.com</h4><br>
             <button class="botoes" id="btnAlterarDados" onclick="alterarDados()">Alterar meus dados</button>
         </div>

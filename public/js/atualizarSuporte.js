@@ -2,6 +2,9 @@ function alterarDados(){
     let senhaSuporte = document.getElementById("inputSenhaSuporte");
     let telefoneSuporte = document.getElementById("inputTelefoneSuporte");
     let celularSuporte = document.getElementById("inputCelularSuporte");
+    senhaSuporte.style.border = "0.5px solid black";
+    telefoneSuporte.style.border = "0.5px solid black";
+    celularSuporte.style.border = "0.5px solid black";
     senhaSuporte.disabled = false;
     telefoneSuporte.disabled = false;
     celularSuporte.disabled = false;
@@ -46,26 +49,29 @@ function atualizarSuporte() {
     let senhaSuporte = document.getElementById("inputSenhaSuporte");
     let telefoneSuporte = document.getElementById("inputTelefoneSuporte");
     let celularSuporte = document.getElementById("inputCelularSuporte");
-    
+    senhaSuporte.style.border = "none";
+    telefoneSuporte.style.border = "none";
+    celularSuporte.style.border = "none";
     senhaSuporte.disabled = true;
     telefoneSuporte.disabled = true;
     celularSuporte.disabled = true;
 
     let nomeSuporteVar = inputNomeSuporte.value;
-    let emailVar = inputEmailSuporte.value;
+    let idVar = inputIdentificacao.value;
     let senhaVar = inputSenhaSuporte.value;
     let slackVar = inputSlackSuporte.value;
     let telefoneVar = inputTelefoneSuporte.value;
     let celularVar = inputCelularSuporte.value;
-    console.log(nomeSuporteVar, emailVar, senhaVar, slackVar, telefoneVar, celularVar)
+    let id_usuario = sessionStorage.ID_SUPORTE;
+    console.log(nomeSuporteVar, idVar, senhaVar, slackVar, telefoneVar, celularVar, id_usuario)
 
-    if (nomeSuporteVar.trim() == "" || emailVar.trim() == "" || senhaVar.trim() == "" || slackVar.trim() == "" || telefoneVar.trim() == "" || celularVar.trim() == "") {
+    if (nomeSuporteVar.trim() == "" || idVar.trim() == "" || senhaVar.trim() == "" || slackVar.trim() == "" || telefoneVar.trim() == "" || celularVar.trim() == "" || id_usuario.trim() == "") {
         Swal.fire({
             icon: 'info',
             title: 'Preencha os campos!',
             text: 'Por favor, verfique os dados e tente novamente!'
         })
-    } else if (emailVar.trim().indexOf('@' && '.com') == - 1 || slackVar.trim().indexOf('@' && '.com') == - 1) {
+    } else if (slackVar.trim().indexOf('@' && '.com') == - 1) {
         Swal.fire({
             icon: 'error',
             title: 'Email Inválido!',
@@ -98,11 +104,12 @@ function atualizarSuporte() {
         },
         body: JSON.stringify({
             nomeSuporteServer: nomeSuporteVar,
-            emailServer: emailVar,
+            idServer: idVar,
             senhaServer: senhaVar,
             slackServer: slackVar,
             telefoneServer: telefoneVar,
-            celularServer: celularVar
+            celularServer: celularVar,
+            id_usuarioServer: id_usuario
         })
     }).then(function (resposta) {
 
@@ -132,17 +139,53 @@ function atualizarSuporte() {
 }
 
 function pegarSuporte() {
-    let id_usuario = sessionStorage.ID_USUARIO
+    let id_usuario = sessionStorage.ID_SUPORTE;
+    let nome_suporte = "";
+    let senha_suporte = "";
+    let slack = "";
+    let telefone = "";
+    let celular = "";
+    let cpf = "";
+    let fk_empresa = "";
+    let idEmpresa = sessionStorage.ID_EMPRESA
     fetch(`/usuario/pegarSuporte?id_usuario=${id_usuario}`).then(function (resposta) {
-      if (resposta.ok) {
-        resposta.json().then(function (resposta) {
-        });
-      } else {
-        console.log("Houve um erro ao tentar listar suportes!");
-        resposta.text().then(texto => {
-          console.error(texto);
-        });
-      }
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                for (var posicao = 0; posicao < resposta.length; posicao++) {
+                    id_usuario = resposta[posicao].id_usuario;
+                    nome_suporte = resposta[posicao].nome_suporte;
+                    senha_suporte = resposta[posicao].senha;
+                    slack = resposta[posicao].email_slack;
+                    telefone = resposta[posicao].telefone;
+                    celular = resposta[posicao].celular;
+                    cpf = resposta[posicao].cpf;
+                    fk_empresa = resposta[posicao].fk_empresa;
+                }
+                let inputNomeSuporteP = document.getElementById("inputNomeSuporte");
+                let inputIdentificacaoP = document.getElementById("inputIdentificacao");
+                let inputSenhaSuporteP = document.getElementById("inputSenhaSuporte");
+                let inputSlackSuporteP = document.getElementById("inputSlackSuporte");
+                let inputTelefoneSuporteP = document.getElementById("inputTelefoneSuporte");
+                let inputCelularSuporteP = document.getElementById("inputCelularSuporte");
+                let h2NomeSuporteP = document.getElementById("h2Suporte");
+                let emailPerfilSuporteP = document.getElementById("emailPerfil");
+                
+                inputNomeSuporteP.value = `${nome_suporte}`;
+                inputIdentificacaoP.value = `${id_usuario}`;
+                inputSenhaSuporteP.value = `${senha_suporte}`;
+                inputSlackSuporteP.value = `${slack}`;
+                inputTelefoneSuporteP.value = `${telefone}`;
+                inputCelularSuporteP.value = `${celular}`;
+                h2NomeSuporteP.innerHTML = `${nome_suporte}`;
+                emailPerfilSuporteP.innerHTML = `${slack}`;
+
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar suportes!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
     })
 }
 

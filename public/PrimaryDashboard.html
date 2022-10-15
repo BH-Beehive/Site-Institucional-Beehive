@@ -10,6 +10,25 @@
     <!-- css's -->
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/dashboards/styleSetores.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap"
+        rel="stylesheet">
+    <!--  -->
+
+    <!-- Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--  -->
+
+    <!-- js's -->
+    <script src="js/dashBoards/verMachina.js"></script>
+    <!--  -->
+    <!-- fontAwesome -->
+    <script src="https://kit.fontawesome.com/7d521e6e81.js" crossorigin="anonymous"></script>
+    <!--  -->
+
     <!-- css's components -->
     <link rel="stylesheet" href="css/Components/sidebar.css">
     <!-- script -->
@@ -30,19 +49,27 @@
             <hr>
             <div class="itens">
                 <div class="item-sidebar">
-                    <h2 class="item"><img src="assets/icons/icon_home.png">Home</h2>
-                </div>
-                <div class="item-sidebar">
-                    <h2 class="item"><img src="assets/icons/icon_dashboard.png">Dashboard</h2>
+                    <a href="index.html">
+                        <h2 class="item"><img src="assets/icons/icon_home.png">Home</h2>
+                    </a>
                 </div>
                 <div class="item-sidebar agora">
-                    <img class="img-gerenciar-user" src="assets/icons/icon_gerenciar_user.png">
-                    <h2 class="item">Gerenciar contas</h2>
+                    <a href="PrimaryDashboard.html">
+                        <h2 class="item"><img src="assets/icons/icon_dashboard.png">Dashboard</h2>
+                    </a>
                 </div>
                 <div class="item-sidebar">
-                    <h2 class="item">
-                        <!--img src="assets/icons/suporte_icon.png">-->Suporte
-                    </h2>
+                    <a href="gerenciarContas.html">
+                        <h2 class="item"><img class="img-gerenciar-user"
+                            src="assets/icons/icon_gerenciar_user.png">Gerenciar contas</h2>
+                    </a>
+                </div>
+                <div class="item-sidebar">
+                    <a href="perfilSuporte.html">
+                        <h2 class="item">
+                            <img class="img-gerenciar-user" src="assets/icons/suporte_icon.png">Suporte
+                        </h2>
+                    </a>
                 </div>
             </div>
             <hr>
@@ -54,11 +81,12 @@
         <!--Component sideBar  -->
         <div class="main-content" style="background-color: #F9F9F9;">
 
-            <!-- APAGAR MOCK HEADER -->
-            <div class="mockHeader">
-                header
+            <!-- Component header -->
+            <div class="itens-navbar">
+                <button class="button-navbar">Download Cliente</button>
+                <img class="img-navbar" src="../public/assets/img/icone-avatar-default.png">
             </div>
-            <!-- APAGAR MOCK HEADER -->
+            <!-- Component header -->
 
 
             <div class="backGroundDash">
@@ -129,7 +157,10 @@
                                                     <p><span>13%</span> Crítico</p>
                                                 </div>
                                             </div>
-                                            <div class="chart"></div>
+                                            <div class="chart">
+                                                <canvas id="chart1"></canvas>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -157,7 +188,9 @@
                                                     <p><span>13%</span> Crítico</p>
                                                 </div>
                                             </div>
-                                            <div class="chart"></div>
+                                            <div class="chart">
+                                                <canvas id="chart2"></canvas>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -188,7 +221,8 @@
                                                 <h5 class="setorTopic">setor 1</h5>
 
                                                 <div class="divVerMaquina">
-                                                    teste
+                                                    <i onclick="verMachine()"
+                                                        class="fa regular fa-arrow-up-right-from-square"></i>
                                                 </div>
                                             </div>
 
@@ -203,7 +237,8 @@
                                                 <h5 class="setorTopic">setor 1</h5>
 
                                                 <div class="divVerMaquina">
-                                                    teste
+                                                    <i onclick="verMachine()"
+                                                        class="fa regular fa-arrow-up-right-from-square"></i>
                                                 </div>
                                             </div>
 
@@ -218,7 +253,8 @@
                                                 <h5 class="setorTopic">setor 1</h5>
 
                                                 <div class="divVerMaquina">
-                                                    teste
+                                                    <i onclick="verMachine()"
+                                                        class="fa regular fa-arrow-up-right-from-square"></i>
                                                 </div>
                                             </div>
 
@@ -241,7 +277,7 @@
                                             </div>
                                             <div class="itemKPI alerta">
                                                 <p>Setores
-                                                    em aerta</p>
+                                                    em alerta</p>
                                                 <h2>4</h2>
                                             </div>
                                             <div class="itemKPI critico">
@@ -296,7 +332,7 @@
                                         </div>
 
                                         <div class="backgroundCharts">
-
+                                            <canvas height="110px" width="800px" id="setorChart"></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -312,3 +348,7 @@
 </body>
 
 </html>
+
+<script src="js/charts/doughtnutjs/chartsDoughnut1.js"></script>
+<script src="js/charts/doughtnutjs/chartsDoughnut2.js"></script>
+<script src="js/charts/lineChart/lineComponent.js"></script>

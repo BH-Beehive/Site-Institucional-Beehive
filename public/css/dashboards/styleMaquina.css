@@ -1,0 +1,659 @@
+.background {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+}
+
+.background .content {
+    width: 98%;
+}
+
+.informationAndInputs {
+    height: 5vw;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.iconBack {
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 1.5rem;
+    color: black;
+}
+
+.iconBack i {
+   color: black;
+}
+
+.informationAndInputs select {
+    width: 20%;
+    cursor: pointer;
+    outline: none;
+    padding: 0.3% 3% 0.3% 1%;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    border: 1px solid #EFF0F6;
+    margin-right: 3%;
+}
+
+/*  */
+
+.cardAndChartBackground {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+}
+
+.cardInfoMaquinaBackground {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardInfoMaquinaBackground .content {
+    width: 95%;
+    height: 95%;
+    background-color: white;
+    border: 1px solid #EFF0F6;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cardInfoMaquinaBackground .content h2 {
+    margin: 0;
+    margin-top: 3%;
+}
+
+.cardInfoMaquinaBackground .content .infosMaquina {
+    width: 90%;
+    height: 60%;
+    gap: 5%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.cardInfoMaquinaBackground .content .infosMaquina .itemInfoMaquina {
+    width: 38%;
+    height: 45%;
+    background: #FFFFFF;
+    border: 1px solid #EFF0F6;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5%;
+    color: #4D4D4D;
+}
+
+.cardInfoMaquinaBackground .content .infosMaquina .itemInfoMaquina h4 {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.cardInfoMaquinaBackground .content .infosMaquina .itemInfoMaquina p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.cardInfoMaquinaBackground .content .activeTime {
+    width: 100%;
+    height: 26%;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 20px 20px;
+}
+
+.cardInfoMaquinaBackground .content .activeTime h4,
+h3 {
+    margin: 0;
+}
+
+.cardInfoMaquinaBackground .content .activeTime h4 {
+    color: #B0B0B0;
+    font-weight: 300;
+    margin-bottom: 1%;
+    margin-top: 1.5%;
+}
+
+.cardInfoMaquinaBackground .content .activeTime h3 {
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+/*  */
+
+.lineChartBackground {
+    width: 75%;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.lineChartBackground .content {
+    width: 98%;
+    height: 95%;
+    background-color: white;
+    border: 1px solid #EFF0F6;
+    border-radius: 20px;
+}
+
+.lineChartBackground .content .infosOfLineChart {
+    width: 90%;
+    margin: auto;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    border-bottom: 0.8px solid #E4E5E7;
+    justify-content: space-between;
+}
+
+.lineChartBackground .content .infosOfLineChart h3 {
+    margin: 0;
+    color: #4D4D4D;
+    font-size: 1rem;
+}
+
+.lineChartBackground .content .infosOfLineChart span {
+    margin: 0;
+    color: #0F2552;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.lineChartBackground .content .infosOfLineChart .selects {
+    display: flex;
+    align-items: center;
+    gap: 3%;
+}
+
+.lineChartBackground .content .infosOfLineChart .selects select {
+    outline: none;
+    background-color: none;
+    border: none;
+    cursor: pointer;
+    color: #0F2552;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.chartline {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 20px 20px;
+}
+
+
+/* Parte que contém a porcentagem dos componentes / processos e os serviços */
+
+.bottomPart {
+    width: 100%;
+    display: flex;
+    margin-top: 2%;
+}
+
+.componentsAndProcessos {
+    width: 70%;
+}
+
+.componentsAndProcessos .backgroundComponents {
+    width: 100%;
+    height: 45vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backgroundComponents .background {
+    width: 98%;
+    height: 94%;
+    display: flex;
+    margin: auto;
+    background: #FFFFFF;
+    border: 1px solid #EFF0F6;
+    border-radius: 10px;
+}
+
+.backgroundComponents .background .content {
+    width: 93%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.backgroundComponents .background .content .infoComponents {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.8px solid #E4E5E7;
+}
+
+.backgroundComponents .background .content .labelsComponents {
+    width: 100%;
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: #87888C;
+}
+
+.backgroundComponents .background .content .labelsComponents p:nth-child(1) {
+    width: 15%;
+}
+
+.backgroundComponents .background .content .labelsComponents p:nth-child(2) {
+    width: 70%;
+}
+
+.contentOfProgressBarComponents {
+    width: 100%;
+    height: 64%;
+    display: flex;
+    flex-direction: column;
+}
+
+.itemProgressBarComponents {
+    display: flex;
+    align-items: center;
+    height: 26%;
+}
+
+.itemProgressBarComponents h4 {
+    width: 15%;
+}
+
+.itemProgressBarComponents h5 {
+    width: 28%;
+}
+
+.progressBarFullComponent {
+    width: 40%;
+    height: 13%;
+    background-color: #87888C33;
+    margin-right: 7%;
+    border-radius: 20px;
+}
+
+.progressBarInsideComponent {
+    width: 46%;
+    height: 100%;
+}
+
+.divAmarelaComponent {
+    border-radius: 20px;
+    background-color: #FCB859;
+}
+
+.divAzulClaroComponent {
+    border-radius: 20px;
+    background-color: #08EBCD;
+}
+
+.divAzulEscuroComponent {
+    border-radius: 20px;
+    background-color: #28AEF3;
+}
+
+.divVermelhoComponent {
+    border-radius: 20px;
+    background-color: #FF0000;
+}
+
+.porcentComponent {
+    margin-right: 4%;
+    width: 10%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.porcentComponentAmarelo {
+    background: rgba(252, 184, 89, 0.12);
+    border: 0.5px solid #FCB859;
+    color: #FCB859;
+}
+
+.porcentComponentAzulClaro {
+    background: rgba(169, 223, 216, 0.12);
+    border: 0.5px solid #08EBCD;
+    color: #08EBCD;
+}
+
+.porcentComponentAzulEscuro {
+    background: rgba(40, 174, 243, 0.12);
+    border: 0.5px solid #28AEF3;
+    color: #28AEF3;
+}
+
+.porcentComponentVermelho {
+    background: rgba(242, 200, 237, 0.12);
+    border: 0.5px solid #FF0000;
+    color: #FF0000;
+}
+
+
+/* Processos  */
+
+.componentsAndProcessos .backgroundProcessos {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backgroundProcessos .background {
+    width: 98%;
+    height: 94%;
+    display: flex;
+    margin: auto;
+    background: #FFFFFF;
+    border: 1px solid #EFF0F6;
+    border-radius: 10px;
+}
+
+.backgroundProcessos .background .content {
+    width: 93%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.backgroundProcessos .background .content .infoProcessos {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.8px solid #E4E5E7;
+}
+
+.labelsProcessos {
+    width: 100%;
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: #87888C;
+}
+
+.labelsProcessos :nth-child(1) {
+    width: 10%;
+}
+
+.labelsProcessos :nth-child(2) {
+    width: 15%;
+}
+
+.labelsProcessos :nth-child(3) {
+    width: 37%;
+}
+
+.contentOfProgressBarProcess {
+    width: 100%;
+    height: 64%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    gap: 7%;
+}
+
+.itemProgressBarProcess {
+    display: flex;
+    align-items: center;
+    height: 30%;
+    min-height: 30%;
+}
+
+.itemProgressBarProcess h4 {
+    width: 13%;
+}
+
+.itemProgressBarProcess h5 {
+    width: 19%;
+}
+
+.progressBarFullProcess {
+    width: 30%;
+    height: 13%;
+    background-color: #87888C33;
+    margin-right: 2%;
+    border-radius: 20px;
+}
+
+.progressBarInsideProcess {
+    width: 10%;
+    height: 100%;
+}
+
+.divAmarelaComponent {
+    border-radius: 20px;
+    background-color: #FCB859;
+}
+
+.divAzulClaroComponent {
+    border-radius: 20px;
+    background-color: #08EBCD;
+}
+
+.divAzulEscuroComponent {
+    border-radius: 20px;
+    background-color: #28AEF3;
+}
+
+.divVermelhoComponent {
+    border-radius: 20px;
+    background-color: #FF0000;
+}
+
+.porcentProcess {
+    margin-right: 4%;
+    width: 10%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.porcentComponentAmarelo {
+    background: rgba(252, 184, 89, 0.12);
+    border: 0.5px solid #FCB859;
+    color: #FCB859;
+}
+
+.porcentComponentAzulClaro {
+    background: rgba(169, 223, 216, 0.12);
+    border: 0.5px solid #08EBCD;
+    color: #08EBCD;
+}
+
+.porcentComponentAzulEscuro {
+    background: rgba(40, 174, 243, 0.12);
+    border: 0.5px solid #28AEF3;
+    color: #28AEF3;
+}
+
+.porcentComponentVermelho {
+    background: rgba(242, 200, 237, 0.12);
+    border: 0.5px solid #FF0000;
+    color: #FF0000;
+}
+
+
+
+
+/*  */
+
+.KpisAndServicos {
+    width: 30%;
+    height: 85vh;
+}
+
+.backgroundKPIS {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.backgroundKPIS .itemKPI {
+    width: 45%;
+    height: 85%;
+    background: rgba(101, 105, 105, 0.12);
+    border: 1px solid #656969;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+}
+
+.backgroundKPIS .itemKPI h4,
+h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.backgroundKPIS .itemKPI h4 {
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.backgroundKPIS .itemKPI h2 {
+    font-size: 1.8rem;
+}
+
+.backgroundServicos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 75%;
+}
+
+.backgroundServicos .background {
+    width: 95%;
+    height: 94%;
+    background: #FFFFFF;
+    border: 1px solid #EFF0F6;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.backgroundServicos .background .legendaServicos {
+    width: 100%;
+    height: 15%;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.backgroundServicos .background .legendaServicos h4 {
+    margin: 0;
+    color: #4D4D4D;
+}
+
+.backgroundServicos .background .legendaServicos .divItens {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+}
+
+.divItens .itemLegenda {
+    display: flex;
+    align-items: center;
+    gap: 4%;
+    width: 50%;
+    color: #4D4D4D;
+}
+
+.divItens .itemLegenda .radius {
+    height: 15px;
+    width: 15px;
+    border-radius: 30px;
+}
+
+.divVerde {
+    background-color: #28C754;
+}
+
+.divCinza {
+    background-color: #3D433E;
+}
+
+.contentServices {
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    width: 90%;
+    overflow-y: scroll;
+}
+
+
+
+/* serviço item */
+.servicoItem {
+    width: 100%;
+    height: 20%;
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    min-height: 20%;
+}
+
+.servicoItem h4,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.servicoItem .divisActive {
+    width: 2%;
+    height: 80%;
+    border-radius: 20px;
+    margin-right: 3%;
+}
+
+.servicoItem .content {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    justify-content: center;
+}

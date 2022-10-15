@@ -5,30 +5,31 @@ let sessoes = [];
 
 function atualizarSuporte(req, res) {
     let nomeSuporte = req.body.nomeSuporteServer;
-    let email = req.body.emailServer;
+    let id = req.body.idServer;
     let senha = req.body.senhaServer;
     let slack = req.body.slackServer;
     let telefone = req.body.telefoneServer;
     let celular = req.body.celularServer;
-
+    let id_usuario = req.body.id_usuarioServer;
     
     
     if (nomeSuporte == undefined) {
         res.status(400).send("O nome do suporte está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
+    } else if (id == undefined) {
+        res.status(400).send("Seu id está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else if (slack == undefined) {
         res.status(400).send("Seu slack está undefined!");
     } else if (telefone == undefined) {
-        res.status(400).send("O id da telefone está undefined!");
+        res.status(400).send("O telefone está undefined!");
     } else if (celular == undefined) {
-        res.status(400).send("O id da celular está undefined!");
-    }
+        res.status(400).send("O celular está undefined!");
+    } else if (id_usuario == undefined) {
+        res.status(400).send("O id_usuario da celular está undefined!");
+    } 
     else {
-        
-        atualizarSuporteModel.atualizarSuporte(nomeSuporte, email, senha, slack, telefone, celular)
+        atualizarSuporteModel.atualizarSuporte(nomeSuporte, id, senha, slack, telefone, celular, id_usuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -46,10 +47,10 @@ function atualizarSuporte(req, res) {
     }
 }
 
-function pegarSuporte() {
+function pegarSuporte(req, res) {
     let id_usuario = req.query.id_usuario;
     console.log(req.query.id_usuario)
-    console.log(id_usuario, "id na controller do dispositivo")
+    console.log(id_usuario, "id na controller")
 
     atualizarSuporteModel.pegarSuporte(id_usuario)
         .then(function (resultado) {
