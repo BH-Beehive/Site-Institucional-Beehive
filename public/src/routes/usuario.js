@@ -46,11 +46,11 @@ router.post("/cadastrarSuporte", function (req, res) {
     gerenciarContasController.cadastrarSuporte(req, res);
 })
 
-router.put("/editarSuporte", function (req, res) {
+router.post("/editarSuporte", function (req, res) {
     gerenciarContasController.editarSuporte(req, res);
 })
 
-router.put("/deletarSuporte", function (req, res) {
+router.post("/deletarSuporte", function (req, res) {
     gerenciarContasController.deletarSuporte(req, res);
 })
 

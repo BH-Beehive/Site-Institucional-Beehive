@@ -9,7 +9,6 @@ function testar(req, res) {
 
 function cadastrarSuporte(req, res) {
     let nomeSuporte = req.body.nomeSuporteServer;
-    let email = req.body.emailServer;
     let senha = req.body.senhaServer;
     let emailSlack = req.body.emailSlackServer;
     let telefone = req.body.telefoneServer;
@@ -20,8 +19,6 @@ function cadastrarSuporte(req, res) {
     // Faça as validações dos valores
     if (nomeSuporte == undefined) {
         res.status(400).send("O nome do suporte está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else if (emailSlack == undefined) {
@@ -37,7 +34,7 @@ function cadastrarSuporte(req, res) {
     }
     else {
         
-        gerenciarContasModel.cadastrar(nomeSuporte, email, senha, emailSlack, telefone, celular, cpf, idEmpresa)
+        gerenciarContasModel.cadastrar(nomeSuporte, senha, emailSlack, telefone, celular, cpf, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -57,7 +54,6 @@ function cadastrarSuporte(req, res) {
 
 function editarSuporte(req, res) {
     let nomeSuporte = req.body.nomeSuporteServer;
-    let email = req.body.emailServer;
     let senha = req.body.senhaServer;
     let emailSlack = req.body.emailSlackServer;
     let telefone = req.body.telefoneServer;
@@ -68,8 +64,6 @@ function editarSuporte(req, res) {
     // Faça as validações dos valores
     if (nomeSuporte == undefined) {
         res.status(400).send("O nome do suporte está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else if (emailSlack == undefined) {
@@ -85,7 +79,7 @@ function editarSuporte(req, res) {
     }
     else {
         
-        gerenciarContasModel.editarSuporte(nomeSuporte, email, senha, emailSlack, telefone, celular, cpf, idEmpresa)
+        gerenciarContasModel.editarSuporte(nomeSuporte, senha, emailSlack, telefone, celular, cpf, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -104,15 +98,15 @@ function editarSuporte(req, res) {
 }
 
 function deletarSuporte(req, res) {
-    let emailSlack = req.body.emailSlackServer;
+    let idSuporte = req.body.idSuporteServer;
 
     // Faça as validações dos valores
-    if (emailSlack == undefined) {
-        res.status(400).send("Email slack está undefined!");
+    if (idSuporte == undefined) {
+        res.status(400).send("O id do suporte está undefined!");
     } 
     else {
         
-        gerenciarContasModel.deletarSuporte(emailSlack)
+        gerenciarContasModel.deletarSuporte(idSuporte)
             .then(
                 function (resultado) {
                     res.json(resultado);
