@@ -1,9 +1,9 @@
-var maquinaModel = require("../models/maquinaModel");
+var setorModel = require("../models/setorModel");
 
 var sessoes = [];
 
 function testar(req, res) {
-    console.log("ENTRAMOS NA maquinaController");
+    console.log("ENTRAMOS NA setorController");
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
@@ -25,29 +25,23 @@ function listar(req, res) {
 }
 
 
-function cadastrarMaquina(req, res) {
+function cadastrarSetor(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    let hostname = req.body.hostNameServer;
-    let token = req.body.tokenServer;
-    let tipo = req.body.tipoServer;
-    let empresaId = req.body.empresaServer;
-    let setor = req.body.setorServer;
+    let nome = req.body.nomeServer;
+    let idEmpresa = req.body.empresaServer;
+    let nivel = req.body.nivelServer;
 
     // Faça as validações dos valores
-    if (hostname == undefined) {
-        res.status(400).send("Seu hostname está undefined!");
-    } else if (token == undefined) {
-        res.status(400).send("Seu token está undefined!");
-    } else if (tipo == undefined) {
-        res.status(400).send("Sua tipo está undefined!");
-    } else if (empresaId == undefined) {
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (idEmpresa == undefined) {
         res.status(400).send("Sua empresa está undefined!");
-    } else if (setor == undefined) {
-        res.status(400).send("Seu setor está undefined!");
+    } else if (nivel == undefined) {
+        res.status(400).send("Seu nivel está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        maquinaModel.cadastrar(hostname, token, tipo, empresaId, setor)
+        setorModel.cadastrar(nome, idEmpresa, nivel)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -70,7 +64,6 @@ function cadastrarMaquina(req, res) {
 
 
 module.exports = {
-    cadastrarMaquina,
-    listar,
-    testar
+    cadastrarSetor,
+    listar  
 }
