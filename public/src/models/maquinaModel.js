@@ -1,14 +1,34 @@
 var database = require("../database/config")
 // Querys para verificação
-function listar() {
-    console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+function listarMaquinas(id_empresa) {
+    console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMaquinas()", id_empresa);
     var instrucao = `
-        SELECT * FROM maquina;
+    SELECT host_name , nome_setor FROM setor JOIN maquina on id_setor = fk_setor 
+    JOIN empresa on id_empresa = maquina.fk_empresa WHERE id_empresa = ${id_empresa} and tipo = "Maquina";
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
+function listarInformacoesMaquina(id_empresa, host_name) {
+    console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMaquinas()", id_empresa, host_name);
+    var instrucao = `
+    SELECT arquitetura, sistema_operacional FROM setor JOIN maquina on id_setor = fk_setor 
+    JOIN empresa on id_empresa = maquina.fk_empresa WHERE id_empresa = ${id_empresa} and host_name = "${host_name}";
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function listarServidor(id_empresa) {
+    console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarServidor()", id_empresa);
+    var instrucao = `
+    SELECT host_name , nome_setor FROM setor JOIN maquina on id_setor = fk_setor 
+    JOIN empresa on id_empresa = maquina.fk_empresa WHERE id_empresa = ${id_empresa} and tipo = "Servidor";
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
@@ -28,5 +48,7 @@ function cadastrarMaquina(hostname, token, tipo, empresaId, setor) {
 
 module.exports = {
     cadastrarMaquina,
-    listar,
+    listarMaquinas,
+    listarServidor,
+    listarInformacoesMaquina
 };

@@ -7,13 +7,21 @@ router.get("/", function (req, res) {
     usuarioController.testar(req, res);
 });
 
-router.get("/listar", function (req, res) {
-    usuarioController.listar(req, res);
+router.get("/listarMaquinas", function (req, res) {
+    maquinaController.listarMaquinas(req, res);
+});
+
+router.get("/listarServidor", function (req, res) {
+    maquinaController.listarServidor(req, res);
+});
+
+router.get("/listarInformacoesMaquina", function (req, res) {
+    maquinaController.listarInformacoesMaquina(req, res);
 });
 
 
 //Recebendo os dados do html e direcionando para a função cadastrar de maquinaController.js
-router.post("/cadastrar", function (req, res) {
+router.post("/cadastrarMaquina", function (req, res) {
     maquinaController.cadastrarMaquina(req, res);
 })
 

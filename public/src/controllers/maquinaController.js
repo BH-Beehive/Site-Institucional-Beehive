@@ -7,8 +7,56 @@ function testar(req, res) {
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
-function listar(req, res) {
-    usuarioModel.listar()
+function listarMaquinas(req, res) {
+    var id_empresa = req.query.idEmpresa
+    console.log(req.query.idEmpresa)
+    console.log(id_empresa, "id na controller da maquina")
+    
+    maquinaModel.listarMaquinas(id_empresa)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function listarInformacoesMaquina(req, res) {
+    var host_name = req.query.hostName
+    var id_empresa = req.query.idEmpresa
+    console.log(req.query.idEmpresa)
+    console.log(req.query.hostName)
+    console.log(id_empresa, "id na controller da maquina")
+    
+    maquinaModel.listarInformacoesMaquina(id_empresa, host_name)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function listarServidor(req, res) {
+    var id_empresa = req.query.idEmpresa
+    console.log(req.query.idEmpresa)
+    console.log(id_empresa, "id na controller da maquina")
+    
+    maquinaModel.listarServidor(id_empresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -47,7 +95,7 @@ function cadastrarMaquina(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        maquinaModel.cadastrar(hostname, token, tipo, empresaId, setor)
+        maquinaModel.cadastrarMaquina(hostname, token, tipo, empresaId, setor)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -71,6 +119,8 @@ function cadastrarMaquina(req, res) {
 
 module.exports = {
     cadastrarMaquina,
-    listar,
-    testar
+    listarMaquinas,
+    listarServidor,
+    testar,
+    listarInformacoesMaquina
 }

@@ -26,11 +26,12 @@
     <!-- css's components -->
     <link rel="stylesheet" href="css/Components/sidebar.css">
     <!-- script -->
+    <script src="js/dashBoards/maquinaDashboard.js"></script>
 
     <title>Dashboard | Máquina</title>
 </head>
 
-<body>
+<body onload="listarInformacoesMaquina()">
     <div class="container">
 
         <!-- Component sideBar -->
@@ -106,7 +107,7 @@
 
                     <div class="cardAndChartBackground">
                         <div class="cardInfoMaquinaBackground">
-                            <div class="content">
+                            <div class="content" id="listaInformacoes">
                                 <h2>Maquina 2</h2>
                                 <div class="infosMaquina">
                                     <div class="itemInfoMaquina">

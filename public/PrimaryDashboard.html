@@ -23,7 +23,7 @@
     <!--  -->
 
     <!-- js's -->
-    <script src="js/dashBoards/verMachina.js"></script>
+    <script src="js/dashBoards/primaryDashboard.js"></script>
     <!--  -->
     <!-- fontAwesome -->
     <script src="https://kit.fontawesome.com/7d521e6e81.js" crossorigin="anonymous"></script>
@@ -33,12 +33,10 @@
     <link rel="stylesheet" href="css/Components/sidebar.css">
     <!-- script -->
 
-    <script src="js/primaryDashboard.js"></script>
-
     <title>Dashboard</title>
 </head>
 
-<body>
+<body onload="mostrarTotalMaquinas() , mostrarTotalServidor(), listarMaquinas()">
     <div class="container">
 
         <!-- Component sideBar -->
@@ -102,10 +100,10 @@
                         </select>
 
                         <div class="radiosButton">
-                            <input class="inputRadios" checked type="radio" name="typeMAquina">
+                            <input class="inputRadios" checked type="radio" name="typeMAquina" onclick="listarMaquinas()">
                             <h4>Máquinas</h4>
 
-                            <input class="inputRadios" type="radio" name="typeMAquina">
+                            <input class="inputRadios" type="radio" name="typeMAquina" onclick="listarServidor()">
                             <h4>Servidores</h4>
                         </div>
 
@@ -140,7 +138,7 @@
                                     <div class="content">
                                         <div class="texts">
                                             <h4>Máquinas</h4>
-                                            <h2>36</h2>
+                                            <h2 id="mostrarTotalDeMaquinas">0</h2>
                                         </div>
                                         <div class="metricasContent">
                                             <div class="metricas">
@@ -171,7 +169,7 @@
                                     <div class="content">
                                         <div class="texts">
                                             <h4>Servidores</h4>
-                                            <h2>2</h2>
+                                            <h2 id="mostrarTotalDeServidor">0</h2>
                                         </div>
                                         <div class="metricasContent">
                                             <div class="metricas">
@@ -210,7 +208,7 @@
                                             <h4>Ver</h4>
                                         </div>
 
-                                        <div class="ItensMaquinasContent">
+                                        <div class="ItensMaquinasContent" id="listaMaquinas">
 
                                             <div class="itemMaquina">
                                                 <div class="nomesMaquina">
@@ -227,39 +225,6 @@
                                                         class="fa regular fa-arrow-up-right-from-square"></i>
                                                 </div>
                                             </div>
-
-                                            <div class="itemMaquina">
-                                                <div class="nomesMaquina">
-                                                    <div class="divAlerta">
-                                                    </div>
-
-                                                    <h5>Maquina 2</h5>
-                                                </div>
-
-                                                <h5 class="setorTopic">setor 1</h5>
-
-                                                <div class="divVerMaquina">
-                                                    <i onclick="verMachine()"
-                                                        class="fa regular fa-arrow-up-right-from-square"></i>
-                                                </div>
-                                            </div>
-
-                                            <div class="itemMaquina">
-                                                <div class="nomesMaquina">
-                                                    <div class="divAlerta">
-                                                    </div>
-
-                                                    <h5>Maquina 2</h5>
-                                                </div>
-
-                                                <h5 class="setorTopic">setor 1</h5>
-
-                                                <div class="divVerMaquina">
-                                                    <i onclick="verMachine()"
-                                                        class="fa regular fa-arrow-up-right-from-square"></i>
-                                                </div>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>

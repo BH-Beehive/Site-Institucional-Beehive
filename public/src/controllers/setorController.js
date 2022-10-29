@@ -7,8 +7,12 @@ function testar(req, res) {
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
-function listar(req, res) {
-    usuarioModel.listar()
+function mostrarTotalMaquinas(req, res) {
+    var id_empresa = req.query.idEmpresa
+    console.log(req.query.idEmpresa)
+    console.log(id_empresa, "id na controller do setor")
+    
+    setorModel.mostrarTotalMaquinas(id_empresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -24,6 +28,26 @@ function listar(req, res) {
         );
 }
 
+function mostrarTotalServidor(req, res) {
+    var id_empresa = req.query.idEmpresa
+    console.log(req.query.idEmpresa)
+    console.log(id_empresa, "id na controller do setor")
+    
+    setorModel.mostrarTotalServidor(id_empresa)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
 function cadastrarSetor(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -41,7 +65,7 @@ function cadastrarSetor(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        setorModel.cadastrar(nome, idEmpresa, nivel)
+        setorModel.cadastrarSetor(nome, idEmpresa, nivel)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -65,5 +89,6 @@ function cadastrarSetor(req, res) {
 
 module.exports = {
     cadastrarSetor,
-    listar  
+    mostrarTotalMaquinas,
+    mostrarTotalServidor  
 }
