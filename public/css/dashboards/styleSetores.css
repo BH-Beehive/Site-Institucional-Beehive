@@ -3,6 +3,134 @@
     font-family: 'Quicksand', sans-serif;
 }
 
+.modals-dashboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.div-inputs-dashboard{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.inputs-dashboard{
+    width: 45%;
+    border: 1px solid #4D4D4D;
+    height: 25px;
+    border-radius: 2px;
+    outline: none;
+    margin-top: 5%;
+}
+
+#divModalMaquina{
+    width: 40%;
+    height: 300px;
+    background-color: white;
+    border: 1px solid black;
+    margin-left: 15%;
+    margin-top: 20%;
+    border-radius: 3px;
+    display: none;
+    position: absolute;
+}
+
+.cadastrar-maquina{
+    margin-top: 5%;
+    outline: none;
+    background-color: #35342F;
+    color: white;
+    width: 80%;
+    height: 30px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.fecharModalMaquina{
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    height: 25px;
+    border-radius: 2px;
+    margin-bottom: 2%;
+}
+
+.fecharModalMaquina p{
+    margin: 0;
+    font-size: 15px;
+}
+
+.text-modal-dashboard p{
+    margin: 0;
+    font-size: 18px;
+}
+
+.div-inputs-Setor{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.inputs-Setor{
+    width: 45%;
+    border: 1px solid #4D4D4D;
+    height: 25px;
+    border-radius: 2px;
+    outline: none;
+    margin-top: 5%;
+}
+
+#divModalSetor{
+    width: 40%;
+    height: 300px;
+    background-color: white;
+    border: 1px solid black;
+    margin-left: 15%;
+    margin-top: 20%;
+    border-radius: 3px;
+    display: none;
+    position: absolute;
+}
+
+.cadastrar-Setor{
+    margin-top: 5%;
+    outline: none;
+    background-color: #35342F;
+    color: white;
+    width: 80%;
+    height: 30px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.fecharModalSetor{
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    height: 25px;
+    border-radius: 2px;
+    margin-bottom: 2%;
+}
+
+.fecharModalSetor p{
+    margin: 0;
+    font-size: 15px;
+}
+
+.text-modal-Setor p{
+    margin: 0;
+    font-size: 18px;
+}
+
+
 .backGroundDash {
     display: flex;
     justify-content: center;
@@ -10,7 +138,6 @@
     width: 100%;
     height: 87vh;
     color: #4D4D4D;
-    ;
 }
 
 .backGroundDash .content {
