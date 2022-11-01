@@ -21,6 +21,10 @@ router.post("/cadastrarSetor", function (req, res) {
     setorController.cadastrarSetor(req, res);
 })
 
+router.get("/listarSetor", function (req, res) {
+    setorController.listarSetor(req, res);
+})
+
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });

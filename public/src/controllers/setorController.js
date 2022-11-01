@@ -7,6 +7,23 @@ function testar(req, res) {
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
+function listarSetor(req, res) {
+    setorModel.listarSetor()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function mostrarTotalMaquinas(req, res) {
     var id_empresa = req.query.idEmpresa
     console.log(req.query.idEmpresa)
@@ -90,5 +107,6 @@ function cadastrarSetor(req, res) {
 module.exports = {
     cadastrarSetor,
     mostrarTotalMaquinas,
+    listarSetor,
     mostrarTotalServidor  
 }
