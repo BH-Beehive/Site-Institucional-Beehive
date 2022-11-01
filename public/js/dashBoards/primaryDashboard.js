@@ -242,3 +242,31 @@ function listarServidor() {
         }
     })
 }
+
+function listarSetor() {
+    selectSetor.innerHTML = `<select name="" id="selectSetor">
+                                <option value="todos">Setor: Nenhum</option>
+                            </select>`;
+    let idEmpresa = sessionStorage.ID_EMPRESA
+    fetch(`/setor/listarSetor`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                if(resposta.length != null) {
+                    selectSetor.innerHTML = `<select name="" id="selectSetor">
+                                <option value="todos">Setor: Todos</option>
+                                            </select>`;
+                    for (var posicao = 0; posicao < resposta.length; posicao++) {
+                        selectSetor.innerHTML += `
+                                <option value="${posicao}">Setor: ${resposta[posicao].nome_setor}</option>
+                            `
+                    } 
+                }
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar maquinas!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    })
+}

@@ -36,7 +36,7 @@
     <title>Dashboard</title>
 </head>
 
-<body onload="mostrarTotalMaquinas() , mostrarTotalServidor(), listarMaquinas()">
+<body onload="mostrarTotalMaquinas() , mostrarTotalServidor(), listarMaquinas(), listarSetor()">
     <div class="container">
 
         <!-- Component sideBar -->
@@ -92,11 +92,8 @@
             <div class="backGroundDash">
                 <div class="content">
                     <div class="selectAndButtons">
-                        <select name="" id="">
-                            <option value="">Setor: todos</option>
-                            <option value="">Setor: setor 1</option>
-                            <option value="">Setor: setor 2</option>
-                            <option value="">Setor: setor 3</option>
+                        <select name="" id="selectSetor">
+                            <option id="optionSetor" value="todos">Setor: Nenhum</option>
                         </select>
 
                         <div class="radiosButton">

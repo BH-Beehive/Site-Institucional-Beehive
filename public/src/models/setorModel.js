@@ -1,5 +1,15 @@
 var database = require("../database/config")
 // Querys para verificação
+
+function listarSetor() {
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function mostrarTotalMaquinas()");
+    var instrucao = `
+        SELECT nome_setor FROM setor;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function mostrarTotalMaquinas(id_empresa) {
     console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function mostrarTotalMaquinas()", id_empresa);
     var instrucao = `
@@ -40,5 +50,6 @@ function cadastrarSetor(nome,empresaId,nivel) {
 module.exports = {
     cadastrarSetor,
     mostrarTotalMaquinas,
+    listarSetor,
     mostrarTotalServidor
 };
