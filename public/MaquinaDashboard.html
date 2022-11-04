@@ -31,7 +31,7 @@
     <title>Dashboard | Máquina</title>
 </head>
 
-<body onload="listarInformacoesMaquina()">
+<body onload="listarInformacoesMaquina(),listarDadosMaquina()">
     <div class="container">
 
         <!-- Component sideBar -->
@@ -173,7 +173,7 @@
                                             label: 'My First dataset',
                                             backgroundColor: '#28AEF3',
                                             borderColor: '#28AEF3',
-                                            data: [0, 10, 5, 2, 20, 30, 45,30],
+                                            data: [0, 10, 5, 2, 20, 30, 45, 30],
                                         }]
                                     };
 
@@ -198,7 +198,7 @@
 
                             <div class="backgroundComponents">
                                 <div class="background">
-                                    <div class="content">
+                                    <div class="content" id="dadosComponentes">
                                         <div class="infoComponents">
                                             <p>Componentes</p>
                                             <h3>Máquina 3</h3>
@@ -253,21 +253,6 @@
                                                     <span>46</span>%
                                                 </div>
                                             </div>
-
-                                            <div class="itemProgressBarComponents">
-                                                <h4>03</h4>
-                                                <h5>TEMPERATURA</h5>
-                                                <div class="progressBarFullComponent">
-                                                    <div class="progressBarInsideComponent divAmarelaComponent">
-
-                                                    </div>
-                                                </div>
-
-                                                <div class="porcentComponent porcentComponentAmarelo">
-                                                    <span>46</span>%
-                                                </div>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>
