@@ -286,39 +286,38 @@ function listarSetor() {
 }
 
 function listarPorSetor() {
+    listaMaquinas.innerHTML = ``
     let select = document.getElementById('selectSetor');
     let selectNomeSetor = select.options[select.selectedIndex].value;
     let nomeSetor = parseInt(selectNomeSetor);
     let tipoMaquina = sessionStorage.MAQUINA_AGORA;
     let idEmpresa = sessionStorage.ID_EMPRESA
-    alert('Estou na primaryDash:' + nomeSetor, tipoMaquina, idEmpresa)
     console.log('Estou na primaryDash:' + nomeSetor, tipoMaquina, idEmpresa)
     fetch(`/setor/listarPorSetor?idEmpresa=${idEmpresa}&&tipoMaquina=${tipoMaquina}&&nomeSetor=${nomeSetor + 1}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
-                listaMaquinas.innerHTML = ``
-                for (var posicao = 0; posicao < resposta.length; posicao++) {
-                    listaMaquinas.innerHTML += `
-                <div class="ItensMaquinasContent">
-
-                            <div class="itemMaquina">
-                                <div class="nomesMaquina">
-                                    <div class="divAlerta">
+                    for (var posicao = 0; posicao < resposta.length; posicao++) {
+                        listaMaquinas.innerHTML += `
+                    <div class="ItensMaquinasContent">
+    
+                                <div class="itemMaquina">
+                                    <div class="nomesMaquina">
+                                        <div class="divAlerta">
+                                        </div>
+    
+                                        <h5>${resposta[posicao].host_name}</h5>
                                     </div>
-
-                                    <h5>${resposta[posicao].host_name}</h5>
+    
+                                    <h5 class="setorTopic">${resposta[posicao].nome_setor}</h5>
+    
+                                    <div class="divVerMaquina">
+                                        <i onclick="verMachine()"
+                                            class="fa regular fa-arrow-up-right-from-square"></i>
+                                    </div>
                                 </div>
-
-                                <h5 class="setorTopic">${resposta[posicao].nome_setor}</h5>
-
-                                <div class="divVerMaquina">
-                                    <i onclick="verMachine()"
-                                        class="fa regular fa-arrow-up-right-from-square"></i>
-                                </div>
-                            </div>
-                        </div>`
-                        listaIdMaquina.push(resposta[posicao].host_name)
-                    }  
+                            </div>`
+                            listaIdMaquina.push(resposta[posicao].host_name)
+                        }  
             });
         } else {
             console.log("Houve um erro ao tentar listar maquinas!");
