@@ -66,13 +66,14 @@ function mostrarTotalServidor(req, res) {
         );
 }
 
+
 function listarPorSetor(req, res) {
-    var id_setor = req.query.idSetor
-    var tipo = req.query.estiloMaquina
+    var id_setor = req.query.nomeSetor
+    var tipo = req.query.tipoMaquina
     var id_empresa = req.query.idEmpresa
-    console.log(req.query.idEmpresa)
-    console.log(req.query.idSetor)
-    console.log(req.query.estiloMaquina)
+    console.log(id_empresa)
+    console.log(id_setor)
+    console.log(tipo)
     console.log(id_empresa, tipo, "id e tipo na controller do setor")
     
     setorModel.listarPorSetor(id_setor, tipo, id_empresa)

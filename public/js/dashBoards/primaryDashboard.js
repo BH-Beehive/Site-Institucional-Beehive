@@ -238,7 +238,7 @@ function listarServidor() {
                                     <h5 class="setorTopic">${resposta[posicao].nome_setor}</h5>
 
                                     <div class="divVerMaquina">
-                                        <i onclick="verMachine()"
+                                        <i onclick="verMachine('${resposta[posicao].host_name}')"
                                             class="fa regular fa-arrow-up-right-from-square"></i>
                                     </div>
                                 </div>
@@ -289,9 +289,11 @@ function listarPorSetor() {
     let select = document.getElementById('selectSetor');
     let selectNomeSetor = select.options[select.selectedIndex].value;
     let nomeSetor = parseInt(selectNomeSetor);
-    let estiloMaquina = sessionStorage.MAQUINA_AGORA;
+    let tipoMaquina = sessionStorage.MAQUINA_AGORA;
     let idEmpresa = sessionStorage.ID_EMPRESA
-    fetch(`/setor/listarPorSetor?nome_setor=${nomeSetor + 1}&tipo=${estiloMaquina}&idEmpresa=${idEmpresa}`).then(function (resposta) {
+    alert('Estou na primaryDash:' + nomeSetor, tipoMaquina, idEmpresa)
+    console.log('Estou na primaryDash:' + nomeSetor, tipoMaquina, idEmpresa)
+    fetch(`/setor/listarPorSetor?idEmpresa=${idEmpresa}&&tipoMaquina=${tipoMaquina}&&nomeSetor=${nomeSetor + 1}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 listaMaquinas.innerHTML = ``

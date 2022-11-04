@@ -45,7 +45,7 @@ function listarInformacoesMaquina() {
 
 function listarDadosMaquina() {
     let hostName = sessionStorage.NOME_MAQUINA
-
+    h3NomeMaquina.innerHTML = `<h3>${hostName}</h3>`
 
     fetch(`/maquina/listarDadosMaquina?hostName=${hostName}`).then(function (resposta) {
         if (resposta.ok) {
@@ -55,7 +55,7 @@ function listarDadosMaquina() {
                     <div class="content" id="dadosComponentes">
                     <div class="infoComponents">
                         <p>Componentes</p>
-                        <h3>${resposta[posicao].host_name}</h3>
+                        <h3>${hostName}</h3>
                     </div>
 
                     <div class="labelsComponents">
