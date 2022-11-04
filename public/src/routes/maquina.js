@@ -19,6 +19,10 @@ router.get("/listarInformacoesMaquina", function (req, res) {
     maquinaController.listarInformacoesMaquina(req, res);
 });
 
+router.get("/listarDadosMaquina", function (req, res) {
+    maquinaController.listarDadosMaquina(req, res);
+});
+
 
 //Recebendo os dados do html e direcionando para a função cadastrar de maquinaController.js
 router.post("/cadastrarMaquina", function (req, res) {
