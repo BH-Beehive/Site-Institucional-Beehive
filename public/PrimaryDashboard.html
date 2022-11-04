@@ -92,7 +92,7 @@
             <div class="backGroundDash">
                 <div class="content">
                     <div class="selectAndButtons">
-                        <select name="" id="selectSetor">
+                        <select name="selectSetor" id="selectSetor">
                             <option id="optionSetor" value="todos">Setor: Nenhum</option>
                         </select>
 
@@ -130,11 +130,10 @@
                                 <button class="fecharModalMaquina" onclick="fecharModalMaquina()"><p>X</p></button>
                                 <div class="text-modal-dashboard"><p>Cadastre uma máquina</p></div>
                                 <div class="div-inputs-dashboard">
-                                <input type="text" class="inputs-dashboard" placeholder="Host name:">
-                                <input type="number" class="inputs-dashboard" placeholder="token:">
+                                <input type="text" class="inputs-dashboard" placeholder="Host name:" id="inputHostName">
                                 </div>  
                                 <div class="div-inputs-dashboard">
-                                <input type="number" class="inputs-dashboard" placeholder="Setor:">
+                                <input type="number" class="inputs-dashboard" placeholder="Setor:" id="inputSetor">
                                 </div>
                                 <button class="cadastrar-maquina">CADASTRAR</button>
                             </div>
@@ -143,7 +142,7 @@
                                 <button class="fecharModalSetor" onclick="fecharModalSetor()"><p>X</p></button>
                                 <div class="text-modal-Setor"><p>Cadastre um Setor</p></div>
                                 <div class="div-inputs-Setor">
-                                <input type="text" class="inputs-Setor" placeholder="Nome do setor:">
+                                <input type="text" class="inputs-Setor" placeholder="Nome do setor:" id="inputNomeSetor">
                                 <input type="number" class="inputs-Setor" placeholder="Nível:">
                                 </div>  
                                 <button class="cadastrar-Setor">CADASTRAR</button>
@@ -341,29 +340,3 @@
 <script src="js/charts/doughtnutjs/chartsDoughnut1.js"></script>
 <script src="js/charts/doughtnutjs/chartsDoughnut2.js"></script>
 <script src="js/charts/lineChart/lineComponent.js"></script>
-<script>
-
-
-    function abrirModalMaquina(){
-        var divModal = document.getElementById("divModalMaquina");
-        divModal.style.display = "flex";
-    }
-
-    function abrirModalSetor(){
-        var divModalSetor = document.getElementById("divModalSetor");
-        divModalSetor.style.display = "flex";
-    }
-
-    function fecharModalMaquina(){
-        var divModal = document.getElementById("divModalMaquina");
-        divModal.style.display = "none";
-    }
-
-    
-    function fecharModalSetor(){
-        var divModalSetor = document.getElementById("divModalSetor");
-        divModalSetor.style.display = "none";
-    }
-
-
-</script>

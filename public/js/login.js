@@ -85,6 +85,7 @@ function entrar() {
                         sessionStorage.NOME_EMPRESA = json.nome_empresa;
                         sessionStorage.ID_SUPORTE = null;
                         sessionStorage.NOME_SUPORTE = null;
+                        sessionStorage.MAQUINA_AGORA = 'maquina'
                         setTimeout(function () {
                             window.location = "gerenciarContas.html";
                         }, 1000);

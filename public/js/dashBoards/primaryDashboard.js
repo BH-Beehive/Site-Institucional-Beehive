@@ -73,7 +73,7 @@ function resgatarFkSetor() {
 }
 
 function cadastrarSetor() {
-    let nomeVar = inputNome.value;
+    let nomeVar = inputHostName.value;
     let idEmpresaVar = sessionStorage.ID_EMPRESA;
     let nivelVar = inputCelular.value;
 
@@ -166,81 +166,95 @@ function verMachine(host_name) {
 }
 
 function listarMaquinas() {
-    listaMaquinas.innerHTML = ``;
-    let idEmpresa = sessionStorage.ID_EMPRESA
-    fetch(`/maquina/listarMaquinas?idEmpresa=${idEmpresa}`).then(function (resposta) {
-        if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-                for (var posicao = 0; posicao < resposta.length; posicao++) {
-                    listaMaquinas.innerHTML += `
-                        <div class="ItensMaquinasContent">
-
-                            <div class="itemMaquina">
-                                <div class="nomesMaquina">
-                                    <div class="divAlerta">
+    let select = document.getElementById('selectSetor');
+    let selectNomeSetor = select.options[select.selectedIndex].value;
+    if(selectNomeSetor != "todos") {
+        sessionStorage.MAQUINA_AGORA = 'maquina'
+        listarPorSetor()
+    }else {
+        listaMaquinas.innerHTML = ``;
+        let idEmpresa = sessionStorage.ID_EMPRESA
+        fetch(`/maquina/listarMaquinas?idEmpresa=${idEmpresa}`).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    for (var posicao = 0; posicao < resposta.length; posicao++) {
+                        listaMaquinas.innerHTML += `
+                            <div class="ItensMaquinasContent">
+    
+                                <div class="itemMaquina">
+                                    <div class="nomesMaquina">
+                                        <div class="divAlerta">
+                                        </div>
+    
+                                        <h5>${resposta[posicao].host_name}</h5>
                                     </div>
-
-                                    <h5>${resposta[posicao].host_name}</h5>
+    
+                                    <h5 class="setorTopic">${resposta[posicao].nome_setor}</h5>
+    
+                                    <div class="divVerMaquina">
+                                        <i onclick="verMachine('${resposta[posicao].host_name}')"
+                                            class="fa regular fa-arrow-up-right-from-square"></i>
+                                    </div>
                                 </div>
-
-                                <h5 class="setorTopic">${resposta[posicao].nome_setor}</h5>
-
-                                <div class="divVerMaquina">
-                                    <i onclick="verMachine('${resposta[posicao].host_name}')"
-                                        class="fa regular fa-arrow-up-right-from-square"></i>
-                                </div>
-                            </div>
-                        </div>`
-                    listaIdMaquina.push(resposta[posicao].host_name)
-                }
-                console.log(listaIdMaquina)
-            });
-        } else {
-            console.log("Houve um erro ao tentar listar maquinas!");
-            resposta.text().then(texto => {
-                console.error(texto);
-            });
-        }
-    })
+                            </div>`
+                        listaIdMaquina.push(resposta[posicao].host_name)
+                    }
+                    console.log(listaIdMaquina)
+                });
+            } else {
+                console.log("Houve um erro ao tentar listar maquinas!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+        })
+    }
 }
 
 function listarServidor() {
-    listaMaquinas.innerHTML = ``;
-    let idEmpresa = sessionStorage.ID_EMPRESA
-    fetch(`/maquina/listarServidor?idEmpresa=${idEmpresa}`).then(function (resposta) {
-        if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-                for (var posicao = 0; posicao < resposta.length; posicao++) {
-                    listaMaquinas.innerHTML += `
-                        <div class="ItensMaquinasContent">
+    let select = document.getElementById('selectSetor');
+    let selectNomeSetor = select.options[select.selectedIndex].value;
+    if(selectNomeSetor != "todos") {
+        sessionStorage.MAQUINA_AGORA = 'servidor'
+        listarPorSetor()
+    }else{
+        listaMaquinas.innerHTML = ``;
+        let idEmpresa = sessionStorage.ID_EMPRESA
+        fetch(`/maquina/listarServidor?idEmpresa=${idEmpresa}`).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    for (var posicao = 0; posicao < resposta.length; posicao++) {
+                        listaMaquinas.innerHTML += `
+                            <div class="ItensMaquinasContent">
 
-                            <div class="itemMaquina">
-                                <div class="nomesMaquina">
-                                    <div class="divAlerta">
+                                <div class="itemMaquina">
+                                    <div class="nomesMaquina">
+                                        <div class="divAlerta">
+                                        </div>
+
+                                        <h5>${resposta[posicao].host_name}</h5>
                                     </div>
 
-                                    <h5>${resposta[posicao].host_name}</h5>
-                                </div>
+                                    <h5 class="setorTopic">${resposta[posicao].nome_setor}</h5>
 
-                                <h5 class="setorTopic">${resposta[posicao].nome_setor}</h5>
-
-                                <div class="divVerMaquina">
-                                    <i onclick="verMachine()"
-                                        class="fa regular fa-arrow-up-right-from-square"></i>
+                                    <div class="divVerMaquina">
+                                        <i onclick="verMachine()"
+                                            class="fa regular fa-arrow-up-right-from-square"></i>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>`
-                        listaIdMaquina.push(resposta[posicao].host_name)
-                }
-                console.log(listaIdMaquina)
-            });
-        } else {
-            console.log("Houve um erro ao tentar listar maquinas!");
-            resposta.text().then(texto => {
-                console.error(texto);
-            });
-        }
-    })
+                            </div>`
+                            listaIdMaquina.push(resposta[posicao].host_name)
+                    }
+                    console.log(listaIdMaquina)
+                });
+            } else {
+                console.log("Houve um erro ao tentar listar maquinas!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+        })
+    }
 }
 
 function listarSetor() {
@@ -248,7 +262,7 @@ function listarSetor() {
                                 <option value="todos">Setor: Nenhum</option>
                             </select>`;
     let idEmpresa = sessionStorage.ID_EMPRESA
-    fetch(`/setor/listarSetor`).then(function (resposta) {
+    fetch(`/setor/listarSetor?idEmpresa=${idEmpresa}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 if(resposta.length != null) {
@@ -269,4 +283,67 @@ function listarSetor() {
             });
         }
     })
+}
+
+function listarPorSetor() {
+    let select = document.getElementById('selectSetor');
+    let selectNomeSetor = select.options[select.selectedIndex].value;
+    let nomeSetor = parseInt(selectNomeSetor);
+    let estiloMaquina = sessionStorage.MAQUINA_AGORA;
+    let idEmpresa = sessionStorage.ID_EMPRESA
+    fetch(`/setor/listarPorSetor?nome_setor=${nomeSetor + 1}&tipo=${estiloMaquina}&idEmpresa=${idEmpresa}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                listaMaquinas.innerHTML = ``
+                for (var posicao = 0; posicao < resposta.length; posicao++) {
+                    listaMaquinas.innerHTML += `
+                <div class="ItensMaquinasContent">
+
+                            <div class="itemMaquina">
+                                <div class="nomesMaquina">
+                                    <div class="divAlerta">
+                                    </div>
+
+                                    <h5>${resposta[posicao].host_name}</h5>
+                                </div>
+
+                                <h5 class="setorTopic">${resposta[posicao].nome_setor}</h5>
+
+                                <div class="divVerMaquina">
+                                    <i onclick="verMachine()"
+                                        class="fa regular fa-arrow-up-right-from-square"></i>
+                                </div>
+                            </div>
+                        </div>`
+                        listaIdMaquina.push(resposta[posicao].host_name)
+                    }  
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar maquinas!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    })   
+}
+
+function abrirModalMaquina(){
+    var divModal = document.getElementById("divModalMaquina");
+    divModal.style.display = "flex";
+}
+
+function abrirModalSetor(){
+    var divModalSetor = document.getElementById("divModalSetor");
+    divModalSetor.style.display = "flex";
+}
+
+function fecharModalMaquina(){
+    var divModal = document.getElementById("divModalMaquina");
+    divModal.style.display = "none";
+}
+
+
+function fecharModalSetor(){
+    var divModalSetor = document.getElementById("divModalSetor");
+    divModalSetor.style.display = "none";
 }
