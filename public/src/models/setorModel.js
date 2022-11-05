@@ -31,6 +31,26 @@ function mostrarTotalMaquinas(id_empresa) {
     return database.executar(instrucao);
 }
 
+function mostrarTotalMaquinasSelectSelecionado(id_empresa, setor) {
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function mostrarTotalMaquinasSelectSelecionado()", id_empresa, setor);
+    var instrucao = `
+        select count(id_maquina) as 'totalMaquinas' from setor join maquina on id_setor = fk_setor 
+        join empresa on id_empresa = maquina.fk_empresa where id_empresa = ${id_empresa} and id_setor = ${setor} and tipo = "maquina";
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function mostrarTotalServidorSelectSelecionado(id_empresa, setor) {
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function mostrarTotalServidorSelectSelecionado()", id_empresa, setor);
+    var instrucao = `
+        select count(id_maquina) as 'totalservidores' from setor join maquina on id_setor = fk_setor 
+        join empresa on id_empresa = maquina.fk_empresa where id_empresa = ${id_empresa} and id_setor = ${setor} and tipo = "servidor";
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function mostrarTotalServidor(id_empresa) {
     console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function mostrarTotalServidor()", id_empresa);
     var instrucao = `
@@ -63,5 +83,7 @@ module.exports = {
     mostrarTotalMaquinas,
     listarSetor,
     listarPorSetor,
+    mostrarTotalServidorSelectSelecionado,
+    mostrarTotalMaquinasSelectSelecionado,
     mostrarTotalServidor
 };

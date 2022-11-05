@@ -140,6 +140,27 @@ function mostrarTotalMaquinas() {
     })
 }
 
+function mostrarTotalMaquinasSelectSelecionado() {
+    let idEmpresa = sessionStorage.ID_EMPRESA
+    let select = document.getElementById('selectSetor');
+    let selectNomeSetor = select.options[select.selectedIndex].value;
+    let nomeSetor = parseInt(selectNomeSetor);
+    fetch(`/setor/mostrarTotalMaquinasSelectSelecionado?idEmpresa=${idEmpresa}&nomeSetor=${nomeSetor + 1}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                for (var posicao = 0; posicao < resposta.length; posicao++) {
+                    mostrarTotalDeMaquinas.innerHTML = `<span>${resposta[posicao].totalMaquinas}</span>`
+                }
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar maquinas!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    })
+}
+
 function mostrarTotalServidor() {
     let idEmpresa = sessionStorage.ID_EMPRESA
     fetch(`/setor/mostrarTotalServidor?idEmpresa=${idEmpresa}`).then(function (resposta) {
@@ -147,6 +168,27 @@ function mostrarTotalServidor() {
             resposta.json().then(function (resposta) {
                 for (var posicao = 0; posicao < resposta.length; posicao++) {
                     mostrarTotalDeServidor.innerHTML = `<span>${resposta[posicao].totalServidor}</span>`
+                }
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar maquinas!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    })
+}
+
+function mostrarTotalServidorSelectSelecionado() {
+    let idEmpresa = sessionStorage.ID_EMPRESA
+    let select = document.getElementById('selectSetor');
+    let selectNomeSetor = select.options[select.selectedIndex].value;
+    let nomeSetor = parseInt(selectNomeSetor);
+    fetch(`/setor/mostrarTotalServidorSelectSelecionado?idEmpresa=${idEmpresa}&nomeSetor=${nomeSetor + 1}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                for (var posicao = 0; posicao < resposta.length; posicao++) {
+                    mostrarTotalDeServidor.innerHTML = `<span>${resposta[posicao].totalservidores}</span>`
                 }
             });
         } else {
@@ -172,6 +214,8 @@ function listarMaquinas() {
         sessionStorage.MAQUINA_AGORA = 'maquina'
         listarPorSetor()
     }else {
+        mostrarTotalMaquinas()
+        mostrarTotalServidor()
         listaMaquinas.innerHTML = ``;
         let idEmpresa = sessionStorage.ID_EMPRESA
         fetch(`/maquina/listarMaquinas?idEmpresa=${idEmpresa}`).then(function (resposta) {
@@ -218,6 +262,8 @@ function listarServidor() {
         sessionStorage.MAQUINA_AGORA = 'servidor'
         listarPorSetor()
     }else{
+        mostrarTotalMaquinas()
+        mostrarTotalServidor()
         listaMaquinas.innerHTML = ``;
         let idEmpresa = sessionStorage.ID_EMPRESA
         fetch(`/maquina/listarServidor?idEmpresa=${idEmpresa}`).then(function (resposta) {
@@ -287,6 +333,8 @@ function listarSetor() {
 
 function listarPorSetor() {
     listaMaquinas.innerHTML = ``
+    mostrarTotalMaquinasSelectSelecionado()
+    mostrarTotalServidorSelectSelecionado()
     let select = document.getElementById('selectSetor');
     let selectNomeSetor = select.options[select.selectedIndex].value;
     let nomeSetor = parseInt(selectNomeSetor);
