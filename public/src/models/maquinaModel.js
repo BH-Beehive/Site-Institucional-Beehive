@@ -13,7 +13,7 @@ function listarMaquinas(id_empresa) {
 function listarInformacoesMaquina(id_empresa, host_name) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMaquinas()", id_empresa, host_name);
     var instrucao = `
-    SELECT arquitetura, sistema_operacional FROM setor JOIN maquina on id_setor = fk_setor 
+    SELECT processador, arquitetura, sistema_operacional FROM setor JOIN maquina on id_setor = fk_setor 
     JOIN empresa on id_empresa = maquina.fk_empresa WHERE id_empresa = ${id_empresa} and host_name = "${host_name}";
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -23,7 +23,7 @@ function listarInformacoesMaquina(id_empresa, host_name) {
 function listarDadosMaquina(host_name) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarDadosMaquinas()",host_name);
     var instrucao = `
-    SELECT host_name,cpu_uso,memoria_uso,disco_uso FROM registro JOIN maquina on id_maquina = fk_maquina WHERE host_name = "${host_name}" order by id_registro desc limit 1;
+    SELECT cpu_uso,memoria_uso,disco_uso FROM registro JOIN maquina on id_maquina = fk_maquina WHERE host_name = "${host_name}" order by id_registro desc limit 1;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

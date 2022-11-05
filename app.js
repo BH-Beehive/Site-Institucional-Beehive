@@ -11,6 +11,7 @@ var indexRouter =   require("./public/src/routes/index");
 var usuarioRouter = require("./public/src/routes/usuario");
 var maquinaRouter = require("./public/src/routes/maquina");
 var setorRouter =   require("./public/src/routes/setor");
+var registroRouter =   require("./public/src/routes/registro");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -21,6 +22,7 @@ app.use("/", indexRouter);
 app.use("/usuario", usuarioRouter);
 app.use("/maquina", maquinaRouter);
 app.use("/setor",   setorRouter);
+app.use("/registro",   registroRouter);
 
 
 

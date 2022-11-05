@@ -26,12 +26,11 @@
     <!-- css's components -->
     <link rel="stylesheet" href="css/Components/sidebar.css">
     <!-- script -->
-    <script src="js/dashBoards/maquinaDashboard.js"></script>
 
     <title>Dashboard | Máquina</title>
 </head>
 
-<body onload="listarInformacoesMaquina(),listarDadosMaquina()">
+<body onload="listarInformacoesMaquina(), listarDadosMaquina()">
     <div class="container">
 
         <!-- Component sideBar -->
@@ -216,7 +215,7 @@
                                                 <h4>01</h4>
                                                 <h5>RAM</h5>
                                                 <div class="progressBarFullComponent">
-                                                    <div class="progressBarInsideComponent divVermelhoComponent">
+                                                    <div class="progressBarInsideComponentRam divVermelhoComponent" id="alterarRam">
 
                                                     </div>
                                                 </div>
@@ -230,7 +229,7 @@
                                                 <h4>01</h4>
                                                 <h5>CPU</h5>
                                                 <div class="progressBarFullComponent">
-                                                    <div class="progressBarInsideComponent divAzulClaroComponent">
+                                                    <div id="progressBarInsideComponentCpu" class="progressBarInsideComponentCpu">
 
                                                     </div>
                                                 </div>
@@ -244,7 +243,7 @@
                                                 <h4>02</h4>
                                                 <h5>DISCO</h5>
                                                 <div class="progressBarFullComponent">
-                                                    <div class="progressBarInsideComponent divAmarelaComponent">
+                                                    <div class="progressBarInsideComponentDisco divAmarelaComponent" id="alterarDisco">
 
                                                     </div>
                                                 </div>
@@ -492,6 +491,7 @@
 
         </div>
     </div>
+    <script src="js/dashBoards/maquinaDashboard.js"></script>
 </body>
 
 </html>

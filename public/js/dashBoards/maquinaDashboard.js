@@ -10,8 +10,8 @@ function listarInformacoesMaquina() {
                                 <h2>${hostName}</h2>
                                 <div class="infosMaquina">
                                     <div class="itemInfoMaquina">
-                                        <h4>Fabricante</h4>
-                                        <p>Microsoft</p>
+                                        <h4>Processador</h4>
+                                        <p>${resposta[posicao].processador}</p>
                                     </div>
 
                                     <div class="itemInfoMaquina">
@@ -52,7 +52,7 @@ function listarDadosMaquina() {
             resposta.json().then(function (resposta) {
                 for (var posicao = 0; posicao < 1; posicao++) {
                     dadosComponentes.innerHTML = `
-                    <div class="content" id="dadosComponentes">
+                    <div class="content">
                     <div class="infoComponents">
                         <p>Componentes</p>
                         <h3>${hostName}</h3>
@@ -70,7 +70,7 @@ function listarDadosMaquina() {
                             <h4>01</h4>
                             <h5>RAM</h5>
                             <div class="progressBarFullComponent">
-                                <div class="progressBarInsideComponent divVermelhoComponent">
+                                <div class="progressBarInsideComponentRam divVermelhoComponent">
 
                                 </div>
                             </div>
@@ -84,7 +84,7 @@ function listarDadosMaquina() {
                             <h4>01</h4>
                             <h5>CPU</h5>
                             <div class="progressBarFullComponent">
-                                <div class="progressBarInsideComponent divAzulClaroComponent">
+                                <div class="progressBarInsideComponentCpu">
 
                                 </div>
                             </div>
@@ -98,7 +98,7 @@ function listarDadosMaquina() {
                             <h4>02</h4>
                             <h5>DISCO</h5>
                             <div class="progressBarFullComponent">
-                                <div class="progressBarInsideComponent divAmarelaComponent">
+                                <div class="progressBarInsideComponentDisco divAmarelaComponent">
 
                                 </div>
                             </div>
@@ -111,8 +111,11 @@ function listarDadosMaquina() {
                 </div>
                     
                         `
+                let cpu = progressBarInsideComponentCpu.value;
+                console.log(cpu)
+                cpu.style.width = `35%`
                 }
-
+                
             });
         } else {
             console.log("Houve um erro ao tentar listar dados maquinas!");
