@@ -147,3 +147,67 @@ td{
     width: 28px;
     height: 28px;
 }
+
+.div-inputs-Suporte{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.inputs-Suporte{
+    width: 45%;
+    border: none;
+    border-bottom: 1px solid #4D4D4D;
+    height: 25px;
+    outline: none;
+    margin-top: 5%;
+    padding-left: 5px;
+}
+
+#divModalSuporte{
+    width: 40%;
+    height: 300px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cadastrar-Suporte{
+    margin-top: 5%;
+    outline: none;
+    background-color: #35342F;
+    color: white;
+    width: 80%;
+    height: 30px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+}
+
+.fecharModalSuporte{
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    height: 25px;
+    width: 30px;
+    border-radius: 2px;
+    margin-bottom: 2%;
+}
+
+.fecharModalSuporte p{
+    margin: 0;
+    font-size: 15px;
+}
+
+.text-modal-Suporte p{
+    margin: 0;
+    font-size: 18px;
+}
