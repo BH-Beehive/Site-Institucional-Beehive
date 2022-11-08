@@ -27,4 +27,12 @@ router.get("/listarPorSetor", function (req, res) {
     setorController.listarPorSetor(req, res);
 })
 
+router.get("/mostrarTotalMaquinasSelectSelecionado", function (req, res) {
+    setorController.mostrarTotalMaquinasSelectSelecionado(req, res);
+})
+
+router.get("/mostrarTotalServidorSelectSelecionado", function (req, res) {
+    setorController.mostrarTotalServidorSelectSelecionado(req, res);
+})
+
 module.exports = router;

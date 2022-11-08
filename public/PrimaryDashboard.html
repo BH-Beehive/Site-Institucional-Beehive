@@ -24,6 +24,9 @@
 
     <!-- js's -->
     <script src="js/dashBoards/primaryDashboard.js"></script>
+    <script src="js/dashBoards/registroMacro.js"></script>
+    <script src="js/charts/doughtnutjs/chartsDoughnut1.js"></script>
+    <script src="js/charts/doughtnutjs/chartsDoughnut2.js"></script>
     <!--  -->
     <!-- fontAwesome -->
     <script src="https://kit.fontawesome.com/7d521e6e81.js" crossorigin="anonymous"></script>
@@ -36,7 +39,7 @@
     <title>Dashboard</title>
 </head>
 
-<body onload="mostrarTotalMaquinas() , mostrarTotalServidor(), listarMaquinas(), listarSetor()">
+<body onload="mostrarTotalMaquinas() , mostrarTotalServidor(), listarMaquinas(), listarSetor(), registroPizzaMaquina(), registroPizzaServidor()">
     <div class="container">
 
         <!-- Component sideBar -->
@@ -92,7 +95,7 @@
             <div class="backGroundDash">
                 <div class="content">
                     <div class="selectAndButtons">
-                        <select name="selectSetor" id="selectSetor">
+                        <select name="selectSetor" id="selectSetor" onchange="listarMaquinas()">
                             <option id="optionSetor" value="todos">Setor: Nenhum</option>
                         </select>
 
@@ -172,21 +175,21 @@
                                             <h4>Máquinas</h4>
                                             <h2 id="mostrarTotalDeMaquinas">0</h2>
                                         </div>
-                                        <div class="metricasContent">
+                                        <div class="metricasContent" id="atualizarMetricasMaquina">
                                             <div class="metricas">
                                                 <div class="itemMetrica">
                                                     <div class="divcorAlerta divVerde"></div>
-                                                    <p><span>62%</span> Normal</p>
+                                                    <p><span>0%</span> Normal</p>
                                                 </div>
 
                                                 <div class="itemMetrica">
                                                     <div class="divcorAlerta divAmarela"></div>
-                                                    <p><span>23%</span> Alerta</p>
+                                                    <p><span>0%</span> Alerta</p>
                                                 </div>
 
                                                 <div class="itemMetrica">
                                                     <div class="divcorAlerta divVermelha"></div>
-                                                    <p><span>13%</span> Crítico</p>
+                                                    <p><span>0%</span> Crítico</p>
                                                 </div>
                                             </div>
                                             <div class="chart">
@@ -203,21 +206,21 @@
                                             <h4>Servidores</h4>
                                             <h2 id="mostrarTotalDeServidor">0</h2>
                                         </div>
-                                        <div class="metricasContent">
-                                            <div class="metricas">
+                                        <div class="metricasContent" id="atualizarMetricasServidor">
+                                            <div class="metricas" >
                                                 <div class="itemMetrica">
                                                     <div class="divcorAlerta divVerde"></div>
-                                                    <p><span>62%</span> Normal</p>
+                                                    <p><span>0%</span> Normal</p>
                                                 </div>
 
                                                 <div class="itemMetrica">
                                                     <div class="divcorAlerta divAmarela"></div>
-                                                    <p><span>23%</span> Alerta</p>
+                                                    <p><span>0%</span> Alerta</p>
                                                 </div>
 
                                                 <div class="itemMetrica">
                                                     <div class="divcorAlerta divVermelha"></div>
-                                                    <p><span>13%</span> Crítico</p>
+                                                    <p><span>0%</span> Crítico</p>
                                                 </div>
                                             </div>
                                             <div class="chart">
@@ -348,6 +351,5 @@
 
 </html>
 
-<script src="js/charts/doughtnutjs/chartsDoughnut1.js"></script>
-<script src="js/charts/doughtnutjs/chartsDoughnut2.js"></script>
+
 <script src="js/charts/lineChart/lineComponent.js"></script>

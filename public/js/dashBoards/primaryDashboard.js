@@ -140,6 +140,27 @@ function mostrarTotalMaquinas() {
     })
 }
 
+function mostrarTotalMaquinasSelectSelecionado() {
+    let idEmpresa = sessionStorage.ID_EMPRESA
+    let select = document.getElementById('selectSetor');
+    let selectNomeSetor = select.options[select.selectedIndex].value;
+    let nomeSetor = parseInt(selectNomeSetor);
+    fetch(`/setor/mostrarTotalMaquinasSelectSelecionado?idEmpresa=${idEmpresa}&nomeSetor=${nomeSetor + 1}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                for (var posicao = 0; posicao < resposta.length; posicao++) {
+                    mostrarTotalDeMaquinas.innerHTML = `<span>${resposta[posicao].totalMaquinas}</span>`
+                }
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar maquinas!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    })
+}
+
 function mostrarTotalServidor() {
     let idEmpresa = sessionStorage.ID_EMPRESA
     fetch(`/setor/mostrarTotalServidor?idEmpresa=${idEmpresa}`).then(function (resposta) {
@@ -147,6 +168,27 @@ function mostrarTotalServidor() {
             resposta.json().then(function (resposta) {
                 for (var posicao = 0; posicao < resposta.length; posicao++) {
                     mostrarTotalDeServidor.innerHTML = `<span>${resposta[posicao].totalServidor}</span>`
+                }
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar maquinas!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    })
+}
+
+function mostrarTotalServidorSelectSelecionado() {
+    let idEmpresa = sessionStorage.ID_EMPRESA
+    let select = document.getElementById('selectSetor');
+    let selectNomeSetor = select.options[select.selectedIndex].value;
+    let nomeSetor = parseInt(selectNomeSetor);
+    fetch(`/setor/mostrarTotalServidorSelectSelecionado?idEmpresa=${idEmpresa}&nomeSetor=${nomeSetor + 1}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                for (var posicao = 0; posicao < resposta.length; posicao++) {
+                    mostrarTotalDeServidor.innerHTML = `<span>${resposta[posicao].totalservidores}</span>`
                 }
             });
         } else {
@@ -172,6 +214,10 @@ function listarMaquinas() {
         sessionStorage.MAQUINA_AGORA = 'maquina'
         listarPorSetor()
     }else {
+        mostrarTotalMaquinas()
+        mostrarTotalServidor()
+        registroPizzaMaquina()
+        registroPizzaServidor()
         listaMaquinas.innerHTML = ``;
         let idEmpresa = sessionStorage.ID_EMPRESA
         fetch(`/maquina/listarMaquinas?idEmpresa=${idEmpresa}`).then(function (resposta) {
@@ -218,6 +264,10 @@ function listarServidor() {
         sessionStorage.MAQUINA_AGORA = 'servidor'
         listarPorSetor()
     }else{
+        mostrarTotalMaquinas()
+        mostrarTotalServidor()
+        registroPizzaMaquina()
+        registroPizzaServidor()
         listaMaquinas.innerHTML = ``;
         let idEmpresa = sessionStorage.ID_EMPRESA
         fetch(`/maquina/listarServidor?idEmpresa=${idEmpresa}`).then(function (resposta) {
@@ -238,7 +288,7 @@ function listarServidor() {
                                     <h5 class="setorTopic">${resposta[posicao].nome_setor}</h5>
 
                                     <div class="divVerMaquina">
-                                        <i onclick="verMachine()"
+                                        <i onclick="verMachine('${resposta[posicao].host_name}')"
                                             class="fa regular fa-arrow-up-right-from-square"></i>
                                     </div>
                                 </div>
@@ -258,7 +308,7 @@ function listarServidor() {
 }
 
 function listarSetor() {
-    selectSetor.innerHTML = `<select name="" id="selectSetor">
+    selectSetor.innerHTML = `<select name="" id="selectSetor" onchange="listarMaquinas()">
                                 <option value="todos">Setor: Nenhum</option>
                             </select>`;
     let idEmpresa = sessionStorage.ID_EMPRESA
@@ -266,7 +316,7 @@ function listarSetor() {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 if(resposta.length != null) {
-                    selectSetor.innerHTML = `<select name="" id="selectSetor">
+                    selectSetor.innerHTML = `<select name="" id="selectSetor" onchange="listarPorSetor()">
                                 <option value="todos">Setor: Todos</option>
                                             </select>`;
                     for (var posicao = 0; posicao < resposta.length; posicao++) {
@@ -286,37 +336,42 @@ function listarSetor() {
 }
 
 function listarPorSetor() {
+    listaMaquinas.innerHTML = ``
+    mostrarTotalMaquinasSelectSelecionado()
+    mostrarTotalServidorSelectSelecionado()
+    registroPizzaMaquinaPorSetor()
+    registroPizzaServidorPorSetor() 
     let select = document.getElementById('selectSetor');
     let selectNomeSetor = select.options[select.selectedIndex].value;
     let nomeSetor = parseInt(selectNomeSetor);
-    let estiloMaquina = sessionStorage.MAQUINA_AGORA;
+    let tipoMaquina = sessionStorage.MAQUINA_AGORA;
     let idEmpresa = sessionStorage.ID_EMPRESA
-    fetch(`/setor/listarPorSetor?nome_setor=${nomeSetor + 1}&tipo=${estiloMaquina}&idEmpresa=${idEmpresa}`).then(function (resposta) {
+    console.log('Estou na primaryDash:' + nomeSetor, tipoMaquina, idEmpresa)
+    fetch(`/setor/listarPorSetor?idEmpresa=${idEmpresa}&&tipoMaquina=${tipoMaquina}&&nomeSetor=${nomeSetor + 1}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
-                listaMaquinas.innerHTML = ``
-                for (var posicao = 0; posicao < resposta.length; posicao++) {
-                    listaMaquinas.innerHTML += `
-                <div class="ItensMaquinasContent">
-
-                            <div class="itemMaquina">
-                                <div class="nomesMaquina">
-                                    <div class="divAlerta">
+                    for (var posicao = 0; posicao < resposta.length; posicao++) {
+                        listaMaquinas.innerHTML += `
+                    <div class="ItensMaquinasContent">
+    
+                                <div class="itemMaquina">
+                                    <div class="nomesMaquina">
+                                        <div class="divAlerta">
+                                        </div>
+    
+                                        <h5>${resposta[posicao].host_name}</h5>
                                     </div>
-
-                                    <h5>${resposta[posicao].host_name}</h5>
+    
+                                    <h5 class="setorTopic">${resposta[posicao].nome_setor}</h5>
+    
+                                    <div class="divVerMaquina">
+                                        <i onclick="verMachine()"
+                                            class="fa regular fa-arrow-up-right-from-square"></i>
+                                    </div>
                                 </div>
-
-                                <h5 class="setorTopic">${resposta[posicao].nome_setor}</h5>
-
-                                <div class="divVerMaquina">
-                                    <i onclick="verMachine()"
-                                        class="fa regular fa-arrow-up-right-from-square"></i>
-                                </div>
-                            </div>
-                        </div>`
-                        listaIdMaquina.push(resposta[posicao].host_name)
-                    }  
+                            </div>`
+                            listaIdMaquina.push(resposta[posicao].host_name)
+                        }  
             });
         } else {
             console.log("Houve um erro ao tentar listar maquinas!");
