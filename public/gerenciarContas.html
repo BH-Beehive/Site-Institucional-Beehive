@@ -93,9 +93,23 @@
                         </div>
 
                         <div class="button-new">
-                            <button class="new">Novo</button>
+                            <button onclick="abrirModalSuporte()" class="new">Novo</button>
                         </div>
 
+                    </div>
+
+                    <div class="modals-suporte" id="divModalSuporte">
+                        <button class="fecharModalSuporte" onclick="fecharModalSuporte()"><p>X</p></button>
+                        <div class="text-modal-Suporte"><p>Cadastre um Suporte</p></div>
+                        <div class="div-inputs-Suporte">
+                        <input type="text" class="inputs-Suporte" placeholder="Nome:" id="inputNomeSuporte">
+                        <input type="text" class="inputs-Suporte" placeholder="Identificação:" id="inputIdSuporte">
+                        </div>  
+                        <div class="div-inputs-Suporte">
+                        <input type="text" class="inputs-Suporte" placeholder="Email(Slack):" id="inputEmailSuporte">
+                        <input type="text" class="inputs-Suporte" placeholder="Telefone:" id="inputTelSuporte">
+                        </div> 
+                        <button class="cadastrar-Suporte">CADASTRAR</button>
                     </div>
 
                     <table>
@@ -122,3 +136,16 @@
 </body>
 
 </html>
+
+<script>
+    function abrirModalSuporte(){
+    var divModalSuporte = document.getElementById("divModalSuporte");
+    divModalSuporte.style.display = "flex";
+    }
+
+    function fecharModalSuporte(){
+    var divModalSuporte = document.getElementById("divModalSuporte");
+    divModalSuporte.style.display = "none";
+    }
+
+</script>

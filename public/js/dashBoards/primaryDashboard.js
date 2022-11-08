@@ -385,11 +385,15 @@ function listarPorSetor() {
 function abrirModalMaquina(){
     var divModal = document.getElementById("divModalMaquina");
     divModal.style.display = "flex";
+    var divModalSetor = document.getElementById("divModalSetor");
+    divModalSetor.style.display = "none";
 }
 
 function abrirModalSetor(){
     var divModalSetor = document.getElementById("divModalSetor");
     divModalSetor.style.display = "flex";
+    var divModal = document.getElementById("divModalMaquina");
+    divModal.style.display = "none";
 }
 
 function fecharModalMaquina(){

@@ -19,11 +19,12 @@
 
 .inputs-dashboard{
     width: 45%;
-    border: 1px solid #4D4D4D;
+    border: none;
+    border-bottom: 1px solid #4D4D4D;
     height: 25px;
-    border-radius: 2px;
     outline: none;
     margin-top: 5%;
+    padding-left: 5px;
 }
 
 #divModalMaquina{
@@ -79,11 +80,12 @@
 
 .inputs-Setor{
     width: 45%;
-    border: 1px solid #4D4D4D;
+    border: none;
+    border-bottom: 1px solid #4D4D4D;
     height: 25px;
-    border-radius: 2px;
     outline: none;
     margin-top: 5%;
+    padding-left: 5px;
 }
 
 #divModalSetor{
