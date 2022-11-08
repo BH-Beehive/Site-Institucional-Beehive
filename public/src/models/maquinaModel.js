@@ -23,7 +23,7 @@ function listarInformacoesMaquina(id_empresa, host_name) {
 function listarDadosMaquina(host_name) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarDadosMaquinas()",host_name);
     var instrucao = `
-    SELECT cpu_uso,memoria_uso,disco_uso FROM registro JOIN maquina on id_maquina = fk_maquina WHERE host_name = "${host_name}" order by id_registro desc limit 1;
+    SELECT ROUND(((disco_uso*100)/disco_total),0) as "disco_uso",ROUND(((memoria_uso*100)/memoria_total),0) as "memoria_uso" , cpu_uso FROM registro JOIN maquina on id_maquina = fk_maquina WHERE host_name = '${host_name}' order by id_registro desc limit 1;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
