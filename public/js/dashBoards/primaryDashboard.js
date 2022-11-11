@@ -365,7 +365,7 @@ function listarPorSetor() {
                                     <h5 class="setorTopic">${resposta[posicao].nome_setor}</h5>
     
                                     <div class="divVerMaquina">
-                                        <i onclick="verMachine()"
+                                        <i onclick="verMachine('${resposta[posicao].host_name}')"
                                             class="fa regular fa-arrow-up-right-from-square"></i>
                                     </div>
                                 </div>
