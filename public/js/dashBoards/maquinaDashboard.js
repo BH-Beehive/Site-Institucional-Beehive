@@ -61,7 +61,7 @@ function listarDadosMaquina() {
                     <div class="labelsComponents">
                         <p>#</p>
                         <p>Nome</p>
-                        <p>Porcentagem</p>
+                        <p>% Em Uso</p>
                     </div>
 
                     <div class="contentOfProgressBarComponents">
@@ -111,7 +111,7 @@ function listarDadosMaquina() {
                 </div>
                     
                         `
-                let cpu = progressBarInsideComponentCpu.value;
+                var cpu = progressBarInsideComponentCpu.value;
                 console.log(cpu)
                 cpu.style.width = `35%`
                 }

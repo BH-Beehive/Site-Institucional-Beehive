@@ -147,3 +147,89 @@ td{
     width: 28px;
     height: 28px;
 }
+
+.div-inputs-Suporte{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.inputs-Suporte{
+    width: 100%;
+    border: none;
+    border: 1px solid #4d4d4d93;
+    height: 25px;
+    border-radius: 3px;
+    outline: none;
+    height: 30px;
+    margin-top: 5%;
+    margin-left: 1%;
+    padding-left: 5px;
+}
+
+
+#divModalSuporte{
+    width: 40%;
+    height: 300px;
+    background-color: white;
+    border-radius: 2px;
+    margin-top: 28%;
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
+}
+
+.cadastrar-Suporte{
+    margin-top: 5%;
+    outline: none;
+    background-color: #35342F;
+    color: white;
+    width: 90%;
+    height: 30px;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 2px 4px 40px 2px rgb(0, 0, 0, 0.2);
+}
+
+.fecharModalSuporte{
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    height: 30px;
+    width: 32px;
+    margin: 10px;
+    border-radius: 2px;
+}
+
+.fecharModalSuporte p{
+    margin: 0;
+    font-size: 15px;
+}
+
+.text-modal-Suporte p{
+    margin: 0;
+    font-size: 18px;
+}
+
+.button-position{
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.conteudo-modal{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 90%;
+}

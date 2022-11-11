@@ -76,6 +76,24 @@
         
             <div class="components-navbar">
 
+                <div class="modals-suporte" id="divModalSuporte">
+                    <div class="button-position">
+                    <button class="fecharModalSuporte" onclick="fecharModalSuporte()"><p>X</p></button>
+                    </div>
+                    <div class="conteudo-modal">
+                    <div class="text-modal-Suporte"><p>Cadastre um Suporte</p></div>
+                    <div class="div-inputs-Suporte">
+                    <input type="text" class="inputs-Suporte" placeholder="Nome:" id="inputNomeSuporte">
+                    <input type="text" class="inputs-Suporte" placeholder="Identificação:" id="inputIdSuporte">
+                    </div>  
+                    <div class="div-inputs-Suporte">
+                    <input type="text" class="inputs-Suporte" placeholder="Email(Slack):" id="inputEmailSuporte">
+                    <input type="text" class="inputs-Suporte" placeholder="Telefone:" id="inputTelSuporte">
+                    </div> 
+                    <button class="cadastrar-Suporte">CADASTRAR</button>
+                    </div>
+                </div>
+
                 <div class="itens-navbar">
                 <button class="button-navbar">Download Cliente</button>
                 <img class="img-navbar" src="../public/assets/img/icone-avatar-default.png" alt="">
@@ -93,10 +111,12 @@
                         </div>
 
                         <div class="button-new">
-                            <button class="new">Novo</button>
+                            <button onclick="abrirModalSuporte()" class="new">Novo</button>
                         </div>
 
                     </div>
+
+
 
                     <table>
                         <tr>
@@ -122,3 +142,16 @@
 </body>
 
 </html>
+
+<script>
+    function abrirModalSuporte(){
+    var divModalSuporte = document.getElementById("divModalSuporte");
+    divModalSuporte.style.display = "flex";
+    }
+
+    function fecharModalSuporte(){
+    var divModalSuporte = document.getElementById("divModalSuporte");
+    divModalSuporte.style.display = "none";
+    }
+
+</script>
