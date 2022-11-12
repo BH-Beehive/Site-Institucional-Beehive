@@ -38,7 +38,14 @@
     <script src="js/charts/doughtnutjs/chartsDoughnut1.js"></script>
     <script src="js/charts/doughtnutjs/chartsDoughnut2.js"></script>
     <!-- script -->
-
+    
+    <script>
+        window.fwSettings = {
+            'widget_id': 150000001309
+        };
+        !function () { if ("function" != typeof window.FreshworksWidget) { var n = function () { n.q.push(arguments) }; n.q = [], window.FreshworksWidget = n } }() 
+    </script>
+    <script type='text/javascript' src='https://widget.freshworks.com/widgets/150000001309.js' async defer></script>
     <title>Dashboard</title>
 </head>
 
@@ -161,8 +168,8 @@
                                     <p class="nivel-prioridade-p"><b>Setor:</b></p>
                                     <select name="select-nivel-dashboard" class="inputs-dashboard-select maquina"
                                         id="selectSetores" onload="filtraSetor()">
-                                        <option value="0"disabled selected >Selecione...</option>
-                                        
+                                        <option value="0" disabled selected>Selecione...</option>
+
                                     </select>
                                 </div>
                                 <button class="cadastrar-maquina" onclick="cadastrarMaquina()">CADASTRAR</button>
