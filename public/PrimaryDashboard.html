@@ -42,7 +42,8 @@
     <title>Dashboard</title>
 </head>
 
-<body onload="mostrarTotalMaquinas() , mostrarTotalServidor(), listarMaquinas(), listarSetor(), registroPizzaMaquina(), registroPizzaServidor()">
+<body
+    onload="mostrarTotalMaquinas() , mostrarTotalServidor(), listarMaquinas(), listarSetor(), registroPizzaMaquina(), registroPizzaServidor(),filtraSetor()">
     <div class="container">
 
         <!-- Component sideBar -->
@@ -81,7 +82,7 @@
             </div>
             <hr>
             <div class="sair">
-                <a href="index.html"><img src="assets/icons/saida_icon.png" alt="" ></a>
+                <a href="index.html"><img src="assets/icons/saida_icon.png" alt=""></a>
             </div>
 
         </div>
@@ -103,7 +104,8 @@
                         </select>
 
                         <div class="radiosButton">
-                            <input class="inputRadios" checked type="radio" name="typeMAquina" onclick="listarMaquinas()">
+                            <input class="inputRadios" checked type="radio" name="typeMAquina"
+                                onclick="listarMaquinas()">
                             <h4>Máquinas</h4>
 
                             <input class="inputRadios" type="radio" name="typeMAquina" onclick="listarServidor()">
@@ -132,48 +134,69 @@
 
                         </div>
 
-                            <div class="modals-dashboard" id="divModalMaquina">
-                                <div class="button-position">
-                                <button class="fecharModalMaquina" onclick="fecharModalMaquina()"><p>X</p></button>
+                        <div class="modals-dashboard" id="divModalMaquina">
+                            <div class="button-position">
+                                <button class="fecharModalMaquina" onclick="fecharModalMaquina()">
+                                    <p>X</p>
+                                </button>
+                            </div>
+                            <div class="conteudo-modal">
+                                <div class="text-modal-dashboard">
+                                    <p>Cadastre uma máquina</p>
                                 </div>
-                                <div class="conteudo-modal">
-                                <div class="text-modal-dashboard"><p>Cadastre uma máquina</p></div>
                                 <div class="div-inputs-dashboard">
-                                <input type="text" class="inputs-dashboard" placeholder="Host name:" id="inputHostName">
-                                </div>  
+                                    <input type="text" class="inputs-dashboard" placeholder="Host name:"
+                                        id="inputHostName">
+                                </div>
                                 <div class="div-inputs-Setor select">
-                                    <p class="nivel-prioridade-p"><b>Setor:</b></p>
-                                    <select name="select-nivel-dashboard" class="inputs-dashboard-select maquina" id="">
-                                        <option value="valor1">Cirurgia</option>
-                                        <option value="valor1">Triagem</option>
+                                    <p class="nivel-prioridade-p"><b>Tipo:</b></p>
+                                    <select name="select-nivel-dashboard" class="inputs-dashboard-select maquina"
+                                        id="selectTipo">
+                                        <option value="0" disabled selected>Selecione...</option>
+                                        <option value="Maquina">Maquina</option>
+                                        <option value="Servidor">Servidor</option>
                                     </select>
                                 </div>
-                                <button class="cadastrar-maquina">CADASTRAR</button>
-                                </div>
-                            </div>
-
-                            <div class="modals-dashboard" id="divModalSetor">
-                                <div class="button-position">
-                                <button class="fecharModalSetor" onclick="fecharModalSetor()"><p>X</p></button>
-                                </div>
-                                <div class="conteudo-modal">
-                                <div class="text-modal-Setor"><p>Cadastre um Setor</p></div>
-                                <div class="div-inputs-Setor">
-                                <input type="text" class="inputs-Setor" placeholder="Nome do setor:" id="inputNomeSetor">
-                                </div>  
                                 <div class="div-inputs-Setor select">
-                                <p class="nivel-prioridade-p"><b>Nível de prioridade:</b></p>
-                                <select name="select-nivel-dashboard" class="inputs-dashboard-select maquina" id="">
-                                    <option value="valor1">Nível 1</option>
-                                    <option value="valor1">Nível 2</option>
-                                    <option value="valor1">Nível 3</option>
-                                </select>
+                                    <p class="nivel-prioridade-p"><b>Setor:</b></p>
+                                    <select name="select-nivel-dashboard" class="inputs-dashboard-select maquina"
+                                        id="selectSetores" onload="filtraSetor()">
+                                        <option value="0"disabled selected >Selecione...</option>
+                                        
+                                    </select>
                                 </div>
-                                <button class="cadastrar-Setor">CADASTRAR</button>
+                                <button class="cadastrar-maquina" onclick="cadastrarMaquina()">CADASTRAR</button>
                             </div>
-                            </div>
+                        </div>
 
-                       
+                        <div class="modals-dashboard" id="divModalSetor">
+                            <div class="button-position">
+                                <button class="fecharModalSetor" onclick="fecharModalSetor()">
+                                    <p>X</p>
+                                </button>
+                            </div>
+                            <div class="conteudo-modal">
+                                <div class="text-modal-Setor">
+                                    <p>Cadastre um Setor</p>
+                                </div>
+                                <div class="div-inputs-Setor">
+                                    <input type="text" class="inputs-Setor" placeholder="Nome do setor:"
+                                        id="inputNomeSetor">
+                                </div>
+                                <div class="div-inputs-Setor select">
+                                    <p class="nivel-prioridade-p"><b>Nível de prioridade:</b></p>
+                                    <select name="select-nivel-dashboard" class="inputs-dashboard-select maquina"
+                                        id="selectNivel">
+                                        <option value="1">Nível 1</option>
+                                        <option value="2">Nível 2</option>
+                                        <option value="3">Nível 3</option>
+                                    </select>
+                                </div>
+                                <button class="cadastrar-Setor" onclick="cadastrarSetor()">CADASTRAR</button>
+                            </div>
+                        </div>
+
+
 
                     </div>
 
@@ -204,7 +227,7 @@
                                                 </div>
                                             </div>
                                             <div class="chart">
-                                                <canvas id="chart1"></canvas> 
+                                                <canvas id="chart1"></canvas>
                                             </div>
 
                                         </div>
@@ -218,7 +241,7 @@
                                             <h2 id="mostrarTotalDeServidor">0</h2>
                                         </div>
                                         <div class="metricasContent" id="atualizarMetricasServidor">
-                                            <div class="metricas" >
+                                            <div class="metricas">
                                                 <div class="itemMetrica">
                                                     <div class="divcorAlerta divVerde"></div>
                                                     <p><span>0%</span> Normal</p>

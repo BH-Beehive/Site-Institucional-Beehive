@@ -23,6 +23,10 @@ router.get("/listarSetor", function (req, res) {
     setorController.listarSetor(req, res);
 })
 
+router.get("/filtraSetor", function (req, res) {
+    setorController.filtraSetor(req, res);
+})
+
 router.get("/listarPorSetor", function (req, res) {
     setorController.listarPorSetor(req, res);
 })

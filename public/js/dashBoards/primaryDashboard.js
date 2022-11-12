@@ -1,13 +1,14 @@
 let listaIdMaquina = [];
 
-function cadastrarMaquina() {
-    let hostNameVar = inputNome.value;
+function cadastrarMaquina(){
+    let hostNameVar = inputHostName.value;
     let tokenVar = gerarToken();
-    let tipoVar = inputTelefone.value;
+    let tipoVar = selectTipo.value;
     let idEmpresaVar = sessionStorage.ID_EMPRESA;
-    let fkSetor = inputCelular.value;
+    let fkSetor = selectSetores.value;
 
     console.log(hostNameVar, tokenVar, tipoVar, idEmpresaVar, fkSetor)
+   
 
 
     fetch("/maquina/cadastrarMaquina", {
@@ -57,7 +58,7 @@ function gerarToken() {
     var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
         'abcdefghijklmnopqrstuvwxyz0123456789';
 
-    for (i = 1; i <= 15; i++) {
+    for (i = 1; i <= 10; i++) {
         var char = Math.floor(Math.random()
             * str.length + 1);
 
@@ -72,10 +73,37 @@ function resgatarFkSetor() {
 
 }
 
+function filtraSetor(){
+    let idEmpresa = sessionStorage.ID_EMPRESA
+    fetch(`/setor/filtraSetor?idEmpresa=${idEmpresa}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                if (resposta.length != null) {
+                    selectSetores.innerHTML = `<select name="select-nivel-dashboard" class="inputs-dashboard-select maquina"
+                    id="selectSetores">
+                    <option value="0" disabled selected>Selecione...</option>
+                    
+                </select>`;
+                    for (var posicao = 0; posicao < resposta.length; posicao++) {
+                        selectSetores.innerHTML += `
+                                <option value="${posicao + 1 }">${resposta[posicao].nome_setor}</option>
+                            `
+                    }
+                }
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar maquinas!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    })
+}
+
 function cadastrarSetor() {
-    let nomeVar = inputHostName.value;
+    let nomeVar = inputNomeSetor.value;
     let idEmpresaVar = sessionStorage.ID_EMPRESA;
-    let nivelVar = inputCelular.value;
+    let nivelVar = selectNivel.value;
 
 
 
@@ -210,10 +238,10 @@ function verMachine(host_name) {
 function listarMaquinas() {
     let select = document.getElementById('selectSetor');
     let selectNomeSetor = select.options[select.selectedIndex].value;
-    if(selectNomeSetor != "todos") {
+    if (selectNomeSetor != "todos") {
         sessionStorage.MAQUINA_AGORA = 'maquina'
         listarPorSetor()
-    }else {
+    } else {
         mostrarTotalMaquinas()
         mostrarTotalServidor()
         registroPizzaMaquina()
@@ -260,10 +288,10 @@ function listarMaquinas() {
 function listarServidor() {
     let select = document.getElementById('selectSetor');
     let selectNomeSetor = select.options[select.selectedIndex].value;
-    if(selectNomeSetor != "todos") {
+    if (selectNomeSetor != "todos") {
         sessionStorage.MAQUINA_AGORA = 'servidor'
         listarPorSetor()
-    }else{
+    } else {
         mostrarTotalMaquinas()
         mostrarTotalServidor()
         registroPizzaMaquina()
@@ -293,7 +321,7 @@ function listarServidor() {
                                     </div>
                                 </div>
                             </div>`
-                            listaIdMaquina.push(resposta[posicao].host_name)
+                        listaIdMaquina.push(resposta[posicao].host_name)
                     }
                     console.log(listaIdMaquina)
                 });
@@ -315,7 +343,7 @@ function listarSetor() {
     fetch(`/setor/listarSetor?idEmpresa=${idEmpresa}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
-                if(resposta.length != null) {
+                if (resposta.length != null) {
                     selectSetor.innerHTML = `<select name="" id="selectSetor" onchange="listarPorSetor()">
                                 <option value="todos">Setor: Todos</option>
                                             </select>`;
@@ -323,7 +351,7 @@ function listarSetor() {
                         selectSetor.innerHTML += `
                                 <option value="${posicao}">Setor: ${resposta[posicao].nome_setor}</option>
                             `
-                    } 
+                    }
                 }
             });
         } else {
@@ -340,7 +368,7 @@ function listarPorSetor() {
     mostrarTotalMaquinasSelectSelecionado()
     mostrarTotalServidorSelectSelecionado()
     registroPizzaMaquinaPorSetor()
-    registroPizzaServidorPorSetor() 
+    registroPizzaServidorPorSetor()
     let select = document.getElementById('selectSetor');
     let selectNomeSetor = select.options[select.selectedIndex].value;
     let nomeSetor = parseInt(selectNomeSetor);
@@ -350,8 +378,8 @@ function listarPorSetor() {
     fetch(`/setor/listarPorSetor?idEmpresa=${idEmpresa}&&tipoMaquina=${tipoMaquina}&&nomeSetor=${nomeSetor + 1}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
-                    for (var posicao = 0; posicao < resposta.length; posicao++) {
-                        listaMaquinas.innerHTML += `
+                for (var posicao = 0; posicao < resposta.length; posicao++) {
+                    listaMaquinas.innerHTML += `
                     <div class="ItensMaquinasContent">
     
                                 <div class="itemMaquina">
@@ -370,8 +398,8 @@ function listarPorSetor() {
                                     </div>
                                 </div>
                             </div>`
-                            listaIdMaquina.push(resposta[posicao].host_name)
-                        }  
+                    listaIdMaquina.push(resposta[posicao].host_name)
+                }
             });
         } else {
             console.log("Houve um erro ao tentar listar maquinas!");
@@ -379,30 +407,30 @@ function listarPorSetor() {
                 console.error(texto);
             });
         }
-    })   
+    })
 }
 
-function abrirModalMaquina(){
+function abrirModalMaquina() {
     var divModal = document.getElementById("divModalMaquina");
     divModal.style.display = "flex";
     var divModalSetor = document.getElementById("divModalSetor");
     divModalSetor.style.display = "none";
 }
 
-function abrirModalSetor(){
+function abrirModalSetor() {
     var divModalSetor = document.getElementById("divModalSetor");
     divModalSetor.style.display = "flex";
     var divModal = document.getElementById("divModalMaquina");
     divModal.style.display = "none";
 }
 
-function fecharModalMaquina(){
+function fecharModalMaquina() {
     var divModal = document.getElementById("divModalMaquina");
     divModal.style.display = "none";
 }
 
 
-function fecharModalSetor(){
+function fecharModalSetor() {
     var divModalSetor = document.getElementById("divModalSetor");
     divModalSetor.style.display = "none";
 }

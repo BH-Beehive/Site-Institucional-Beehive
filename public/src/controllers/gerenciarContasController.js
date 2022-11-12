@@ -34,7 +34,7 @@ function cadastrarSuporte(req, res) {
     }
     else {
         
-        gerenciarContasModel.cadastrar(nomeSuporte, senha, emailSlack, telefone, celular, cpf, idEmpresa)
+        gerenciarContasModel.cadastrarSuporte(nomeSuporte, senha, emailSlack, telefone, celular, cpf, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);

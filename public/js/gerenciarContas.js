@@ -1,9 +1,19 @@
+function abrirModalSuporte(){
+    var divModalSuporte = document.getElementById("divModalSuporte");
+    divModalSuporte.style.display = "flex";
+    }
+
+    function fecharModalSuporte(){
+    var divModalSuporte = document.getElementById("divModalSuporte");
+    divModalSuporte.style.display = "none";
+    }
+
 function cadastrarSuporte() {
-    let nomeSuporteVar = inputNome.value;
+    let nomeSuporteVar = inputNomeSuporte.value;
     let senhaVar = inputSenha.value;
     let emailSlackVar = inputEmailSlack.value;
-    let telefoneVar = inputTelefone.value;
-    let celularVar = inputCelular.value;
+    let telefoneVar = inputTel.value;
+    let celularVar = inputCel.value;
     let cpfVar = inputCpf.value;
     let idEmpresaVar = sessionStorage.ID_EMPRESA;
     
@@ -21,7 +31,7 @@ function cadastrarSuporte() {
             emailSlackServer: emailSlackVar,
             telefoneServer: telefoneVar,
             celularServer: celularVar,
-            cpfServer: cpfServer,
+            cpfServer: cpfVar,
             idEmpresaServer: idEmpresaVar
         })
     }).then(function (resposta) {
@@ -38,7 +48,7 @@ function cadastrarSuporte() {
             })
 
             setTimeout(() => {
-                window.location = "Login.html";
+                window.location = "gerenciarContas.html";
             }, "2000")
 
             limparFormulario();
@@ -78,7 +88,7 @@ function editarSuporte() {
             emailSlackServer: emailSlackVar,
             telefoneServer: telefoneVar,
             celularServer: celularVar,
-            cpfServer: cpfServer,
+            cpfServer: cpfVar,
             idEmpresaServer: idEmpresaVar
         })
     }).then(function (resposta) {
@@ -95,7 +105,7 @@ function editarSuporte() {
             })
 
             setTimeout(() => {
-                window.location = "Login.html";
+                window.location = "gerenciarContas.html";
             }, "2000")
 
             limparFormulario();
@@ -155,7 +165,7 @@ function listandoSuportes() {
         fetch(`/usuario/listarSuporte?idEmpresa=${idEmpresa}`).then(function (resposta) {
           if (resposta.ok) {
             resposta.json().then(function (resposta) {
-              for (var posicao = 0; posicao < 1; posicao++) {
+              for (var posicao = 0; posicao < resposta.length; posicao++) {
                 // <div id="listarSuporte" class="listaSuporte">${resposta[posicao].nome_suporte}, ${resposta[posicao].email_slack}</div>
                 listarSuporte.innerHTML += `
                     

@@ -84,13 +84,17 @@
                     <div class="text-modal-Suporte"><p>Cadastre um Suporte</p></div>
                     <div class="div-inputs-Suporte">
                     <input type="text" class="inputs-Suporte" placeholder="Nome:" id="inputNomeSuporte">
-                    <input type="text" class="inputs-Suporte" placeholder="Identificação:" id="inputIdSuporte">
+                    <input type="text" class="inputs-Suporte" placeholder="Email(Slack):" id="inputEmailSlack">
                     </div>  
                     <div class="div-inputs-Suporte">
-                    <input type="text" class="inputs-Suporte" placeholder="Email(Slack):" id="inputEmailSuporte">
-                    <input type="text" class="inputs-Suporte" placeholder="Telefone:" id="inputTelSuporte">
-                    </div> 
-                    <button class="cadastrar-Suporte">CADASTRAR</button>
+                    <input type="text" class="inputs-Suporte" placeholder="Senha:" id="inputSenha">
+                    <input type="text" class="inputs-Suporte" placeholder="Cpf:" id="inputCpf">
+                    </div>
+                    <div class="div-inputs-Suporte">
+                        <input type="text" class="inputs-Suporte" placeholder="Telefone:" id="inputTel">
+                        <input type="text" class="inputs-Suporte" placeholder="Celular:" id="inputCel">
+                        </div> 
+                    <button class="cadastrar-Suporte" onclick="cadastrarSuporte()">CADASTRAR</button>
                     </div>
                 </div>
 
@@ -118,6 +122,7 @@
 
 
 
+                    
                     <table>
                         <tr>
                             <th>#</th>
@@ -125,8 +130,7 @@
                             <th>E-mail</th>
                             <th></th>
                         </tr>
-                        <tr id="listarSuporte">
-                        </tr>
+                        <tr id="listarSuporte"></tr>
                     </table>
             
                 </div>
@@ -143,15 +147,4 @@
 
 </html>
 
-<script>
-    function abrirModalSuporte(){
-    var divModalSuporte = document.getElementById("divModalSuporte");
-    divModalSuporte.style.display = "flex";
-    }
 
-    function fecharModalSuporte(){
-    var divModalSuporte = document.getElementById("divModalSuporte");
-    divModalSuporte.style.display = "none";
-    }
-
-</script>

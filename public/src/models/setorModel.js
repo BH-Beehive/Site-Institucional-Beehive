@@ -10,6 +10,15 @@ function listarSetor() {
     return database.executar(instrucao);
 }
 
+function filtraSetor() {
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function filtraSetor()");
+    var instrucao = `
+        SELECT nome_setor FROM setor;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 
 function listarPorSetor(id_setor, tipo, idEmpresa) {
     console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorSetor()", id_setor, tipo, idEmpresa);
@@ -85,5 +94,6 @@ module.exports = {
     listarPorSetor,
     mostrarTotalServidorSelectSelecionado,
     mostrarTotalMaquinasSelectSelecionado,
-    mostrarTotalServidor
+    mostrarTotalServidor,
+    filtraSetor
 };

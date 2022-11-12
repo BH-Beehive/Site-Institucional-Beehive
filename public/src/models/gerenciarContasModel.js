@@ -5,8 +5,8 @@ async function cadastrarSuporte(nomeSuporte, senha, emailSlack, telefone, celula
     console.log("ACESSEI O GERENCIAR CONTAS MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarSuporte():", nomeSuporte, senha, emailSlack, telefone, celular, cpf, idEmpresa);
     
     let instrucao = `
-        INSERT INTO usuario_suporte(nome_suporte, email, senha, email_slack, telefone, celular, cpf, fk_empresa)
-        VALUES ('${nomeSuporte}', '${senha}', '${emailSlack}', '${telefone}', '${celular}', '${cpf}', ${idEmpresa});
+        INSERT INTO usuario_suporte(nome_suporte,email_slack,senha, telefone, celular, cpf, fk_empresa)
+        VALUES ('${nomeSuporte}', '${emailSlack}', '${senha}', '${telefone}', '${celular}', '${cpf}', ${idEmpresa});
     `;
     await database.executar(instrucao);
 }
