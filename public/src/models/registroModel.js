@@ -46,11 +46,59 @@ function registroPizzaServidorPorSetor(id_empresa, setor) {
     return database.executar(instrucao);
 }
 
+function registroGraficoLinhaTempo(hostName){
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registroGraficoLinhaTempo()", hostName);
+    var instrucao = `
+    select DATE_FORMAT(data_registro,'%H:%i:%s') as data_registro,cpu_uso,memoria_uso,disco_uso from registro 
+    join maquina
+    on id_maquina = fk_maquina where host_name = '${hostName}' order by id_registro desc limit 10;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
+function registroGraficoLinhaRAM(hostName){
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registroGraficoLinhaRAM()",hostName);
+    var instrucao = `
+    select memoria_uso 
+        from registro
+            join maquina
+            on  id_maquina = fk_maquina where host_name = '${hostName}' registro order by id_registro desc;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
+function registroGraficoLinhaCPU(hostName){
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registroPizzaServidorPorSetor()",hostName);
+    var instrucao = `
+    select cpu_uso 
+         from registro
+            join maquina
+            on  id_maquina = fk_maquina where host_name = = '${hostName}' registro order by id_registro desc;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function registroGraficoLinhaDisco(hostName){
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registroPizzaServidorPorSetor()",hostName);
+    var instrucao = `
+    select disco_uso  
+        from registro
+            join maquina
+            on  id_maquina = fk_maquina where host_name = '${hostName}' registro order by id_registro desc;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 module.exports = {
     registroPizzaMaquina,
     registroPizzaServidor,
     registroPizzaMaquinaPorSetor,
-    registroPizzaServidorPorSetor
+    registroPizzaServidorPorSetor,
+    registroGraficoLinhaTempo,
+    registroGraficoLinhaCPU,
+    registroGraficoLinhaRAM,
+    registroGraficoLinhaDisco
 }

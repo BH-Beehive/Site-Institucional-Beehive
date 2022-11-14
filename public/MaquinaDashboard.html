@@ -34,7 +34,7 @@
         !function () { if ("function" != typeof window.FreshworksWidget) { var n = function () { n.q.push(arguments) }; n.q = [], window.FreshworksWidget = n } }() 
     </script>
     <script type='text/javascript' src='https://widget.freshworks.com/widgets/150000001309.js' async defer></script>
-    
+
     <title>Dashboard | Máquina</title>
 </head>
 
@@ -95,8 +95,8 @@
                     <div class="informationAndInputs">
                         <div class="iconBack"><a href="PrimaryDashboard.html"><i class="fa-solid fa-arrow-left"></i></a>
                         </div>
-                        
-                    
+
+
                     </div>
 
                     <div class="cardAndChartBackground">
@@ -137,49 +137,109 @@
                                     <div class="selects">
                                         <h3>Componente:</h3>
                                         <select name="" id="">
-                                            <option value=""> RAM</option>
-                                            <option value=""> CPU</option>
-                                            <option value=""> Disco</option>
+                                            <option value="RAM"> RAM</option>
+                                            <option value="CPU"> CPU</option>
+                                            <option value="Disco"> Disco</option>
                                         </select>
                                     </div>
-                                    <span>Maquina 4</span>
+                                    <span id="maquinaAtual"></span>
                                 </div>
 
                                 <div class="chartline">
                                     <canvas height="70%" id="myChart"></canvas>
                                 </div>
                                 <script>
-                                    const labels = [
-                                        '00:00',
-                                        '01:00',
-                                        '02:00',
-                                        '03:00',
-                                        '04:00',
-                                        '05:00',
-                                        '06:00',
-                                        '07:00',
-                                    ];
 
-                                    const data = {
-                                        labels: labels,
-                                        datasets: [{
-                                            label: 'My First dataset',
-                                            backgroundColor: '#28AEF3',
-                                            borderColor: '#28AEF3',
-                                            data: [0, 10, 5, 2, 20, 30, 45, 30],
-                                        }]
-                                    };
+                                    let hostName = sessionStorage.NOME_MAQUINA;
+                                    let maquinaAtual = document.getElementById("maquinaAtual");
+                                    maquinaAtual.innerHTML = hostName;
+                                    window.onload = obterDados();
 
-                                    const config = {
-                                        type: 'line',
-                                        data: data,
-                                        options: {}
-                                    };
 
-                                    const myChart = new Chart(
-                                        document.getElementById('myChart'),
-                                        config
-                                    );
+
+                                    function obterDados() {
+                                        fetch(`registro/registroGraficoLinhaTempo/${hostName}`, {
+                                            method: "GET",
+                                            headers: { "Content-Type": "application/json" }
+                                        }).then(function (resposta) {
+                                            resposta.json().then(function (resultado) {
+                                                console.log('resultado', resultado)
+
+                                                plotarGrafico(resultado)
+
+
+                                                /* resposta.json().then(function (resultado) { */
+                                                if (resposta.ok) {
+                                                    console.log("resposta: ", resposta.json());
+
+
+                                                } else {
+                                                    throw ("Houve um erro ao tentar realizar a busca por data!");
+                                                }
+                                                /*}).catch(function (res) {
+                                                    console.log("#ERRO: "`${res}`);
+                                                });*/
+                                            }).catch(function (res) {
+                                                console.log("#ERRO: "`${res}`);
+                                            });
+                                        })
+
+                                    }
+
+                                    const horaRegistro = [];
+                                    var proximaAtualizacao;
+
+                                    function dataRegistro() {
+                                        if (proximaAtualizacao != undefined) {
+                                            clearTimeout(proximaAtualizacao);
+                                        }
+
+
+                                    }
+
+                                    function plotarGrafico(resultado) {
+                                        let tempoRegistro = []
+
+                                        const data = {
+                                            labels: tempoRegistro,
+                                            datasets: [{
+                                                label: 'My First dataset',
+                                                backgroundColor: '#28AEF3',
+                                                borderColor: '#28AEF3',
+                                                data: [],
+                                            }]
+                                        };
+
+                                        const config = {
+                                            type: 'line',
+                                            data: data,
+                                            options: {}
+                                        };
+
+                                        const myChart = new Chart(
+                                            document.getElementById('myChart'),
+                                            config
+                                        );
+
+                                        for (i = 0; i < resposta.length; i++) {
+                                            var registro = resposta[i];
+                                            labels.push(registro.data_registro);
+                                            data.datasets[0].data.push(registro.cpu_uso);
+                                            
+                                        }
+
+                                        setTimeout(() => atualizarGrafico(myChart, data), 2000);
+
+                                    }
+                                    function atualizarGrafico(myChart, data) {
+
+                                        data.labels.shift(); // apagar o primeiro
+                                        data.labels.push(tempoRegistro[0]); // incluir um novo momento
+                                        data.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                                        data.datasets[0].data.push(dadoRegistro);
+                                        myChart.update();
+                                        proximaAtualizacao = setTimeout(() => atualizarGrafico(myChart), 2000);
+                                    }
                                 </script>
                             </div>
                         </div>
@@ -209,7 +269,8 @@
                                                 <h4>01</h4>
                                                 <h5>RAM</h5>
                                                 <div class="progressBarFullComponent">
-                                                    <div class="progressBarInsideComponentRam divVermelhoComponent" id="alterarRam">
+                                                    <div class="progressBarInsideComponentRam divVermelhoComponent"
+                                                        id="alterarRam">
 
                                                     </div>
                                                 </div>
@@ -222,8 +283,9 @@
                                             <div class="itemProgressBarComponents">
                                                 <h4>01</h4>
                                                 <h5>CPU</h5>
-                                                <div class="progressBarFullComponent" id="progressBarInsideComponentCpu">
-                                                    <div  class="progressBarInsideComponentCpu">
+                                                <div class="progressBarFullComponent"
+                                                    id="progressBarInsideComponentCpu">
+                                                    <div class="progressBarInsideComponentCpu">
 
                                                     </div>
                                                 </div>
@@ -237,7 +299,8 @@
                                                 <h4>02</h4>
                                                 <h5>DISCO</h5>
                                                 <div class="progressBarFullComponent">
-                                                    <div class="progressBarInsideComponentDisco divAmarelaComponent" id="alterarDisco">
+                                                    <div class="progressBarInsideComponentDisco divAmarelaComponent"
+                                                        id="alterarDisco">
 
                                                     </div>
                                                 </div>

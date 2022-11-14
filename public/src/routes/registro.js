@@ -19,4 +19,10 @@ router.get("/registroPizzaServidorPorSetor", function (req, res) {
     registroController.registroPizzaServidorPorSetor(req, res);
 });
 
+router.get("/registroGraficoLinhaTempo/:hostNameMaq", function (req, res) {
+    registroController.registroGraficoLinhaTempo(req, res);
+});
+router.get("/registroGraficoLinhaRAM/:hostNameMaq", function (req, res) {
+    registroController.registroGraficoLinhaRAM(req, res);
+});
 module.exports = router;
