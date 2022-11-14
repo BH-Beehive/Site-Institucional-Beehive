@@ -153,11 +153,38 @@
                                     let hostName = sessionStorage.NOME_MAQUINA;
                                     let maquinaAtual = document.getElementById("maquinaAtual");
                                     maquinaAtual.innerHTML = hostName;
-                                    window.onload = obterDados();
 
 
+                                    
+                                    var proximaAtualizacao;
 
-                                    function obterDados() {
+                                    const horaRegistro = [];
+                                    const dados = []
+
+                                    const data = {
+                                        labels: horaRegistro,
+                                        datasets: [{
+                                            label: 'My First dataset',
+                                            backgroundColor: '#28AEF3',
+                                            borderColor: '#28AEF3',
+                                            data: dados,
+                                        }]
+                                    };
+
+                                    const config = {
+                                        type: 'line',
+                                        data: data,
+                                        options: {}
+                                    };
+
+                                    const chart = new Chart(
+                                        document.getElementById('myChart'),
+                                        config
+                                    );
+
+                                    setTimeout(() => atualizarGrafico(chart), 2000);
+
+                                    function atualizarGrafico(chart) {
                                         fetch(`registro/registroGraficoLinhaTempo/${hostName}`, {
                                             method: "GET",
                                             headers: { "Content-Type": "application/json" }
@@ -165,13 +192,23 @@
                                             resposta.json().then(function (resultado) {
                                                 console.log('resultado', resultado)
 
-                                                plotarGrafico(resultado)
-
-
+                                                dados.push(resultado[0].cpu_uso)
+                                                console.log("TEMPO ATUAL::::::::::::"+resultado[0].data_registro)
+                                                console.log("Dado ATUAL::::::::::::"+resultado[0].cpu_uso)
                                                 /* resposta.json().then(function (resultado) { */
                                                 if (resposta.ok) {
                                                     console.log("resposta: ", resposta.json());
-
+                                                    console.log("DAAAAAADOOOSS:"+ dados.length)
+                                                    if (dados.length >=10) {
+                                                      
+                                                    chart.data.datasets[0].data.shift();    
+                                                    chart.data.labels.shift()
+                                                    }
+                                                    
+                                                    chart.data.labels.push(resultado[0].data_registro); // incluir um novo momento                                                  
+                                                    chart.data.datasets[0].data.push(dados[0]);
+                                                    chart.update();
+                                                    proximaAtualizacao = setTimeout(() => atualizarGrafico(chart), 2000);
 
                                                 } else {
                                                     throw ("Houve um erro ao tentar realizar a busca por data!");
@@ -183,63 +220,9 @@
                                                 console.log("#ERRO: "`${res}`);
                                             });
                                         })
-
                                     }
 
-                                    const horaRegistro = [];
-                                    var proximaAtualizacao;
 
-                                    function dataRegistro() {
-                                        if (proximaAtualizacao != undefined) {
-                                            clearTimeout(proximaAtualizacao);
-                                        }
-
-
-                                    }
-
-                                    function plotarGrafico(resultado) {
-                                        let tempoRegistro = []
-
-                                        const data = {
-                                            labels: tempoRegistro,
-                                            datasets: [{
-                                                label: 'My First dataset',
-                                                backgroundColor: '#28AEF3',
-                                                borderColor: '#28AEF3',
-                                                data: [],
-                                            }]
-                                        };
-
-                                        const config = {
-                                            type: 'line',
-                                            data: data,
-                                            options: {}
-                                        };
-
-                                        const myChart = new Chart(
-                                            document.getElementById('myChart'),
-                                            config
-                                        );
-
-                                        for (i = 0; i < resposta.length; i++) {
-                                            var registro = resposta[i];
-                                            labels.push(registro.data_registro);
-                                            data.datasets[0].data.push(registro.cpu_uso);
-                                            
-                                        }
-
-                                        setTimeout(() => atualizarGrafico(myChart, data), 2000);
-
-                                    }
-                                    function atualizarGrafico(myChart, data) {
-
-                                        data.labels.shift(); // apagar o primeiro
-                                        data.labels.push(tempoRegistro[0]); // incluir um novo momento
-                                        data.datasets[0].data.shift();  // apagar o primeiro de temperatura
-                                        data.datasets[0].data.push(dadoRegistro);
-                                        myChart.update();
-                                        proximaAtualizacao = setTimeout(() => atualizarGrafico(myChart), 2000);
-                                    }
                                 </script>
                             </div>
                         </div>
