@@ -194,8 +194,11 @@ function anteriorEtapa2() {
 }
 
 
-
-
+function savePlanType(){
+    const date = new Date().toISOString();
+    console.log(date);
+    const planTipe = localStorage.getItem('planType')
+}
 
 
 function limpa_formu_cep() {
@@ -250,7 +253,6 @@ function pesquisacep(valor) {
     }
 };
 
-
 function cadastrar() {
     let nomeVar = inputRazaoSocial.value;
     let cnpjVar = inputCnpj.value;
@@ -295,7 +297,10 @@ function cadastrar() {
                 title: 'Cadastro bem-sucedido!',
                 showConfirmButton: false,
                 timer: 1500
+
             })
+
+            savePlanType('Cadastro');
 
             setTimeout(() => {
                 window.location = "Login.html";
