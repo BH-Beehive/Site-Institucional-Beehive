@@ -51,7 +51,7 @@ function registroGraficoLinhaTempo(hostName){
     var instrucao = `
     select DATE_FORMAT(data_registro,'%H:%i:%s') as data_registro,cpu_uso,memoria_uso,disco_uso from registro 
     join maquina
-    on id_maquina = fk_maquina where host_name = '${hostName}' order by id_registro desc limit 10;
+    on id_maquina = fk_maquina where host_name = '${hostName}' order by id_registro desc limit 1;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

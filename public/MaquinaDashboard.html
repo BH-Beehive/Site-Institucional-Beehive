@@ -38,7 +38,7 @@
     <title>Dashboard | Máquina</title>
 </head>
 
-<body onload="listarInformacoesMaquina(), listarDadosMaquina()">
+<body onload="listarInformacoesMaquina(), listarDadosMaquina(),iniciarGrafico()">
     <div class="container">
 
         <!-- Component sideBar -->
@@ -136,7 +136,7 @@
 
                                     <div class="selects">
                                         <h3>Componente:</h3>
-                                        <select name="" id="">
+                                        <select name="" id="selectComponente" onchange="iniciarGrafico()">
                                             <option value="RAM"> RAM</option>
                                             <option value="CPU"> CPU</option>
                                             <option value="Disco"> Disco</option>
@@ -152,76 +152,103 @@
 
                                     let hostName = sessionStorage.NOME_MAQUINA;
                                     let maquinaAtual = document.getElementById("maquinaAtual");
+
+                                    var proximaAtualizacao;
                                     maquinaAtual.innerHTML = hostName;
 
+                                    // function coletarDados() {
+                                    //     if (proximaAtualizacao != undefined) {
+                                    //         clearTimeout(proximaAtualizacao);
+                                    //     }
 
-                                    
-                                    var proximaAtualizacao;
+                                    // }
 
-                                    const horaRegistro = [];
-                                    const dados = []
+                                    function iniciarGrafico() {
+                                        let componenteSelecionado = document.getElementById("selectComponente").value;
+                                       
+                                        const horaRegistro = []
+                                        const dadosCPU = []
+                                        const data = {
+                                            labels: horaRegistro,
+                                            datasets: [{
+                                                label: componenteSelecionado,
+                                                backgroundColor: '#28AEF3',
+                                                borderColor: '#28AEF3',
+                                                data: dadosCPU,
+                                            }]
+                                        };
 
-                                    const data = {
-                                        labels: horaRegistro,
-                                        datasets: [{
-                                            label: 'My First dataset',
-                                            backgroundColor: '#28AEF3',
-                                            borderColor: '#28AEF3',
-                                            data: dados,
-                                        }]
-                                    };
+                                        const config = {
+                                            type: 'line',
+                                            data: data,
+                                            options: {}
+                                        };
 
-                                    const config = {
-                                        type: 'line',
-                                        data: data,
-                                        options: {}
-                                    };
+                                        const chart = new Chart(
+                                            document.getElementById('myChart'),
+                                            config
+                                        );
+                                        
+                                        setTimeout(() => atualizarGrafico(chart), 2000);
 
-                                    const chart = new Chart(
-                                        document.getElementById('myChart'),
-                                        config
-                                    );
+                                    }
 
-                                    setTimeout(() => atualizarGrafico(chart), 2000);
 
+
+
+
+
+                                    let contador = []
                                     function atualizarGrafico(chart) {
                                         fetch(`registro/registroGraficoLinhaTempo/${hostName}`, {
                                             method: "GET",
                                             headers: { "Content-Type": "application/json" }
                                         }).then(function (resposta) {
                                             resposta.json().then(function (resultado) {
-                                                console.log('resultado', resultado)
 
-                                                dados.push(resultado[0].cpu_uso)
-                                                console.log("TEMPO ATUAL::::::::::::"+resultado[0].data_registro)
-                                                console.log("Dado ATUAL::::::::::::"+resultado[0].cpu_uso)
-                                                /* resposta.json().then(function (resultado) { */
+                                                console.log('resultado', resultado)
+                                                contador.push(1)
+                                                const horaRegistro = resultado.map(dataRegistrada => dataRegistrada.data_registro);
+                                                const dadosCPU = resultado.map(dadoCPU => dadoCPU.cpu_uso);
+                                                console.log(horaRegistro)
+                                                console.log(dadosCPU)
+                                                if (contador.length >= 10) {
+
+                                                    chart.data.datasets[0].data.shift();
+                                                    chart.data.labels.shift()
+                                                }
+
+                                                chart.data.labels.push(horaRegistro);
+                                                chart.data.datasets[0].data.push(resultado[0].cpu_uso);
+                                                if(document.getElementById("selectComponente").value == "RAM"){
+                                                chart.data.datasets[0].label= document.getElementById("selectComponente").value
+                                                chart.update();
+                                            }
+                                            else if(document.getElementById("selectComponente").value == "CPU"){
+                                                chart.data.datasets[0].label= document.getElementById("selectComponente").value
+                                                chart.update();
+                                            }
+                                            else{
+                                                chart.data.datasets[0].label= document.getElementById("selectComponente").value
+                                                chart.update();
+                                            }
+                                                chart.update();
+                                                proximaAtualizacao = setTimeout(() => atualizarGrafico(chart), 2000);
+
                                                 if (resposta.ok) {
                                                     console.log("resposta: ", resposta.json());
-                                                    console.log("DAAAAAADOOOSS:"+ dados.length)
-                                                    if (dados.length >=10) {
-                                                      
-                                                    chart.data.datasets[0].data.shift();    
-                                                    chart.data.labels.shift()
-                                                    }
-                                                    
-                                                    chart.data.labels.push(resultado[0].data_registro); // incluir um novo momento                                                  
-                                                    chart.data.datasets[0].data.push(dados[0]);
-                                                    chart.update();
-                                                    proximaAtualizacao = setTimeout(() => atualizarGrafico(chart), 2000);
+
+
 
                                                 } else {
                                                     throw ("Houve um erro ao tentar realizar a busca por data!");
                                                 }
-                                                /*}).catch(function (res) {
-                                                    console.log("#ERRO: "`${res}`);
-                                                });*/
                                             }).catch(function (res) {
                                                 console.log("#ERRO: "`${res}`);
                                             });
                                         })
-                                    }
 
+                                    }
 
                                 </script>
                             </div>
