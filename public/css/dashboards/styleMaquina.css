@@ -210,6 +210,7 @@ h3 {
     width: 100%;
     display: flex;
     margin-top: 2%;
+    margin-left: -15%;
 }
 
 .componentsAndProcessos {
@@ -225,7 +226,7 @@ h3 {
 }
 
 .backgroundComponents .background {
-    width: 98%;
+    width: 55%;
     height: 94%;
     display: flex;
     margin: auto;
