@@ -1,6 +1,6 @@
 let listaIdMaquina = [];
 
-function cadastrarMaquina(){
+function cadastrarMaquina() {
     let hostNameVar = inputHostName.value;
     let tokenVar = gerarToken();
     let tipoVar = selectTipo.value;
@@ -8,7 +8,7 @@ function cadastrarMaquina(){
     let fkSetor = selectSetores.value;
 
     console.log(hostNameVar, tokenVar, tipoVar, idEmpresaVar, fkSetor)
-   
+
 
 
     fetch("/maquina/cadastrarMaquina", {
@@ -68,12 +68,108 @@ function gerarToken() {
     return pass;
 }
 
-// implementando
-function resgatarFkSetor() {
+function statusSetor() {
 
+    let qtdVermelho = 0;
+    let qtdAmarelo = 0;
+    let qtdVerde = 0;
+    let totalMaquina = 0;
+    let idEmpresa = sessionStorage.ID_EMPRESA
+    fetch(`/setor/statusSetor?idEmpresa=${idEmpresa}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                for (var posicao = 0; posicao < resposta.length; posicao++) {
+                    if (resposta[posicao].alerta == 'Vermelho') {
+                        qtdVermelho++
+                    } else if (resposta[posicao].alerta == 'Amarelo') {
+                        qtdAmarelo++
+                    } else {
+                        qtdVerde++
+                    }
+                    totalMaquina++
+                }
+
+                setorNivel.innerHTML = `<div class="backgroundKPIS">
+                <div class="itemKPI normal">
+                    <p>Setores
+                        normais</p>
+                    <h2>${qtdVerde}</h2>
+                </div>
+                <div class="itemKPI alerta">
+                    <p>Setores
+                        em alerta</p>
+                    <h2>${qtdAmarelo}</h2>
+                </div>
+                <div class="itemKPI critico">
+                    <p>Setores
+                        críticos</p>
+                    <h2>${qtdVermelho}</h2>
+                </div>
+            </div>
+
+            `
+
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar registros!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    })
 }
 
-function filtraSetor(){
+function maquinaCritica() {
+    let idEmpresa = sessionStorage.ID_EMPRESA
+    fetch(`/maquina/maquinaCritica?idEmpresa=${idEmpresa}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                for (var posicao = 0; posicao < resposta.length; posicao++) {
+
+            critica.innerHTML = `
+        <h3>${resposta[posicao].maquina}</h3>
+                <p>${resposta[posicao].data}</p>    
+            `
+                }
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar registros!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    })
+}
+
+function servidorCritica() {
+    let idEmpresa = sessionStorage.ID_EMPRESA
+    fetch(`/maquina/servidorCritica?idEmpresa=${idEmpresa}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                for (var posicao = 0; posicao < resposta.length; posicao++) {
+
+                    criticoServe.innerHTML = `
+        <h3>${resposta[posicao].maquina}</h3>
+                <p>${resposta[posicao].data}</p>    
+            `
+                }
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar registros!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    })
+}
+
+
+
+
+
+
+
+function filtraSetor() {
     let idEmpresa = sessionStorage.ID_EMPRESA
     fetch(`/setor/filtraSetor?idEmpresa=${idEmpresa}`).then(function (resposta) {
         if (resposta.ok) {
@@ -86,7 +182,7 @@ function filtraSetor(){
                 </select>`;
                     for (var posicao = 0; posicao < resposta.length; posicao++) {
                         selectSetores.innerHTML += `
-                                <option value="${posicao + 1 }">${resposta[posicao].nome_setor}</option>
+                                <option value="${posicao + 1}">${resposta[posicao].nome_setor}</option>
                             `
                     }
                 }

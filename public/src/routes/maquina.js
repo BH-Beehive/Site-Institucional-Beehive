@@ -23,6 +23,14 @@ router.get("/listarDadosMaquina", function (req, res) {
     maquinaController.listarDadosMaquina(req, res);
 });
 
+router.get("/maquinaCritica", function (req, res) {
+    maquinaController.maquinaCritica(req, res);
+});
+
+router.get("/servidorCritica", function (req, res) {
+    maquinaController.servidorCritica(req, res);
+});
+
 
 //Recebendo os dados do html e direcionando para a função cadastrar de maquinaController.js
 router.post("/cadastrarMaquina", function (req, res) {
