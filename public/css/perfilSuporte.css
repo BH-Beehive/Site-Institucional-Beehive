@@ -110,14 +110,14 @@ hr {
     color: black;
 }
 
-#btnAlterarDados {
+.btnAlterarDados {
     color: white;
     height: 13%;
     padding: 10px 10px 10px 10px;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-left: 20%;
 }
-#btnAlterarDados:hover{
+.btnAlterarDados:hover{
     cursor: pointer;
     color: black;
 }
@@ -132,14 +132,15 @@ hr {
 }
 
 #fotoDefaultPrincipal {
-    width: 250px;
+    width: 150px;
+    height: 150px;
 }
 
 .containerExibicaoPerfil {
     display: flex;
     margin-left: 20%;
     height: 30%;
-
+    align-items: center;
 }
 
 .containerExibicaoPerfil h2 {
@@ -149,7 +150,7 @@ hr {
 
 #emailPerfil {
     margin-left: 20%;
-    margin-top: 10%;
+    margin-top: 5%;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -185,7 +186,6 @@ hr {
 }
 
 #line{
-    margin-top: 3%;
     width: 99.8%;
     height: 10px;
     border-color: rgb(0, 0, 0);
@@ -226,7 +226,7 @@ hr {
 #btnSalvar{
     background-color: #000000;
     color: white;
-    width: 20vw;
+    width: 50%;
     height: 5vh;
     border-radius: 4px;
     font-weight: bold;
@@ -236,7 +236,7 @@ hr {
     border: none;
     cursor: pointer;
     background-color: #FFCC29;
-    
+    color: black;
 }
 input::placeholder{
     padding: 10px;
@@ -252,4 +252,110 @@ line-height: 19px;
 .itens a {
     text-decoration: none;
     color: #ffff;
+}
+
+.dadosPerfil{
+    margin-bottom: 3%;
+}
+
+.modals-suporte{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.div-inputs-Suporte{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.inputs-Suporte{
+    width: 100%;
+    border: none;
+    border: 1px solid #4d4d4d93;
+    height: 25px;
+    border-radius: 3px;
+    outline: none;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 5%;
+    padding-left: 5px;
+}
+
+.button-position{
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.conteudo-modal{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 90%;
+}
+
+#divModalSuporte{
+    width: 40%;
+    height: 380px;
+    background-color: white;
+    border-radius: 2px;
+    margin-left: 35%;
+    margin-top: 8%;
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
+}
+
+.EditarSuporte{
+    margin-top: 5%;
+    outline: none;
+    background-color: #35342F;
+    color: white;
+    width: 90%;
+    height: 30px;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 2px 4px 40px 2px rgb(0, 0, 0, 0.2);
+}
+
+.EditarSuporte:hover{
+    background-color: #FFCC29;
+    color: black;
+}
+
+.fecharModalSuporte{
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    height: 30px;
+    width: 32px;
+    margin: 10px;
+    border-radius: 2px;
+}
+
+.fecharModalSuporte p{
+    margin: 0;
+    font-size: 15px;
+}
+
+.text-modal-Suporte{
+    text-align: center;
+}
+
+.text-modal-Suporte p{
+    margin: 0;
+    font-size: 18px;
 }
