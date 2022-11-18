@@ -10,6 +10,17 @@ function alterarDados(){
     celularSuporte.disabled = false;
 }
 
+function abrirModalSuporte() {
+    var divModalSuporte = document.getElementById("divModalSuporte");
+    divModalSuporte.style.display = "flex";
+}
+
+function fecharModalSuporte() {
+    var divModal = document.getElementById("divModalSuporte");
+    divModal.style.display = "none";
+}
+
+
 function MascaraCelular(objeto, evt) {
     let theEvent = evt || window.event;
     let key = theEvent.keyCode || theEvent.which;
