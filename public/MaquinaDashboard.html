@@ -90,7 +90,7 @@
             </div>
             <!-- Component header -->
 
-            <div class="background">
+            <div class="background" sty>
                 <div class="content">
                     <div class="informationAndInputs">
                         <div class="iconBack"><a href="PrimaryDashboard.html"><i class="fa-solid fa-arrow-left"></i></a>
@@ -99,7 +99,7 @@
 
                     </div>
 
-                    <div class="cardAndChartBackground">
+                    <div class="cardAndChartBackground" style="background-color: red;">
                         <div class="cardInfoMaquinaBackground">
                             <div class="content" id="listaInformacoes">
                                 <h2>Maquina 2</h2>
@@ -121,7 +121,7 @@
                             </div>
                         </div>
 
-                        <div class="lineChartBackground">
+                        <div class="lineChartBackground" style="background-color: black;">
                             <div class="content">
                                 <div class="infosOfLineChart">
                                     <h3>
@@ -130,18 +130,11 @@
 
                                     <div class="selects">
                                         <h3>Componente:</h3>
-                                        <select name="" id="selectComponente" onchange="iniciarGrafico()">
-                                            <option value="RAM"> RAM</option>
-                                            <option value="CPU"> CPU</option>
-                                            <option value="Disco"> Disco</option>
-                                        </select>
+                                        <h2>CPU</h2>
                                     </div>
                                     <span id="maquinaAtual"></span>
                                 </div>
-
-                                <div class="chartline">
-                                    <canvas height="70%" id="myChart"></canvas>
-                                </div>
+                                
                                 <script>
 
                                     let hostName = sessionStorage.NOME_MAQUINA;
@@ -149,26 +142,18 @@
 
                                     var proximaAtualizacao;
                                     maquinaAtual.innerHTML = hostName;
-
-                                    // function coletarDados() {
-                                    //     if (proximaAtualizacao != undefined) {
-                                    //         clearTimeout(proximaAtualizacao);
-                                    //     }
-
-                                    // }
-
                                     function iniciarGrafico() {
-                                        let componenteSelecionado = document.getElementById("selectComponente").value;
-                                       
+                                        
+
                                         const horaRegistro = []
-                                        const dadosCPU = []
+                                        const dados = []
                                         const data = {
                                             labels: horaRegistro,
                                             datasets: [{
-                                                label: componenteSelecionado,
+                                                label: "CPU",
                                                 backgroundColor: '#28AEF3',
                                                 borderColor: '#28AEF3',
-                                                data: dadosCPU,
+                                                data: dados,
                                             }]
                                         };
 
@@ -182,9 +167,58 @@
                                             document.getElementById('myChart'),
                                             config
                                         );
-                                        
-                                        setTimeout(() => atualizarGrafico(chart), 2000);
 
+
+                                        const horaRegistro2 = []
+                                        const dadosDisco = []
+                                        const data2 = {
+                                            labels: horaRegistro2,
+                                            datasets: [{
+                                                label: "DISCO",
+                                                backgroundColor: 'green',
+                                                borderColor: 'green',
+                                                data: dadosDisco,
+                                            }]
+                                        };
+
+                                        const config2 = {
+                                            type: 'line',
+                                            data: data2,
+                                            options: {}
+                                        };
+
+                                        const chart2 = new Chart(
+                                            document.getElementById('myChartDisco'),
+                                            config2
+                                        );
+
+
+                                        const horaRegistro3 = []
+                                        const dadosRAM = []
+                                        const data3 = {
+                                            labels: horaRegistro3,
+                                            datasets: [{
+                                                label: "RAM",
+                                                backgroundColor: 'red',
+                                                borderColor: 'red',
+                                                data: dadosRAM,
+                                            }]
+                                        };
+
+                                        const config3 = {
+                                            type: 'line',
+                                            data: data3,
+                                            options: {}
+                                        };
+
+                                        const chart3 = new Chart(
+                                            document.getElementById('myChartRAM'),
+                                            config3
+                                        );
+
+                                        setTimeout(() => atualizarGraficoCPU(chart), 2000);
+                                        setTimeout(() => atualizarGraficoDisco(chart2), 2000);
+                                        setTimeout(() => atualizarGraficoRAM(chart3), 2000);
                                     }
 
 
@@ -193,7 +227,7 @@
 
 
                                     let contador = []
-                                    function atualizarGrafico(chart) {
+                                    function atualizarGraficoCPU(chartCPU) {
                                         fetch(`registro/registroGraficoLinhaTempo/${hostName}`, {
                                             method: "GET",
                                             headers: { "Content-Type": "application/json" }
@@ -208,26 +242,15 @@
                                                 console.log(dadosCPU)
                                                 if (contador.length >= 10) {
 
-                                                    chart.data.datasets[0].data.shift();
-                                                    chart.data.labels.shift()
+                                                    chartCPU.data.datasets[0].data.shift();
+                                                    chartCPU.data.labels.shift()
                                                 }
 
-                                                chart.data.labels.push(horaRegistro);
-                                                chart.data.datasets[0].data.push(resultado[0].cpu_uso);
-                                                if(document.getElementById("selectComponente").value == "RAM"){
-                                                chart.data.datasets[0].label= document.getElementById("selectComponente").value
-                                                chart.update();
-                                            }
-                                            else if(document.getElementById("selectComponente").value == "CPU"){
-                                                chart.data.datasets[0].label= document.getElementById("selectComponente").value
-                                                chart.update();
-                                            }
-                                            else{
-                                                chart.data.datasets[0].label= document.getElementById("selectComponente").value
-                                                chart.update();
-                                            }
-                                                chart.update();
-                                                proximaAtualizacao = setTimeout(() => atualizarGrafico(chart), 2000);
+                                                chartCPU.data.labels.push(horaRegistro);
+                                                chartCPU.data.datasets[0].data.push(resultado[0].cpu_uso);
+                                               
+                                                chartCPU.update();
+                                                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(chartCPU), 2000);
 
                                                 if (resposta.ok) {
                                                     console.log("resposta: ", resposta.json());
@@ -237,14 +260,154 @@
                                                 } else {
                                                     throw ("Houve um erro ao tentar realizar a busca por data!");
                                                 }
+                                                
                                             }).catch(function (res) {
                                                 console.log("#ERRO: "`${res}`);
                                             });
                                         })
+                                        
 
                                     }
 
+
+
+
+                                    let contador2 = []
+                                    function atualizarGraficoDisco(chartDisco) {
+                                        fetch(`registro/registroGraficoLinhaTempo/${hostName}`, {
+                                            method: "GET",
+                                            headers: { "Content-Type": "application/json" }
+                                        }).then(function (resposta) {
+                                            resposta.json().then(function (resultado) {
+
+                                                console.log('resultado', resultado)
+                                                contador2.push(1)
+                                                const horaRegistro = resultado.map(dataRegistrada => dataRegistrada.data_registro);
+                                                const dadosDisco = resultado.map(dadoDisco => dadoDisco.disco_uso);
+                                                console.log(horaRegistro)
+                                                console.log(dadosDisco)
+                                                if (contador2.length >= 10) {
+
+                                                    chartDisco.data.datasets[0].data.shift();
+                                                    chartDisco.data.labels.shift()
+                                                }
+
+                                                chartDisco.data.labels.push(horaRegistro);
+                                                chartDisco.data.datasets[0].data.push(resultado[0].disco_uso);
+                                               
+                                                chartDisco.update();
+                                                proximaAtualizacao = setTimeout(() => atualizarGraficoDisco(chartDisco), 2000);
+
+                                                if (resposta.ok) {
+                                                    console.log("resposta: ", resposta.json());
+
+
+
+                                                } else {
+                                                    throw ("Houve um erro ao tentar realizar a busca por data!");
+                                                }
+                                                
+                                            }).catch(function (res) {
+                                                console.log("#ERRO: "`${res}`);
+                                            });
+                                        })
+                                        
+
+                                    }
+
+
+
+
+
+
+                                    let contador3 = []
+                                    function atualizarGraficoRAM(chartRAM) {
+                                        fetch(`registro/registroGraficoLinhaTempo/${hostName}`, {
+                                            method: "GET",
+                                            headers: { "Content-Type": "application/json" }
+                                        }).then(function (resposta) {
+                                            resposta.json().then(function (resultado) {
+
+                                                console.log('resultado', resultado)
+                                                contador3.push(1)
+                                                const horaRegistro = resultado.map(dataRegistrada => dataRegistrada.data_registro);
+                                                const dadosRAM = resultado.map(dadoRAM => dadoRAM.memoria_uso);
+                                                console.log(horaRegistro)
+                                                console.log(dadosRAM)
+                                                if (contador3.length >= 10) {
+
+                                                    chartRAM.data.datasets[0].data.shift();
+                                                    chartRAM.data.labels.shift()
+                                                }
+
+                                                chartRAM.data.labels.push(horaRegistro);
+                                                chartRAM.data.datasets[0].data.push(resultado[0].memoria_uso);
+                                               
+                                                chartRAM.update();
+                                                proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(chartRAM), 2000);
+
+                                                if (resposta.ok) {
+                                                    console.log("resposta: ", resposta.json());
+
+
+
+                                                } else {
+                                                    throw ("Houve um erro ao tentar realizar a busca por data!");
+                                                }
+                                                
+                                            }).catch(function (res) {
+                                                console.log("#ERRO: "`${res}`);
+                                            });
+                                        })
+                                        
+
+                                    }
                                 </script>
+                                <div class="chartline">
+                                    <canvas height="70%" id="myChart"></canvas>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="lineChartBackground">
+                            <div class="content">
+                                <div class="infosOfLineChart">
+                                    <h3>
+                                        Grafico do componente
+                                    </h3>
+
+                                    <div class="selects">
+                                        <h3>Componente:</h3>
+                                       <h2>DISCO</h2>
+                                    </div>
+                                    <span id="maquinaAtual"></span>
+                                </div>
+
+                                <div class="chartline">
+                                    <canvas height="70%" id="myChartDisco"></canvas>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="lineChartBackground">
+                            <div class="content">
+                                <div class="infosOfLineChart">
+                                    <h3>
+                                        Grafico do componente
+                                    </h3>
+
+                                    <div class="selects">
+                                        <h3>Componente:</h3>
+                                        <h2>RAM</h2>
+                                    </div>
+                                    <span id="maquinaAtual"></span>
+                                </div>
+
+                                <div class="chartline">
+                                    <canvas height="70%" id="myChartRAM"></canvas>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -318,8 +481,8 @@
                                 </div>
                             </div>
 
-                        
-    <script src="js/dashBoards/maquinaDashboard.js"></script>
+
+                            <script src="js/dashBoards/maquinaDashboard.js"></script>
 </body>
 
 </html>
