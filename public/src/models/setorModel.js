@@ -70,6 +70,17 @@ function mostrarTotalServidor(id_empresa) {
     return database.executar(instrucao);
 }
 
+function statusSetor(id_empresa, setor) {
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function statusSetor()", id_empresa, setor);
+    var instrucao = `
+    select id_maquina as 'idMaquina', tipo_alerta as 'alerta' from empresa join setor on id_empresa = fk_empresa 
+    join maquina on id_setor = maquina.fk_setor join registro on id_maquina = fk_maquina where id_empresa = ${id_empresa}  group by nome_setor order by id_registro desc limit 10;
+    
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
@@ -95,5 +106,6 @@ module.exports = {
     mostrarTotalServidorSelectSelecionado,
     mostrarTotalMaquinasSelectSelecionado,
     mostrarTotalServidor,
-    filtraSetor
+    filtraSetor,
+    statusSetor
 };

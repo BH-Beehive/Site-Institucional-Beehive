@@ -31,6 +31,10 @@ router.get("/listarPorSetor", function (req, res) {
     setorController.listarPorSetor(req, res);
 })
 
+router.get("/statusSetor", function (req, res) {
+    setorController.statusSetor(req, res);
+});
+
 router.get("/mostrarTotalMaquinasSelectSelecionado", function (req, res) {
     setorController.mostrarTotalMaquinasSelectSelecionado(req, res);
 })

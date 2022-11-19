@@ -28,6 +28,49 @@ function listarMaquinas(req, res) {
         );
 }
 
+function maquinaCritica(req, res) {
+    var id_empresa = req.query.idEmpresa
+    console.log(req.query.idEmpresa)
+    console.log(id_empresa, "id na controller da maquina")
+    
+    maquinaModel.maquinaCritica(id_empresa)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function servidorCritica(req, res) {
+    var id_empresa = req.query.idEmpresa
+    console.log(req.query.idEmpresa)
+    console.log(id_empresa, "id na controller da maquina")
+    
+    maquinaModel.servidorCritica(id_empresa)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+
 function listarInformacoesMaquina(req, res) {
     var host_name = req.query.hostName
     var id_empresa = req.query.idEmpresa
@@ -144,5 +187,7 @@ module.exports = {
     listarServidor,
     testar,
     listarInformacoesMaquina,
-    listarDadosMaquina
+    listarDadosMaquina,
+    maquinaCritica,
+    servidorCritica
 }

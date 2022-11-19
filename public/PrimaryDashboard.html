@@ -51,7 +51,7 @@
 </head>
 
 <body
-    onload="mostrarTotalMaquinas() , mostrarTotalServidor(), listarMaquinas(), listarSetor(), registroPizzaMaquina(), registroPizzaServidor(),filtraSetor()">
+    onload="mostrarTotalMaquinas() , mostrarTotalServidor(), listarMaquinas(), listarSetor(), registroPizzaMaquina(), registroPizzaServidor(),filtraSetor(),statusSetor(),maquinaCritica(),servidorCritica()">
     <div class="container">
 
         <!-- Component sideBar -->
@@ -313,36 +313,36 @@
                             <div class="infoSetoresEmaquinasCriticasBackground">
                                 <div class="background">
                                     <div class="content">
-                                        <div class="backgroundKPIS">
+                                        <div class="backgroundKPIS" id="setorNivel">
                                             <div class="itemKPI normal">
                                                 <p>Setores
                                                     normais</p>
-                                                <h2>4</h2>
+                                                <h2>0</h2>
                                             </div>
                                             <div class="itemKPI alerta">
                                                 <p>Setores
                                                     em alerta</p>
-                                                <h2>4</h2>
+                                                <h2>0</h2>
                                             </div>
                                             <div class="itemKPI critico">
                                                 <p>Setores
                                                     críticos</p>
-                                                <h2>1</h2>
+                                                <h2>0</h2>
                                             </div>
                                         </div>
 
-                                        <div class="contentMaquinasCriticas">
-                                            <div class="content1">
-                                                <div class="itemMaquinasCriticas">
+                                        <div class="contentMaquinasCriticas" >
+                                            <div class="content1" >
+                                                <div class="itemMaquinasCriticas" id="critico" >
                                                     <h5>Máquina em estado crítico</h5>
-                                                    <div class="info">
-                                                        <h3>Maquina 4</h3>
+                                                    <div class="info" id="critica">
+                                                        <h3>Maquina</h3>
                                                         <p>10 fevereiro 2022 16:00:21</p>
                                                     </div>
                                                 </div>
-                                                <div class="itemMaquinasCriticas">
+                                                <div class="itemMaquinasCriticas" >
                                                     <h5>servidor em estado crítico</h5>
-                                                    <div class="info">
+                                                    <div class="info" id="criticoServe">
                                                         <h3>Servidor</h3>
                                                         <p>10 fevereiro 2022 16:00:21</p>
                                                     </div>
