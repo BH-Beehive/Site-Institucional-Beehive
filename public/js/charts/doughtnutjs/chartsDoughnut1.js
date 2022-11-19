@@ -7,7 +7,7 @@ function registroPizzaMaquina() {
     fetch(`/registro/registroPizzaMaquina?idEmpresa=${idEmpresa}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
-                for (var posicao = 0; posicao < resposta.length; posicao++) {
+                for (let posicao = 0; posicao < resposta.length; posicao++) {
                     if(resposta[posicao].alerta == 'Vermelho') {
                         qtdVermelho++
                     }else if(resposta[posicao].alerta == 'Amarelo') {
@@ -66,7 +66,7 @@ function registroPizzaMaquinaPorSetor() {
         limparGrafico()
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
-                for (var posicao = 0; posicao < resposta.length; posicao++) {
+                for (let posicao = 0; posicao < resposta.length; posicao++) {
                     if(resposta[posicao].alerta == 'Vermelho') {
                         qtdVermelho++
                     }else if(resposta[posicao].alerta == 'Amarelo') {

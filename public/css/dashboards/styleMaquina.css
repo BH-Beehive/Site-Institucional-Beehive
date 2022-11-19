@@ -203,6 +203,13 @@ h3 {
     justify-content: center;
     border-radius: 0 0 20px 20px;
 }
+.chartPizza{
+    width: 60%;
+    height: 40%;
+    display: flex;
+ 
+    border-radius: 0 0 20px 20px;
+}
 
 
 /* Parte que contém a porcentagem dos componentes / processos e os serviços */

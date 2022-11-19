@@ -25,8 +25,8 @@ function listarInformacoesMaquina() {
                                 </div>
 
                                 <div class="activeTime">
-                                    <h4>Tempo de atividade</h4>
-                                    <h3>10:00:10</h3>
+                                    <h4>Disco total</h4>
+                                    <p>${resposta[posicao].disco_total} Gb</p>
                                 </div>
 
 

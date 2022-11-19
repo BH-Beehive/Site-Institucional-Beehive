@@ -5,7 +5,7 @@ function registroPizzaMaquina(id_empresa) {
     var instrucao = `
         select id_maquina as 'idMaquina', tipo_alerta as 'alerta' from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
-        join registro on id_maquina = fk_maquina where id_empresa = ${id_empresa} and tipo = 'maquina' group by id_maquina;
+        join registro on id_maquina = fk_maquina where id_empresa = ${id_empresa} and tipo = 'maquina' group by id_maquina order by id_registro desc;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

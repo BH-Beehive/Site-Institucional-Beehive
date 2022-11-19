@@ -35,7 +35,7 @@ function servidorCritica(id_empresa) {
 function listarInformacoesMaquina(id_empresa, host_name) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMaquinas()", id_empresa, host_name);
     var instrucao = `
-    SELECT processador, arquitetura, sistema_operacional FROM setor JOIN maquina on id_setor = fk_setor 
+    SELECT processador, arquitetura, sistema_operacional,ROUND(disco_total/1000) as "disco_total" FROM setor JOIN maquina on id_setor = fk_setor 
     JOIN empresa on id_empresa = maquina.fk_empresa WHERE id_empresa = ${id_empresa} and host_name = "${host_name}";
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
