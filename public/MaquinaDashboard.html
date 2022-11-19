@@ -134,16 +134,17 @@
                                     </div>
                                     <span id="maquinaAtual"></span>
                                 </div>
-                                
+
                                 <script>
 
                                     let hostName = sessionStorage.NOME_MAQUINA;
                                     let maquinaAtual = document.getElementById("maquinaAtual");
-
+                                    let dadosDiscoTotal = 0
+                                    let dadosDiscoUsado = 0
                                     var proximaAtualizacao;
                                     maquinaAtual.innerHTML = hostName;
                                     function iniciarGrafico() {
-                                        
+
 
                                         const horaRegistro = []
                                         const dados = []
@@ -169,29 +170,31 @@
                                         );
 
 
-                                        const horaRegistro2 = []
-                                        const dadosDisco = []
+
+                                        
                                         const data2 = {
-                                            labels: horaRegistro2,
+                                            labels:["Disco usado","Disco total"],
                                             datasets: [{
-                                                label: "DISCO",
-                                                backgroundColor: 'green',
-                                                borderColor: 'green',
-                                                data: dadosDisco,
+                                                label: 'DISCO',
+                                                data: [0,0],
+                                                backgroundColor: [
+                                                    'red',
+                                                    'limegreen'
+                                                    
+                                                ],
+                                                hoverOffset: 4
                                             }]
                                         };
 
                                         const config2 = {
-                                            type: 'line',
+                                            type: 'doughnut',
                                             data: data2,
-                                            options: {}
                                         };
 
                                         const chart2 = new Chart(
                                             document.getElementById('myChartDisco'),
                                             config2
                                         );
-
 
                                         const horaRegistro3 = []
                                         const dadosRAM = []
@@ -216,9 +219,9 @@
                                             config3
                                         );
 
-                                        setTimeout(() => atualizarGraficoCPU(chart), 2000);
-                                        setTimeout(() => atualizarGraficoDisco(chart2), 2000);
-                                        setTimeout(() => atualizarGraficoRAM(chart3), 2000);
+                                        setTimeout(() => atualizarGraficoCPU(chart), 3000);
+                                        setTimeout(() => atualizarGraficoDisco(chart2), 3000);
+                                        setTimeout(() => atualizarGraficoRAM(chart3), 3000);
                                     }
 
 
@@ -240,17 +243,12 @@
                                                 const dadosCPU = resultado.map(dadoCPU => dadoCPU.cpu_uso);
                                                 console.log(horaRegistro)
                                                 console.log(dadosCPU)
-                                                if (contador.length >= 10) {
-
-                                                    chartCPU.data.datasets[0].data.shift();
-                                                    chartCPU.data.labels.shift()
-                                                }
-
+                                               
                                                 chartCPU.data.labels.push(horaRegistro);
                                                 chartCPU.data.datasets[0].data.push(resultado[0].cpu_uso);
-                                               
+
                                                 chartCPU.update();
-                                                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(chartCPU), 2000);
+                                                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(chartCPU), 3000);
 
                                                 if (resposta.ok) {
                                                     console.log("resposta: ", resposta.json());
@@ -260,19 +258,20 @@
                                                 } else {
                                                     throw ("Houve um erro ao tentar realizar a busca por data!");
                                                 }
-                                                
+
                                             }).catch(function (res) {
                                                 console.log("#ERRO: "`${res}`);
                                             });
                                         })
-                                        
+
 
                                     }
 
 
 
 
-                                    let contador2 = []
+                                   
+                                    
                                     function atualizarGraficoDisco(chartDisco) {
                                         fetch(`registro/registroGraficoLinhaTempo/${hostName}`, {
                                             method: "GET",
@@ -281,22 +280,21 @@
                                             resposta.json().then(function (resultado) {
 
                                                 console.log('resultado', resultado)
-                                                contador2.push(1)
+                                                
                                                 const horaRegistro = resultado.map(dataRegistrada => dataRegistrada.data_registro);
                                                 const dadosDisco = resultado.map(dadoDisco => dadoDisco.disco_uso);
-                                                console.log(horaRegistro)
-                                                console.log(dadosDisco)
-                                                if (contador2.length >= 10) {
-
-                                                    chartDisco.data.datasets[0].data.shift();
-                                                    chartDisco.data.labels.shift()
-                                                }
-
-                                                chartDisco.data.labels.push(horaRegistro);
-                                                chartDisco.data.datasets[0].data.push(resultado[0].disco_uso);
+                                                dadosDiscoTotal=resultado[0].disco_total
+                                                dadosDiscoUsado=resultado[0].disco_uso
+                                                
+                                                console.log("XXXXXXX"+dadosDiscoTotal)
+                                                console.log("XXXXXXX"+dadosDiscoUsado)
+                                                console.log(horaRegistro);
+                                                console.log(dadosDisco);
                                                
+                                               chartDisco.data.datasets[0].data = [dadosDiscoUsado,100 - dadosDiscoUsado];           
+                                                                                       
                                                 chartDisco.update();
-                                                proximaAtualizacao = setTimeout(() => atualizarGraficoDisco(chartDisco), 2000);
+                                                proximaAtualizacao = setTimeout(() => atualizarGraficoDisco(chartDisco), 3000);
 
                                                 if (resposta.ok) {
                                                     console.log("resposta: ", resposta.json());
@@ -306,12 +304,12 @@
                                                 } else {
                                                     throw ("Houve um erro ao tentar realizar a busca por data!");
                                                 }
-                                                
+
                                             }).catch(function (res) {
                                                 console.log("#ERRO: "`${res}`);
                                             });
                                         })
-                                        
+
 
                                     }
 
@@ -342,9 +340,9 @@
 
                                                 chartRAM.data.labels.push(horaRegistro);
                                                 chartRAM.data.datasets[0].data.push(resultado[0].memoria_uso);
-                                               
+
                                                 chartRAM.update();
-                                                proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(chartRAM), 2000);
+                                                proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(chartRAM), 3000);
 
                                                 if (resposta.ok) {
                                                     console.log("resposta: ", resposta.json());
@@ -354,12 +352,12 @@
                                                 } else {
                                                     throw ("Houve um erro ao tentar realizar a busca por data!");
                                                 }
-                                                
+
                                             }).catch(function (res) {
                                                 console.log("#ERRO: "`${res}`);
                                             });
                                         })
-                                        
+
 
                                     }
                                 </script>
@@ -379,7 +377,7 @@
 
                                     <div class="selects">
                                         <h3>Componente:</h3>
-                                       <h2>DISCO</h2>
+                                        <h2>DISCO</h2>
                                     </div>
                                     <span id="maquinaAtual"></span>
                                 </div>
@@ -387,7 +385,7 @@
                                 <div class="chartline">
                                     <canvas height="70%" id="myChartDisco"></canvas>
                                 </div>
-                                
+
                             </div>
                         </div>
                         <div class="lineChartBackground">
