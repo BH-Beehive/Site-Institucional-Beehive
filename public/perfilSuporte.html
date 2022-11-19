@@ -70,32 +70,6 @@
         <div class="main-content">
 </div>
 
-<div class="modals-suporte" id="divModalSuporte">
-    <div class="button-position">
-        <button class="fecharModalSuporte" onclick="fecharModalSuporte()">
-            <p>X</p>
-        </button>
-    </div>
-    <div class="conteudo-modal">
-        <div class="text-modal-Suporte">
-            <p>Editar Dados</p>
-        </div>
-        <div class="div-inputs-Suporte">
-            <input type="text" class="inputs-Suporte" placeholder="Nome:" id="inputNomeSuporte">
-            <input type="text" class="inputs-Suporte" placeholder="Senha:" id="inputSenhaSuporte">
-        </div>
-        <div class="div-inputs-Suporte">
-            <input type="email" class="inputs-Suporte" placeholder="Email slack:" id="inputEmailSuporte">
-            <input type="tel" class="inputs-Suporte" placeholder="Telefone:" id="inputTelSuporte">
-        </div>
-        <div class="div-inputs-Suporte">
-            <input type="number" class="inputs-Suporte" placeholder="Celular:" id="inputCelSuporte">
-            <input type="number" class="inputs-Suporte" placeholder="Identificação:" id="inputIdSuporte">
-        </div>
-        <button class="EditarSuporte"  id="btnAlterarDados" onclick="alterarDados()">EDITAR</button>
-    </div>
-</div>
-
     </div>
     <div class="cabecalho">
         <button class="botoes btn-download" id="btnDownload"><a href="">Download client</a></button>
@@ -108,7 +82,7 @@
         <div class="dadosPerfil"> 
             <h2 id="h2Suporte">Anderson Silva Toscani</h2>
             <h4 id="emailPerfil">anderson.toscani@gmail.com</h4><br>
-            <button class="botoes btnAlterarDados" onclick="abrirModalSuporte()">Alterar meus dados</button>
+            <button class="botoes btnAlterarDados"  id="btnAlterarDados" onclick="alterarDados()">Alterar meus dados</button>
         </div>
     </div>
 
