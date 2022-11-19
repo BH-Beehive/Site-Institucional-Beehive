@@ -67,6 +67,8 @@ function registroPizzaMaquinaPorSetor(req, res) {
         );
 }
 
+
+
 function registroPizzaServidorPorSetor(req, res) {
     let id_empresa = req.query.idEmpresa
     let setor = req.query.nomeSetor
@@ -179,5 +181,6 @@ module.exports = {
     registroGraficoLinhaTempo,
     registroGraficoLinhaCPU,
     registroGraficoLinhaRAM,
-    registroGraficoLinhaDisco
+    registroGraficoLinhaDisco,
+    
 }

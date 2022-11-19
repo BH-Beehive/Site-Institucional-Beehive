@@ -14,6 +14,8 @@ router.get("/registroPizzaServidor", function (req, res) {
 router.get("/registroPizzaMaquinaPorSetor", function (req, res) {
     registroController.registroPizzaMaquinaPorSetor(req, res);
 });
+ 
+
 
 router.get("/registroPizzaServidorPorSetor", function (req, res) {
     registroController.registroPizzaServidorPorSetor(req, res);
