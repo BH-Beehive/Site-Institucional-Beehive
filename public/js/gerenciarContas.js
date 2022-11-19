@@ -159,13 +159,13 @@ function deletarSuporte(idSuporte) {
       })
 }
 
-function abrirModalSuporte() {
-  var divModalSuporte = document.getElementById("divModalSuporte");
+function abrirModalSuporteEditar() {
+  var divModalSuporte = document.getElementById("divModalSuporteEditar");
   divModalSuporte.style.display = "flex";
 }
 
-function fecharModalSuporte() {
-  var divModal = document.getElementById("divModalSuporte");
+function fecharModalSuporteEditar() {
+  var divModal = document.getElementById("divModalSuporteEditar");
   divModal.style.display = "none";
 }
 
@@ -184,7 +184,7 @@ function listandoSuportes() {
                             <td>${posicao + 1}</td>
                             <td>${resposta[posicao].nome_suporte}</td>
                             <td id="idEmailSlack">${resposta[posicao].email_slack}</td>
-                            <td><button class="button-table editar"><img class="icon-button-editar" src="assets/icons/icon_editar.png" onclick="abrirModalSuporte()"></button>
+                            <td><button class="button-table editar"><img class="icon-button-editar" src="assets/icons/icon_editar.png" onclick="abrirModalSuporteEditar()"></button>
                                 <button class="button-table excluir"><img class="icon-button-deletar" src="assets/icons/icon_deletar.png" onclick="deletarSuporte(${resposta[posicao].id_usuario})"></button>
                             </td>
                         </tr>

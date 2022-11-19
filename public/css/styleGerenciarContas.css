@@ -196,6 +196,19 @@ td{
     box-shadow: 2px 4px 40px 2px rgb(0, 0, 0, 0.2);
 }
 
+.EditarSuporte{
+    margin-top: 5%;
+    outline: none;
+    background-color: #35342F;
+    color: white;
+    width: 90%;
+    height: 30px;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 2px 4px 40px 2px rgb(0, 0, 0, 0.2);
+}
+
 .fecharModalSuporte{
     background-color: red;
     border: 1px solid red;
@@ -232,4 +245,109 @@ td{
     align-items: center;
     flex-direction: column;
     height: 90%;
+}
+
+
+
+
+.modals-suporte-Editar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.div-inputs-Suporte-Editar{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.inputs-Suporte-Editar{
+    width: 100%;
+    border: none;
+    border: 1px solid #4d4d4d93;
+    height: 25px;
+    border-radius: 3px;
+    outline: none;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 5%;
+    padding-left: 5px;
+}
+
+.button-position-Editar{
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.conteudo-modal-Editar{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 90%;
+}
+
+#divModalSuporteEditar{
+    width: 40%;
+    height: 380px;
+    background-color: white;
+    border-radius: 2px;
+    margin-left: 35%;
+    margin-top: 8%;
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
+}
+
+.EditarSuporte{
+    margin-top: 5%;
+    outline: none;
+    background-color: #35342F;
+    color: white;
+    width: 90%;
+    height: 30px;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 2px 4px 40px 2px rgb(0, 0, 0, 0.2);
+}
+
+.EditarSuporte:hover{
+    background-color: #FFCC29;
+    color: black;
+}
+
+.fecharModalSuporteEditar{
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    height: 30px;
+    width: 32px;
+    margin: 10px;
+    border-radius: 2px;
+}
+
+.fecharModalSuporte-Editar p{
+    margin: 0;
+    font-size: 15px;
+}
+
+.text-modal-Suporte-Editar{
+    text-align: center;
+}
+
+.text-modal-Suporte-Editar p{
+    margin: 0;
+    font-size: 18px;
 }
