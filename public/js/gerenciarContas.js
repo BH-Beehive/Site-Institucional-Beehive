@@ -66,12 +66,12 @@ function cadastrarSuporte() {
 }
 
 function editarSuporte() {
-    let nomeSuporteVar = inputNome.value;
-    let senhaVar = inputSenha.value;
-    let cpfVar = inputCpf.value;
-    let emailSlackVar = inputEmailSlack.value;
-    let telefoneVar = inputTelefone.value;
-    let celularVar = inputCelular.value;
+    let nomeSuporteVar = inputNomeSuporteEditar.value;
+    let senhaVar = inputSenhaSuporteEditar.value;
+    let cpfVar = inputCpfEditar.value;
+    let emailSlackVar = inputEmailSuporteEditar.value;
+    let telefoneVar = inputTelSuporteEditar.value;
+    let celularVar = inputCelSuporteEditar.value;
     let idEmpresaVar = sessionStorage.ID_EMPRESA;
     
     console.log(nomeSuporteVar, senhaVar, emailSlackVar, telefoneVar, celularVar, cpfVar, idEmpresaVar)
