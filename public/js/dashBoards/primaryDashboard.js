@@ -619,7 +619,7 @@ function listarMaquinas() {
                                             class="fa regular fa-arrow-up-right-from-square"></i>
                                     </div>
                                     <div class="divBtnEditarMaquina">
-                                        <button class="button-editar-dashboard"><img src="assets/icons/icon_editar.png"></button>
+                                        <button class="button-editar-dashboard" onclick="abrirModalEditarMaquina()"><img src="assets/icons/icon_editar.png"></button>
                                     </div>
                                 </div>
                             </div>`
@@ -751,7 +751,7 @@ function listarPorSetor() {
                                 
                                 </div>
                                 <div class="divBtnEditarMaquina">
-                                    <button class="button-editar-dashboard"><img src="assets/icons/icon_editar.png"></button>
+                                    <button class="button-editar-dashboard" onclick="abrirModalEditarMaquina()"><img src="assets/icons/icon_editar.png"></button>
                                     </div>
                             </div>`
                     listaIdMaquina.push(resposta[posicao].host_name)
@@ -771,6 +771,17 @@ function abrirModalMaquina() {
     divModal.style.display = "flex";
     var divModalSetor = document.getElementById("divModalSetor");
     divModalSetor.style.display = "none";
+    var divModalEditarMaquina = document.getElementById("divModalEditarMaquina");
+    divModalEditarMaquina.style.display = "none";
+}
+
+function abrirModalEditarMaquina(){
+    var divModalEditarMaquina = document.getElementById("divModalEditarMaquina");
+    divModalEditarMaquina.style.display = "flex";
+    var divModalSetor = document.getElementById("divModalSetor");
+    divModalSetor.style.display = "none";
+    var divModal = document.getElementById("divModalMaquina");
+    divModal.style.display = "none";
 }
 
 function abrirModalSetor() {
@@ -778,6 +789,8 @@ function abrirModalSetor() {
     divModalSetor.style.display = "flex";
     var divModal = document.getElementById("divModalMaquina");
     divModal.style.display = "none";
+    var divModalEditarMaquina = document.getElementById("divModalEditarMaquina");
+    divModalEditarMaquina.style.display = "none";
 }
 
 function fecharModalMaquina() {
@@ -785,6 +798,10 @@ function fecharModalMaquina() {
     divModal.style.display = "none";
 }
 
+function fecharModalEditarMaquina() {
+    var divModalEditarMaquina = document.getElementById("divModalEditarMaquina");
+    divModalEditarMaquina.style.display = "none";
+}
 
 function fecharModalSetor() {
     var divModalSetor = document.getElementById("divModalSetor");

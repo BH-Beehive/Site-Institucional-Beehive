@@ -177,6 +177,41 @@
                             </div>
                         </div>
 
+                        <div class="modals-dashboard" id="divModalEditarMaquina">
+                            <div class="button-position">
+                                <button class="fecharModalEditarMaquina" onclick="fecharModalEditarMaquina()">
+                                    <p>X</p>
+                                </button>
+                            </div>
+                            <div class="conteudo-modal">
+                                <div class="text-modal-editar-maquina">
+                                    <p>Editar uma máquina</p>
+                                </div>
+                                <div class="div-inputs-editar-maquina">
+                                    <input type="text" class="inputs-editar-maquina" placeholder="Host name:"
+                                        id="inputHostName">
+                                </div>
+                                <div class="div-inputs-editar-maquina select">
+                                    <p class="nivel-prioridade-p"><b>Tipo:</b></p>
+                                    <select name="select-nivel-editar-maquina" class="inputs-editar-select maquina"
+                                        id="selectTipoEditarMaquina">
+                                        <option value="0" disabled selected>Selecione...</option>
+                                        <option value="Maquina">Maquina</option>
+                                        <option value="Servidor">Servidor</option>
+                                    </select>
+                                </div>
+                                <div class="div-inputs-editar-maquina select">
+                                    <p class="nivel-prioridade-p"><b>Setor:</b></p>
+                                    <select name="select-nivel-editar-maquina" class="inputs-editar-select maquina"
+                                        id="selectSetoresEditarMaquina" onload="filtraSetor()">
+                                        <option value="0" disabled selected>Selecione...</option>
+
+                                    </select>
+                                </div>
+                                <button class="editar-maquina">SALVAR</button>
+                            </div>
+                        </div>
+
                         <div class="modals-dashboard" id="divModalSetor">
                             <div class="button-position">
                                 <button class="fecharModalSetor" onclick="fecharModalSetor()">
@@ -302,7 +337,7 @@
                                                         class="fa regular fa-arrow-up-right-from-square"></i>
                                                 </div>
                                                 <div class="divBtnEditarMaquina">
-                                                    <button class="button-editar-dashboard"><img src="assets/icons/icon_editar.png"></button>
+                                                    <button class="button-editar-dashboard" onclick="abrirModalEditarMaquina()"><img src="assets/icons/icon_editar.png"></button>
                                                 </div>
                                             </div>
                                             

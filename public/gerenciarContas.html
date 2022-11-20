@@ -81,34 +81,8 @@
 
         <div class="main-content">
         </div>
-        
+    
             <div class="components-navbar">
-
-                <div class="modals-suporte-Editar" id="divModalSuporteEditar">
-                    <div class="button-position-Editar">
-                        <button class="fecharModalSuporteEditar" onclick="fecharModalSuporteEditar()">
-                            <p>X</p>
-                        </button>
-                    </div>
-                    <div class="conteudo-modal-Editar">
-                        <div class="text-modal-Suporte-Editar">
-                            <p>Editar Dados</p>
-                        </div>
-                        <div class="div-inputs-Suporte-Editar">
-                            <input type="text" class="inputs-Suporte-Editar" placeholder="Nome:" id="inputNomeSuporte">
-                            <input type="email" class="inputs-Suporte-Editar" placeholder="Email(Slack):" id="inputEmailSuporte">
-                        </div>
-                        <div class="div-inputs-Suporte-Editar">
-                            <input type="text" class="inputs-Suporte-Editar" placeholder="Senha:" id="inputSenhaSuporte">
-                            <input type="number" class="inputs-Suporte-Editar" placeholder="Cpf:" id="inputCpfSuporte">
-                        </div>
-                        <div class="div-inputs-Suporte-Editar">
-                            <input type="tel" class="inputs-Suporte-Editar" placeholder="Telefone:" id="inputTelSuporte">
-                            <input type="number" class="inputs-Suporte-Editar" placeholder="Celular:" id="inputCelSuporte">    
-                        </div>
-                        <button class="EditarSuporte">EDITAR</button>
-                    </div>
-                </div>
 
                 <div class="modals-suporte" id="divModalSuporte">
                     <div class="button-position">
@@ -155,7 +129,7 @@
                             <input type="number" class="inputs-Suporte-Editar" placeholder="Celular:" id="inputCelSuporteEditar">
                             <input type="tel" class="inputs-Suporte-Editar" placeholder="Telefone:" id="inputTelSuporteEditar">
                         </div>
-                        <button class="EditarSuporte" onclick="editarSuporte()">EDITAR</button>
+                        <button class="EditarSuporte" onclick="editarSuporte()">SALVAR</button>
                     </div>
                 </div>
 
@@ -168,32 +142,12 @@
                 <div class="filter">
 
                     <div class="itens-table">
-
-                        <div class="campos-search">
-
-                            <input type="search" placeholder="Select Column">
-                            <input type="search" placeholder="Search List">
-
-                        </div>
-
                         <div class="button-new">
                             <button onclick="abrirModalSuporte()" class="new">Novo</button>
                         </div>
-
                     </div>
-
-
-
                     
-                    <table>
-                        <tr>
-                            <th>#</th>
-                            <th>Nome</th>
-                            <th>E-mail</th>
-                            <th></th>
-                        </tr>
-                        <tr id="listarSuporte"></tr>
-                    </table>
+                    <table id="listarSuporte"></table>
             
                 </div>
 
