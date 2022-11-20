@@ -105,6 +105,17 @@ function registroGraficoLinhaDisco(hostName){
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+
+function historicoMensal(mesAtual,hostName){
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function historicoMensal()",mesAtual,hostName);
+    var instrucao = `
+    select count(tipo_alerta) as 'qdt_alerta',tipo_alerta,DATE_FORMAT(data_registro,'%y/%m/%d')  
+                    from maquina join registro on id_maquina = fk_maquina where host_name = "${hostName}" 
+                        and data_registro BETWEEN '2022-${mesAtual}-01' and '2022-${mesAtual}-30' group by date_format(data_registro, '%d') order by id_registro desc;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao); 
+}
 module.exports = {
     registroPizzaMaquina,
     registroPizzaServidor,
@@ -114,5 +125,6 @@ module.exports = {
     registroGraficoLinhaCPU,
     registroGraficoLinhaRAM,
     registroGraficoLinhaDisco,
+    historicoMensal
     
 }
