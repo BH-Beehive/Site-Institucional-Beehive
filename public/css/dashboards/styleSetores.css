@@ -188,6 +188,108 @@
 }
 
 
+.div-inputs-editar-maquina{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.div-inputs-editar-maquina.select{
+    height: 40px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.inputs-editar-select{
+    margin-left:10px;
+    background-color: #35342F;
+    color: white;
+}
+
+.inputs-editar-maquina{
+    width: 100%;
+    border: none;
+    border: 1px solid #4d4d4d93;
+    height: 25px;
+    border-radius: 3px;
+    outline: none;
+    height: 30px;
+    margin-top: 5%;
+    padding-left: 5px;
+}
+
+.nivel-prioridade-p{
+    margin: 0;
+}
+
+#divModalEditarMaquina{
+    width: 40%;
+    height: 345px;
+    background-color: white;
+    border-radius: 2px;
+    margin-top: 28%;
+    margin-left: 18%;
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
+}
+
+.editar-maquina{
+    margin-top: 5%;
+    outline: none;
+    background-color: #35342F;
+    color: white;
+    width: 90%;
+    height: 30px;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 2px 4px 40px 2px rgb(0, 0, 0, 0.2);
+}
+
+.fecharModalEditarMaquina{
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    height: 30px;
+    width: 32px;
+    margin: 10px;
+    border-radius: 2px;
+}
+
+.button-position{
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.conteudo-modal{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 90%;
+}
+
+.fecharModalEditarMaquina p{
+    margin: 0;
+    font-size: 15px;
+}
+
+.text-modal-editar-maquina p{
+    margin: 0;
+    font-size: 18px;
+}
+
+
 .backGroundDash {
     display: flex;
     justify-content: center;
