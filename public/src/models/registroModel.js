@@ -109,7 +109,9 @@ function registroGraficoLinhaDisco(hostName){
 function historicoMensal(mesAtual,hostName){
     console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function historicoMensal()",mesAtual,hostName);
     var instrucao = `
-    select count(tipo_alerta) as 'qdt_alerta',tipo_alerta,DATE_FORMAT(data_registro,'%y/%m/%d')  as "data_registro"
+    select count(case tipo_alerta when "Vermelho" then 1 else null end) as 'qdt_vermelho', 
+    count(case tipo_alerta when "amarelo" then 1 else null end) as 'qdt_amarelo' , 
+    count(case tipo_alerta when "verde" then 1 else null end) as 'qdt_verde', DATE_FORMAT(data_registro,'%y/%m/%d')  as "data_registro"
                     from maquina join registro on id_maquina = fk_maquina where host_name = "${hostName}" 
                         and data_registro BETWEEN '2022-${mesAtual}-01' and '2022-${mesAtual}-30' group by date_format(data_registro, '%d') order by id_registro desc;
     `;

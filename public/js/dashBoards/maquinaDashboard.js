@@ -54,13 +54,35 @@ function listarDadosMaquina() {
             resposta.json().then(function (resposta) {
               console.log("historicoMensal-----------------------------------"+resposta)
              for(var i=0;i<=30;i++){
-                menuHistorico.innerHTML+=`
-                <div class="dadosMenu">
-                <h3>${resposta[i].data_registro}</h3>
-                <h3>${resposta[i].qdt_alerta}</h3>
-                <h3>${resposta[i].tipo_alerta}</h3>               
-              </div>
-              `
+                if(resposta[i].qdt_vermelho > resposta[i].qdt_amarelo ){
+                    
+                    menuHistorico.innerHTML+=`
+                    <div class="dadosMenu">
+                    <h3>${resposta[i].data_registro}</h3>
+                    <h3>${resposta[i].qdt_vermelho}</h3>
+                    <h3>"VERMELHO"</h3>               
+                  </div>
+                  `
+                }
+                else if(resposta[i].qdt_amarelo > resposta[i].qdt_vermelho ){
+                    menuHistorico.innerHTML+=`
+                    <div class="dadosMenu">
+                    <h3>${resposta[i].data_registro}</h3>
+                    <h3>${resposta[i].qdt_amarelo}</h3>
+                    <h3>AMARELO</h3>               
+                  </div>
+                  `
+                }
+                else{
+                    menuHistorico.innerHTML+=`
+                    <div class="dadosMenu">
+                    <h3>${resposta[i].data_registro}</h3>
+                    <h3>${resposta[i].qdt_verde}</h3>
+                    <h3>VERDE</h3>               
+                  </div>
+                  `
+                }
+                
              }
             });
         } else {
