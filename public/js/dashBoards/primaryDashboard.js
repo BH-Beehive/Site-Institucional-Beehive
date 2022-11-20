@@ -69,45 +69,67 @@ function gerarToken() {
 }
 
 function statusSetor() {
-
     let qtdVermelho = 0;
     let qtdAmarelo = 0;
     let qtdVerde = 0;
-    let totalMaquina = 0;
+
+
+
+
     let idEmpresa = sessionStorage.ID_EMPRESA
-    fetch(`/setor/statusSetor?idEmpresa=${idEmpresa}`).then(function (resposta) {
+    const dataHj = new Date()
+    const mesAtual = dataHj.getMonth() + 1
+    const diaAtual = "08"
+
+    fetch(`/setor/statusSetor?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
+
         if (resposta.ok) {
+
             resposta.json().then(function (resposta) {
-                for (var posicao = 0; posicao < resposta.length; posicao++) {
-                    if (resposta[posicao].alerta == 'Vermelho') {
-                        qtdVermelho++
-                    } else if (resposta[posicao].alerta == 'Amarelo') {
-                        qtdAmarelo++
+
+
+                for (var i = 0; i < resposta.length; i++) {
+                    if (resposta[i].qdt_vermelho > resposta[i].qdt_amarelo) {
+                        qtdVermelho++;
+
+
+                    } else if (resposta[i].qdt_amarelo > resposta[i].qdt_vermelho) {
+                        qtdAmarelo++;
+
                     } else {
-                        qtdVerde++
+                        qtdVerde++;
+
                     }
-                    totalMaquina++
+
+
                 }
 
+
+
+
+
+
+
+
                 setorNivel.innerHTML = `<div class="backgroundKPIS">
-                <div class="itemKPI normal">
+                <div class="itemKPI normal"  onclick="gerarGraficosNormais()">
                     <p>Setores
                         normais</p>
                     <h2>${qtdVerde}</h2>
                 </div>
-                <div class="itemKPI alerta">
+                <div class="itemKPI alerta"  onclick="gerarGraficosAlerta()">
                     <p>Setores
                         em alerta</p>
                     <h2>${qtdAmarelo}</h2>
                 </div>
-                <div class="itemKPI critico">
+                <div class="itemKPI critico"  onclick="gerarGraficosCritico()">
                     <p>Setores
                         críticos</p>
                     <h2>${qtdVermelho}</h2>
                 </div>
             </div>
-
             `
+
 
             });
         } else {
@@ -119,14 +141,242 @@ function statusSetor() {
     })
 }
 
+function gerarGraficosNormais() {
+
+    if (Chart.getChart("setorChart")) {
+        Chart.getChart("setorChart").destroy()
+
+    }
+
+   
+    let qtdVerde = 0;
+    let idEmpresa = sessionStorage.ID_EMPRESA
+    const dataHj = new Date()
+    const mesAtual = dataHj.getMonth() + 1
+    const diaAtual = "08"
+    const setoresNormais = []
+
+    fetch(`/setor/statusSetor?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                for (var i = 0; i < resposta.length; i++) {
+                    if (resposta[i].qdt_verde > resposta[i].qdt_amarelo && resposta[i].qdt_verde > resposta[i].qdt_vermelho) {
+
+                        setoresNormais.push(resposta[i].setor)
+                        qtdVerde++;
+
+                    }
+                }
+                
+
+                const data3 = {
+                    labels: setoresNormais,
+                    datasets: [{
+                        backgroundColor: '#00FF29',
+                        data: [10, 20, 6],
+                    }, {
+
+                        backgroundColor: '#FF7A00',
+                        data: [3, 10, 5],
+                    }, {
+
+                        backgroundColor: '#FF0F00',
+                        data: [0, 10, 5],
+                    }]
+                };
+
+                const config4 = {
+                    type: 'bar',
+                    data: data3,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                            }
+                        },
+                        responsive: false
+                    },
+                };
+
+                const myChart3 = new Chart(
+                    document.getElementById('setorChart'),
+                    config4
+                );
+
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar registros!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    })
+
+
+
+}
+
+function gerarGraficosAlerta() {
+    if (Chart.getChart("setorChart")) {
+        Chart.getChart("setorChart").destroy()
+
+
+    }
+
+
+   let qtdAmarelo = 0;
+    let idEmpresa = sessionStorage.ID_EMPRESA
+    const dataHj = new Date()
+    const mesAtual = dataHj.getMonth() + 1
+    const diaAtual = "08"
+    const setoresAlerta = []
+
+    fetch(`/setor/statusSetor?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                for (var i = 0; i < resposta.length; i++) {
+                    if (resposta[i].qdt_amarelo > resposta[i].qdt_vermelho && resposta[i].qdt_amarelo > resposta[i].qdt_verde) {
+
+                        setoresAlerta.push(resposta[i].setor)
+                        qtdAmarelo++;
+
+                    }
+                }
+                
+
+                const data3 = {
+                    labels: setoresAlerta,
+                    datasets: [{
+                        backgroundColor: '#00FF29',
+                        data: [10, 20, 6],
+                    }, {
+
+                        backgroundColor: '#FF7A00',
+                        data: [3, 10, 5],
+                    }, {
+
+                        backgroundColor: '#FF0F00',
+                        data: [0, 10, 5],
+                    }]
+                };
+
+                const config4 = {
+                    type: 'bar',
+                    data: data3,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                            }
+                        },
+                        responsive: false
+                    },
+                };
+
+                const myChart3 = new Chart(
+                    document.getElementById('setorChart'),
+                    config4
+                );
+
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar registros!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    })
+
+
+}
+
+
+function gerarGraficosCritico() {
+    if (Chart.getChart("setorChart")) {
+        Chart.getChart("setorChart").destroy()
+
+
+    }
+
+    let qtdVermelho = 0;
+    let idEmpresa = sessionStorage.ID_EMPRESA
+    const dataHj = new Date()
+    const mesAtual = dataHj.getMonth() + 1
+    const diaAtual = "08"
+    const setoresCritico = []
+
+    fetch(`/setor/statusSetor?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                for (var i = 0; i < resposta.length; i++) {
+                    if (resposta[i].qdt_vermelho > resposta[i].qdt_amarelo && resposta[i].qdt_vermelho > resposta[i].qdt_verde) {
+
+                        setoresCritico.push(resposta[i].setor)
+                        qtdVermelho++;
+
+                    }
+                }
+                
+
+                const data3 = {
+                    labels: setoresCritico,
+                    datasets: [{
+                        backgroundColor: '#00FF29',
+                        data: [10, 20, 6],
+                    }, {
+
+                        backgroundColor: '#FF7A00',
+                        data: [3, 10, 5],
+                    }, {
+
+                        backgroundColor: '#FF0F00',
+                        data: [0, 10, 5],
+                    }]
+                };
+
+                const config4 = {
+                    type: 'bar',
+                    data: data3,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                            }
+                        },
+                        responsive: false
+                    },
+                };
+
+                const myChart3 = new Chart(
+                    document.getElementById('setorChart'),
+                    config4
+                );
+
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar registros!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    })
+
+
+}
+
+
+
 function maquinaCritica() {
     let idEmpresa = sessionStorage.ID_EMPRESA
-    fetch(`/maquina/maquinaCritica?idEmpresa=${idEmpresa}`).then(function (resposta) {
+    const dataHj = new Date()
+    const mesAtual = dataHj.getMonth() + 1
+    const diaAtual = "08"
+    fetch(`/maquina/maquinaCritica?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (var posicao = 0; posicao < resposta.length; posicao++) {
 
-            critica.innerHTML = `
+                    critica.innerHTML = `
         <h3>${resposta[posicao].maquina}</h3>
                 <p>${resposta[posicao].data}</p>    
             `
@@ -142,8 +392,11 @@ function maquinaCritica() {
 }
 
 function servidorCritica() {
+    const dataHj = new Date()
+    const mesAtual = dataHj.getMonth() + 1
+    const diaAtual = "08"
     let idEmpresa = sessionStorage.ID_EMPRESA
-    fetch(`/maquina/servidorCritica?idEmpresa=${idEmpresa}`).then(function (resposta) {
+    fetch(`/maquina/servidorCritica?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (var posicao = 0; posicao < resposta.length; posicao++) {

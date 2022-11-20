@@ -45,7 +45,8 @@ function listarInformacoesMaquina() {
 
 function listarDadosMaquina() {
     let hostName = sessionStorage.NOME_MAQUINA
-    let mesAtual = 11
+    const dataHj = new Date()
+    const mesAtual = dataHj.getMonth() + 1
     let menuHistorico = document.getElementById("dadosComponentesMenu")
     //h3NomeMaquina.innerHTML = `<h3>${hostName}</h3>`
     fetch(`/registro/historicoMensal?mes_atual=${mesAtual}&host_name=${hostName}`).then(function (resposta) {
@@ -60,7 +61,7 @@ function listarDadosMaquina() {
                     <div class="dadosMenu">
                     <h3>${resposta[i].data_registro}</h3>
                     <h3>${resposta[i].qdt_vermelho}</h3>
-                    <h3>"VERMELHO"</h3>               
+                    <h3>VERMELHO</h3>               
                   </div>
                   `
                 }

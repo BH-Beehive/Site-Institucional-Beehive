@@ -25,13 +25,13 @@ function listarSetor(req, res) {
 }
 
 function statusSetor(req, res) {
-    let id_empresa = req.query.idEmpresa
-    let setor = req.query.nomeSetor
-    console.log(req.query.idEmpresa)
-    console.log(req.query.nomeSetor)
-    console.log(id_empresa, setor,  "id na controller do setor")
+    let idEmpresa = req.query.id_empresa
+    let mesAtual = req.query.mes_atual
+    let diaAtual = req.query.dia_atual;
     
-    setorModel.statusSetor(id_empresa, setor)
+    console.log(idEmpresa, mesAtual,diaAtual,  "id na controller do setor")
+    
+    setorModel.statusSetor(idEmpresa,mesAtual,diaAtual)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);

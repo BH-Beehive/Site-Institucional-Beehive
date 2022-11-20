@@ -70,11 +70,13 @@ function mostrarTotalServidor(id_empresa) {
     return database.executar(instrucao);
 }
 
-function statusSetor(id_empresa, setor) {
-    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function statusSetor()", id_empresa, setor);
+function statusSetor(idEmpresa, mesAtual,diaAtual) {
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function statusSetor()", idEmpresa, mesAtual,diaAtual);
     var instrucao = `
-    select id_maquina as 'idMaquina', tipo_alerta as 'alerta' from empresa join setor on id_empresa = fk_empresa 
-    join maquina on id_setor = maquina.fk_setor join registro on id_maquina = fk_maquina where id_empresa = ${id_empresa}  group by nome_setor order by id_registro desc;
+    select nome_setor as 'setor',count(case tipo_alerta when "Vermelho" then 1 else null end) as 'qdt_vermelho', 
+count(case tipo_alerta when "amarelo" then 1 else null end) as 'qdt_amarelo' , 
+count(case tipo_alerta when "verde" then 1 else null end) as 'qdt_verde', id_maquina as 'idMaquina' from empresa join setor on id_empresa = fk_empresa 
+    join maquina on id_setor = maquina.fk_setor join registro on id_maquina = fk_maquina where id_empresa = ${idEmpresa} and  date_format(data_registro, '%d-%m') = '${diaAtual}-${mesAtual}' group by nome_setor order by tipo_alerta desc;
     
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);

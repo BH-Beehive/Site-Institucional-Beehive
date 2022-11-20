@@ -29,11 +29,13 @@ function listarMaquinas(req, res) {
 }
 
 function maquinaCritica(req, res) {
-    var id_empresa = req.query.idEmpresa
-    console.log(req.query.idEmpresa)
-    console.log(id_empresa, "id na controller da maquina")
+    let idEmpresa = req.query.id_empresa
+    let mesAtual = req.query.mes_atual
+    let diaAtual = req.query.dia_atual;
+   
+    console.log(idEmpresa, "id na controller da maquina")
     
-    maquinaModel.maquinaCritica(id_empresa)
+    maquinaModel.maquinaCritica(idEmpresa,mesAtual,diaAtual)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -50,11 +52,12 @@ function maquinaCritica(req, res) {
 }
 
 function servidorCritica(req, res) {
-    var id_empresa = req.query.idEmpresa
-    console.log(req.query.idEmpresa)
-    console.log(id_empresa, "id na controller da maquina")
+    var idEmpresa = req.query.id_empresa
+    let mesAtual = req.query.mes_atual
+    let diaAtual = req.query.dia_atual;
     
-    maquinaModel.servidorCritica(id_empresa)
+    
+    maquinaModel.servidorCritica(idEmpresa,mesAtual,diaAtual)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
