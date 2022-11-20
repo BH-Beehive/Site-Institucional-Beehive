@@ -48,39 +48,46 @@ body{
 .filter{
     margin-top: 10%;
     width: 100%;
+    height: 470px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    background-color: white;
+    border-radius: 2px;
+    box-shadow: 2px 4px 20px 2px rgb(0, 0, 0, 0.2);
 }
 
+
 th{
-    background-color: #EDF2F7;
+    height: 30px;
+    background-color: black;
+    color: white;
 }
 
 table{
-    width: 100%;
+    width: 98%;
     height: 150px;
     text-align: center;
-    border: 1px solid #e4eef8;
-    border-bottom: none;
-    border-radius: 3px;
+    border: 1px solid black;
+    border-radius: 5px;
+    border-collapse: collapse;
 }
 
-td{
-    border-bottom: 1px solid #e4eef8;
+tr{
+    border-bottom: 1px solid black;
 }
+
 
 .button-table{
-    width: 50px;
-    height: 40px;
+    width: 38px;
+    height: 35px;
     border-radius: 3px;
     outline: none;
     border: none;
     color: white;
     cursor: pointer;
 }
+
 
 .editar{
     background-color: green;
@@ -91,7 +98,7 @@ td{
 }
 
 .itens-table{
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -139,13 +146,13 @@ td{
 }
 
 .icon-button-editar{
-    width: 28px;
-    height: 28px;
+    width: 23px;
+    height: 23px;
 }
 
 .icon-button-deletar{
-    width: 28px;
-    height: 28px;
+    width: 23px;
+    height: 23px;
 }
 
 .div-inputs-Suporte{
@@ -173,8 +180,8 @@ td{
     width: 40%;
     height: 330px;
     background-color: white;
+    margin-bottom: 15%;
     border-radius: 2px;
-    margin-top: 30%;
     display: none;
     position: absolute;
     flex-direction: column;
@@ -297,8 +304,8 @@ td{
     width: 40%;
     height: 330px;
     background-color: white;
+    margin-bottom: 15%;
     border-radius: 2px;
-    margin-top: 30%;
     display: none;
     position: absolute;
     flex-direction: column;

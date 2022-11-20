@@ -181,17 +181,28 @@ function listandoSuportes() {
         fetch(`/usuario/listarSuporte?idEmpresa=${idEmpresa}`).then(function (resposta) {
           if (resposta.ok) {
             resposta.json().then(function (resposta) {
+
+              listarSuporte.innerHTML += `<tr>
+              <th>#ID</th>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Mais</th>
+              </tr>
+            `
+
               for (var posicao = 0; posicao < resposta.length; posicao++) {
                 // <div id="listarSuporte" class="listaSuporte">${resposta[posicao].nome_suporte}, ${resposta[posicao].email_slack}</div>
                 listarSuporte.innerHTML += `
                     
                         <tr>
+                       
                             <td>${posicao + 1}</td>
                             <td>${resposta[posicao].nome_suporte}</td>
                             <td id="idEmailSlack">${resposta[posicao].email_slack}</td>
                             <td><button class="button-table editar"><img class="icon-button-editar" src="assets/icons/icon_editar.png" onclick="abrirModalSuporteEditar()"></button>
                                 <button class="button-table excluir"><img class="icon-button-deletar" src="assets/icons/icon_deletar.png" onclick="deletarSuporte(${resposta[posicao].id_usuario})"></button>
                             </td>
+                            
                         </tr>
 
                     `
