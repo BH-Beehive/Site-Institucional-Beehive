@@ -492,7 +492,11 @@ function listarPorSetor() {
                                         <i onclick="verMachine('${resposta[posicao].host_name}')"
                                             class="fa regular fa-arrow-up-right-from-square"></i>
                                     </div>
+                                
                                 </div>
+                                <div class="divBtnEditarMaquina">
+                                    <button class="button-editar-dashboard"><img src="assets/icons/icon_editar.png"></button>
+                                    </div>
                             </div>`
                     listaIdMaquina.push(resposta[posicao].host_name)
                 }

@@ -1,12 +1,27 @@
 function abrirModalSuporte(){
     var divModalSuporte = document.getElementById("divModalSuporte");
     divModalSuporte.style.display = "flex";
+    var divModal = document.getElementById("divModalSuporteEditar");
+      divModal.style.display = "none";
     }
 
     function fecharModalSuporte(){
     var divModalSuporte = document.getElementById("divModalSuporte");
     divModalSuporte.style.display = "none";
     }
+
+    function abrirModalSuporteEditar() {
+      var divModalSuporteEditar = document.getElementById("divModalSuporteEditar");
+      divModalSuporteEditar.style.display = "flex";
+      var divModalSuporte = document.getElementById("divModalSuporte");
+      divModalSuporte.style.display = "none";
+    }
+    
+    function fecharModalSuporteEditar() {
+      var divModal = document.getElementById("divModalSuporteEditar");
+      divModal.style.display = "none";
+    }
+    
 
 function cadastrarSuporte() {
     let nomeSuporteVar = inputNomeSuporte.value;
@@ -157,16 +172,6 @@ function deletarSuporte(idSuporte) {
           })
         }
       })
-}
-
-function abrirModalSuporteEditar() {
-  var divModalSuporte = document.getElementById("divModalSuporteEditar");
-  divModalSuporte.style.display = "flex";
-}
-
-function fecharModalSuporteEditar() {
-  var divModal = document.getElementById("divModalSuporteEditar");
-  divModal.style.display = "none";
 }
 
 

@@ -84,6 +84,32 @@
         
             <div class="components-navbar">
 
+                <div class="modals-suporte-Editar" id="divModalSuporteEditar">
+                    <div class="button-position-Editar">
+                        <button class="fecharModalSuporteEditar" onclick="fecharModalSuporteEditar()">
+                            <p>X</p>
+                        </button>
+                    </div>
+                    <div class="conteudo-modal-Editar">
+                        <div class="text-modal-Suporte-Editar">
+                            <p>Editar Dados</p>
+                        </div>
+                        <div class="div-inputs-Suporte-Editar">
+                            <input type="text" class="inputs-Suporte-Editar" placeholder="Nome:" id="inputNomeSuporte">
+                            <input type="email" class="inputs-Suporte-Editar" placeholder="Email(Slack):" id="inputEmailSuporte">
+                        </div>
+                        <div class="div-inputs-Suporte-Editar">
+                            <input type="text" class="inputs-Suporte-Editar" placeholder="Senha:" id="inputSenhaSuporte">
+                            <input type="number" class="inputs-Suporte-Editar" placeholder="Cpf:" id="inputCpfSuporte">
+                        </div>
+                        <div class="div-inputs-Suporte-Editar">
+                            <input type="tel" class="inputs-Suporte-Editar" placeholder="Telefone:" id="inputTelSuporte">
+                            <input type="number" class="inputs-Suporte-Editar" placeholder="Celular:" id="inputCelSuporte">    
+                        </div>
+                        <button class="EditarSuporte">EDITAR</button>
+                    </div>
+                </div>
+
                 <div class="modals-suporte" id="divModalSuporte">
                     <div class="button-position">
                     <button class="fecharModalSuporte" onclick="fecharModalSuporte()"><p>X</p></button>
@@ -106,32 +132,7 @@
                     </div>
                 </div>
 
-                <div class="modals-suporte-Editar" id="divModalSuporteEditar">
-                    <div class="button-position-Editar">
-                        <button class="fecharModalSuporteEditar" onclick="fecharModalSuporteEditar()">
-                            <p>X</p>
-                        </button>
-                    </div>
-                    <div class="conteudo-modal-Editar">
-                        <div class="text-modal-Suporte-Editar">
-                            <p>Editar Dados</p>
-                        </div>
-                        <div class="div-inputs-Suporte-Editar">
-                            <input type="text" class="inputs-Suporte-Editar" placeholder="Nome:" id="inputNomeSuporte">
-                            <input type="text" class="inputs-Suporte-Editar" placeholder="Senha:" id="inputSenhaSuporte">
-                        </div>
-                        <div class="div-inputs-Suporte-Editar">
-                            <input type="email" class="inputs-Suporte-Editar" placeholder="Email slack:" id="inputEmailSuporte">
-                            <input type="tel" class="inputs-Suporte-Editar" placeholder="Telefone:" id="inputTelSuporte">
-                        </div>
-                        <div class="div-inputs-Suporte-Editar">
-                            <input type="number" class="inputs-Suporte-Editar" placeholder="Celular:" id="inputCelSuporte">
-                            <input type="number" class="inputs-Suporte-Editar" placeholder="Identificação:" id="inputIdSuporte">
-                        </div>
-                        <button class="EditarSuporte">EDITAR</button>
-                    </div>
-                </div>
-
+            
                 <div class="itens-navbar">
                 <button class="button-navbar">Download Cliente</button>
                 <img class="img-navbar" src="../public/assets/img/icone-avatar-default.png" alt="">
