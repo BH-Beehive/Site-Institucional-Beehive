@@ -173,6 +173,28 @@ function registroGraficoLinhaDisco(req, res) {
             }
         );
 }
+
+function historicoMensal(req, res) {
+    let mesAtual = req.query.mes_atual;
+    let hostName = req.query.host_name;
+    
+    console.log(mesAtual,  "mesAtual na controller do registro")
+    
+    registroModel.historicoMensal(mesAtual,hostName)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 module.exports = {
     registroPizzaMaquina,
     registroPizzaServidor,
@@ -182,5 +204,6 @@ module.exports = {
     registroGraficoLinhaCPU,
     registroGraficoLinhaRAM,
     registroGraficoLinhaDisco,
+    historicoMensal
     
 }

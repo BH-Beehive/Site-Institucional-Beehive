@@ -458,7 +458,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 33%;
+    width: 15%;
     font-size: 1.2rem;
 }
 
@@ -470,9 +470,32 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 33%;
+    width: 15%;
 }
 
+.divBtnEditarMaquina{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-editar-dashboard{
+    border: none;
+    background-color: black;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-editar-dashboard img{
+    width: 15px;
+    height: 15px;
+}
 
 
 /*  */

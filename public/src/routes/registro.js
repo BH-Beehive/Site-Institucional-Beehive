@@ -27,4 +27,7 @@ router.get("/registroGraficoLinhaTempo/:hostNameMaq", function (req, res) {
 router.get("/registroGraficoLinhaRAM/:hostNameMaq", function (req, res) {
     registroController.registroGraficoLinhaRAM(req, res);
 });
+router.get("/historicoMensal", function (req, res) {
+    registroController.historicoMensal(req, res);
+});
 module.exports = router;
