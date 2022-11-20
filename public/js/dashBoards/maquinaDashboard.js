@@ -46,13 +46,22 @@ function listarInformacoesMaquina() {
 function listarDadosMaquina() {
     let hostName = sessionStorage.NOME_MAQUINA
     let mesAtual = 11
+    let menuHistorico = document.getElementById("dadosComponentesMenu")
     //h3NomeMaquina.innerHTML = `<h3>${hostName}</h3>`
-    fetch(`/registro/historicoMensal/${mesAtual}/${hostName}`).then(function (resposta) {
+    fetch(`/registro/historicoMensal?mes_atual=${mesAtual}&host_name=${hostName}`).then(function (resposta) {
         
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
               console.log("historicoMensal-----------------------------------"+resposta)
-              alert(resposta)
+             for(var i=0;i<=30;i++){
+                menuHistorico.innerHTML+=`
+                <div class="dadosMenu">
+                <h3>${resposta[i].data_registro}</h3>
+                <h3>${resposta[i].qdt_alerta}</h3>
+                <h3>${resposta[i].tipo_alerta}</h3>               
+              </div>
+              `
+             }
             });
         } else {
             console.log("Houve um erro ao tentar listar maquinas!");
