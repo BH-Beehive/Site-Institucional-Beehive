@@ -72,14 +72,10 @@ function statusSetor() {
     let qtdVermelho = 0;
     let qtdAmarelo = 0;
     let qtdVerde = 0;
-
-
-
-
     let idEmpresa = sessionStorage.ID_EMPRESA
     const dataHj = new Date()
     const mesAtual = dataHj.getMonth() + 1
-    const diaAtual = "08"
+    const diaAtual = dataHj.getDate()
 
     fetch(`/setor/statusSetor?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
 
@@ -103,13 +99,6 @@ function statusSetor() {
 
 
                 }
-
-
-
-
-
-
-
 
                 setorNivel.innerHTML = `<div class="backgroundKPIS">
                 <div class="itemKPI normal"  onclick="gerarGraficosNormais()">
@@ -148,8 +137,10 @@ function gerarGraficosNormais() {
 
     }
 
-   
+
     let qtdVerde = 0;
+    let qtdAmarelo = 0;
+    let qtdVermelho = 0;
     let idEmpresa = sessionStorage.ID_EMPRESA
     const dataHj = new Date()
     const mesAtual = dataHj.getMonth() + 1
@@ -161,13 +152,24 @@ function gerarGraficosNormais() {
             resposta.json().then(function (resposta) {
                 for (var i = 0; i < resposta.length; i++) {
                     if (resposta[i].qdt_verde > resposta[i].qdt_amarelo && resposta[i].qdt_verde > resposta[i].qdt_vermelho) {
-
                         setoresNormais.push(resposta[i].setor)
                         qtdVerde++;
 
+                        if (resposta[i].qdt_vermelho > resposta[i].qdt_amarelo) {
+                            qtdVermelho++;
+
+
+                        } else if (resposta[i].qdt_amarelo > resposta[i].qdt_vermelho) {
+                            qtdAmarelo++;
+
+                        } else {
+                            qtdVerde++;
+
+                        }
+
                     }
                 }
-                
+
 
                 const data3 = {
                     labels: setoresNormais,
@@ -224,11 +226,13 @@ function gerarGraficosAlerta() {
     }
 
 
-   let qtdAmarelo = 0;
+    let qtdVerde = 0;
+    let qtdAmarelo = 0;
+    let qtdVermelho = 0;
     let idEmpresa = sessionStorage.ID_EMPRESA
     const dataHj = new Date()
     const mesAtual = dataHj.getMonth() + 1
-    const diaAtual = "08"
+    const diaAtual = dataHj.getDate()
     const setoresAlerta = []
 
     fetch(`/setor/statusSetor?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
@@ -236,27 +240,37 @@ function gerarGraficosAlerta() {
             resposta.json().then(function (resposta) {
                 for (var i = 0; i < resposta.length; i++) {
                     if (resposta[i].qdt_amarelo > resposta[i].qdt_vermelho && resposta[i].qdt_amarelo > resposta[i].qdt_verde) {
-
+                       
                         setoresAlerta.push(resposta[i].setor)
-                        qtdAmarelo++;
+                        qtdAmarelo = resposta[i].qdt_amarelo;
+                        qtdVermelho = resposta[i].qdt_vermelho;
+                        qtdVerde = resposta[i].qdt_verde
+
+
+                        
+
+
+
 
                     }
+                    
                 }
-                
+              
+
 
                 const data3 = {
                     labels: setoresAlerta,
                     datasets: [{
                         backgroundColor: '#00FF29',
-                        data: [10, 20, 6],
+                        data: [qtdVerde],
                     }, {
 
                         backgroundColor: '#FF7A00',
-                        data: [3, 10, 5],
+                        data: [qtdAmarelo],
                     }, {
 
                         backgroundColor: '#FF0F00',
-                        data: [0, 10, 5],
+                        data: [qtdVermelho],
                     }]
                 };
 
@@ -298,6 +312,8 @@ function gerarGraficosCritico() {
 
     }
 
+    let qtdVerde = 0;
+    let qtdAmarelo = 0;
     let qtdVermelho = 0;
     let idEmpresa = sessionStorage.ID_EMPRESA
     const dataHj = new Date()
@@ -310,27 +326,35 @@ function gerarGraficosCritico() {
             resposta.json().then(function (resposta) {
                 for (var i = 0; i < resposta.length; i++) {
                     if (resposta[i].qdt_vermelho > resposta[i].qdt_amarelo && resposta[i].qdt_vermelho > resposta[i].qdt_verde) {
+                          qtdVermelho += resposta[i].qdt_vermelho;
 
                         setoresCritico.push(resposta[i].setor)
-                        qtdVermelho++;
+                        alert(qtdVermelho)
+
+                    }
+                    else if (resposta[i].qdt_amarelo > resposta[i].qdt_vermelho) {
+                        qtdAmarelo += resposta[i].qdt_amarelo;
+
+                    } else {
+                        qtdVerde += resposta[i].qdt_verde
 
                     }
                 }
-                
+
 
                 const data3 = {
                     labels: setoresCritico,
                     datasets: [{
                         backgroundColor: '#00FF29',
-                        data: [10, 20, 6],
+                        data: [qtdAmarelo],
                     }, {
 
                         backgroundColor: '#FF7A00',
-                        data: [3, 10, 5],
+                        data: [qtdVermelho],
                     }, {
 
                         backgroundColor: '#FF0F00',
-                        data: [0, 10, 5],
+                        data: [qtdVermelho],
                     }]
                 };
 
@@ -775,7 +799,7 @@ function abrirModalMaquina() {
     divModalEditarMaquina.style.display = "none";
 }
 
-function abrirModalEditarMaquina(){
+function abrirModalEditarMaquina() {
     var divModalEditarMaquina = document.getElementById("divModalEditarMaquina");
     divModalEditarMaquina.style.display = "flex";
     var divModalSetor = document.getElementById("divModalSetor");
