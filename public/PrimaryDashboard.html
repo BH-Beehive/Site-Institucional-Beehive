@@ -51,7 +51,8 @@
 </head>
 
 <body
-    onload="mostrarTotalMaquinas() , mostrarTotalServidor(), listarMaquinas(), listarSetor(), registroPizzaMaquina(), registroPizzaServidor(),filtraSetor(),statusSetor(),maquinaCritica(),servidorCritica()">
+    onload="mostrarTotalMaquinas() , mostrarTotalServidor(), listarMaquinas(), listarSetor(), registroPizzaMaquina(), 
+    registroPizzaServidor(),filtraSetor(),statusSetor(),maquinaCritica(),servidorCritica() , gerarGraficosCritico()">
     <div class="container">
 
         <!-- Component sideBar -->
@@ -392,14 +393,14 @@
                             <div class="dashboardSetoresBackground">
                                 <div class="background">
                                     <div class="content">
-                                        <div class="title">
-                                            <h3>Setores</h3>
+                                        <div class="title" id="nomeSetor">
+                                            
                                         </div>
 
                                         
 
                                         <div class="backgroundCharts">
-                                            <canvas height="110px" width="800px" id="setorChart"></canvas>
+                                            <canvas height="300px" width="700px" id="setorChart"></canvas>
                                         </div>
                                     </div>
                                 </div>

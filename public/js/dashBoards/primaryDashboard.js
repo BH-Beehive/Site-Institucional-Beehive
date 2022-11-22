@@ -67,15 +67,17 @@ function gerarToken() {
 
     return pass;
 }
+const dataHj = new Date()
+const mesAtual = dataHj.getMonth() + 1
+const diaAtual = dataHj.getDate()
+
 
 function statusSetor() {
     let qtdVermelho = 0;
     let qtdAmarelo = 0;
     let qtdVerde = 0;
     let idEmpresa = sessionStorage.ID_EMPRESA
-    const dataHj = new Date()
-    const mesAtual = dataHj.getMonth() + 1
-    const diaAtual = dataHj.getDate()
+
 
     fetch(`/setor/statusSetor?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
 
@@ -102,18 +104,15 @@ function statusSetor() {
 
                 setorNivel.innerHTML = `<div class="backgroundKPIS">
                 <div class="itemKPI normal"  onclick="gerarGraficosNormais()">
-                    <p>Setores
-                        normais</p>
+                    <p>Setores normais</p>
                     <h2>${qtdVerde}</h2>
                 </div>
                 <div class="itemKPI alerta"  onclick="gerarGraficosAlerta()">
-                    <p>Setores
-                        em alerta</p>
+                    <p>Setores em alerta</p>
                     <h2>${qtdAmarelo}</h2>
                 </div>
                 <div class="itemKPI critico"  onclick="gerarGraficosCritico()">
-                    <p>Setores
-                        críticos</p>
+                    <p>Setores críticos</p>
                     <h2>${qtdVermelho}</h2>
                 </div>
             </div>
@@ -137,14 +136,13 @@ function gerarGraficosNormais() {
 
     }
 
-
-    let qtdVerde = 0;
-    let qtdAmarelo = 0;
-    let qtdVermelho = 0;
+    
+    nomeSetor.innerHTML = '<h3>Setores Normais</h3>'
+    let qtdVerde = [];
+    let qtdAmarelo = [];
+    let qtdVermelho = [];
     let idEmpresa = sessionStorage.ID_EMPRESA
-    const dataHj = new Date()
-    const mesAtual = dataHj.getMonth() + 1
-    const diaAtual = "08"
+
     const setoresNormais = []
 
     fetch(`/setor/statusSetor?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
@@ -153,19 +151,11 @@ function gerarGraficosNormais() {
                 for (var i = 0; i < resposta.length; i++) {
                     if (resposta[i].qdt_verde > resposta[i].qdt_amarelo && resposta[i].qdt_verde > resposta[i].qdt_vermelho) {
                         setoresNormais.push(resposta[i].setor)
-                        qtdVerde++;
 
-                        if (resposta[i].qdt_vermelho > resposta[i].qdt_amarelo) {
-                            qtdVermelho++;
+                        qtdAmarelo.push(resposta[i].qdt_amarelo)
+                        qtdVermelho.push(resposta[i].qdt_vermelho)
+                        qtdVerde.push(resposta[i].qdt_verde)
 
-
-                        } else if (resposta[i].qdt_amarelo > resposta[i].qdt_vermelho) {
-                            qtdAmarelo++;
-
-                        } else {
-                            qtdVerde++;
-
-                        }
 
                     }
                 }
@@ -173,18 +163,7 @@ function gerarGraficosNormais() {
 
                 const data3 = {
                     labels: setoresNormais,
-                    datasets: [{
-                        backgroundColor: '#00FF29',
-                        data: [10, 20, 6],
-                    }, {
-
-                        backgroundColor: '#FF7A00',
-                        data: [3, 10, 5],
-                    }, {
-
-                        backgroundColor: '#FF0F00',
-                        data: [0, 10, 5],
-                    }]
+                    
                 };
 
                 const config4 = {
@@ -196,7 +175,7 @@ function gerarGraficosNormais() {
                                 beginAtZero: true,
                             }
                         },
-                        responsive: false
+                        responsive: true
                     },
                 };
 
@@ -212,6 +191,40 @@ function gerarGraficosNormais() {
                 console.error(texto);
             });
         }
+        let verde = {
+            label: "Normal",
+            backgroundColor: 'Green',
+            borderColor: 'Green',
+            borderWidth: 1,
+            minBarLength: 2,
+            maxBarLength: 4,
+            data: qtdVerde,
+
+        }
+
+        let amarelo = {
+            label: "Alerta",
+            backgroundColor: 'yellow',
+            borderColor: 'yellow',
+            borderWidth: 1,
+            minBarLength: 2,
+            maxBarLength: 4,
+            data: qtdAmarelo,
+        }
+
+        let vermelho = {
+            label: "Critico",
+            backgroundColor: 'red',
+            borderColor: 'red',
+            borderWidth: 1,
+            minBarLength: 2,
+            maxBarLength: 4,
+            data: qtdVermelho,
+        }
+        myChart3.data.datasets.push(verde, amarelo, vermelho)
+        myChart3.update();
+
+
     })
 
 
@@ -225,14 +238,12 @@ function gerarGraficosAlerta() {
 
     }
 
-
-    let qtdVerde = 0;
-    let qtdAmarelo = 0;
-    let qtdVermelho = 0;
+    nomeSetor.innerHTML = '<h3>Setores em Alerta</h3>'
+    let qtdVerde = [];
+    let qtdAmarelo = [];
+    let qtdVermelho = [];
     let idEmpresa = sessionStorage.ID_EMPRESA
-    const dataHj = new Date()
-    const mesAtual = dataHj.getMonth() + 1
-    const diaAtual = dataHj.getDate()
+
     const setoresAlerta = []
 
     fetch(`/setor/statusSetor?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
@@ -240,38 +251,21 @@ function gerarGraficosAlerta() {
             resposta.json().then(function (resposta) {
                 for (var i = 0; i < resposta.length; i++) {
                     if (resposta[i].qdt_amarelo > resposta[i].qdt_vermelho && resposta[i].qdt_amarelo > resposta[i].qdt_verde) {
-                       
+
                         setoresAlerta.push(resposta[i].setor)
-                        qtdAmarelo = resposta[i].qdt_amarelo;
-                        qtdVermelho = resposta[i].qdt_vermelho;
-                        qtdVerde = resposta[i].qdt_verde
-
-
-                        
-
-
-
-
+                        qtdAmarelo.push(resposta[i].qdt_amarelo)
+                        qtdVermelho.push(resposta[i].qdt_vermelho)
+                        qtdVerde.push(resposta[i].qdt_verde)
                     }
-                    
+
                 }
-              
+
+
 
 
                 const data3 = {
                     labels: setoresAlerta,
-                    datasets: [{
-                        backgroundColor: '#00FF29',
-                        data: [qtdVerde],
-                    }, {
 
-                        backgroundColor: '#FF7A00',
-                        data: [qtdAmarelo],
-                    }, {
-
-                        backgroundColor: '#FF0F00',
-                        data: [qtdVermelho],
-                    }]
                 };
 
                 const config4 = {
@@ -283,7 +277,7 @@ function gerarGraficosAlerta() {
                                 beginAtZero: true,
                             }
                         },
-                        responsive: false
+                        responsive: true
                     },
                 };
 
@@ -291,6 +285,41 @@ function gerarGraficosAlerta() {
                     document.getElementById('setorChart'),
                     config4
                 );
+
+                let verde = {
+                    label: "Normal",
+                    backgroundColor: 'Green',
+                    borderColor: 'Green',
+                    borderWidth: 1,
+                    minBarLength: 2,
+                    maxBarLength: 4,
+                    data: qtdVerde,
+
+                }
+
+                let amarelo = {
+                    label: "Alerta",
+                    backgroundColor: 'yellow',
+                    borderColor: 'yellow',
+                    borderWidth: 1,
+                    minBarLength: 2,
+                    maxBarLength: 4,
+                    data: qtdAmarelo,
+                }
+
+                let vermelho = {
+                    label: "Critico",
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                    borderWidth: 1,
+                    minBarLength: 2,
+                    maxBarLength: 4,
+                    data: qtdVermelho,
+                }
+                myChart3.data.datasets.push(verde, amarelo, vermelho)
+                myChart3.update();
+
+
 
             });
         } else {
@@ -308,17 +337,15 @@ function gerarGraficosAlerta() {
 function gerarGraficosCritico() {
     if (Chart.getChart("setorChart")) {
         Chart.getChart("setorChart").destroy()
-
-
     }
 
-    let qtdVerde = 0;
-    let qtdAmarelo = 0;
-    let qtdVermelho = 0;
+
+nomeSetor.innerHTML = '<h3>Setores Criticos</h3>'
+    let qtdVerde = [];
+    let qtdAmarelo = [];
+    let qtdVermelho = [];
     let idEmpresa = sessionStorage.ID_EMPRESA
-    const dataHj = new Date()
-    const mesAtual = dataHj.getMonth() + 1
-    const diaAtual = "08"
+
     const setoresCritico = []
 
     fetch(`/setor/statusSetor?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
@@ -326,36 +353,22 @@ function gerarGraficosCritico() {
             resposta.json().then(function (resposta) {
                 for (var i = 0; i < resposta.length; i++) {
                     if (resposta[i].qdt_vermelho > resposta[i].qdt_amarelo && resposta[i].qdt_vermelho > resposta[i].qdt_verde) {
-                          qtdVermelho += resposta[i].qdt_vermelho;
+
 
                         setoresCritico.push(resposta[i].setor)
-                        alert(qtdVermelho)
+
+                        qtdAmarelo.push(resposta[i].qdt_amarelo)
+                        qtdVermelho.push(resposta[i].qdt_vermelho)
+                        qtdVerde.push(resposta[i].qdt_verde)
 
                     }
-                    else if (resposta[i].qdt_amarelo > resposta[i].qdt_vermelho) {
-                        qtdAmarelo += resposta[i].qdt_amarelo;
 
-                    } else {
-                        qtdVerde += resposta[i].qdt_verde
-
-                    }
                 }
 
 
                 const data3 = {
                     labels: setoresCritico,
-                    datasets: [{
-                        backgroundColor: '#00FF29',
-                        data: [qtdAmarelo],
-                    }, {
 
-                        backgroundColor: '#FF7A00',
-                        data: [qtdVermelho],
-                    }, {
-
-                        backgroundColor: '#FF0F00',
-                        data: [qtdVermelho],
-                    }]
                 };
 
                 const config4 = {
@@ -367,7 +380,7 @@ function gerarGraficosCritico() {
                                 beginAtZero: true,
                             }
                         },
-                        responsive: false
+                        responsive: true
                     },
                 };
 
@@ -375,6 +388,41 @@ function gerarGraficosCritico() {
                     document.getElementById('setorChart'),
                     config4
                 );
+
+                let verde = {
+                    label: "Normal",
+                    backgroundColor: 'Green',
+                    borderColor: 'Green',
+                    borderWidth: 1,
+                    minBarLength: 2,
+                    maxBarLength: 4,
+                    data: qtdVerde,
+
+                }
+
+                let amarelo = {
+                    label: "Alerta",
+                    backgroundColor: 'yellow',
+                    borderColor: 'yellow',
+                    borderWidth: 1,
+                    minBarLength: 2,
+                    maxBarLength: 4,
+                    data: qtdAmarelo,
+                }
+
+                let vermelho = {
+                    label: "Critico",
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                    borderWidth: 1,
+                    minBarLength: 2,
+                    maxBarLength: 4,
+                    data: qtdVermelho,
+                }
+                myChart3.data.datasets.push(verde, amarelo, vermelho)
+                myChart3.update();
+
+
 
             });
         } else {
