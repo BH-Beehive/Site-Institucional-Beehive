@@ -6,7 +6,7 @@ function listarInformacoesMaquina() {
             resposta.json().then(function (resposta) {
                 for (var posicao = 0; posicao < 1; posicao++) {
                     listaInformacoes.innerHTML = `
-                    <div class="content">
+       
                                 <h2>${hostName}</h2>
                                 <div class="infosMaquina">
                                     <div class="itemInfoMaquina">

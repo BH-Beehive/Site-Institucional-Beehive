@@ -81,12 +81,11 @@
             </div>
 
         </div>
-        <div class="main-content" style="background-color: #f9f9f9;">
+        <div class="main-content">
 
             <!-- Component header -->
             <div class="itens-navbar">
-                <button class="button-navbar">Download Cliente</button>
-                <img class="img-navbar" src="../public/assets/img/icone-avatar-default.png" alt="">
+            
             </div>
             <!-- Component header -->
 
@@ -99,29 +98,49 @@
 
                     </div>
 
-                    <div class="cardAndChartBackground" style="background-color: red;">
-                        <div class="cardInfoMaquinaBackground">
-                            <div class="content" id="listaInformacoes">
-                                <h2>Maquina 2</h2>
-                                <div class="infosMaquina">
-                                    <div class="itemInfoMaquina">
-                                        <h4>Processador</h4>
-                                        <p>Intel i7</p>
-                                    </div>
+                    <div class="cardInfoMaquinaBackground">
+                        <div class="content" id="listaInformacoes">
+                            <h2>Maquina 2</h2>
+                            <div class="infosMaquina">
+                                <div class="itemInfoMaquina">
+                                    <h4>Processador</h4>
+                                    <p>Intel i7</p>
+                                </div>
 
-                                    <div class="itemInfoMaquina">
-                                        <h4>Arquitetura</h4>
-                                        <p>64 bits</p>
-                                    </div>
-                                    <div class="itemInfoMaquina">
-                                        <h4>SO</h4>
-                                        <p>Windows</p>
-                                    </div>
+                                <div class="itemInfoMaquina">
+                                    <h4>Arquitetura</h4>
+                                    <p>64 bits</p>
+                                </div>
+                                <div class="itemInfoMaquina">
+                                    <h4>SO</h4>
+                                    <p>Windows</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="lineChartBackground" style="background-color: black;">
+                        <div class="backgroundComponents">
+                            <div class="background">
+                                <div class="content" id="dadosComponentes">
+                                   <h3>Histórico de saúde diária</h3>
+                                   <div class="menu">
+                                    <h3>Data</h3>
+                                    <h3>Quantidade <br>de alertas</h3>
+                                    <h3>Alerta</h3>
+                                    <div></div>
+                                  </div>                                 
+                                  <div id="dadosComponentesMenu">
+    
+                                  </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="cardAndChartBackground">
+                        
+                        <div class="lineChartBackground">
                             <div class="content">
                                 <div class="infosOfLineChart">
                                    
@@ -387,7 +406,6 @@
                                     <canvas height="70%" id="myChart"></canvas>
                                 </div>
 
-
                             </div>
                         </div>
                         <div class="lineChartBackground">
@@ -425,29 +443,16 @@
 
                             </div>
                         </div>
+
+                    
+
                     </div>
 
-                    <div class="bottomPart">
+                   <!--<div class="bottomPart">-->
 
-                        <div class="componentsAndProcessos">
+                        <!--<div class="componentsAndProcessos">-->
 
-                            <div class="backgroundComponents">
-                                <div class="background">
-                                    <div class="content" id="dadosComponentes">
-                                       <h3>Histórico de saúde diária</h3>
-                                       <div class="menu">
-                                        <h3>Data</h3>
-                                        <h3>Quantidade <br>de alertas</h3>
-                                        <h3>Alerta</h3>
-                                        <div></div>
-                                      </div>                                 
-                                      <div id="dadosComponentesMenu">
-
-                                      </div>
-                                    </div>
-                                  
-                                </div>
-                            </div>
+                            
 
 
                             <script src="js/dashBoards/maquinaDashboard.js"></script>
