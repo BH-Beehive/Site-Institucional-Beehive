@@ -138,6 +138,45 @@ function listarDadosMaquina(req, res) {
         );
 }
 
+function editarMaquina(req, res) {
+    let hostNameNovo = req.body.hostNameNovoServer;
+    let tipo = req.body.tipoServer;
+    let fkSetor = req.body.fkSetorServer;
+    let hostNameAntigo = req.body.hostNameAntigoServer;
+    let idEmpresa = req.body.idEmpresaServer;
+
+    // Faça as validações dos valores
+    if (hostNameNovo == undefined) {
+        res.status(400).send("O nome da maquina está undefined!");
+    } else if (tipo == undefined) {
+        res.status(400).send("O tipo da maquina está undefined!");
+    } else if (fkSetor == undefined) {
+        res.status(400).send("Fk do setor esta undefined!");
+    }else if (hostNameAntigo == undefined) {
+        res.status(400).send("nome antigo esta undefined!");
+    }else if (idEmpresa == undefined) {
+        res.status(400).send("O id da empresa está undefined!");
+    }
+    else {
+        
+        maquinaModel.editarMaquina(hostNameNovo,tipo,fkSetor,hostNameAntigo,idEmpresa)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao editar suporte! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 
 
 function cadastrarMaquina(req, res) {
@@ -192,5 +231,6 @@ module.exports = {
     listarInformacoesMaquina,
     listarDadosMaquina,
     maquinaCritica,
-    servidorCritica
+    servidorCritica,
+    editarMaquina,
 }

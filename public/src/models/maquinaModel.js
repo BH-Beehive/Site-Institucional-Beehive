@@ -61,6 +61,14 @@ function listarServidor(id_empresa) {
     return database.executar(instrucao);
 }
 
+async function editarMaquina(hostNameNovo,tipo,fkSetor,hostNameAntigo, idEmpresa) {
+    console.log("ACESSEI O GERENCIAR CONTAS MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editarMaquina():", hostNameNovo,tipo,fkSetor,hostNameAntigo, idEmpresa);
+    
+    let instrucao = `
+    UPDATE maquina SET  host_name = '${hostNameNovo}', tipo = '${tipo}', fk_setor = ${fkSetor}  WHERE host_name = '${hostNameAntigo}' and fk_empresa = ${idEmpresa};
+    `;
+    await database.executar(instrucao);
+}
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrarMaquina(hostname, token, tipo, empresaId, setor) {
@@ -84,5 +92,6 @@ module.exports = {
     listarInformacoesMaquina,
     listarDadosMaquina,
     maquinaCritica,
-    servidorCritica
+    servidorCritica,
+    editarMaquina
 };

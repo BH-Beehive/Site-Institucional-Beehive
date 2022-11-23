@@ -1,4 +1,5 @@
 let listaIdMaquina = [];
+let nomeMaquina = ""
 
 function cadastrarMaquina() {
     let hostNameVar = inputHostName.value;
@@ -67,6 +68,65 @@ function gerarToken() {
 
     return pass;
 }
+
+function editarMaquina(){
+
+    let hostNameNovo = inputHostNameEditarMaquina.value;
+    let tipo = selectTipoEditarMaquina.value;
+    let fkSetor = selectSetoresEditarMaquina.value;
+    let idEmpresa = sessionStorage.ID_EMPRESA;
+   
+    
+
+    console.log(hostNameNovo,tipo,fkSetor,idEmpresa)
+    
+    
+
+    fetch("/maquina/editarmaquina", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            hostNameNovoServer: hostNameNovo,
+            tipoServer: tipo,
+            fkSetorServer: fkSetor,
+            idEmpresaServer: idEmpresa,
+            hostNameAntigoServer: nomeMaquina,
+            
+
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Maquina editada com sucesso!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+            setTimeout(() => {
+                window.location = "PrimaryDashboard.html";
+            }, "2000")
+
+            
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro no cadastro!',
+                text: 'Por favor, verfique as informações e tente novamente!'
+            })
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+}
+
+
 const dataHj = new Date()
 const mesAtual = dataHj.getMonth() + 1
 const diaAtual = dataHj.getDate()
@@ -136,7 +196,7 @@ function gerarGraficosNormais() {
 
     }
 
-    
+
     nomeSetor.innerHTML = '<h3>Setores Normais</h3>'
     let qtdVerde = [];
     let qtdAmarelo = [];
@@ -163,7 +223,7 @@ function gerarGraficosNormais() {
 
                 const data3 = {
                     labels: setoresNormais,
-                    
+
                 };
 
                 const config4 = {
@@ -340,7 +400,7 @@ function gerarGraficosCritico() {
     }
 
 
-nomeSetor.innerHTML = '<h3>Setores Criticos</h3>'
+    nomeSetor.innerHTML = '<h3>Setores Criticos</h3>'
     let qtdVerde = [];
     let qtdAmarelo = [];
     let qtdVermelho = [];
@@ -440,7 +500,7 @@ nomeSetor.innerHTML = '<h3>Setores Criticos</h3>'
 
 function maquinaCritica() {
     let idEmpresa = sessionStorage.ID_EMPRESA
-    
+
     fetch(`/maquina/maquinaCritica?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
@@ -462,7 +522,7 @@ function maquinaCritica() {
 }
 
 function servidorCritica() {
-   
+
     let idEmpresa = sessionStorage.ID_EMPRESA
     fetch(`/maquina/servidorCritica?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
         if (resposta.ok) {
@@ -516,6 +576,35 @@ function filtraSetor() {
         }
     })
 }
+
+function filtraSetoresEdtitarMaquina() {
+    let idEmpresa = sessionStorage.ID_EMPRESA
+    fetch(`/setor/filtraSetor?idEmpresa=${idEmpresa}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                if (resposta.length != null) {
+                    selectSetoresEditarMaquina.innerHTML = `<select name="select-nivel-dashboard" class="inputs-dashboard-select maquina"
+                    id="selectSetores">
+                    <option value="0" disabled selected>Selecione...</option>
+                    
+                </select>`;
+                    for (var posicao = 0; posicao < resposta.length; posicao++) {
+                        selectSetoresEditarMaquina.innerHTML += `
+                                <option value="${posicao + 1}">${resposta[posicao].nome_setor}</option>
+                            `
+                    }
+                }
+            });
+        } else {
+            console.log("Houve um erro ao tentar listar maquinas!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    })
+}
+
+
 
 function cadastrarSetor() {
     let nomeVar = inputNomeSetor.value;
@@ -687,7 +776,7 @@ function listarMaquinas() {
                                             class="fa regular fa-arrow-up-right-from-square"></i>
                                     </div>
                                     <div class="divBtnEditarMaquina">
-                                        <button class="button-editar-dashboard" onclick="abrirModalEditarMaquina()"><img src="assets/icons/icon_editar.png"></button>
+                                        <button class="button-editar-dashboard" onclick="abrirModalEditarMaquina('${resposta[posicao].host_name}')"><img src="assets/icons/icon_editar.png"></button>
                                     </div>
                                 </div>
                             </div>`
@@ -730,7 +819,7 @@ function listarServidor() {
                                         <div class="divAlerta">
                                         </div>
 
-                                        <h5>${resposta[posicao].host_name}</h5>
+                                        <h5 id="${posicao}i">${resposta[posicao].host_name}</h5>
                                     </div>
 
                                     <h5 class="setorTopic">${resposta[posicao].nome_setor}</h5>
@@ -739,6 +828,9 @@ function listarServidor() {
                                         <i onclick="verMachine('${resposta[posicao].host_name}')"
                                             class="fa regular fa-arrow-up-right-from-square"></i>
                                     </div>
+                                    <div class="divBtnEditarMaquina">
+                                    <button class="button-editar-dashboard" onclick="abrirModalEditarMaquina('${resposta[posicao].host_name}')"><img src="assets/icons/icon_editar.png"></button>
+                                </div>
                                 </div>
                             </div>`
                         listaIdMaquina.push(resposta[posicao].host_name)
@@ -819,7 +911,7 @@ function listarPorSetor() {
                                 
                                 </div>
                                 <div class="divBtnEditarMaquina">
-                                    <button class="button-editar-dashboard" onclick="abrirModalEditarMaquina()"><img src="assets/icons/icon_editar.png"></button>
+                                    <button class="button-editar-dashboard" onclick="abrirModalEditarMaquina('${resposta[posicao].host_name}')"><img src="assets/icons/icon_editar.png"></button>
                                     </div>
                             </div>`
                     listaIdMaquina.push(resposta[posicao].host_name)
@@ -843,13 +935,17 @@ function abrirModalMaquina() {
     divModalEditarMaquina.style.display = "none";
 }
 
-function abrirModalEditarMaquina() {
+
+
+function abrirModalEditarMaquina(hostName) {
     var divModalEditarMaquina = document.getElementById("divModalEditarMaquina");
     divModalEditarMaquina.style.display = "flex";
     var divModalSetor = document.getElementById("divModalSetor");
     divModalSetor.style.display = "none";
     var divModal = document.getElementById("divModalMaquina");
     divModal.style.display = "none";
+    nomeMaquina = hostName
+
 }
 
 function abrirModalSetor() {
