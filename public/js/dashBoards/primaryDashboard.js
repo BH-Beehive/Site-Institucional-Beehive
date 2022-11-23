@@ -440,9 +440,7 @@ nomeSetor.innerHTML = '<h3>Setores Criticos</h3>'
 
 function maquinaCritica() {
     let idEmpresa = sessionStorage.ID_EMPRESA
-    const dataHj = new Date()
-    const mesAtual = dataHj.getMonth() + 1
-    const diaAtual = "08"
+    
     fetch(`/maquina/maquinaCritica?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
@@ -464,9 +462,7 @@ function maquinaCritica() {
 }
 
 function servidorCritica() {
-    const dataHj = new Date()
-    const mesAtual = dataHj.getMonth() + 1
-    const diaAtual = "08"
+   
     let idEmpresa = sessionStorage.ID_EMPRESA
     fetch(`/maquina/servidorCritica?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
         if (resposta.ok) {

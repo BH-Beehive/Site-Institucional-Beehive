@@ -1,18 +1,21 @@
 function registroPizzaMaquina() {
+    const dataHj = new Date()
+    const mesAtual = dataHj.getMonth() + 1
+    const diaAtual = dataHj.getDate()
     let qtdVermelho = 0;
     let qtdAmarelo = 0;
     let qtdVerde = 0;
     let totalMaquina = 0;
     let idEmpresa = sessionStorage.ID_EMPRESA
-    fetch(`/registro/registroPizzaMaquina?idEmpresa=${idEmpresa}`).then(function (resposta) {
+    fetch(`/registro/registroPizzaMaquina?idEmpresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (let posicao = 0; posicao < resposta.length; posicao++) {
-                    if(resposta[posicao].alerta == 'Vermelho') {
+                    if (resposta[posicao].alerta == 'Vermelho') {
                         qtdVermelho++
-                    }else if(resposta[posicao].alerta == 'Amarelo') {
+                    } else if (resposta[posicao].alerta == 'Amarelo') {
                         qtdAmarelo++
-                    }else {
+                    } else {
                         qtdVerde++
                     }
                     totalMaquina++
@@ -67,11 +70,11 @@ function registroPizzaMaquinaPorSetor() {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (let posicao = 0; posicao < resposta.length; posicao++) {
-                    if(resposta[posicao].alerta == 'Vermelho') {
+                    if (resposta[posicao].alerta == 'Vermelho') {
                         qtdVermelho++
-                    }else if(resposta[posicao].alerta == 'Amarelo') {
+                    } else if (resposta[posicao].alerta == 'Amarelo') {
                         qtdAmarelo++
-                    }else {
+                    } else {
                         qtdVerde++
                     }
                     totalMaquina++
@@ -112,7 +115,7 @@ function registroPizzaMaquinaPorSetor() {
     })
 }
 
-function limparGrafico(){
+function limparGrafico() {
     let qtdVermelho = 0;
     let qtdAmarelo = 0;
     let qtdVerde = 0;
@@ -140,7 +143,7 @@ function limparGrafico(){
                 </div>
 
             </div>`
-                criarGrafico(qtdVermelho, qtdAmarelo, qtdVerde)
+    criarGrafico(qtdVermelho, qtdAmarelo, qtdVerde)
 
 }
 
@@ -158,12 +161,12 @@ function criarGrafico(qtdVermelho, qtdAmarelo, qtdVerde) {
             hoverOffset: 4
         }]
     };
-    
+
     const config = {
         type: 'doughnut',
         data: data,
     };
-    
+
     const myChart = new Chart(
         document.getElementById('chart1'),
         config

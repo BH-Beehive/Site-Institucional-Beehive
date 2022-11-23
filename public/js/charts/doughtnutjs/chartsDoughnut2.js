@@ -1,10 +1,13 @@
 function registroPizzaServidor() {
+    const dataHj = new Date()
+    const mesAtual = dataHj.getMonth() + 1
+    const diaAtual = dataHj.getDate()
     let qtdVermelho1 = 0;
     let qtdAmarelo1 = 0;
     let qtdVerde1 = 0;
     let totalMaquina1 = 0;
     let idEmpresa = sessionStorage.ID_EMPRESA
-    fetch(`/registro/registroPizzaServidor?idEmpresa=${idEmpresa}`).then(function (resposta) {
+    fetch(`/registro/registroPizzaServidor?idEmpresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (var posicao = 0; posicao < resposta.length; posicao++) {
@@ -43,7 +46,7 @@ function registroPizzaServidor() {
                 </div>
 
             </div>`
-                criarGrafico2(qtdVermelho1,qtdAmarelo1,qtdVerde1,totalMaquina1)
+                criarGrafico2(qtdVermelho1, qtdAmarelo1, qtdVerde1, totalMaquina1)
             });
         } else {
             console.log("Houve um erro ao tentar listar registros!");
@@ -72,11 +75,11 @@ function registroPizzaServidorPorSetor() {
                         qtdVermelho1++
                     } else if (resposta[posicao].alerta == 'Amarelo') {
                         qtdAmarelo1++
-                    } else if(resposta[posicao].alerta == 'Verde') {
+                    } else if (resposta[posicao].alerta == 'Verde') {
                         qtdVerde1++
                     }
                     totalMaquina1++
-                }      
+                }
                 let resultadoVermelho = (qtdVermelho1 / totalMaquina1) * 100;
                 let resultadoAmarelo = (qtdAmarelo1 / totalMaquina1) * 100;
                 let resultadoVerde = (qtdVerde1 / totalMaquina1) * 100;
@@ -102,7 +105,7 @@ function registroPizzaServidorPorSetor() {
                 </div>
 
             </div>`
-                criarGrafico2(qtdVermelho1, qtdAmarelo1, qtdVerde1,totalMaquina1)
+                criarGrafico2(qtdVermelho1, qtdAmarelo1, qtdVerde1, totalMaquina1)
             });
         } else {
             console.log("Houve um erro ao tentar listar maquinas!");
@@ -140,10 +143,10 @@ function limparGrafico1() {
                 </div>
 
             </div>`
-            criarGrafico2(qtdVermelho1, qtdAmarelo1, qtdVerde1,totalMaquina1)
+    criarGrafico2(qtdVermelho1, qtdAmarelo1, qtdVerde1, totalMaquina1)
 }
 
-function criarGrafico2(qtdVermelho1,qtdAmarelo1,qtdVerde1) {
+function criarGrafico2(qtdVermelho1, qtdAmarelo1, qtdVerde1) {
     const data1 = {
         datasets: [{
             label: 'My First Dataset',

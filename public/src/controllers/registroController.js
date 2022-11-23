@@ -4,10 +4,11 @@ let sessoes = [];
 
 function registroPizzaMaquina(req, res) {
     let id_empresa = req.query.idEmpresa
-    console.log(req.query.idEmpresa)
-    console.log(id_empresa, "id na controller do registro")
+    let mesAtual = req.query.mes_atual
+    let diaAtual = req.query.dia_atual;
     
-    registroModel.registroPizzaMaquina(id_empresa)
+  
+    registroModel.registroPizzaMaquina(id_empresa,mesAtual,diaAtual)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -25,10 +26,10 @@ function registroPizzaMaquina(req, res) {
 
 function registroPizzaServidor(req, res) {
     let id_empresa = req.query.idEmpresa
-    console.log(req.query.idEmpresa)
-    console.log(id_empresa, "id na controller do registro")
+    let mesAtual = req.query.mes_atual
+    let diaAtual = req.query.dia_atual;
     
-    registroModel.registroPizzaServidor(id_empresa)
+    registroModel.registroPizzaServidor(id_empresa,mesAtual,diaAtual)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -47,11 +48,10 @@ function registroPizzaServidor(req, res) {
 function registroPizzaMaquinaPorSetor(req, res) {
     let id_empresa = req.query.idEmpresa
     let setor = req.query.nomeSetor
-    console.log(req.query.idEmpresa)
-    console.log(req.query.nomeSetor)
-    console.log(id_empresa, setor,  "id na controller do registro")
+    let mesAtual = req.query.mes_atual
+    let diaAtual = req.query.dia_atual;
     
-    registroModel.registroPizzaMaquinaPorSetor(id_empresa, setor)
+    registroModel.registroPizzaMaquinaPorSetor(id_empresa,mesAtual,diaAtual)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -72,11 +72,13 @@ function registroPizzaMaquinaPorSetor(req, res) {
 function registroPizzaServidorPorSetor(req, res) {
     let id_empresa = req.query.idEmpresa
     let setor = req.query.nomeSetor
+    let mesAtual = req.query.mes_atual
+    let diaAtual = req.query.dia_atual;
     console.log(req.query.idEmpresa)
     console.log(req.query.nomeSetor)
     console.log(id_empresa, setor,  "id na controller do registro")
     
-    registroModel.registroPizzaServidorPorSetor(id_empresa, setor)
+    registroModel.registroPizzaServidorPorSetor(id_empresa,mesAtual,diaAtual)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -94,6 +96,7 @@ function registroPizzaServidorPorSetor(req, res) {
 
 function registroGraficoLinhaTempo(req, res) {
     let hostName = req.params.hostNameMaq;
+    
     
     console.log(hostName,  "hostName na controller do registro")
     
