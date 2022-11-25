@@ -91,16 +91,16 @@
                     <div class="conteudo-modal">
                     <div class="text-modal-Suporte"><p>Cadastre um Suporte</p></div>
                     <div class="div-inputs-Suporte">
-                    <input type="text" class="inputs-Suporte" placeholder="Nome:" id="inputNomeSuporte">
-                    <input type="text" class="inputs-Suporte" placeholder="Email(Slack):" id="inputEmailSlack">
+                    <input type="text" class="inputs-Suporte" placeholder="Nome:" id="inputNomeSuporte" maxlength="30">
+                    <input type="text" class="inputs-Suporte" placeholder="Email(Slack):" id="inputEmailSlack" maxlength="50">
                     </div>  
                     <div class="div-inputs-Suporte">
-                    <input type="text" class="inputs-Suporte" placeholder="Senha:" id="inputSenha">
-                    <input type="text" class="inputs-Suporte" placeholder="Cpf:" id="inputCpf">
+                    <input type="password" class="inputs-Suporte" placeholder="Senha:" id="inputSenha"maxlength="20">
+                    <input type="text" class="inputs-Suporte" placeholder="Cpf:" onkeypress="return MascaraCpf(this)" id="inputCpf" maxlength="14">
                     </div>
                     <div class="div-inputs-Suporte">
-                        <input type="text" class="inputs-Suporte" placeholder="Telefone:" id="inputTel">
-                        <input type="text" class="inputs-Suporte" placeholder="Celular:" id="inputCel">
+                        <input type="text" class="inputs-Suporte" placeholder="Telefone:" id="inputTel" maxlength="9" onkeypress="return MascaraTelefone(this)">
+                        <input type="text" class="inputs-Suporte" placeholder="Celular:" id="inputCel" maxlength="14" onkeypress="return MascaraCelular(this)">
                         </div> 
                     <button class="cadastrar-Suporte" onclick="cadastrarSuporte()">CADASTRAR</button>
                     </div>
@@ -118,16 +118,18 @@
                             <p>Editar Dados</p>
                         </div>
                         <div class="div-inputs-Suporte-Editar">
-                            <input type="text" class="inputs-Suporte-Editar" placeholder="Nome:" id="inputNomeSuporteEditar">
-                            <input type="text" class="inputs-Suporte-Editar" placeholder="Senha:" id="inputSenhaSuporteEditar">
+                            <input type="text" class="inputs-Suporte-Editar" placeholder="Nome:" id="inputNomeSuporteEditar"maxlength="30">
+                            <input type="password" class="inputs-Suporte-Editar" placeholder="Senha:" id="inputSenhaSuporteEditar"maxlength="20">
                         </div>
                         <div class="div-inputs-Suporte-Editar">
-                            <input type="email" class="inputs-Suporte-Editar" placeholder="Email slack:" id="inputEmailSuporteEditar">
-                            <input type="text" class="inputs-Suporte-Editar" placeholder="Cpf:" id="inputCpfEditar">
+                            <input type="email" class="inputs-Suporte-Editar" placeholder="Email slack:" id="inputEmailSuporteEditar" maxlength="50">
+                            <input type="text" class="inputs-Suporte-Editar" placeholder="Cpf:"  onkeypress="return MascaraCpf(this)" id="inputCpfEditar" maxlength="14">
                         </div>
                         <div class="div-inputs-Suporte-Editar">
-                            <input type="number" class="inputs-Suporte-Editar" placeholder="Celular:" id="inputCelSuporteEditar">
-                            <input type="tel" class="inputs-Suporte-Editar" placeholder="Telefone:" id="inputTelSuporteEditar">
+                            <input type="text" class="inputs-Suporte-Editar"maxlength="14"
+                            placeholder="Celular" onkeypress="return MascaraCelular(this)" id="inputCelSuporteEditar">
+                            <input type="text" class="inputs-Suporte-Editar" maxlength="9"
+                            placeholder="Telefone" onkeypress="return MascaraTelefone(this)" id="inputTelSuporteEditar">
                         </div>
                         <button class="EditarSuporte" onclick="editarSuporte()">SALVAR</button>
                     </div>
