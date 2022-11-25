@@ -11,8 +11,8 @@ function registroPizzaMaquina(id_empresa, mesAtual,diaAtual) {
     return database.executar(instrucao);
 }
 
-function registroPizzaMaquinaPorSetor(id_empresa, mesAtual,diaAtual) {
-    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registroPizzaMaquinaPorSetor()", id_empresa, setor);
+function registroPizzaMaquinaPorSetor(id_empresa,setor, mesAtual,diaAtual) {
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registroPizzaMaquinaPorSetor()", id_empresa, setor,diaAtual,mesAtual);
     var instrucao = `
         select id_maquina as 'idMaquina', tipo_alerta as 'alerta' from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa

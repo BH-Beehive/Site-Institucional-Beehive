@@ -66,7 +66,7 @@ function registroPizzaServidorPorSetor() {
     let select = document.getElementById('selectSetor');
     let selectNomeSetor = select.options[select.selectedIndex].value;
     let nomeSetor = parseInt(selectNomeSetor);
-    fetch(`/registro/registroPizzaServidorPorSetor?idEmpresa=${idEmpresa}&nomeSetor=${nomeSetor + 1}`).then(function (resposta) {
+    fetch(`/registro/registroPizzaServidorPorSetor?idEmpresa=${idEmpresa}&nomeSetor=${nomeSetor + 1}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
         limparGrafico1()
         if (resposta.ok) {
             resposta.json().then(function (resposta) {

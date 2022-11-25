@@ -1,5 +1,8 @@
 let listaIdMaquina = [];
 let nomeMaquina = ""
+const dataHj = new Date()
+const mesAtual = dataHj.getMonth() + 1
+const diaAtual = dataHj.getDate()
 
 function cadastrarMaquina() {
     let hostNameVar = inputHostName.value;
@@ -127,9 +130,7 @@ function editarMaquina(){
 }
 
 
-const dataHj = new Date()
-const mesAtual = dataHj.getMonth() + 1
-const diaAtual = dataHj.getDate()
+
 
 
 function statusSetor() {
