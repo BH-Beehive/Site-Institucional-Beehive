@@ -6,8 +6,23 @@ var mySqlConfig = {
     host: "localhost",
     database: "Beehive",
     user: "root",
-    password: "86143820william",
+    password: "meubanco ",
 };
+// CONEXÃO DO SQL SERVER - AZURE (NUVEM)
+var sqlServerConfig = {
+    user: "admin-Beehive",
+    password: "#Gfgrupo7",
+    database: "bd-beehive",
+    server: "projeto-beehive.database.windows.net",
+    pool: {
+        max: 10,
+        min: 0,
+        idleTimeoutMillis: 30000
+    },
+    options: {
+        encrypt: true, // for azure
+    }
+}
 
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js
