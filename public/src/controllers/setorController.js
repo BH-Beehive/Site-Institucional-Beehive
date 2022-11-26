@@ -8,7 +8,9 @@ function testar(req, res) {
 }
 
 function listarSetor(req, res) {
-    setorModel.listarSetor()
+    let id_empresa = req.query.idEmpresa
+    console.log(id_empresa)
+    setorModel.listarSetor(id_empresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -32,23 +34,6 @@ function statusSetor(req, res) {
     console.log(idEmpresa, mesAtual,diaAtual,  "id na controller do setor")
     
     setorModel.statusSetor(idEmpresa,mesAtual,diaAtual)
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-
-function filtraSetor(req, res) {
-    setorModel.filtraSetor()
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -224,6 +209,5 @@ module.exports = {
     mostrarTotalMaquinasSelectSelecionado,
     mostrarTotalServidorSelectSelecionado,
     mostrarTotalServidor,
-    filtraSetor,
     statusSetor
 }

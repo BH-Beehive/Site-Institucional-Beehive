@@ -83,6 +83,18 @@ function cadastrarMaquina(hostname, token, tipo, empresaId, setor) {
     return database.executar(instrucao);
 }
 
+function contarSetores(nome_setor) {
+    console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function contarSetores():", nome_setor);
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+        SELECT id_setor FROM setor WHERE nome_setor = '${nome_setor}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 
 
 module.exports = {
@@ -93,5 +105,6 @@ module.exports = {
     listarDadosMaquina,
     maquinaCritica,
     servidorCritica,
-    editarMaquina
+    editarMaquina,
+    contarSetores
 };

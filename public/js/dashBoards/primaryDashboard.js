@@ -3,57 +3,76 @@ let nomeMaquina = ""
 const dataHj = new Date()
 const mesAtual = dataHj.getMonth() + 1
 const diaAtual = dataHj.getDate()
+let proximoSetor = 0;
 
 function cadastrarMaquina() {
-    let hostNameVar = inputHostName.value;
-    let tokenVar = gerarToken();
-    let tipoVar = selectTipo.value;
-    let idEmpresaVar = sessionStorage.ID_EMPRESA;
-    let fkSetor = selectSetores.value;
 
-    console.log(hostNameVar, tokenVar, tipoVar, idEmpresaVar, fkSetor)
+    let select = document.getElementById('selectSetores');
+    nomeSetor = select.options[select.selectedIndex].value;
 
-
-
-    fetch("/maquina/cadastrarMaquina", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            hostNameServer: hostNameVar,
-            tokenServer: tokenVar,
-            tipoServer: tipoVar,
-            empresaServer: idEmpresaVar,
-            setorServer: fkSetor
-        })
-    }).then(function (resposta) {
-
-        console.log("resposta: ", resposta);
-
+    fetch(`/maquina/contarSetores?nomeSetor=${nomeSetor}`).then(function (resposta) {
         if (resposta.ok) {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Cadastro bem-sucedido!',
-                showConfirmButton: false,
-                timer: 1500
-            })
 
-            setTimeout(() => {
-                window.location = "PrimaryDashboard.html";
-            }, "2000")
+            resposta.json().then(function (resposta) {
+                for (var i = 0; i < resposta.length; i++) {
+                    console.log(proximoSetor)
+                    
+                        let hostNameVar = inputHostName.value;
+                        let tokenVar = gerarToken();
+                        let tipoVar = selectTipo.value;
+                        let idEmpresaVar = sessionStorage.ID_EMPRESA;
+                        let fkSetor = resposta[i].id_setor;
 
-            limparFormulario();
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Erro no cadastro!',
-                text: 'Por favor, verfique as informações e tente novamente!'
+                        console.log(hostNameVar, tokenVar, tipoVar, idEmpresaVar, fkSetor)
+
+
+
+                        fetch("/maquina/cadastrarMaquina", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                hostNameServer: hostNameVar,
+                                tokenServer: tokenVar,
+                                tipoServer: tipoVar,
+                                empresaServer: idEmpresaVar,
+                                setorServer: fkSetor
+                            })
+                        }).then(function (resposta) {
+
+                            console.log("resposta: ", resposta);
+
+                            if (resposta.ok) {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Cadastro bem-sucedido!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+
+                                setTimeout(() => {
+                                    window.location = "PrimaryDashboard.html";
+                                }, "2000")
+
+                                limparFormulario();
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erro no cadastro!',
+                                    text: 'Por favor, verfique as informações e tente novamente!'
+                                })
+                            }
+                        }).catch(function (resposta) {
+                            console.log(`#ERRO: ${resposta}`);
+                        });
+                    
+                }
             })
         }
-    }).catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
+
+
     });
 }
 
@@ -72,18 +91,18 @@ function gerarToken() {
     return pass;
 }
 
-function editarMaquina(){
+function editarMaquina() {
 
     let hostNameNovo = inputHostNameEditarMaquina.value;
     let tipo = selectTipoEditarMaquina.value;
     let fkSetor = selectSetoresEditarMaquina.value;
     let idEmpresa = sessionStorage.ID_EMPRESA;
-   
-    
 
-    console.log(hostNameNovo,tipo,fkSetor,idEmpresa)
-    
-    
+
+
+    console.log(hostNameNovo, tipo, fkSetor, idEmpresa)
+
+
 
     fetch("/maquina/editarmaquina", {
         method: "POST",
@@ -96,7 +115,7 @@ function editarMaquina(){
             fkSetorServer: fkSetor,
             idEmpresaServer: idEmpresa,
             hostNameAntigoServer: nomeMaquina,
-            
+
 
         })
     }).then(function (resposta) {
@@ -116,7 +135,7 @@ function editarMaquina(){
                 window.location = "PrimaryDashboard.html";
             }, "2000")
 
-            
+
         } else {
             Swal.fire({
                 icon: 'error',
@@ -553,7 +572,7 @@ function servidorCritica() {
 
 function filtraSetor() {
     let idEmpresa = sessionStorage.ID_EMPRESA
-    fetch(`/setor/filtraSetor?idEmpresa=${idEmpresa}`).then(function (resposta) {
+    fetch(`/setor/listarSetor?idEmpresa=${idEmpresa}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 if (resposta.length != null) {
@@ -564,7 +583,7 @@ function filtraSetor() {
                 </select>`;
                     for (var posicao = 0; posicao < resposta.length; posicao++) {
                         selectSetores.innerHTML += `
-                                <option value="${posicao + 1}">${resposta[posicao].nome_setor}</option>
+                                <option value="${resposta[posicao].nome_setor}">${resposta[posicao].nome_setor}</option>
                             `
                     }
                 }
@@ -580,7 +599,7 @@ function filtraSetor() {
 
 function filtraSetoresEdtitarMaquina() {
     let idEmpresa = sessionStorage.ID_EMPRESA
-    fetch(`/setor/filtraSetor?idEmpresa=${idEmpresa}`).then(function (resposta) {
+    fetch(`/setor/listarSetor?idEmpresa=${idEmpresa}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 if (resposta.length != null) {
@@ -680,7 +699,7 @@ function mostrarTotalMaquinasSelectSelecionado() {
     let select = document.getElementById('selectSetor');
     let selectNomeSetor = select.options[select.selectedIndex].value;
     let nomeSetor = parseInt(selectNomeSetor);
-    fetch(`/setor/mostrarTotalMaquinasSelectSelecionado?idEmpresa=${idEmpresa}&nomeSetor=${nomeSetor + 1}`).then(function (resposta) {
+    fetch(`/setor/mostrarTotalMaquinasSelectSelecionado?idEmpresa=${idEmpresa}&nomeSetor=${nomeSetor}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (var posicao = 0; posicao < resposta.length; posicao++) {
@@ -719,7 +738,7 @@ function mostrarTotalServidorSelectSelecionado() {
     let select = document.getElementById('selectSetor');
     let selectNomeSetor = select.options[select.selectedIndex].value;
     let nomeSetor = parseInt(selectNomeSetor);
-    fetch(`/setor/mostrarTotalServidorSelectSelecionado?idEmpresa=${idEmpresa}&nomeSetor=${nomeSetor + 1}`).then(function (resposta) {
+    fetch(`/setor/mostrarTotalServidorSelectSelecionado?idEmpresa=${idEmpresa}&nomeSetor=${nomeSetor}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (var posicao = 0; posicao < resposta.length; posicao++) {
@@ -861,8 +880,9 @@ function listarSetor() {
                                 <option value="todos">Setor: Todos</option>
                                             </select>`;
                     for (var posicao = 0; posicao < resposta.length; posicao++) {
+                        console.log(resposta[posicao].id_setor)
                         selectSetor.innerHTML += `
-                                <option value="${posicao}">Setor: ${resposta[posicao].nome_setor}</option>
+                                <option value="${resposta[posicao].id_setor}">Setor: ${resposta[posicao].nome_setor}</option>
                             `
                     }
                 }
@@ -888,7 +908,7 @@ function listarPorSetor() {
     let tipoMaquina = sessionStorage.MAQUINA_AGORA;
     let idEmpresa = sessionStorage.ID_EMPRESA
     console.log('Estou na primaryDash:' + nomeSetor, tipoMaquina, idEmpresa)
-    fetch(`/setor/listarPorSetor?idEmpresa=${idEmpresa}&&tipoMaquina=${tipoMaquina}&&nomeSetor=${nomeSetor + 1}`).then(function (resposta) {
+    fetch(`/setor/listarPorSetor?idEmpresa=${idEmpresa}&&tipoMaquina=${tipoMaquina}&&nomeSetor=${nomeSetor}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (var posicao = 0; posicao < resposta.length; posicao++) {

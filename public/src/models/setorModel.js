@@ -1,19 +1,10 @@
 var database = require("../database/config")
 // Querys para verificação
 
-function listarSetor() {
-    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarSetor()");
+function listarSetor(idEmpresa) {
+    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarSetor()", idEmpresa);
     var instrucao = `
-        SELECT nome_setor FROM setor;
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
-function filtraSetor() {
-    console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function filtraSetor()");
-    var instrucao = `
-        SELECT nome_setor FROM setor;
+        SELECT nome_setor, id_setor FROM setor WHERE fk_empresa = ${idEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -108,6 +99,5 @@ module.exports = {
     mostrarTotalServidorSelectSelecionado,
     mostrarTotalMaquinasSelectSelecionado,
     mostrarTotalServidor,
-    filtraSetor,
     statusSetor
 };

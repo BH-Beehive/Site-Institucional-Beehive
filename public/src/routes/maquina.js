@@ -11,6 +11,10 @@ router.get("/listarMaquinas", function (req, res) {
     maquinaController.listarMaquinas(req, res);
 });
 
+router.get("/contarSetores", function (req, res) {
+    maquinaController.contarSetores(req, res);
+});
+
 router.get("/listarServidor", function (req, res) {
     maquinaController.listarServidor(req, res);
 });
