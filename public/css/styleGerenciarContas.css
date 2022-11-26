@@ -72,6 +72,36 @@ td{
     border-bottom: 1px solid #e4eef8;
 }
 
+.botoes {
+    height: 30%;
+    background-color: #35342F;
+    border-radius: 4px;
+    margin-right: 20px;
+    border: none;
+}
+
+.botoes.btn-download{
+    height: 35px;
+}
+
+.botoes:hover {
+    color: #35342F;
+    border-radius: 4px;
+    margin-right: 20px;
+    background-color: #FFCC29;
+}
+
+.botoes a {
+    padding: 15px;
+    padding-top: 30px;
+    color: white;
+    text-decoration: none;
+}
+
+.botoes a:hover {
+    color: black;
+}
+
 .button-table{
     width: 50px;
     height: 40px;
