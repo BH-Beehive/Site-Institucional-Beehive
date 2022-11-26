@@ -26,7 +26,6 @@
     <!-- css's components -->
     <link rel="stylesheet" href="css/Components/sidebar.css">
     <!-- script -->
-    <script src="js/utils-layout/menuHamburguer.js"></script>
 
     <script>
         window.fwSettings = {
@@ -39,7 +38,7 @@
     <title>Dashboard | Máquina</title>
 </head>
 
-<body onload="listarInformacoesMaquina(), listarDadosMaquina(),iniciarGrafico(), isIdSuporte()">
+<body onload="listarInformacoesMaquina(), listarDadosMaquina(),iniciarGrafico()">
     <div class="container">
 
         <!-- Component sideBar -->
@@ -63,13 +62,13 @@
                         <h2 class="item">Dashboard</h2>
                     </a>
                 </div>
-                <div id="gerenciarContasId" class="item-sidebar">
+                <div class="item-sidebar">
                     <img class="img-gerenciar-user" src="assets/icons/icon_gerenciar_user.png" alt="">
                     <a href="gerenciarContas.html">
                         <h2 class="item">Gerenciar</h2>
                     </a>
                 </div>
-                <div id="suporteId" class="item-sidebar">
+                <div class="item-sidebar">
                     <img class="img-gerenciar-user" src="assets/icons/suporte_icon.png" alt="">
                     <a href="perfilSuporte.html">
                         <h2 class="item">Suporte</h2>
@@ -142,7 +141,7 @@
                     <div class="cardAndChartBackground">
 
                         <div class="lineChartBackground">
-                            <div class="content" id="chartCPU">
+                            <div class="content" id="chartCPU" >
                                 <div class="infosOfLineChart">
 
                                     <div class="selects">
@@ -151,319 +150,7 @@
                                     </div>
 
                                 </div>
-
-                                <script>
-                                    let hostName = sessionStorage.NOME_MAQUINA;
-
-                                    let dadosDiscoTotal = 0
-                                    let dadosDiscoUsado = 0
-                                    var proximaAtualizacao;
-
-                                    function iniciarGrafico() {
-
-
-                                        const horaRegistro = []
-                                        const dados = []
-                                        const data = {
-                                            labels: horaRegistro,
-                                            datasets: [{
-                                                label: "CPU",
-                                                backgroundColor: '#28AEF3',
-                                                borderColor: '#28AEF3',
-                                                data: dados,
-                                            }]
-                                        };
-
-                                        const config = {
-                                            type: 'line',
-                                            data: data,
-                                            options: {}
-                                        };
-
-                                        const chart = new Chart(
-                                            document.getElementById('myChart'),
-                                            config
-                                        );
-
-
-
-
-                                        const data2 = {
-                                            labels: ["%Disco usado", "%Disco disponível"],
-                                            datasets: [{
-                                                label: 'DISCO',
-                                                data: [0, 0],
-                                                backgroundColor: [
-                                                    'red',
-                                                    'limegreen'
-
-                                                ],
-                                                hoverOffset: 4,
-                                                options: {
-
-                                                }
-                                            }]
-                                        };
-
-                                        const config2 = {
-                                            type: 'pie',
-                                            data: data2,
-                                            options: {
-                                                scales: {
-                                                },
-                                                plugins: {
-                                                    tooltip: {
-                                                        enabled: false
-                                                    },
-                                                    datalabels: {
-                                                        formatter: (value, context) => { return `${value}%` },
-                                                        color: ["white"],
-                                                        font: {
-                                                            size: 34
-                                                        }
-                                                    }
-                                                }
-
-                                            },
-                                            plugins: [ChartDataLabels]
-                                        };
-
-                                        const chart2 = new Chart(
-                                            document.getElementById('myChartDisco'),
-                                            config2
-                                        );
-
-                                        const horaRegistro3 = []
-                                        const dadosRAM = []
-                                        const data3 = {
-                                            labels: horaRegistro3,
-                                            datasets: [{
-                                                label: "RAM",
-                                                backgroundColor: 'red',
-                                                borderColor: 'red',
-                                                data: dadosRAM,
-                                            }]
-                                        };
-
-                                        const config3 = {
-                                            type: 'line',
-                                            data: data3,
-                                            options: {}
-                                        };
-
-                                        const chart3 = new Chart(
-                                            document.getElementById('myChartRAM'),
-                                            config3
-                                        );
-
-                                        setTimeout(() => atualizarGraficoCPU(chart), 3000);
-                                        setTimeout(() => atualizarGraficoDisco(chart2), 3000);
-                                        setTimeout(() => atualizarGraficoRAM(chart3), 3000);
-                                    }
-
-
-
-
-
-
-                                    let contador = []
-                                    let contadorCriticoCpu=0
-                                    let contadorAlertaCpu=0
-                                    let contadorNormalCpu=0
-                                    let cssCPU = document.getElementById("chartCPU")
-                                    let cssDisco = document.getElementById("chartDisco")
-                                    let cssRam = document.getElementById("chartRam")
-
-                                    function atualizarGraficoCPU(chartCPU) {
-                                        fetch(`registro/registroGraficoLinhaTempo/${hostName}`, {
-                                            method: "GET",
-                                            headers: { "Content-Type": "application/json" }
-                                        }).then(function (resposta) {
-                                            resposta.json().then(function (resultado) {
-                                              if(resultado[0].tipo_alerta == "VERDE"){
-                                                alert("NORMAL")
-                                                contadorNormalCpu++
-                                                if(contadorNormalCpu > contadorAlertaCpu && contadorNormalCpu > contadorCriticoCpu){
-                                                    cssCPU.style.animation=`luzNormal 2s infinite`
-                                                }
-                                              }
-                                              else if (resultado[0].tipo_alerta == "AMARELO"){
-                                                contadorAlertaCpu++
-                                                if(contadorAlertaCpu > contadorAlertaCpu && contadorAlertaCpu > contadorCriticoCpu){
-                                                    alert("ALERTA")
-                                                    document.getElementById("chartCPU").style.backgroundColor='red';
-                                                }
-                                              }
-                                              else{
-                                                contadorCriticoCpu ++
-                                                if(contadorCriticoCpu > contadorAlertaCpu && contadorCriticoCpu > contadorNormalCpu){
-                                                    
-                                                    cssCPU.style.animation=`luzCritica 2s infinite`
-                                                }
-                                              }
-
-                                                console.log('resultado', resultado)
-                                                contador.push(1)
-                                                const horaRegistro = resultado.map(dataRegistrada => dataRegistrada.data_registro);
-                                                const dadosCPU = resultado.map(dadoCPU => dadoCPU.cpu_uso);
-                                                console.log(horaRegistro)
-                                                console.log(dadosCPU)
-                                                if (contador.length >= 10) {
-
-                                                    chartCPU.data.datasets[0].data.shift();
-                                                    chartCPU.data.labels.shift()
-                                                }
-                                                chartCPU.data.labels.push(horaRegistro);
-                                                chartCPU.data.datasets[0].data.push(resultado[0].cpu_uso);
-
-                                                chartCPU.update();
-                                                proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(chartCPU), 3000);
-
-                                                if (resposta.ok) {
-                                                    console.log("resposta: ", resposta.json());
-
-                                                } else {
-                                                    throw ("Houve um erro ao tentar realizar a busca por data!");
-                                                }
-
-                                            }).catch(function (res) {
-                                                console.log("#ERRO: "`${res}`);
-                                            });
-                                        })
-
-
-                                    }
-
-
-
-
-                                    function atualizarGraficoDisco(chartDisco) {
-                                        fetch(`registro/registroGraficoLinhaTempo/${hostName}`, {
-                                            method: "GET",
-                                            headers: { "Content-Type": "application/json" }
-                                        }).then(function (resposta) {
-                                            resposta.json().then(function (resultado) {
-
-                                                console.log('resultado', resultado)
-                                             
-
-                                                const horaRegistro = resultado.map(dataRegistrada => dataRegistrada.data_registro);
-                                                const dadosDisco = resultado.map(dadoDisco => dadoDisco.disco_uso);
-                                                dadosDiscoTotal = resultado[0].disco_total
-                                                dadosDiscoUsado = resultado[0].disco_uso
-
-                                                console.log("XXXXXXX" + dadosDiscoTotal)
-                                                console.log("XXXXXXX" + dadosDiscoUsado)
-                                                console.log(horaRegistro);
-                                                console.log(dadosDisco);
-
-                                                chartDisco.data.datasets[0].data = [dadosDiscoUsado, 100 - dadosDiscoUsado];
-                                             /*    if((100 - dadosDiscoUsado) < 15){
-                                                  cssDisco.style.animation= `luzCritica 2s infinite;`
-                                                }
-                                                else if(100 - dadosDiscoUsado < 40){
-                                                    cssDisco.style.animation= `luzAlerta 2s infinite;`
-                                                }
-                                                else{
-                                                    cssDisco.style.animation= `luzNormal 2s infinite;` 
-                                                } */
-                                                chartDisco.update();
-                                                proximaAtualizacao = setTimeout(() => atualizarGraficoDisco(chartDisco), 3000);
-
-                                                if (resposta.ok) {
-                                                    console.log("resposta: ", resposta.json());
-
-
-
-                                                } else {
-                                                    throw ("Houve um erro ao tentar realizar a busca por data!");
-                                                }
-
-                                            }).catch(function (res) {
-                                                console.log("#ERRO: "`${res}`);
-                                            });
-                                        })
-
-
-                                    }
-
-
-
-
-
-                                    
-                                    let contadorCriticoRam=0
-                                    let contadorAlertaRam=0
-                                    let contadorNormalRam=0
-
-                                    let contador3 = []
-                                    function atualizarGraficoRAM(chartRAM) {
-                                        fetch(`registro/registroGraficoLinhaTempo/${hostName}`, {
-                                            method: "GET",
-                                            headers: { "Content-Type": "application/json" }
-                                        }).then(function (resposta) {
-                                            resposta.json().then(function (resultado) {
-
-
-                                                   
-                                           /*      if(resultado.tipo_alerta == "VERDE"){
-                                                contadorNormalRam++
-                                                if(contadorNormalRam > contadorAlertaRam && contadorNormalRam > contadorCriticoRam){
-                                                    cssRam.style.animation=`luzNormal 2s infinite;`
-                                                }
-                                              }
-                                              else if (resultado.tipo_alerta == "AMARELO"){
-                                                contadorAlertaRam++
-                                                if(contadorAlertaRam > contadorAlertaRam && contadorAlertaRam > contadorCriticoRam){
-                                                    cssRam.style.animation=`luzAlerta 2s infinite;`
-                                                }
-                                              }
-                                              else{
-                                                contadorCriticoRam ++
-                                                if(contadorCriticoRam > contadorAlertaRam && contadorCriticoRam > contadorNormalRam){
-                                                    cssRam.style.animation=`luzCritica 2s infinite;`
-                                                }
-                                              } */
-
-
-
-
-
-                                                console.log('resultado', resultado)
-                                                contador3.push(1)
-                                                const horaRegistro = resultado.map(dataRegistrada => dataRegistrada.data_registro);
-                                                const dadosRAM = resultado.map(dadoRAM => dadoRAM.memoria_uso);
-                                                console.log(horaRegistro)
-                                                console.log(dadosRAM)
-                                                if (contador3.length >= 10) {
-
-                                                    chartRAM.data.datasets[0].data.shift();
-                                                    chartRAM.data.labels.shift()
-                                                }
-
-                                                chartRAM.data.labels.push(horaRegistro);
-                                                chartRAM.data.datasets[0].data.push(resultado[0].memoria_uso);
-
-                                                chartRAM.update();
-                                                proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(chartRAM), 3000);
-
-                                                if (resposta.ok) {
-                                                    console.log("resposta: ", resposta.json());
-
-
-
-                                                } else {
-                                                    throw ("Houve um erro ao tentar realizar a busca por data!");
-                                                }
-
-                                            }).catch(function (res) {
-                                                console.log("#ERRO: "`${res}`);
-                                            });
-                                        })
-
-
-                                    }
-                                </script>
+                             
                                 <div class="chartline">
                                     <canvas height="70%" id="myChart"></canvas>
                                 </div>
@@ -488,13 +175,13 @@
                             </div>
                         </div>
                         <div class="lineChartBackground">
-                            <div class="content" id="chartRam">
+                            <div class="content " id="chartRam" >
                                 <div class="infosOfLineChart">
                                     <div class="selects">
                                         <h3>Componente:</h3>
                                         <h2>RAM</h2>
                                     </div>
-
+                                   
                                 </div>
 
                                 <div class="chartline">
