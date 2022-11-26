@@ -156,6 +156,7 @@ h3 {
     align-items: center;
     margin-bottom: 0.8%;
 }
+
 .lineChartBackground:nth-child(2) {
     width: 80%;
     height: 37.5%;
@@ -164,6 +165,7 @@ h3 {
     align-items: center;
     margin-bottom: 0.8%;
 }
+
 .lineChartBackground:nth-child(3) {
     width: 80%;
     height: 30%;
@@ -314,3 +316,72 @@ h3 {
 #dadosComponentesMenu {
     overflow-y: auto;
 }
+
+@keyframes luzNormal {
+    from {    box-shadow:
+        0 0 3px #fff,
+        0 0 16px #fff,
+        0 0 9px #fff,
+        0 0 12px rgb(110, 211, 28),
+        0 0 15px rgb(110, 211, 28),
+        0 0 18px rgb(110, 211, 28),
+        0 0 21px rgb(110, 211, 28),
+        0 0 24px rgb(110, 211, 28);}
+        
+        
+    to { box-shadow:
+        0 0 3px #fff,
+        0 0 6px #fff,
+        0 0 9px #fff,
+        0 0 12px rgb(51, 161, 8),
+        0 0 15px rgb(51, 161, 8),
+        0 0 18px rgb(51, 161, 8),
+        0 0 21px rgb(51, 161, 8),
+        0 0 24px rgb(51, 161, 8);}
+  }
+
+@keyframes luzAlerta {
+    from {    box-shadow:
+        0 0 3px #fff,
+        0 0 16px #fff,
+        0 0 9px #fff,
+        0 0 12px rgb(235, 232, 89),
+        0 0 15px rgb(235, 232, 89),
+        0 0 18px rgb(235, 232, 89),
+        0 0 21px rgb(235, 232, 89),
+        0 0 24px rgb(235, 232, 89);}
+        
+        
+    to { box-shadow:
+        0 0 3px #fff,
+        0 0 6px #fff,
+        0 0 9px #fff,
+        0 0 12px rgb(255, 153, 0),
+        0 0 15px rgb(255, 153, 0),
+        0 0 18px rgb(255, 153, 0),
+        0 0 21px rgb(255, 153, 0),
+        0 0 24px rgb(255, 153, 0);}
+  }
+
+@keyframes luzCritica {
+    from {    box-shadow:
+        0 0 3px #fff,
+        0 0 16px #fff,
+        0 0 9px #fff,
+        0 0 12px rgb(230, 106, 5),
+        0 0 15px rgb(230, 106, 5),
+        0 0 18px rgb(230, 106, 5),
+        0 0 21px rgb(230, 106, 5),
+        0 0 24px rgb(230, 106, 5);}
+        
+        
+    to { box-shadow:
+        0 0 3px #fff,
+        0 0 6px #fff,
+        0 0 9px #fff,
+        0 0 12px rgb(255, 0, 85),
+        0 0 15px rgb(255, 0, 76),
+        0 0 18px rgb(255, 0, 55),
+        0 0 21px rgb(255, 0, 21),
+        0 0 24px rgb(255, 0, 0);}
+  }
