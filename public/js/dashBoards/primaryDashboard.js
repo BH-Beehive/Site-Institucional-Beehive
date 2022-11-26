@@ -779,7 +779,7 @@ function listarMaquinas() {
                 resposta.json().then(function (resposta) {
                     for (var posicao = 0; posicao < resposta.length; posicao++) {
                         listaMaquinas.innerHTML += `
-                            <div class="ItensMaquinasContent">
+                            
     
                                 <div class="itemMaquina">
                                     <div class="nomesMaquina">
@@ -799,7 +799,7 @@ function listarMaquinas() {
                                         <button class="button-editar-dashboard" onclick="abrirModalEditarMaquina('${resposta[posicao].host_name}')"><img src="assets/icons/icon_editar.png"></button>
                                     </div>
                                 </div>
-                            </div>`
+                            `
                         listaIdMaquina.push(resposta[posicao].host_name)
                     }
                     console.log(listaIdMaquina)
