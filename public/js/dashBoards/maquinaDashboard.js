@@ -43,48 +43,58 @@ function listarInformacoesMaquina() {
     })
 }
 
+const dataHj = new Date()
+const mesAtual = dataHj.getMonth() + 1
+let dataFiltrada = document.getElementById("dateFiltro").value
+function filtrarData() {
+    
+    
+    mesAtual = dataFiltrada.substring(0,2)
+    alert(mesAtual)
+}
 function listarDadosMaquina() {
+    dataFiltrada = document.getElementById("dateFiltro").value = dataHj.getFullYear() + '-' + ('0' + (dataHj.getMonth() + 1)).slice(-2) + '-' + ('0' + dataHj.getDate()).slice(-2);
     let hostName = sessionStorage.NOME_MAQUINA
-    const dataHj = new Date()
-    const mesAtual = dataHj.getMonth() + 1
+    
+    
     let menuHistorico = document.getElementById("dadosComponentesMenu")
     //h3NomeMaquina.innerHTML = `<h3>${hostName}</h3>`
     fetch(`/registro/historicoMensal?mes_atual=${mesAtual}&host_name=${hostName}`).then(function (resposta) {
-        
+
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
-              console.log("historicoMensal-----------------------------------"+resposta)
-             for(var i=0;i<=30;i++){
-                if(resposta[i].qdt_vermelho > resposta[i].qdt_amarelo ){
-                    
-                    menuHistorico.innerHTML+=`
+                console.log("historicoMensal-----------------------------------" + resposta)
+                for (var i = 0; i <= 30; i++) {
+                    if (resposta[i].qdt_vermelho > resposta[i].qdt_amarelo) {
+
+                        menuHistorico.innerHTML += `
                     <div class="dadosMenu">
                     <h3>${resposta[i].data_registro}</h3>
                     <h3>${resposta[i].qdt_vermelho}</h3>
                     <h3>VERMELHO</h3>               
                   </div>
                   `
-                }
-                else if(resposta[i].qdt_amarelo > resposta[i].qdt_vermelho ){
-                    menuHistorico.innerHTML+=`
+                    }
+                    else if (resposta[i].qdt_amarelo > resposta[i].qdt_vermelho) {
+                        menuHistorico.innerHTML += `
                     <div class="dadosMenu">
                     <h3>${resposta[i].data_registro}</h3>
                     <h3>${resposta[i].qdt_amarelo}</h3>
                     <h3>AMARELO</h3>               
                   </div>
                   `
-                }
-                else{
-                    menuHistorico.innerHTML+=`
+                    }
+                    else {
+                        menuHistorico.innerHTML += `
                     <div class="dadosMenu">
                     <h3>${resposta[i].data_registro}</h3>
                     <h3>${resposta[i].qdt_verde}</h3>
                     <h3>VERDE</h3>               
                   </div>
                   `
+                    }
+
                 }
-                
-             }
             });
         } else {
             console.log("Houve um erro ao tentar listar maquinas!");
@@ -215,9 +225,9 @@ function iniciarGrafico() {
 
 
 let contador = []
-let contadorCriticoCpu=0
-let contadorAlertaCpu=0
-let contadorNormalCpu=0
+let contadorCriticoCpu = 0
+let contadorAlertaCpu = 0
+let contadorNormalCpu = 0
 let cssCPU = document.getElementById("chartCPU")
 let cssDisco = document.getElementById("chartDisco")
 
@@ -227,31 +237,31 @@ function atualizarGraficoCPU(chartCPU) {
         headers: { "Content-Type": "application/json" }
     }).then(function (resposta) {
         resposta.json().then(function (resultado) {
-            
-          
-          if(resultado[0].tipo_alerta == "VERDE"){
-            
-            contadorNormalCpu++
-            if(contadorNormalCpu > contadorAlertaCpu && contadorNormalCpu > contadorCriticoCpu){
-                cssCPU.style.animation=`luzNormal 2s infinite`
+
+
+            if (resultado[0].cpu_uso < 10) {
+
+                contadorNormalCpu++
+                if (contadorNormalCpu > contadorAlertaCpu && contadorNormalCpu > contadorCriticoCpu) {
+                    cssCPU.style.animation = `luzNormal 2s infinite`
+                }
             }
-          }
-          else if (resultado[0].tipo_alerta == "AMARELO"){
-            contadorAlertaCpu++
-            
-            if(contadorAlertaCpu > contadorNormalCpu && contadorAlertaCpu > contadorCriticoCpu){
-                
-                cssCPU.style.animation=`luzAlerta 2s infinite`
+            else if (resultado[0].cpu_uso < 40) {
+                contadorAlertaCpu++
+
+                if (contadorAlertaCpu > contadorNormalCpu && contadorAlertaCpu > contadorCriticoCpu) {
+
+                    cssCPU.style.animation = `luzAlerta 2s infinite`
+                }
             }
-          }
-          else{
-            contadorCriticoCpu ++
-            
-            if(contadorCriticoCpu > contadorAlertaCpu && contadorCriticoCpu > contadorNormalCpu){
-                
-                cssCPU.style.animation=`luzCritica 2s infinite`
+            else {
+                contadorCriticoCpu++
+
+                if (contadorCriticoCpu > contadorAlertaCpu && contadorCriticoCpu > contadorNormalCpu) {
+
+                    cssCPU.style.animation = `luzCritica 2s infinite`
+                }
             }
-          }
 
             console.log('resultado', resultado)
             contador.push(1)
@@ -296,21 +306,21 @@ function atualizarGraficoDisco(chartDisco) {
         resposta.json().then(function (resultado) {
 
             console.log('resultado', resultado)
-         
-           
+
+
             const horaRegistro = resultado.map(dataRegistrada => dataRegistrada.data_registro);
             const dadosDisco = resultado.map(dadoDisco => dadoDisco.disco_uso);
             dadosDiscoTotal = resultado[0].disco_total
             dadosDiscoUsado = resultado[0].disco_uso
-           if((100 - dadosDiscoUsado) < 10){
-            document.getElementById("chartDisco").style="animation:luzCritica 2s infinite "
-           }
-           else if((100 - dadosDiscoUsado) < 35){
-            document.getElementById("chartDisco").style="animation:luzAlerta 2s infinite "
-           }
-           else{
-            document.getElementById("chartDisco").style="animation:luzNormal 2s infinite "
-           }
+            if ((100 - dadosDiscoUsado) < 10) {
+                document.getElementById("chartDisco").style = "animation:luzCritica 2s infinite "
+            }
+            else if ((100 - dadosDiscoUsado) < 35) {
+                document.getElementById("chartDisco").style = "animation:luzAlerta 2s infinite "
+            }
+            else {
+                document.getElementById("chartDisco").style = "animation:luzNormal 2s infinite "
+            }
             console.log("XXXXXXX" + dadosDiscoTotal)
             console.log("XXXXXXX" + dadosDiscoUsado)
             console.log(horaRegistro);
@@ -342,9 +352,9 @@ function atualizarGraficoDisco(chartDisco) {
 
 
 
-let contadorCriticoRam=0
-let contadorAlertaRam=0
-let contadorNormalRam=0
+let contadorCriticoRam = 0
+let contadorAlertaRam = 0
+let contadorNormalRam = 0
 
 let contador3 = []
 function atualizarGraficoRAM(chartRAM) {
@@ -353,36 +363,36 @@ function atualizarGraficoRAM(chartRAM) {
         headers: { "Content-Type": "application/json" }
     }).then(function (resposta) {
         resposta.json().then(function (resultado) {
-            console.log("VERDE::"+contadorNormalRam)
-            console.log("AMARELO::"+contadorAlertaRam)
-            console.log("VERMELHO::"+contadorCriticoRam)
-          
-            if(resultado[0].tipo_alerta == "VERDE"){
-            
-                contadorNormalRam++
-                if(contadorNormalRam > contadorAlertaRam && contadorNormalRam > contadorCriticoRam){
-                    document.getElementById("chartRam").style="animation:luzNormal 2s infinite "
-                }
-              }
-              else if (resultado[0].tipo_alerta == "AMARELO"){
-                contadorAlertaRam++
-                
-                if(contadorAlertaRam > contadorNormalRam && contadorAlertaRam > contadorCriticoRam){
-                    
-                    document.getElementById("chartRam").style="animation:luzAlerta 2s infinite "
-                }
-              }
-              else{
-                contadorCriticoRam ++
-                
-                if(contadorCriticoRam > contadorAlertaRam && contadorCriticoRam > contadorNormalRam){
-                    
-                    document.getElementById("chartRam").style="animation:luzCritica 2s infinite "
-                }
-              }     
-           
+            console.log("VERDE::" + contadorNormalRam)
+            console.log("AMARELO::" + contadorAlertaRam)
+            console.log("VERMELHO::" + contadorCriticoRam)
+            let porcentagemRAM = (100 * resultado[0].memoria_uso) / resultado[0].memoria_total
+            if (porcentagemRAM >= 90) {
+                contadorCriticoRam++
 
-           
+                if (contadorCriticoRam > contadorAlertaRam && contadorCriticoRam > contadorNormalRam) {
+                    document.getElementById("chartRam").style = "animation:luzCritica 2s infinite "
+                }
+            }
+            else if (porcentagemRAM >= 75) {
+                contadorAlertaRam++
+
+                if (contadorAlertaRam > contadorNormalRam && contadorAlertaRam > contadorCriticoRam) {
+
+                    document.getElementById("chartRam").style = "animation:luzAlerta 2s infinite "
+                }
+            }
+            else {
+
+                contadorNormalRam++
+                if (contadorNormalRam > contadorAlertaRam && contadorNormalRam > contadorCriticoRam) {
+                    document.getElementById("chartRam").style = "animation:luzNormal 2s infinite "
+
+                }
+            }
+
+
+
             console.log('resultado', resultado)
             contador3.push(1)
             const horaRegistro = resultado.map(dataRegistrada => dataRegistrada.data_registro);
@@ -390,15 +400,15 @@ function atualizarGraficoRAM(chartRAM) {
             console.log(horaRegistro)
             console.log(dadosRAM)
             if (contador3.length >= 10) {
-               
+
                 chartRAM.data.datasets[0].data.shift();
                 chartRAM.data.labels.shift()
             }
-            
+
             chartRAM.data.labels.push(horaRegistro);
-            chartRAM.data.datasets[0].data.push(resultado[0].memoria_uso);                                              
+            chartRAM.data.datasets[0].data.push(resultado[0].memoria_uso);
             chartRAM.update();
-            
+
             proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(chartRAM), 3000);
 
             if (resposta.ok) {
