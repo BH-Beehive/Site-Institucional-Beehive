@@ -115,7 +115,7 @@ function proximaEtapa() {
         Swal.fire({
             icon: 'error',
             title: 'Senha inválida!',
-            text: 'Digite uma senha maior que 7 digitos e com caracteres especiais!',
+            text: 'Digite uma senha maior que 7 digitos, letra maiúscula e caracteres especiais!',
         })
     }
     else {
