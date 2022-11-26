@@ -110,7 +110,7 @@ function proximaEtapa() {
             text: 'Por favor, confira as senhas!',
         })
     } 
-    else if (inputSenha.length < 8 || !regex.exec(inputSenha.value)) {
+    else if (inputSenha.value.length < 8 || !regex.exec(inputSenha.value)) {
         console.log(inputSenha)
         Swal.fire({
             icon: 'error',

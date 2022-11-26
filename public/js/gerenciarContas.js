@@ -42,7 +42,7 @@ function cadastrarSuporte() {
   else if (emailSlackVar.indexOf('@' && '.com' && '.br') == - 1) {
     Swal.fire({
       icon: 'error',
-      title: 'Email Inválido!',
+      title: 'Email Inválido! por favor informe um e-mail seguindo os padrões de suporte',
       text: 'Por favor, informe um email válido!',
     })
   } else if (senhaVar.length < 8) {
@@ -216,6 +216,9 @@ function deletarSuporte(idSuporte) {
             'Suporte excluido com sucesso!',
             'success'
           )
+
+         window.location.reload(true);
+
         }
       }).catch(function (erro) {
         console.log(erro);
