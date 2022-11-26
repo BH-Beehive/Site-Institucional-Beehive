@@ -297,12 +297,20 @@ function atualizarGraficoDisco(chartDisco) {
 
             console.log('resultado', resultado)
          
-            document.getElementById("chartDisco").style="animation:luzNormal 2s infinite "
+           
             const horaRegistro = resultado.map(dataRegistrada => dataRegistrada.data_registro);
             const dadosDisco = resultado.map(dadoDisco => dadoDisco.disco_uso);
             dadosDiscoTotal = resultado[0].disco_total
             dadosDiscoUsado = resultado[0].disco_uso
-           
+           if((100 - dadosDiscoUsado) < 10){
+            document.getElementById("chartDisco").style="animation:luzCritica 2s infinite "
+           }
+           else if((100 - dadosDiscoUsado) < 35){
+            document.getElementById("chartDisco").style="animation:luzAlerta 2s infinite "
+           }
+           else{
+            document.getElementById("chartDisco").style="animation:luzNormal 2s infinite "
+           }
             console.log("XXXXXXX" + dadosDiscoTotal)
             console.log("XXXXXXX" + dadosDiscoUsado)
             console.log(horaRegistro);
