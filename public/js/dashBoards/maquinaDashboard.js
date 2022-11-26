@@ -97,8 +97,324 @@ function listarDadosMaquina() {
 
 
 
+//  ------------------------------ DASHBOARD MICRO CHARTS ------------------------------------------
+
+
+
+let hostName = sessionStorage.NOME_MAQUINA;
+
+let dadosDiscoTotal = 0
+let dadosDiscoUsado = 0
+var proximaAtualizacao;
+
+function iniciarGrafico() {
+
+
+    const horaRegistro = []
+    const dados = []
+    const data = {
+        labels: horaRegistro,
+        datasets: [{
+            label: "CPU",
+            backgroundColor: '#28AEF3',
+            borderColor: '#28AEF3',
+            data: dados,
+        }]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+
+    const chart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
 
 
 
 
+    const data2 = {
+        labels: ["%Disco usado", "%Disco disponível"],
+        datasets: [{
+            label: 'DISCO',
+            data: [0, 0],
+            backgroundColor: [
+                'red',
+                'limegreen'
+
+            ],
+            hoverOffset: 4,
+            options: {
+
+            }
+        }]
+    };
+
+    const config2 = {
+        type: 'pie',
+        data: data2,
+        options: {
+            scales: {
+            },
+            plugins: {
+                tooltip: {
+                    enabled: false
+                },
+                datalabels: {
+                    formatter: (value, context) => { return `${value}%` },
+                    color: ["white"],
+                    font: {
+                        size: 34
+                    }
+                }
+            }
+
+        },
+        plugins: [ChartDataLabels]
+    };
+
+    const chart2 = new Chart(
+        document.getElementById('myChartDisco'),
+        config2
+    );
+
+    const horaRegistro3 = []
+    const dadosRAM = []
+    const data3 = {
+        labels: horaRegistro3,
+        datasets: [{
+            label: "RAM",
+            backgroundColor: 'red',
+            borderColor: 'red',
+            data: dadosRAM,
+        }]
+    };
+
+    const config3 = {
+        type: 'line',
+        data: data3,
+        options: {}
+    };
+
+    const chart3 = new Chart(
+        document.getElementById('myChartRAM'),
+        config3
+    );
+
+    setTimeout(() => atualizarGraficoCPU(chart), 3000);
+    setTimeout(() => atualizarGraficoDisco(chart2), 3000);
+    setTimeout(() => atualizarGraficoRAM(chart3), 3000);
+}
+
+
+
+
+
+
+let contador = []
+let contadorCriticoCpu=0
+let contadorAlertaCpu=0
+let contadorNormalCpu=0
+let cssCPU = document.getElementById("chartCPU")
+let cssDisco = document.getElementById("chartDisco")
+
+function atualizarGraficoCPU(chartCPU) {
+    fetch(`registro/registroGraficoLinhaTempo/${hostName}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" }
+    }).then(function (resposta) {
+        resposta.json().then(function (resultado) {
+            
+          
+          if(resultado[0].tipo_alerta == "VERDE"){
+            
+            contadorNormalCpu++
+            if(contadorNormalCpu > contadorAlertaCpu && contadorNormalCpu > contadorCriticoCpu){
+                cssCPU.style.animation=`luzNormal 2s infinite`
+            }
+          }
+          else if (resultado[0].tipo_alerta == "AMARELO"){
+            contadorAlertaCpu++
+            
+            if(contadorAlertaCpu > contadorNormalCpu && contadorAlertaCpu > contadorCriticoCpu){
+                
+                cssCPU.style.animation=`luzAlerta 2s infinite`
+            }
+          }
+          else{
+            contadorCriticoCpu ++
+            
+            if(contadorCriticoCpu > contadorAlertaCpu && contadorCriticoCpu > contadorNormalCpu){
+                
+                cssCPU.style.animation=`luzCritica 2s infinite`
+            }
+          }
+
+            console.log('resultado', resultado)
+            contador.push(1)
+            const horaRegistro = resultado.map(dataRegistrada => dataRegistrada.data_registro);
+            const dadosCPU = resultado.map(dadoCPU => dadoCPU.cpu_uso);
+            console.log(horaRegistro)
+            console.log(dadosCPU)
+            if (contador.length >= 10) {
+
+                chartCPU.data.datasets[0].data.shift();
+                chartCPU.data.labels.shift()
+            }
+            chartCPU.data.labels.push(horaRegistro);
+            chartCPU.data.datasets[0].data.push(resultado[0].cpu_uso);
+
+            chartCPU.update();
+            proximaAtualizacao = setTimeout(() => atualizarGraficoCPU(chartCPU), 3000);
+
+            if (resposta.ok) {
+                console.log("resposta: ", resposta.json());
+
+            } else {
+                throw ("Houve um erro ao tentar realizar a busca por data!");
+            }
+
+        }).catch(function (res) {
+            console.log("#ERRO: "`${res}`);
+        });
+    })
+
+
+}
+
+
+
+
+function atualizarGraficoDisco(chartDisco) {
+    fetch(`registro/registroGraficoLinhaTempo/${hostName}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" }
+    }).then(function (resposta) {
+        resposta.json().then(function (resultado) {
+
+            console.log('resultado', resultado)
+         
+           
+            const horaRegistro = resultado.map(dataRegistrada => dataRegistrada.data_registro);
+            const dadosDisco = resultado.map(dadoDisco => dadoDisco.disco_uso);
+            dadosDiscoTotal = resultado[0].disco_total
+            dadosDiscoUsado = resultado[0].disco_uso
+           if((100 - dadosDiscoUsado) < 10){
+            document.getElementById("chartDisco").style="animation:luzCritica 2s infinite "
+           }
+           else if((100 - dadosDiscoUsado) < 35){
+            document.getElementById("chartDisco").style="animation:luzAlerta 2s infinite "
+           }
+           else{
+            document.getElementById("chartDisco").style="animation:luzNormal 2s infinite "
+           }
+            console.log("XXXXXXX" + dadosDiscoTotal)
+            console.log("XXXXXXX" + dadosDiscoUsado)
+            console.log(horaRegistro);
+            console.log(dadosDisco);
+
+            chartDisco.data.datasets[0].data = [dadosDiscoUsado, 100 - dadosDiscoUsado];
+            chartDisco.update();
+            proximaAtualizacao = setTimeout(() => atualizarGraficoDisco(chartDisco), 3000);
+
+            if (resposta.ok) {
+                console.log("resposta: ", resposta.json());
+
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar a busca por data!");
+            }
+
+        }).catch(function (res) {
+            console.log("#ERRO: "`${res}`);
+        });
+    })
+
+
+}
+
+
+
+
+
+
+let contadorCriticoRam=0
+let contadorAlertaRam=0
+let contadorNormalRam=0
+
+let contador3 = []
+function atualizarGraficoRAM(chartRAM) {
+    fetch(`registro/registroGraficoLinhaTempo/${hostName}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" }
+    }).then(function (resposta) {
+        resposta.json().then(function (resultado) {
+            console.log("VERDE::"+contadorNormalRam)
+            console.log("AMARELO::"+contadorAlertaRam)
+            console.log("VERMELHO::"+contadorCriticoRam)
+          
+            if(resultado[0].tipo_alerta == "VERDE"){
+            
+                contadorNormalRam++
+                if(contadorNormalRam > contadorAlertaRam && contadorNormalRam > contadorCriticoRam){
+                    document.getElementById("chartRam").style="animation:luzNormal 2s infinite "
+                }
+              }
+              else if (resultado[0].tipo_alerta == "AMARELO"){
+                contadorAlertaRam++
+                
+                if(contadorAlertaRam > contadorNormalRam && contadorAlertaRam > contadorCriticoRam){
+                    
+                    document.getElementById("chartRam").style="animation:luzAlerta 2s infinite "
+                }
+              }
+              else{
+                contadorCriticoRam ++
+                
+                if(contadorCriticoRam > contadorAlertaRam && contadorCriticoRam > contadorNormalRam){
+                    
+                    document.getElementById("chartRam").style="animation:luzCritica 2s infinite "
+                }
+              }     
+           
+
+           
+            console.log('resultado', resultado)
+            contador3.push(1)
+            const horaRegistro = resultado.map(dataRegistrada => dataRegistrada.data_registro);
+            const dadosRAM = resultado.map(dadoRAM => dadoRAM.memoria_uso);
+            console.log(horaRegistro)
+            console.log(dadosRAM)
+            if (contador3.length >= 10) {
+               
+                chartRAM.data.datasets[0].data.shift();
+                chartRAM.data.labels.shift()
+            }
+            
+            chartRAM.data.labels.push(horaRegistro);
+            chartRAM.data.datasets[0].data.push(resultado[0].memoria_uso);                                              
+            chartRAM.update();
+            
+            proximaAtualizacao = setTimeout(() => atualizarGraficoRAM(chartRAM), 3000);
+
+            if (resposta.ok) {
+                console.log("resposta: ", resposta.json());
+
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar a busca por data!");
+            }
+
+        }).catch(function (res) {
+            console.log("#ERRO: "`${res}`);
+        });
+    })
+
+
+}
 

@@ -62,7 +62,7 @@ function registroPizzaServidorPorSetor(id_empresa, setor, mesAtual,diaAtual) {
 function registroGraficoLinhaTempo(hostName){
     console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registroGraficoLinhaTempo()", hostName);
     var instrucao = `
-    select DATE_FORMAT(data_registro,'%H:%i:%s') as data_registro,cpu_uso,memoria_uso,ROUND(((disco_uso*100)/disco_total),0) as "disco_uso" from registro 
+    select DATE_FORMAT(data_registro,'%H:%i:%s') as data_registro,cpu_uso,memoria_uso,ROUND(((disco_uso*100)/disco_total),0) as "disco_uso",tipo_alerta from registro 
     join maquina
     on id_maquina = fk_maquina where host_name = '${hostName}' order by id_registro desc limit 1;
     `;
