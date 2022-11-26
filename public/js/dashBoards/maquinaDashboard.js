@@ -44,29 +44,36 @@ function listarInformacoesMaquina() {
 }
 
 const dataHj = new Date()
-const mesAtual = dataHj.getMonth() + 1
+let mesAtual = dataHj.getMonth() + 1
+let diaAtual= dataHj.getDate()
+let diaSelecionado = dataHj.getDate()
 let dataFiltrada = document.getElementById("dateFiltro").value
+
 function filtrarData() {
-    
-    
-    mesAtual = dataFiltrada.substring(0,2)
-    alert(mesAtual)
+    dataFiltrada = document.getElementById("dateFiltro").value
+    let menuHistorico = document.getElementById("dadosComponentesMenu")
+    menuHistorico.innerHTML=''
+    mesAtual = dataFiltrada.substring(5,7)
+    diaAtual =dataFiltrada.substring(8,10)
+    diaSelecionado =dataFiltrada.substring(8,10)
+    listarDadosMaquina()
 }
+
 function listarDadosMaquina() {
-    dataFiltrada = document.getElementById("dateFiltro").value = dataHj.getFullYear() + '-' + ('0' + (dataHj.getMonth() + 1)).slice(-2) + '-' + ('0' + dataHj.getDate()).slice(-2);
+    //dataFiltrada = document.getElementById("dateFiltro").value = dataHj.getFullYear() + '-' + ('0' + (dataHj.getMonth() + 1)).slice(-2) + '-' + ('0' + dataHj.getDate()).slice(-2);
     let hostName = sessionStorage.NOME_MAQUINA
     
     
     let menuHistorico = document.getElementById("dadosComponentesMenu")
     //h3NomeMaquina.innerHTML = `<h3>${hostName}</h3>`
-    fetch(`/registro/historicoMensal?mes_atual=${mesAtual}&host_name=${hostName}`).then(function (resposta) {
+    fetch(`/registro/historicoMensal?mes_atual=${mesAtual}&host_name=${hostName}&dia_selecionado=${diaSelecionado}`).then(function (resposta) {
 
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 console.log("historicoMensal-----------------------------------" + resposta)
                 for (var i = 0; i <= 30; i++) {
-                    if (resposta[i].qdt_vermelho > resposta[i].qdt_amarelo) {
-
+                    if (resposta[i].qdt_vermelho > resposta[i].qdt_amarelo && resposta[i].qdt_vermelho > resposta[i].qdt_verde) {
+                        menuHistorico.innerHTML=''
                         menuHistorico.innerHTML += `
                     <div class="dadosMenu">
                     <h3>${resposta[i].data_registro}</h3>
@@ -75,7 +82,7 @@ function listarDadosMaquina() {
                   </div>
                   `
                     }
-                    else if (resposta[i].qdt_amarelo > resposta[i].qdt_vermelho) {
+                    else if (resposta[i].qdt_amarelo > resposta[i].qdt_vermelho && resposta[i].qdt_amarelo > resposta[i].qdt_verde) {
                         menuHistorico.innerHTML += `
                     <div class="dadosMenu">
                     <h3>${resposta[i].data_registro}</h3>

@@ -2,7 +2,7 @@ let listaIdMaquina = [];
 let nomeMaquina = ""
 const dataHj = new Date()
 const mesAtual = dataHj.getMonth() + 1
-const diaAtual = dataHj.getDate()
+const diaAtual = "26"
 let proximoSetor = 0;
 
 function cadastrarMaquina() {

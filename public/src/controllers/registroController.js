@@ -180,10 +180,10 @@ function registroGraficoLinhaDisco(req, res) {
 function historicoMensal(req, res) {
     let mesAtual = req.query.mes_atual;
     let hostName = req.query.host_name;
-    
+    let diaSelecionado = req.query.dia_selecionado
     console.log(mesAtual,  "mesAtual na controller do registro")
     
-    registroModel.historicoMensal(mesAtual,hostName)
+    registroModel.historicoMensal(mesAtual,hostName,diaSelecionado)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
