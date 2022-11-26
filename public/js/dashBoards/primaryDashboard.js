@@ -16,58 +16,58 @@ function cadastrarMaquina() {
             resposta.json().then(function (resposta) {
                 for (var i = 0; i < resposta.length; i++) {
                     console.log(proximoSetor)
-                    
-                        let hostNameVar = inputHostName.value;
-                        let tokenVar = gerarToken();
-                        let tipoVar = selectTipo.value;
-                        let idEmpresaVar = sessionStorage.ID_EMPRESA;
-                        let fkSetor = resposta[i].id_setor;
 
-                        console.log(hostNameVar, tokenVar, tipoVar, idEmpresaVar, fkSetor)
+                    let hostNameVar = inputHostName.value;
+                    let tokenVar = gerarToken();
+                    let tipoVar = selectTipo.value;
+                    let idEmpresaVar = sessionStorage.ID_EMPRESA;
+                    let fkSetor = resposta[i].id_setor;
+
+                    console.log(hostNameVar, tokenVar, tipoVar, idEmpresaVar, fkSetor)
 
 
 
-                        fetch("/maquina/cadastrarMaquina", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
-                            body: JSON.stringify({
-                                hostNameServer: hostNameVar,
-                                tokenServer: tokenVar,
-                                tipoServer: tipoVar,
-                                empresaServer: idEmpresaVar,
-                                setorServer: fkSetor
+                    fetch("/maquina/cadastrarMaquina", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            hostNameServer: hostNameVar,
+                            tokenServer: tokenVar,
+                            tipoServer: tipoVar,
+                            empresaServer: idEmpresaVar,
+                            setorServer: fkSetor
+                        })
+                    }).then(function (resposta) {
+
+                        console.log("resposta: ", resposta);
+
+                        if (resposta.ok) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Cadastro bem-sucedido!',
+                                showConfirmButton: false,
+                                timer: 1500
                             })
-                        }).then(function (resposta) {
 
-                            console.log("resposta: ", resposta);
+                            setTimeout(() => {
+                                window.location = "PrimaryDashboard.html";
+                            }, "2000")
 
-                            if (resposta.ok) {
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'Cadastro bem-sucedido!',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
+                            limparFormulario();
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Erro no cadastro!',
+                                text: 'Por favor, verfique as informações e tente novamente!'
+                            })
+                        }
+                    }).catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                    });
 
-                                setTimeout(() => {
-                                    window.location = "PrimaryDashboard.html";
-                                }, "2000")
-
-                                limparFormulario();
-                            } else {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Erro no cadastro!',
-                                    text: 'Por favor, verfique as informações e tente novamente!'
-                                })
-                            }
-                        }).catch(function (resposta) {
-                            console.log(`#ERRO: ${resposta}`);
-                        });
-                    
                 }
             })
         }
@@ -98,11 +98,7 @@ function editarMaquina() {
     let fkSetor = selectSetoresEditarMaquina.value;
     let idEmpresa = sessionStorage.ID_EMPRESA;
 
-
-
     console.log(hostNameNovo, tipo, fkSetor, idEmpresa)
-
-
 
     fetch("/maquina/editarmaquina", {
         method: "POST",
@@ -115,13 +111,9 @@ function editarMaquina() {
             fkSetorServer: fkSetor,
             idEmpresaServer: idEmpresa,
             hostNameAntigoServer: nomeMaquina,
-
-
         })
     }).then(function (resposta) {
-
         console.log("resposta: ", resposta);
-
         if (resposta.ok) {
             Swal.fire({
                 position: 'top-end',
@@ -135,7 +127,6 @@ function editarMaquina() {
                 window.location = "PrimaryDashboard.html";
             }, "2000")
 
-
         } else {
             Swal.fire({
                 icon: 'error',
@@ -148,16 +139,11 @@ function editarMaquina() {
     });
 }
 
-
-
-
-
 function statusSetor() {
     let qtdVermelho = 0;
     let qtdAmarelo = 0;
     let qtdVerde = 0;
     let idEmpresa = sessionStorage.ID_EMPRESA
-
 
     fetch(`/setor/statusSetor?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
 
@@ -165,18 +151,14 @@ function statusSetor() {
 
             resposta.json().then(function (resposta) {
 
-
                 for (var i = 0; i < resposta.length; i++) {
                     if (resposta[i].qdt_vermelho > resposta[i].qdt_amarelo) {
                         qtdVermelho++;
 
-
                     } else if (resposta[i].qdt_amarelo > resposta[i].qdt_vermelho) {
                         qtdAmarelo++;
-
                     } else {
                         qtdVerde++;
-
                     }
 
 
@@ -779,8 +761,6 @@ function listarMaquinas() {
                 resposta.json().then(function (resposta) {
                     for (var posicao = 0; posicao < resposta.length; posicao++) {
                         listaMaquinas.innerHTML += `
-                            
-    
                                 <div class="itemMaquina">
                                     <div class="nomesMaquina">
                                         <div class="divAlerta">
@@ -832,8 +812,6 @@ function listarServidor() {
                 resposta.json().then(function (resposta) {
                     for (var posicao = 0; posicao < resposta.length; posicao++) {
                         listaMaquinas.innerHTML += `
-                            <div class="ItensMaquinasContent">
-
                                 <div class="itemMaquina">
                                     <div class="nomesMaquina">
                                         <div class="divAlerta">
@@ -851,8 +829,7 @@ function listarServidor() {
                                     <div class="divBtnEditarMaquina">
                                     <button class="button-editar-dashboard" onclick="abrirModalEditarMaquina('${resposta[posicao].host_name}')"><img src="assets/icons/icon_editar.png"></button>
                                 </div>
-                                </div>
-                            </div>`
+                                </div>`
                         listaIdMaquina.push(resposta[posicao].host_name)
                     }
                     console.log(listaIdMaquina)
@@ -913,8 +890,6 @@ function listarPorSetor() {
             resposta.json().then(function (resposta) {
                 for (var posicao = 0; posicao < resposta.length; posicao++) {
                     listaMaquinas.innerHTML += `
-                    <div class="ItensMaquinasContent">
-    
                                 <div class="itemMaquina">
                                     <div class="nomesMaquina">
                                         <div class="divAlerta">
@@ -929,12 +904,10 @@ function listarPorSetor() {
                                         <i onclick="verMachine('${resposta[posicao].host_name}')"
                                             class="fa regular fa-arrow-up-right-from-square"></i>
                                     </div>
-                                
-                                </div>
-                                <div class="divBtnEditarMaquina">
-                                    <button class="button-editar-dashboard" onclick="abrirModalEditarMaquina('${resposta[posicao].host_name}')"><img src="assets/icons/icon_editar.png"></button>
+                                    <div class="divBtnEditarMaquina">
+                                        <button class="button-editar-dashboard" onclick="abrirModalEditarMaquina('${resposta[posicao].host_name}')"><img src="assets/icons/icon_editar.png"></button>
                                     </div>
-                            </div>`
+                                </div>`
                     listaIdMaquina.push(resposta[posicao].host_name)
                 }
             });
