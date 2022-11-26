@@ -71,37 +71,33 @@ function listarDadosMaquina() {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 console.log("historicoMensal-----------------------------------" + resposta)
-                for (var i = 0; i <= 30; i++) {
-                    if (resposta[i].qdt_vermelho > resposta[i].qdt_amarelo && resposta[i].qdt_vermelho > resposta[i].qdt_verde) {
+                
                         menuHistorico.innerHTML=''
                         menuHistorico.innerHTML += `
                     <div class="dadosMenu">
-                    <h3>${resposta[i].data_registro}</h3>
-                    <h3>${resposta[i].qdt_vermelho}</h3>
+                    <h3>${resposta[0].data_registro}</h3>
+                    <h3>${resposta[0].qdt_vermelho}</h3>
                     <h3>VERMELHO</h3>               
                   </div>
                   `
-                    }
-                    else if (resposta[i].qdt_amarelo > resposta[i].qdt_vermelho && resposta[i].qdt_amarelo > resposta[i].qdt_verde) {
                         menuHistorico.innerHTML += `
                     <div class="dadosMenu">
-                    <h3>${resposta[i].data_registro}</h3>
-                    <h3>${resposta[i].qdt_amarelo}</h3>
+                    <h3>${resposta[0].data_registro}</h3>
+                    <h3>${resposta[0].qdt_amarelo}</h3>
                     <h3>AMARELO</h3>               
                   </div>
                   `
-                    }
-                    else {
+
                         menuHistorico.innerHTML += `
                     <div class="dadosMenu">
-                    <h3>${resposta[i].data_registro}</h3>
-                    <h3>${resposta[i].qdt_verde}</h3>
+                    <h3>${resposta[0].data_registro}</h3>
+                    <h3>${resposta[0].qdt_verde}</h3>
                     <h3>VERDE</h3>               
                   </div>
                   `
-                    }
+                    
 
-                }
+                
             });
         } else {
             console.log("Houve um erro ao tentar listar maquinas!");

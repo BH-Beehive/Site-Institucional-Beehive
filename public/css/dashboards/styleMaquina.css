@@ -311,16 +311,22 @@ h3 {
     background-color: red;
 }
 
-.dadosMenu h3{
-    color: red;
+.dadosMenu {
+    
     display: flex;
 }
 .dadosMenu {
     margin-top: 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
+h3{
+    color: red;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
 
+}
 #dadosComponentesMenu {
     overflow-y: auto;
 }
