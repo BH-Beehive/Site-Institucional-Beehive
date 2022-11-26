@@ -274,7 +274,6 @@ h3 {
     width: 100%;
     height: 80%;
     display: flex;
-    flex-direction: column;
     margin: auto;
 
 }
@@ -304,15 +303,32 @@ h3 {
     width: 70%;
 }
 
+
+.h3-filtros{
+    display: flex;
+    justify-content: space-around;
+}
+
+.filtro-data{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 6%;
+    align-items: center;
+    text-align: center;
+}
+
+.filtro-data h3{
+    margin-right: 2%;
+}
+
 .menu {
     margin-top: 30px;
     display: flex;
-    justify-content: space-evenly;
-    background-color: red;
+    flex-direction: column;
+    width: 100%;
 }
 
-.dadosMenu {
-    
+.dadosMenu {    
     display: flex;
 }
 .dadosMenu {
@@ -321,11 +337,11 @@ h3 {
     justify-content: space-around;
 }
 h3{
-    color: red;
-    margin-top: 30px;
+    margin: 0;
+    /* margin-top: 30px; */
     display: flex;
-    justify-content: space-around;
-
+    flex-direction: row;
+    float: left;
 }
 #dadosComponentesMenu {
     overflow-y: auto;
