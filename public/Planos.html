@@ -18,6 +18,7 @@
             !function () { if ("function" != typeof window.FreshworksWidget) { var n = function () { n.q.push(arguments) }; n.q = [], window.FreshworksWidget = n } }() 
         </script>
         <script type='text/javascript' src='https://widget.freshworks.com/widgets/150000001309.js' async defer></script>
+        <script src="./js/planos.js"></script>
 </head>
 <body>
     
@@ -51,7 +52,7 @@
                         <p><b>6 meses de uso</b></p>
                     </div>
                 </div>
-                <button class="btn-plano">Adquirir Plano <img src="../public/assets/icons/icon_button_plano.png" alt=""></button>
+              <button class="btn-plano" onclick="savePlanType('Basic')">Adquirir Plano<img src="../public/assets/icons/icon_button_plano.png" alt=""></button>
             </div>
 
             <div class="div-planos plano2">
@@ -84,7 +85,7 @@
                         <p><b>18 meses de uso</b></p>
                     </div>
                 </div>
-                <button class="btn-plano">Adquirir Plano <img src="../public/assets/icons/icon_button_plano.png" alt=""></button>
+                <button class="btn-plano"  onclick="savePlanType('Premium')">Adquirir Plano<img src="../public/assets/icons/icon_button_plano.png" alt=""></button> 
             </div>
 
             <div class="div-planos plano3">
@@ -112,7 +113,7 @@
                         <p><b>12 meses de uso</b></p>
                     </div>
                 </div>
-                <button class="btn-plano">Adquirir Plano <img src="../public/assets/icons/icon_button_plano.png" alt=""></button>
+             <button class="btn-plano" onclick="savePlanType('Standart')">Adquirir Plano<img src="../public/assets/icons/icon_button_plano.png" alt=""></button> 
             </div>
 
         </div>
