@@ -45,7 +45,7 @@ function cadastrarSuporte() {
       title: 'Email Inválido!',
       text: 'Por favor, informe um email válido!',
     })
-  } else if (senhaVar < 8) {
+  } else if (senhaVar.length < 8) {
     Swal.fire({
       icon: 'error',
       title: 'Senha inválida!',
@@ -128,7 +128,7 @@ function editarSuporte() {
         title: 'Email Inválido!',
         text: 'Por favor, informe um email válido!',
       })
-  } else if (senhaVar < 8) {
+  } else if (senhaVar.length < 8) {
     Swal.fire({
       icon: 'error',
       title: 'Senha inválida!',
@@ -223,7 +223,6 @@ function deletarSuporte(idSuporte) {
     }
   })
 }
-
 
 function listandoSuportes() {
   listarSuporte.innerHTML = ''

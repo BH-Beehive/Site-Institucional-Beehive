@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Quicksand:wght@300;400&display=swap"
         rel="stylesheet">
+        <script src="js/utils-layout/menuHamburguer.js"></script>
         <script>
             window.fwSettings = {
                 'widget_id': 150000001309
@@ -26,7 +27,7 @@
     <title>Meu perfil</title>
 </head>
 
-<body onload="pegarSuporte()">
+<body onload="pegarSuporte(), isIdSuporte()">
     <div class="container">
             <div class="menuLateral">
                 <div class="logo">
@@ -48,13 +49,13 @@
                             <h2 class="item">Dashboard</h2>
                         </a>
                     </div>
-                    <div class="item-sidebar">
-                        <img class="img-gerenciar-user" src="assets/icons/icon_gerenciar_user.png" alt="">
+                    <div id="gerenciarContasId" class="item-sidebar">
+                        <img  class="img-gerenciar-user" src="assets/icons/icon_gerenciar_user.png" alt="">
                         <a href="gerenciarContas.html">
                             <h2 class="item">Gerenciar</h2>
                         </a>
                     </div>
-                    <div class="item-sidebar agora">
+                    <div id="suporteId" class="item-sidebar agora">
                         <img class="img-gerenciar-user" src="assets/icons/suporte_icon.png" alt="">
                         <a href="perfilSuporte.html">
                             <h2 class="item">Suporte</h2>
