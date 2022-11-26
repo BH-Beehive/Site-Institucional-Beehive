@@ -19,7 +19,7 @@ function listarInformacoesMaquina() {
                                         <p>${resposta[posicao].arquitetura}</p>
                                     </div>
                                     <div class="itemInfoMaquina">
-                                        <h4>SO</h4>
+                                        <h4>Sistema Operacional</h4>
                                         <p>${resposta[posicao].sistema_operacional}</p>
                                     </div>
                                 </div>

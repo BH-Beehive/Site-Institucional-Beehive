@@ -51,11 +51,11 @@ body {
 
 .cardAndChartBackground {
     width: 60%;
-    height: 92vh;
+    height: 88vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    margin-bottom: 2%;
 }
 
 .cardInfoMaquinaBackground {
@@ -91,6 +91,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     display: flex;
+    flex-direction: column;
 }
 
 .cardInfoMaquinaBackground .content .infosMaquina .itemInfoMaquina {
