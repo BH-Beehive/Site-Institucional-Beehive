@@ -305,9 +305,14 @@ h3 {
 .menu {
     margin-top: 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    background-color: red;
 }
 
+.dadosMenu h3{
+    color: red;
+    display: flex;
+}
 .dadosMenu {
     margin-top: 30px;
     display: flex;
@@ -317,6 +322,7 @@ h3 {
 #dadosComponentesMenu {
     overflow-y: auto;
 }
+
 
 @keyframes luzNormal {
     from {    box-shadow:
