@@ -109,8 +109,9 @@ function proximaEtapa() {
             title: 'Senhas não coincidem!',
             text: 'Por favor, confira as senhas!',
         })
-    }
+    } 
     else if (inputSenha.length < 8 || !regex.exec(inputSenha.value)) {
+        console.log(inputSenha)
         Swal.fire({
             icon: 'error',
             title: 'Senha inválida!',

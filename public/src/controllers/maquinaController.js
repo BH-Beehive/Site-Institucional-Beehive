@@ -138,6 +138,25 @@ function listarDadosMaquina(req, res) {
         );
 }
 
+function contarSetores(req, res) {
+    var nome_setor = req.query.nomeSetor
+    console.log(nome_setor)
+    maquinaModel.contarSetores(nome_setor)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function editarMaquina(req, res) {
     let hostNameNovo = req.body.hostNameNovoServer;
     let tipo = req.body.tipoServer;
@@ -233,4 +252,5 @@ module.exports = {
     maquinaCritica,
     servidorCritica,
     editarMaquina,
+    contarSetores
 }
