@@ -4,6 +4,6 @@ function savePlanType(plano){
 
     setTimeout(() => {
         window.location = "Cadastro.html";
-    }, "2000")
+    }, "1000")
 
 }

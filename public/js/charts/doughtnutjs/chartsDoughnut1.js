@@ -11,9 +11,9 @@ function registroPizzaMaquina() {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (let posicao = 0; posicao < resposta.length; posicao++) {
-                    if (resposta[posicao].alerta == 'Vermelho') {
+                    if (resposta[posicao].alerta == 'vermelho') {
                         qtdVermelho++
-                    } else if (resposta[posicao].alerta == 'Amarelo') {
+                    } else if (resposta[posicao].alerta == 'amarelo') {
                         qtdAmarelo++
                     } else {
                         qtdVerde++
@@ -70,13 +70,14 @@ function registroPizzaMaquinaPorSetor() {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (let posicao = 0; posicao < resposta.length; posicao++) {
-                    if (resposta[posicao].alerta == 'Vermelho') {
+                    if (resposta[posicao].alerta == 'vermelho') {
                         qtdVermelho++
-                    } else if (resposta[posicao].alerta == 'Amarelo') {
+                    } else if (resposta[posicao].alerta == 'amarelo') {
                         qtdAmarelo++
-                    } else {
+                    }else{
                         qtdVerde++
                     }
+
                     totalMaquina++
                 }
                 let resultadoVermelho = (qtdVermelho / totalMaquina) * 100;
@@ -151,7 +152,7 @@ function limparGrafico() {
 function criarGrafico(qtdVermelho, qtdAmarelo, qtdVerde) {
     const data = {
         datasets: [{
-            label: 'My First Dataset',
+            label: 'Máquinas',
             data: [qtdVerde, qtdVermelho, qtdAmarelo],
             backgroundColor: [
                 '#00FF29',

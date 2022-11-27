@@ -10,11 +10,11 @@ function registroPizzaServidor() {
     fetch(`/registro/registroPizzaServidor?idEmpresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
-                for (var posicao = 0; posicao < resposta.length; posicao++) {
+                for (let posicao = 0; posicao < resposta.length; posicao++) {
                     console.log(resposta[posicao].alerta)
-                    if (resposta[posicao].alerta == 'Vermelho') {
+                    if (resposta[posicao].alerta == 'vermelho') {
                         qtdVermelho1++
-                    } else if (resposta[posicao].alerta == 'Amarelo') {
+                    } else if (resposta[posicao].alerta == 'amarelo') {
                         qtdAmarelo1++
                     } else {
                         qtdVerde1++
@@ -70,13 +70,13 @@ function registroPizzaServidorPorSetor() {
         limparGrafico1()
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
-                for (var posicao = 0; posicao < resposta.length; posicao++) {
-                    if (resposta[posicao].alerta == 'Vermelho') {
-                        qtdVermelho1++
-                    } else if (resposta[posicao].alerta == 'Amarelo') {
-                        qtdAmarelo1++
-                    } else if (resposta[posicao].alerta == 'Verde') {
-                        qtdVerde1++
+                for (let posicao = 0; posicao < resposta.length; posicao++) {
+                    if (resposta[posicao].alerta == 'vermelho') {
+                        qtdVermelho++
+                    } else if (resposta[posicao].alerta == 'amarelo') {
+                        qtdAmarelo++
+                    }else{
+                        qtdVerde++
                     }
                     totalMaquina1++
                 }
@@ -149,7 +149,7 @@ function limparGrafico1() {
 function criarGrafico2(qtdVermelho1, qtdAmarelo1, qtdVerde1) {
     const data1 = {
         datasets: [{
-            label: 'My First Dataset',
+            label: 'Máquinas',
             data: [qtdVerde1, qtdVermelho1, qtdAmarelo1],
             backgroundColor: [
                 '#00FF29',
