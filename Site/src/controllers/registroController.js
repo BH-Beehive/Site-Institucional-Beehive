@@ -144,9 +144,6 @@ module.exports = {
     registroPizzaMaquinaPorSetor,
     registroPizzaServidorPorSetor,
     registroGraficoLinhaTempo,
-    registroGraficoLinhaCPU,
-    registroGraficoLinhaRAM,
-    registroGraficoLinhaDisco,
     historicoMensal
     
 }
