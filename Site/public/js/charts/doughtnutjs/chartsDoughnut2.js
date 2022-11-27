@@ -12,14 +12,14 @@ function registroPizzaServidor() {
             resposta.json().then(function (resposta) {
                 for (let posicao = 0; posicao < resposta.length; posicao++) {
                     console.log(resposta[posicao].alerta)
-                    if (resposta[posicao].alerta == 'vermelho') {
-                        qtdVermelho1++
-                    } else if (resposta[posicao].alerta == 'amarelo') {
-                        qtdAmarelo1++
+                    if (resposta[posicao].qtd_vermelho > resposta[posicao].qtd_amarelo && resposta[posicao].qtd_verde) {
+                        qtdVermelho++
+                    } else if (resposta[posicao].qtd_amarelo > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_verde) {
+                        qtdAmarelo++
                     } else {
-                        qtdVerde1++
+                        qtdVerde++
                     }
-                    totalMaquina1++
+                    totalMaquina++
                 }
                 let resultadoVermelho = (qtdVermelho1 / totalMaquina1) * 100;
                 let resultadoAmarelo = (qtdAmarelo1 / totalMaquina1) * 100;
@@ -69,19 +69,19 @@ function registroPizzaServidorPorSetor() {
     let select = document.getElementById('selectSetor');
     let selectNomeSetor = select.options[select.selectedIndex].value;
     let nomeSetor = parseInt(selectNomeSetor);
-    fetch(`/registro/registroPizzaServidorPorSetor?idEmpresa=${idEmpresa}&nomeSetor=${nomeSetor + 1}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
+    fetch(`/registro/registroPizzaServidorPorSetor?idEmpresa=${idEmpresa}&nomeSetor=${nomeSetor}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
         limparGrafico1()
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (let posicao = 0; posicao < resposta.length; posicao++) {
-                    if (resposta[posicao].alerta == 'vermelho') {
+                    if (resposta[posicao].qtd_vermelho > resposta[posicao].qtd_amarelo && resposta[posicao].qtd_verde) {
                         qtdVermelho++
-                    } else if (resposta[posicao].alerta == 'amarelo') {
+                    } else if (resposta[posicao].qtd_amarelo > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_verde) {
                         qtdAmarelo++
-                    }else{
+                    } else {
                         qtdVerde++
                     }
-                    totalMaquina1++
+                    totalMaquina++
                 }
                 let resultadoVermelho = (qtdVermelho1 / totalMaquina1) * 100;
                 let resultadoAmarelo = (qtdAmarelo1 / totalMaquina1) * 100;

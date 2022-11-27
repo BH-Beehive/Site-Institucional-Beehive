@@ -1,4 +1,4 @@
- process.env.AMBIENTE_PROCESSO = "producao";
+  process.env.AMBIENTE_PROCESSO = "producao";
 //process.env.AMBIENTE_PROCESSO = "desenvolvimento";
 
 var express = require("express");

@@ -11,9 +11,10 @@ function registroPizzaMaquina() {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (let posicao = 0; posicao < resposta.length; posicao++) {
-                    if (resposta[posicao].alerta == 'vermelho') {
+                    console.log(resposta[posicao].alerta)
+                    if (resposta[posicao].qtd_vermelho > resposta[posicao].qtd_amarelo && resposta[posicao].qtd_verde) {
                         qtdVermelho++
-                    } else if (resposta[posicao].alerta == 'amarelo') {
+                    } else if (resposta[posicao].qtd_amarelo > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_verde) {
                         qtdAmarelo++
                     } else {
                         qtdVerde++
@@ -68,19 +69,18 @@ function registroPizzaMaquinaPorSetor() {
     let select = document.getElementById('selectSetor');
     let selectNomeSetor = select.options[select.selectedIndex].value;
     let nomeSetor = parseInt(selectNomeSetor);
-    fetch(`/registro/registroPizzaMaquinaPorSetor?idEmpresa=${idEmpresa}&nomeSetor=${nomeSetor + 1}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
+    fetch(`/registro/registroPizzaMaquinaPorSetor?idEmpresa=${idEmpresa}&nomeSetor=${nomeSetor}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
         limparGrafico()
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (let posicao = 0; posicao < resposta.length; posicao++) {
-                    if (resposta[posicao].alerta == 'vermelho') {
+                    if (resposta[posicao].qtd_vermelho > resposta[posicao].qtd_amarelo && resposta[posicao].qtd_verde) {
                         qtdVermelho++
-                    } else if (resposta[posicao].alerta == 'amarelo') {
+                    } else if (resposta[posicao].qtd_amarelo > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_verde) {
                         qtdAmarelo++
-                    }else{
+                    } else {
                         qtdVerde++
                     }
-
                     totalMaquina++
                 }
                 let resultadoVermelho = (qtdVermelho / totalMaquina) * 100;

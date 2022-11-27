@@ -14,10 +14,10 @@ function maquinaCritica(idEmpresa,mesAtual,diaAtual) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function maquinaCritica()", idEmpresa,mesAtual,diaAtual);
     var instrucao = ''
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucao = `select top 1 host_name as 'maquina' , FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
+        instrucao = `select top 1 host_name as 'maquina' , FORMAT(data_registro,'%d-%M-%y') as 'data' from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
         join registro on id_maquina = fk_maquina where id_empresa = ${idEmpresa}
-		and tipo = 'maquina' and tipo_alerta = 'vermelho' and  format(data_registro, '%d-%M') = '${diaAtual}-${mesAtual}';`;
+		and tipo = 'maquina' and tipo_alerta = 'vermelho' and  format(data_registro, '%d-%M') = '${diaAtual}-${mesAtual}';`
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucao = `select host_name as 'maquina' , DATE_FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
@@ -39,7 +39,7 @@ function servidorCritica(idEmpresa,mesAtual,diaAtual) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function maquinaCritica()", idEmpresa,mesAtual,diaAtual);
     var instrucao = ''
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucao = `select top 1 host_name as 'maquina' , FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
+        instrucao = `select top 1 host_name as 'maquina' , FORMAT(data_registro,'%d-%M-%y') as 'data' from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
         join registro on id_maquina = fk_maquina where id_empresa = ${idEmpresa}
 		and tipo = 'servidor' and tipo_alerta = 'vermelho' and  format(data_registro, '%d-%M') = '${diaAtual}-${mesAtual}';`;

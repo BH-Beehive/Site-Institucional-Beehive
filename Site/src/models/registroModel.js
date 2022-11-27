@@ -4,15 +4,21 @@ function registroPizzaMaquina(id_empresa, mesAtual,diaAtual) {
     console.log("ACESSEI O REGISTRO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registroPizzaMaquina()", id_empresa);
     var instrucao = ''
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucao = `select id_maquina as 'idMaquina', tipo_alerta as 'alerta' 
+        instrucao = `select id_maquina as 'idMaquina', 
+        count(case tipo_alerta when 'vermelho' then 1 else null end) as 'qtd_vermelho', 
+		count(case tipo_alerta when 'amarelo' then 1 else null end) as 'qtd_amarelo' , 
+		count(case tipo_alerta when 'verde' then 1 else null end) as 'qtd_verde'
         from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
-        join registro on id_maquina = fk_maquina w
-        here id_empresa = ${id_empresa} and tipo = 'maquina' and format(data_registro, '%d-%M') = '${diaAtual}-${mesAtual}' 
-        group by id_maquina,tipo_alerta;`;
+        join registro on id_maquina = fk_maquina 
+        where id_empresa = ${id_empresa} and tipo = 'maquina' and format(data_registro, '%d-%M') = '${diaAtual}-${mesAtual}' 
+        group by id_maquina;`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucao = `select id_maquina as 'idMaquina', tipo_alerta as 'alerta' 
+        instrucao = `select id_maquina as 'idMaquina', 
+        count(case tipo_alerta when "vermelho" then 1 else null end) as 'qtd_vermelho', 
+		count(case tipo_alerta when "amarelo" then 1 else null end) as 'qtd_amarelo' , 
+		count(case tipo_alerta when "verde" then 1 else null end) as 'qtd_verde'
         from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
         join registro on id_maquina = fk_maquina 
@@ -30,15 +36,21 @@ function registroPizzaMaquinaPorSetor(id_empresa,setor, mesAtual,diaAtual) {
     console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registroPizzaMaquinaPorSetor()", id_empresa, setor,diaAtual,mesAtual);
     var instrucao = ''
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucao = `select id_maquina as 'idMaquina', tipo_alerta as 'alerta' 
+        instrucao = `select id_maquina as 'idMaquina', 
+        count(case tipo_alerta when 'vermelho' then 1 else null end) as 'qtd_vermelho', 
+		count(case tipo_alerta when 'amarelo' then 1 else null end) as 'qtd_amarelo' , 
+		count(case tipo_alerta when 'verde' then 1 else null end) as 'qtd_verde'
         from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
         join registro on id_maquina = fk_maquina 
         where id_empresa = ${id_empresa} and tipo = 'maquina' and id_setor = ${setor} and format(data_registro, '%d-%M') = '${diaAtual}-${mesAtual}' 
-        group by id_maquina,tipo_alerta;`;
+        group by id_maquina;`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucao = `select id_maquina as 'idMaquina', tipo_alerta as 'alerta' 
+        instrucao = `select id_maquina as 'idMaquina', 
+        count(case tipo_alerta when "vermelho" then 1 else null end) as 'qtd_vermelho', 
+		count(case tipo_alerta when "amarelo" then 1 else null end) as 'qtd_amarelo' , 
+		count(case tipo_alerta when "verde" then 1 else null end) as 'qtd_verde'
         from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
         join registro on id_maquina = fk_maquina 
@@ -59,15 +71,21 @@ function registroPizzaServidor(id_empresa, mesAtual,diaAtual) {
     console.log("ACESSEI O REGISTRO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registroPizzaMaquina()", id_empresa);
     var instrucao = ''
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucao = `select id_maquina as 'idMaquina', tipo_alerta as 'alerta' 
+        instrucao = `select id_maquina as 'idMaquina', 
+        count(case tipo_alerta when 'vermelho' then 1 else null end) as 'qtd_vermelho', 
+		count(case tipo_alerta when 'amarelo' then 1 else null end) as 'qtd_amarelo' , 
+		count(case tipo_alerta when 'verde' then 1 else null end) as 'qtd_verde'
         from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
-        join registro on id_maquina = fk_maquina w
-        here id_empresa = ${id_empresa} and tipo = 'servidor' and format(data_registro, '%d-%M') = '${diaAtual}-${mesAtual}' 
-        group by id_maquina,tipo_alerta;`;
+        join registro on id_maquina = fk_maquina 
+        where id_empresa = ${id_empresa} and tipo = 'servidor' and format(data_registro, '%d-%M') = '${diaAtual}-${mesAtual}' 
+        group by id_maquina;`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucao = `select id_maquina as 'idMaquina', tipo_alerta as 'alerta' 
+        instrucao = `select id_maquina as 'idMaquina', 
+        count(case tipo_alerta when "vermelho" then 1 else null end) as 'qtd_vermelho', 
+		count(case tipo_alerta when "amarelo" then 1 else null end) as 'qtd_amarelo' , 
+		count(case tipo_alerta when "verde" then 1 else null end) as 'qtd_verde'
         from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
         join registro on id_maquina = fk_maquina 
@@ -85,15 +103,21 @@ function registroPizzaServidorPorSetor(id_empresa, setor, mesAtual,diaAtual) {
     console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function registroPizzaServidorPorSetor()", id_empresa, setor);
     var instrucao = ''
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucao = `select id_maquina as 'idMaquina', tipo_alerta as 'alerta' 
+        instrucao = `select id_maquina as 'idMaquina', 
+        count(case tipo_alerta when 'vermelho' then 1 else null end) as 'qtd_vermelho', 
+		count(case tipo_alerta when 'amarelo' then 1 else null end) as 'qtd_amarelo' , 
+		count(case tipo_alerta when 'verde' then 1 else null end) as 'qtd_verde'
         from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
         join registro on id_maquina = fk_maquina 
         where id_empresa = ${id_empresa} and tipo = 'servidor' and id_setor = ${setor} and format(data_registro, '%d-%M') = '${diaAtual}-${mesAtual}' 
-        group by id_maquina,tipo_alerta;`;
+        group by id_maquina;`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucao = `select id_maquina as 'idMaquina', tipo_alerta as 'alerta' 
+        instrucao = `select id_maquina as 'idMaquina',  
+        count(case tipo_alerta when "vermelho" then 1 else null end) as 'qtd_vermelho', 
+		count(case tipo_alerta when "amarelo" then 1 else null end) as 'qtd_amarelo' , 
+		count(case tipo_alerta when "verde" then 1 else null end) as 'qtd_verde'
         from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
         join registro on id_maquina = fk_maquina 
