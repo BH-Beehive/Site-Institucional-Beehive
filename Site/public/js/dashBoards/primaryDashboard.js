@@ -5,6 +5,7 @@ const mesAtual = dataHj.getMonth() + 1
 const diaAtual = "26"
 let proximoSetor = 0;
 
+
 function cadastrarMaquina() {
 
     let select = document.getElementById('selectSetores');
@@ -14,65 +15,78 @@ function cadastrarMaquina() {
         if (resposta.ok) {
 
             resposta.json().then(function (resposta) {
+                console.log(proximoSetor)
+
+                let hostNameVar = inputHostName.value;
+                let tokenVar = gerarToken();
+                let tipoVar = selectTipo.value;
+                let idEmpresaVar = sessionStorage.ID_EMPRESA;
+                let fkSetor = null;
                 for (var i = 0; i < resposta.length; i++) {
-                    console.log(proximoSetor)
+                     fkSetor = resposta[i].id_setor;
+                }
 
-                    let hostNameVar = inputHostName.value;
-                    let tokenVar = gerarToken();
-                    let tipoVar = selectTipo.value;
-                    let idEmpresaVar = sessionStorage.ID_EMPRESA;
-                    let fkSetor = resposta[i].id_setor;
+                
 
-                    console.log(hostNameVar, tokenVar, tipoVar, idEmpresaVar, fkSetor)
+                console.log(hostNameVar, tokenVar, tipoVar, idEmpresaVar, fkSetor)
 
-
-
-                    fetch("/maquina/cadastrarMaquina", {
+                function slack() {
+                    fetch("/slack/hello", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
                         },
                         body: JSON.stringify({
-                            hostNameServer: hostNameVar,
+                            nomeServer: hostNameVar,
                             tokenServer: tokenVar,
                             tipoServer: tipoVar,
-                            empresaServer: idEmpresaVar,
-                            setorServer: fkSetor
+                            setorServer: nomeSetor
                         })
-                    }).then(function (resposta) {
-
-                        console.log("resposta: ", resposta);
-
-                        if (resposta.ok) {
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: 'Cadastro bem-sucedido!',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-
-                            setTimeout(() => {
-                                window.location = "PrimaryDashboard.html";
-                            }, "2000")
-
-                            limparFormulario();
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Erro no cadastro!',
-                                text: 'Por favor, verfique as informações e tente novamente!'
-                            })
-                        }
-                    }).catch(function (resposta) {
-                        console.log(`#ERRO: ${resposta}`);
-                    });
-
+                    })
                 }
+
+                fetch("/maquina/cadastrarMaquina", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        hostNameServer: hostNameVar,
+                        tokenServer: tokenVar,
+                        tipoServer: tipoVar,
+                        empresaServer: idEmpresaVar,
+                        setorServer: fkSetor
+                    })
+                }).then(function (resposta) {
+
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Cadastro bem-sucedido!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        slack();
+                        setTimeout(() => {
+                            window.location = "PrimaryDashboard.html";
+                        }, "2000")
+
+                        limparFormulario();
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Erro no cadastro!',
+                            text: 'Por favor, verifique as informações e tente novamente!'
+                        })
+                    }
+                }).catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
             })
         }
-
-
     });
 }
 
