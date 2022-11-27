@@ -116,66 +116,6 @@ function registroGraficoLinhaTempo(req, res) {
         );
 }
 
-function registroGraficoLinhaCPU(req, res) {
-    let hostName = req.params.hostName;
-    
-    console.log(hostName,  "hostName na controller do registro")
-    
-    registroModel.registroGraficoLinhaCPU(hostName)
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-function registroGraficoLinhaRAM(req, res) {
-    let hostName = req.params.host_name;
-    
-    console.log(hostName,  "hostName na controller do registro")
-    
-    registroModel.registroGraficoLinhaRAM(hostName)
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-function registroGraficoLinhaDisco(req, res) {
-    let hostName = req.query.host_name;
-    
-    console.log(hostName,  "hostName na controller do registro")
-    
-    registroModel.registroGraficoLinhaDisco(hostName)
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
 
 function historicoMensal(req, res) {
     let mesAtual = req.query.mes_atual;

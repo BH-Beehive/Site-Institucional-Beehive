@@ -4,7 +4,7 @@ function listarMaquinas(id_empresa) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMaquinas()", id_empresa);
     var instrucao = `
     SELECT host_name , nome_setor FROM setor JOIN maquina on id_setor = fk_setor 
-    JOIN empresa on id_empresa = maquina.fk_empresa WHERE id_empresa = ${id_empresa} and tipo = "Maquina";
+    JOIN empresa on id_empresa = maquina.fk_empresa WHERE id_empresa = ${id_empresa} and tipo = 'maquina';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -12,34 +12,71 @@ function listarMaquinas(id_empresa) {
 
 function maquinaCritica(idEmpresa,mesAtual,diaAtual) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function maquinaCritica()", idEmpresa,mesAtual,diaAtual);
-    var instrucao = `
-    select host_name as 'maquina' , DATE_FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
+    var instrucao = ''
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select top 1 host_name as 'maquina' , FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
-        join registro on id_maquina = fk_maquina where id_empresa = ${idEmpresa}  and tipo = "maquina" and tipo_alerta = "Vermelho" and  date_format(data_registro, '%d-%m') = '${diaAtual}-${mesAtual}' group by host_name order by id_registro desc limit 1;
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+        join registro on id_maquina = fk_maquina where id_empresa = ${idEmpresa}
+		and tipo = 'maquina' and tipo_alerta = 'vermelho' and  format(data_registro, '%d-%M') = '${diaAtual}-${mesAtual}';`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select host_name as 'maquina' , DATE_FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
+        join empresa on id_empresa = maquina.fk_empresa
+        join registro on id_maquina = fk_maquina where id_empresa = ${idEmpresa}  
+        and tipo = "maquina" and tipo_alerta = "vermelho" 
+        and  date_format(data_registro, '%d-%m') = '${diaAtual}-${mesAtual}' 
+        group by host_name order by id_registro desc limit 1;`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    return database.executar(instrucaoSql);
 }
+
 
 function servidorCritica(idEmpresa,mesAtual,diaAtual) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function maquinaCritica()", idEmpresa,mesAtual,diaAtual);
-    var instrucao = `
-    select host_name as 'maquina' , DATE_FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
+    var instrucao = ''
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select top 1 host_name as 'maquina' , FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
-        join registro on id_maquina = fk_maquina where id_empresa = ${idEmpresa}  and tipo = "servidor" and tipo_alerta = "Vermelho" and  date_format(data_registro, '%d-%m') = '${diaAtual}-${mesAtual}' group by host_name order by id_registro desc limit 1;
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+        join registro on id_maquina = fk_maquina where id_empresa = ${idEmpresa}
+		and tipo = 'servidor' and tipo_alerta = 'vermelho' and  format(data_registro, '%d-%M') = '${diaAtual}-${mesAtual}';`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select host_name as 'maquina' , DATE_FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
+        join empresa on id_empresa = maquina.fk_empresa
+        join registro on id_maquina = fk_maquina where id_empresa = ${idEmpresa}  
+        and tipo = "servidor" and tipo_alerta = "vermelho" 
+        and  date_format(data_registro, '%d-%m') = '${diaAtual}-${mesAtual}' 
+        group by host_name order by id_registro desc limit 1;`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    return database.executar(instrucaoSql);
 }
+
+
 
 function listarInformacoesMaquina(id_empresa, host_name) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMaquinas()", id_empresa, host_name);
-    var instrucao = `
-    SELECT processador, arquitetura, sistema_operacional,ROUND(disco_total/1000) as "disco_total" FROM setor JOIN maquina on id_setor = fk_setor 
-    JOIN empresa on id_empresa = maquina.fk_empresa WHERE id_empresa = ${id_empresa} and host_name = "${host_name}";
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    var instrucao = ''
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `SELECT processador, arquitetura, sistema_operacional,ROUND(disco_total/1000,-1) as 'disco_total' FROM setor JOIN maquina on id_setor = fk_setor 
+        JOIN empresa on id_empresa = maquina.fk_empresa WHERE id_empresa = ${id_empresa} and host_name = '${host_name}';`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `SELECT processador, arquitetura, sistema_operacional,ROUND(disco_total/1000) as "disco_total" FROM setor JOIN maquina on id_setor = fk_setor 
+        JOIN empresa on id_empresa = maquina.fk_empresa WHERE id_empresa = ${id_empresa} and host_name = "${host_name}";`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    return database.executar(instrucaoSql);
 }
 
 function listarDadosMaquina(host_name) {
@@ -55,7 +92,7 @@ function listarServidor(id_empresa) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarServidor()", id_empresa);
     var instrucao = `
     SELECT host_name , nome_setor FROM setor JOIN maquina on id_setor = fk_setor 
-    JOIN empresa on id_empresa = maquina.fk_empresa WHERE id_empresa = ${id_empresa} and tipo = "Servidor";
+    JOIN empresa on id_empresa = maquina.fk_empresa WHERE id_empresa = ${id_empresa} and tipo = 'servidor';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -77,7 +114,7 @@ function cadastrarMaquina(hostname, token, tipo, empresaId, setor) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO maquina (host_name, token_acesso, token_ativo, tipo, fk_empresa, fk_setor) VALUES ('${hostname}', '${token}', false, '${tipo}','${empresaId}',${setor});
+        INSERT INTO maquina (host_name, token_acesso, token_ativo, tipo, fk_empresa, fk_setor) VALUES ('${hostname}', '${token}', false, '${tipo}',${empresaId},${setor});
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

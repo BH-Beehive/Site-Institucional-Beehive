@@ -25,7 +25,7 @@ function mostrarTotalMaquinas(id_empresa) {
     console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function mostrarTotalMaquinas()", id_empresa);
     var instrucao = `
         select count(id_maquina) as 'totalMaquinas' from setor join maquina on id_setor = fk_setor 
-        join empresa on id_empresa = maquina.fk_empresa where id_empresa = ${id_empresa} and tipo = "Maquina";
+        join empresa on id_empresa = maquina.fk_empresa where id_empresa = ${id_empresa} and tipo = 'maquina';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -35,7 +35,7 @@ function mostrarTotalMaquinasSelectSelecionado(id_empresa, setor) {
     console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function mostrarTotalMaquinasSelectSelecionado()", id_empresa, setor);
     var instrucao = `
         select count(id_maquina) as 'totalMaquinas' from setor join maquina on id_setor = fk_setor 
-        join empresa on id_empresa = maquina.fk_empresa where id_empresa = ${id_empresa} and id_setor = ${setor} and tipo = "maquina";
+        join empresa on id_empresa = maquina.fk_empresa where id_empresa = ${id_empresa} and id_setor = ${setor} and tipo = 'maquina';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -45,7 +45,7 @@ function mostrarTotalServidorSelectSelecionado(id_empresa, setor) {
     console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function mostrarTotalServidorSelectSelecionado()", id_empresa, setor);
     var instrucao = `
         select count(id_maquina) as 'totalservidores' from setor join maquina on id_setor = fk_setor 
-        join empresa on id_empresa = maquina.fk_empresa where id_empresa = ${id_empresa} and id_setor = ${setor} and tipo = "servidor";
+        join empresa on id_empresa = maquina.fk_empresa where id_empresa = ${id_empresa} and id_setor = ${setor} and tipo = 'servidor';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -55,7 +55,7 @@ function mostrarTotalServidor(id_empresa) {
     console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function mostrarTotalServidor()", id_empresa);
     var instrucao = `
         select count(id_maquina) as 'totalServidor' from setor join maquina on id_setor = fk_setor 
-        join empresa on id_empresa = maquina.fk_empresa where id_empresa = ${id_empresa} and tipo = "Servidor";
+        join empresa on id_empresa = maquina.fk_empresa where id_empresa = ${id_empresa} and tipo = 'servidor';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -63,15 +63,34 @@ function mostrarTotalServidor(id_empresa) {
 
 function statusSetor(idEmpresa, mesAtual,diaAtual) {
     console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function statusSetor()", idEmpresa, mesAtual,diaAtual);
-    var instrucao = `
-    select nome_setor as 'setor',count(case tipo_alerta when "Vermelho" then 1 else null end) as 'qdt_vermelho', 
-count(case tipo_alerta when "amarelo" then 1 else null end) as 'qdt_amarelo' , 
-count(case tipo_alerta when "verde" then 1 else null end) as 'qdt_verde', id_maquina as 'idMaquina' from empresa join setor on id_empresa = fk_empresa 
-    join maquina on id_setor = maquina.fk_setor join registro on id_maquina = fk_maquina where id_empresa = ${idEmpresa} and  date_format(data_registro, '%d-%m') = '${diaAtual}-${mesAtual}' group by nome_setor order by tipo_alerta desc;
-    
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    var instrucao = ''
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select nome_setor as 'setor',
+        count(case tipo_alerta when 'vermelho' then 1 else null end) as 'qdt_vermelho', 
+        count(case tipo_alerta when 'amarelo' then 1 else null end) as 'qdt_amarelo' , 
+        count(case tipo_alerta when 'verde' then 1 else null end) as 'qdt_verde',
+        id_maquina as 'idMaquina'
+        from empresa join setor on id_empresa = fk_empresa 
+        join maquina on id_setor = maquina.fk_setor 
+        join registro on id_maquina = fk_maquina 
+        where id_empresa = ${idEmpresa} and format(data_registro, '%d-%M') = '${diaAtual}-${mesAtual}' 
+        group by nome_setor,id_maquina;`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = ` select nome_setor as 'setor',
+        count(case tipo_alerta when "Vermelho" then 1 else null end) as 'qdt_vermelho', 
+        count(case tipo_alerta when "amarelo" then 1 else null end) as 'qdt_amarelo' , 
+        count(case tipo_alerta when "verde" then 1 else null end) as 'qdt_verde', id_maquina as 'idMaquina' 
+        from empresa join setor on id_empresa = fk_empresa 
+        join maquina on id_setor = maquina.fk_setor join registro on id_maquina = fk_maquina 
+        where id_empresa = ${idEmpresa} and  date_format(data_registro, '%d-%m') = '${diaAtual}-${mesAtual}'
+        group by nome_setor order by tipo_alerta desc;`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    return database.executar(instrucaoSql);
 }
 
 
