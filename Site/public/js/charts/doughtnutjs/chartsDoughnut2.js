@@ -58,6 +58,9 @@ function registroPizzaServidor() {
 }
 
 function registroPizzaServidorPorSetor() {
+    const dataHj = new Date()
+    const mesAtual = dataHj.getMonth() + 1
+    const diaAtual = dataHj.getDate()
     let qtdVermelho1 = 0;
     let qtdAmarelo1 = 0;
     let qtdVerde1 = 0;

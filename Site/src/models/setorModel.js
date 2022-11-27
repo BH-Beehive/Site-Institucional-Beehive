@@ -65,7 +65,7 @@ function statusSetor(idEmpresa, mesAtual,diaAtual) {
     console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function statusSetor()", idEmpresa, mesAtual,diaAtual);
     var instrucao = ''
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select nome_setor as 'setor',
+        instrucao = `select nome_setor as 'setor',
         count(case tipo_alerta when 'vermelho' then 1 else null end) as 'qdt_vermelho', 
         count(case tipo_alerta when 'amarelo' then 1 else null end) as 'qdt_amarelo' , 
         count(case tipo_alerta when 'verde' then 1 else null end) as 'qdt_verde',
@@ -77,7 +77,7 @@ function statusSetor(idEmpresa, mesAtual,diaAtual) {
         group by nome_setor,id_maquina;`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = ` select nome_setor as 'setor',
+        instrucao = ` select nome_setor as 'setor',
         count(case tipo_alerta when "Vermelho" then 1 else null end) as 'qdt_vermelho', 
         count(case tipo_alerta when "amarelo" then 1 else null end) as 'qdt_amarelo' , 
         count(case tipo_alerta when "verde" then 1 else null end) as 'qdt_verde', id_maquina as 'idMaquina' 
@@ -90,7 +90,7 @@ function statusSetor(idEmpresa, mesAtual,diaAtual) {
         return
     }
 
-    return database.executar(instrucaoSql);
+    return database.executar(instrucao);
 }
 
 

@@ -14,13 +14,13 @@ function maquinaCritica(idEmpresa,mesAtual,diaAtual) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function maquinaCritica()", idEmpresa,mesAtual,diaAtual);
     var instrucao = ''
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1 host_name as 'maquina' , FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
+        instrucao = `select top 1 host_name as 'maquina' , FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
         join registro on id_maquina = fk_maquina where id_empresa = ${idEmpresa}
 		and tipo = 'maquina' and tipo_alerta = 'vermelho' and  format(data_registro, '%d-%M') = '${diaAtual}-${mesAtual}';`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select host_name as 'maquina' , DATE_FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
+        instrucao = `select host_name as 'maquina' , DATE_FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
         join registro on id_maquina = fk_maquina where id_empresa = ${idEmpresa}  
         and tipo = "maquina" and tipo_alerta = "vermelho" 
@@ -31,7 +31,7 @@ function maquinaCritica(idEmpresa,mesAtual,diaAtual) {
         return
     }
 
-    return database.executar(instrucaoSql);
+    return database.executar(instrucao);
 }
 
 
@@ -39,13 +39,13 @@ function servidorCritica(idEmpresa,mesAtual,diaAtual) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function maquinaCritica()", idEmpresa,mesAtual,diaAtual);
     var instrucao = ''
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1 host_name as 'maquina' , FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
+        instrucao = `select top 1 host_name as 'maquina' , FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
         join registro on id_maquina = fk_maquina where id_empresa = ${idEmpresa}
 		and tipo = 'servidor' and tipo_alerta = 'vermelho' and  format(data_registro, '%d-%M') = '${diaAtual}-${mesAtual}';`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select host_name as 'maquina' , DATE_FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
+        instrucao = `select host_name as 'maquina' , DATE_FORMAT(data_registro,'%d %M %Y %H:%i:%s') as 'data' from setor join maquina on id_setor = fk_setor 
         join empresa on id_empresa = maquina.fk_empresa
         join registro on id_maquina = fk_maquina where id_empresa = ${idEmpresa}  
         and tipo = "servidor" and tipo_alerta = "vermelho" 
@@ -56,7 +56,7 @@ function servidorCritica(idEmpresa,mesAtual,diaAtual) {
         return
     }
 
-    return database.executar(instrucaoSql);
+    return database.executar(instrucao);
 }
 
 
@@ -65,18 +65,18 @@ function listarInformacoesMaquina(id_empresa, host_name) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMaquinas()", id_empresa, host_name);
     var instrucao = ''
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `SELECT processador, arquitetura, sistema_operacional,ROUND(disco_total/1000,-1) as 'disco_total' FROM setor JOIN maquina on id_setor = fk_setor 
+        instrucao = `SELECT processador, arquitetura, sistema_operacional,ROUND(disco_total/1000,-1) as 'disco_total' FROM setor JOIN maquina on id_setor = fk_setor 
         JOIN empresa on id_empresa = maquina.fk_empresa WHERE id_empresa = ${id_empresa} and host_name = '${host_name}';`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `SELECT processador, arquitetura, sistema_operacional,ROUND(disco_total/1000) as "disco_total" FROM setor JOIN maquina on id_setor = fk_setor 
+        instrucao = `SELECT processador, arquitetura, sistema_operacional,ROUND(disco_total/1000) as "disco_total" FROM setor JOIN maquina on id_setor = fk_setor 
         JOIN empresa on id_empresa = maquina.fk_empresa WHERE id_empresa = ${id_empresa} and host_name = "${host_name}";`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
     }
 
-    return database.executar(instrucaoSql);
+    return database.executar(instrucao);
 }
 
 function listarDadosMaquina(host_name) {
@@ -110,13 +110,18 @@ async function editarMaquina(hostNameNovo,tipo,fkSetor,hostNameAntigo, idEmpresa
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrarMaquina(hostname, token, tipo, empresaId, setor) {
     console.log("ACESSEI O MAQUINA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", hostname, token, tipo, empresaId, setor);
-    
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
-    var instrucao = `
-        INSERT INTO maquina (host_name, token_acesso, token_ativo, tipo, fk_empresa, fk_setor) VALUES ('${hostname}', '${token}', false, '${tipo}',${empresaId},${setor});
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
+
+    var instrucao = ''
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucao = `INSERT INTO maquina (host_name, token_acesso, token_ativo, tipo, fk_empresa, fk_setor) VALUES ('${hostname}', '${token}', 0, '${tipo}',${empresaId},${setor});`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucao = `INSERT INTO maquina (host_name, token_acesso, token_ativo, tipo, fk_empresa, fk_setor) VALUES ('${hostname}', '${token}', false, '${tipo}',${empresaId},${setor});`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
     return database.executar(instrucao);
 }
 

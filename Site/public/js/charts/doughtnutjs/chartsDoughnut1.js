@@ -57,6 +57,9 @@ function registroPizzaMaquina() {
 }
 
 function registroPizzaMaquinaPorSetor() {
+    const dataHj = new Date()
+    const mesAtual = dataHj.getMonth() + 1
+    const diaAtual = dataHj.getDate()
     let qtdVermelho = 0;
     let qtdAmarelo = 0;
     let qtdVerde = 0;
