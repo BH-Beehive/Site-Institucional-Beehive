@@ -90,9 +90,9 @@ function listarDadosMaquina() {
 
                         menuHistorico.innerHTML += `
                     <div class="dadosMenu">
-                    <h3>${resposta[0].data_registro}</h3>
-                    <h3>${resposta[0].qdt_verde}</h3>
-                    <h3>VERDE</h3>               
+                    <h3 id="dataReg">${resposta[0].data_registro}</h3>
+                    <h3 id="alertas">${resposta[0].qdt_verde}</h3>
+                    <h3 id="tipoAlerta">VERDE</h3>               
                   </div>
                   `
                     
