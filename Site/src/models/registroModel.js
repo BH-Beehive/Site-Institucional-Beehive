@@ -158,15 +158,28 @@ function registroGraficoLinhaTempo(hostName){
 
 function historicoMensal(mesAtual,hostName,diaSelecionado){
     console.log("ACESSEI O SETOR MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function historicoMensal()",mesAtual,hostName);
-    var instrucao = `
-    select count(case tipo_alerta when "Vermelho" then 1 else null end) as 'qdt_vermelho', 
-    count(case tipo_alerta when "amarelo" then 1 else null end) as 'qdt_amarelo' , 
-    count(case tipo_alerta when "verde" then 1 else null end) as 'qdt_verde', DATE_FORMAT(data_registro,'%y/%m/%d')  as "data_registro"
-                    from maquina join registro on id_maquina = fk_maquina where host_name = "${hostName}" 
-                        and date_format(data_registro, '%m/%d') = "${mesAtual}/${diaSelecionado}"  group by date_format(data_registro, '%d') order by id_registro desc;
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao); 
+    var instrucao = '';
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucao = `select 
+        count(case tipo_alerta when 'vermelho' then 1 else null end) as 'qdt_vermelho', 
+        count(case tipo_alerta when 'amarelo' then 1 else null end) as 'qdt_amarelo' , 
+        count(case tipo_alerta when 'verde' then 1 else null end) as 'qdt_verde',
+        format(data_registro, '%d/%M') as 'data_registro'
+        from maquina join registro on id_maquina = fk_maquina where host_name = '${hostName}' 
+        and format(data_registro, '%d/%M') = '${diaAtual}/${mesAtual}' group by format(data_registro, '%d/%M');`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucao = `select count(case tipo_alerta when "Vermelho" then 1 else null end) as 'qdt_vermelho', 
+        count(case tipo_alerta when "amarelo" then 1 else null end) as 'qdt_amarelo' , 
+        count(case tipo_alerta when "verde" then 1 else null end) as 'qdt_verde', DATE_FORMAT(data_registro,'%y/%m/%d')  as "data_registro"
+                        from maquina join registro on id_maquina = fk_maquina where host_name = "${hostName}" 
+                            and date_format(data_registro, '%m/%d') = "${mesAtual}/${diaSelecionado}"  group by date_format(data_registro, '%d') order by id_registro desc;`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    return database.executar(instrucao);
 }
 module.exports = {
     registroPizzaMaquina,

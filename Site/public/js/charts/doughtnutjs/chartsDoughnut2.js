@@ -12,9 +12,9 @@ function registroPizzaServidor() {
             resposta.json().then(function (resposta) {
                 for (let posicao = 0; posicao < resposta.length; posicao++) {
                     console.log(resposta[posicao].alerta)
-                    if (resposta[posicao].qtd_vermelho > resposta[posicao].qtd_amarelo && resposta[posicao].qtd_verde) {
+                    if (resposta[posicao].qtd_vermelho > resposta[posicao].qtd_amarelo && resposta[posicao].qtd_vermelho > resposta[posicao].qtd_verde) {
                         qtdVermelho++
-                    } else if (resposta[posicao].qtd_amarelo > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_verde) {
+                    } else if (resposta[posicao].qtd_amarelo > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_amarelo > resposta[posicao].qtd_verde) {
                         qtdAmarelo++
                     } else {
                         qtdVerde++
@@ -74,9 +74,9 @@ function registroPizzaServidorPorSetor() {
         if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 for (let posicao = 0; posicao < resposta.length; posicao++) {
-                    if (resposta[posicao].qtd_vermelho > resposta[posicao].qtd_amarelo && resposta[posicao].qtd_verde) {
+                    if (resposta[posicao].qtd_vermelho > resposta[posicao].qtd_amarelo && resposta[posicao].qtd_vermelho > resposta[posicao].qtd_verde) {
                         qtdVermelho++
-                    } else if (resposta[posicao].qtd_amarelo > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_verde) {
+                    } else if (resposta[posicao].qtd_amarelo > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_amarelo > resposta[posicao].qtd_verde) {
                         qtdAmarelo++
                     } else {
                         qtdVerde++
