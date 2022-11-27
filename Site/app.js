@@ -1,5 +1,5 @@
- process.env.AMBIENTE_PROCESSO = "producao";
-//process.env.AMBIENTE_PROCESSO = "desenvolvimento";
+//  process.env.AMBIENTE_PROCESSO = "producao";
+process.env.AMBIENTE_PROCESSO = "desenvolvimento";
 
 var express = require("express");
 var cors = require("cors");
@@ -12,6 +12,8 @@ var usuarioRouter = require("./src/routes/usuario");
 var maquinaRouter = require("./src/routes/maquina");
 var setorRouter =   require("./src/routes/setor");
 var registroRouter =   require("./src/routes/registro");
+var slackRouter =   require("./src/routes/slack");
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -23,6 +25,7 @@ app.use("/usuario", usuarioRouter);
 app.use("/maquina", maquinaRouter);
 app.use("/setor",   setorRouter);
 app.use("/registro",   registroRouter);
+app.use("/slack",   slackRouter);
 
 
 
