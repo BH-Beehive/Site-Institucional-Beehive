@@ -333,7 +333,7 @@ h3 {
     margin-top: 30px;
     display: flex;
     justify-content: space-around;
-    border-bottom: 3px solid black;
+    border-bottom: 2px solid black;
 }
 
 #dadosComponentesMenu{
@@ -342,6 +342,12 @@ h3 {
     justify-content: space-around;
     flex-direction: column;
     
+}
+
+.dadosMenu.alertaverde{
+    display: flex;
+    justify-content: space-around;
+    margin-right: 2%;
 }
 
 h3{
@@ -354,10 +360,13 @@ h3{
 }
 
 #dataReg{
-    margin-right: 18%;
+    margin-right: 4%;
+    display:block;
 }
+
+
 #alertas{
-    margin-left: -80px;
+    margin-left: -30px;
 }
 
 @keyframes luzNormal {
