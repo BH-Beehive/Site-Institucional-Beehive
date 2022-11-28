@@ -16,8 +16,11 @@ function registroPizzaServidor() {
                         qtdVermelho1++
                     } else if (resposta[posicao].qtd_amarelo > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_amarelo > resposta[posicao].qtd_verde) {
                         qtdAmarelo1++
-                    } else {
+                    } else if(resposta[posicao].qtd_verde > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_verde > resposta[posicao].qtd_amarelo) {
                         qtdVerde1++
+                    }
+                    else{
+                        limparGrafico()
                     }
                     totalMaquina1++
                 }
@@ -78,8 +81,11 @@ function registroPizzaServidorPorSetor() {
                         qtdVermelho1++
                     } else if (resposta[posicao].qtd_amarelo > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_amarelo > resposta[posicao].qtd_verde) {
                         qtdAmarelo1++
-                    } else {
+                    } else if(resposta[posicao].qtd_verde > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_verde > resposta[posicao].qtd_amarelo) {
                         qtdVerde1++
+                    }
+                    else{
+                        limparGrafico()
                     }
                     totalMaquina1++
                 }

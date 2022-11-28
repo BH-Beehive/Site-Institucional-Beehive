@@ -16,8 +16,11 @@ function registroPizzaMaquina() {
                         qtdVermelho++
                     } else if (resposta[posicao].qtd_amarelo > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_amarelo > resposta[posicao].qtd_verde) {
                         qtdAmarelo++
-                    } else {
+                    } else if(resposta[posicao].qtd_verde > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_verde > resposta[posicao].qtd_amarelo) {
                         qtdVerde++
+                    }
+                    else{
+                        limparGrafico()
                     }
                     totalMaquina++
                 }
@@ -79,8 +82,11 @@ function registroPizzaMaquinaPorSetor() {
                         qtdVermelho++
                     } else if (resposta[posicao].qtd_amarelo > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_amarelo > resposta[posicao].qtd_verde) {
                         qtdAmarelo++
-                    } else {
+                    } else if(resposta[posicao].qtd_verde > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_verde > resposta[posicao].qtd_amarelo) {
                         qtdVerde++
+                    }
+                    else{
+                        limparGrafico()
                     }
                     totalMaquina++
                 }

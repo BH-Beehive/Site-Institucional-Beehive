@@ -164,9 +164,9 @@ function historicoMensal(mesAtual,hostName,diaSelecionado){
         count(case tipo_alerta when 'vermelho' then 1 else null end) as 'qdt_vermelho', 
         count(case tipo_alerta when 'amarelo' then 1 else null end) as 'qdt_amarelo' , 
         count(case tipo_alerta when 'verde' then 1 else null end) as 'qdt_verde',
-        format(data_registro, '%d/%M') as 'data_registro'
+        format(data_registro, '%M/%d') as 'data_registro'
         from maquina join registro on id_maquina = fk_maquina where host_name = '${hostName}' 
-        and format(data_registro, '%d/%M') = '${diaAtual}/${mesAtual}' group by format(data_registro, '%d/%M');`;
+        and format(data_registro, '%M/%d') = '${mesAtual}/${diaSelecionado}' group by format(data_registro, '%M/%d');`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucao = `select count(case tipo_alerta when "Vermelho" then 1 else null end) as 'qdt_vermelho', 
