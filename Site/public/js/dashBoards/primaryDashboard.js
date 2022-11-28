@@ -519,13 +519,24 @@ function maquinaCritica() {
 
     fetch(`/maquina/maquinaCritica?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
         if (resposta.ok) {
+            critica.innerHTML = `
+                                        <h3>Maquina</h3>
+                                        <p>Sem maquinas criticas</p>    
+                                        `
             resposta.json().then(function (resposta) {
                 for (var posicao = 0; posicao < resposta.length; posicao++) {
 
-                    critica.innerHTML = `
-        <h3>${resposta[posicao].maquina}</h3>
-                <p>${resposta[posicao].data}</p>    
-            `
+                    if (resposta[posicao].qtd_vermelho > resposta[posicao].qtd_amarelo && resposta[posicao].qtd_vermelho > resposta[posicao].qtd_verde) {
+                        critica.innerHTML = `
+                                        <h3>${resposta[posicao].maquina}</h3>
+                                        <p>${resposta[posicao].data}</p>    
+                                        `
+                    }else {
+                        critica.innerHTML = `
+                                        <h3>Maquina</h3>
+                                        <p>Sem maquinas criticas</p>    
+                                        `
+                    }
                 }
             });
         } else {
@@ -542,13 +553,24 @@ function servidorCritica() {
     let idEmpresa = sessionStorage.ID_EMPRESA
     fetch(`/maquina/servidorCritica?id_empresa=${idEmpresa}&mes_atual=${mesAtual}&dia_atual=${diaAtual}`).then(function (resposta) {
         if (resposta.ok) {
+            criticoServe.innerHTML = `
+                                        <h3>Servidor</h3>
+                                        <p>Sem servidores criticos</p>    
+                                        `
             resposta.json().then(function (resposta) {
                 for (var posicao = 0; posicao < resposta.length; posicao++) {
 
-                    criticoServe.innerHTML = `
-        <h3>${resposta[posicao].maquina}</h3>
-                <p>${resposta[posicao].data}</p>    
-            `
+                    if (resposta[posicao].qtd_vermelho > resposta[posicao].qtd_amarelo && resposta[posicao].qtd_vermelho > resposta[posicao].qtd_verde) {
+                        criticoServe.innerHTML = `
+                                                <h3>${resposta[posicao].maquina}</h3>
+                                                <p>${resposta[posicao].data}</p>    
+                                            `
+                    }else {
+                        criticoServe.innerHTML = `
+                                        <h3>Servidor</h3>
+                                        <p>Sem servidores criticos</p>    
+                                        `
+                    }
                 }
             });
         } else {
