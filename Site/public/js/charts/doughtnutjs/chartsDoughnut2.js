@@ -13,13 +13,13 @@ function registroPizzaServidor() {
                 for (let posicao = 0; posicao < resposta.length; posicao++) {
                     console.log(resposta[posicao].alerta)
                     if (resposta[posicao].qtd_vermelho > resposta[posicao].qtd_amarelo && resposta[posicao].qtd_vermelho > resposta[posicao].qtd_verde) {
-                        qtdVermelho++
+                        qtdVermelho1++
                     } else if (resposta[posicao].qtd_amarelo > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_amarelo > resposta[posicao].qtd_verde) {
-                        qtdAmarelo++
+                        qtdAmarelo1++
                     } else {
-                        qtdVerde++
+                        qtdVerde1++
                     }
-                    totalMaquina++
+                    totalMaquina1++
                 }
                 let resultadoVermelho = (qtdVermelho1 / totalMaquina1) * 100;
                 let resultadoAmarelo = (qtdAmarelo1 / totalMaquina1) * 100;
@@ -75,13 +75,13 @@ function registroPizzaServidorPorSetor() {
             resposta.json().then(function (resposta) {
                 for (let posicao = 0; posicao < resposta.length; posicao++) {
                     if (resposta[posicao].qtd_vermelho > resposta[posicao].qtd_amarelo && resposta[posicao].qtd_vermelho > resposta[posicao].qtd_verde) {
-                        qtdVermelho++
+                        qtdVermelho1++
                     } else if (resposta[posicao].qtd_amarelo > resposta[posicao].qtd_vermelho && resposta[posicao].qtd_amarelo > resposta[posicao].qtd_verde) {
-                        qtdAmarelo++
+                        qtdAmarelo1++
                     } else {
-                        qtdVerde++
+                        qtdVerde1++
                     }
-                    totalMaquina++
+                    totalMaquina1++
                 }
                 let resultadoVermelho = (qtdVermelho1 / totalMaquina1) * 100;
                 let resultadoAmarelo = (qtdAmarelo1 / totalMaquina1) * 100;
