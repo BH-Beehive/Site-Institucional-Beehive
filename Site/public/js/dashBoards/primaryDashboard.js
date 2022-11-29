@@ -110,12 +110,14 @@ function editarMaquina() {
     let hostNameNovo = inputHostNameEditarMaquina.value;
     let tipo = selectTipoEditarMaquina.value;
     let fkSetor = selectSetoresEditarMaquina.value;
+
+    console.log("Fk do setor: " + fkSetor)
     let idEmpresa = sessionStorage.ID_EMPRESA;
 
     console.log(hostNameNovo, tipo, fkSetor, idEmpresa)
 
     fetch("/maquina/editarmaquina", {
-        method: "POST",
+        method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
@@ -178,7 +180,7 @@ function statusSetor() {
 
                 }
 
-                setorNivel.innerHTML = `<div class="backgroundKPIS">
+                setorNivel.innerHTML = `
                 <div class="itemKPI normal"  onclick="gerarGraficosNormais()">
                     <p>Setores normais</p>
                     <h2>${qtdVerde}</h2>
@@ -191,7 +193,6 @@ function statusSetor() {
                     <p>Setores críticos</p>
                     <h2>${qtdVermelho}</h2>
                 </div>
-            </div>
             `
 
 

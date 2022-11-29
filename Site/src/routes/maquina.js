@@ -35,7 +35,7 @@ router.get("/servidorCritica", function (req, res) {
     maquinaController.servidorCritica(req, res);
 });
 
-router.post("/editarMaquina", function (req, res) {
+router.put("/editarMaquina", function (req, res) {
     maquinaController.editarMaquina(req, res);
 })
 

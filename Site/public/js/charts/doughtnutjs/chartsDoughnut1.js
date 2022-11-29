@@ -27,7 +27,7 @@ function registroPizzaMaquina() {
                 let resultadoVermelho = (qtdVermelho / totalMaquina) * 100;
                 let resultadoAmarelo = (qtdAmarelo / totalMaquina) * 100;
                 let resultadoVerde = (qtdVerde / totalMaquina) * 100;
-                atualizarMetricasMaquina.innerHTML = `<div class="metricasContent">
+                atualizarMetricasMaquina.innerHTML = `
                 <div class="metricas">
                     <div class="itemMetrica">
                         <div class="divcorAlerta divVerde"></div>
@@ -46,9 +46,7 @@ function registroPizzaMaquina() {
                 </div>
                 <div class="chart">
                     <canvas id="chart1"></canvas> 
-                </div>
-
-            </div>`
+                </div>`
                 criarGrafico(qtdVermelho, qtdAmarelo, qtdVerde, totalMaquina)
             });
         } else {
@@ -93,7 +91,7 @@ function registroPizzaMaquinaPorSetor() {
                 let resultadoVermelho = (qtdVermelho / totalMaquina) * 100;
                 let resultadoAmarelo = (qtdAmarelo / totalMaquina) * 100;
                 let resultadoVerde = (qtdVerde / totalMaquina) * 100;
-                atualizarMetricasMaquina.innerHTML = `<div class="metricasContent">
+                atualizarMetricasMaquina.innerHTML = `
                 <div class="metricas">
                     <div class="itemMetrica">
                         <div class="divcorAlerta divVerde"></div>
@@ -112,9 +110,7 @@ function registroPizzaMaquinaPorSetor() {
                 </div>
                 <div class="chart">
                     <canvas id="chart1"></canvas> 
-                </div>
-
-            </div>`
+                </div>`
                 criarGrafico(qtdVermelho, qtdAmarelo, qtdVerde)
             });
         } else {
@@ -132,7 +128,7 @@ function limparGrafico() {
     let qtdVerde = 0;
     let totalMaquina = 0;
 
-    atualizarMetricasMaquina.innerHTML = `<div class="metricasContent">
+    atualizarMetricasMaquina.innerHTML = `
                 <div class="metricas">
                     <div class="itemMetrica">
                         <div class="divcorAlerta divVerde"></div>
@@ -152,8 +148,7 @@ function limparGrafico() {
                 <div class="chart">
                     <canvas id="chart1"></canvas> 
                 </div>
-
-            </div>`
+    `
     criarGrafico(qtdVermelho, qtdAmarelo, qtdVerde)
 
 }
