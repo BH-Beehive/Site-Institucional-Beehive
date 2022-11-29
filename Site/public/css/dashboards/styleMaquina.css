@@ -100,7 +100,7 @@ body {
     margin-top: 2%;
     width: 100%;
     /* height: 98%; */
-    height: 48vh;
+    height: vh;
     background-color: white;
     border: 1px solid #EFF0F6;
     border-radius: 3px;
@@ -118,11 +118,11 @@ body {
 }
 
 .cardInfoMaquinaBackground .content .infosMaquina {
-    width: 90%;
+    width: 80%;
     height: 60%;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    gap: 1%;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    gap: 0%;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
@@ -143,7 +143,7 @@ body {
     flex-direction: column;
     /* gap: 5%; */
     color: #4D4D4D;
-    margin: 5px;
+    margin: 0px;
 }
 
 .cardInfoMaquinaBackground .content .infosMaquina .itemInfoMaquina h4 {
