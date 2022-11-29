@@ -63,18 +63,13 @@ function cadastrarMaquina() {
 
                     if (resposta.ok) {
                         Swal.fire({
-                            position: 'top-end',
+                            position: 'center',
                             icon: 'success',
                             title: 'Cadastro bem-sucedido!',
-                            showConfirmButton: false,
-                            timer: 1500
+                            text: `${tipoVar} : ${hostNameVar}, insira no jar com o token ${tokenVar} para iniciar.`,
+                            showConfirmButton: true,
                         })
-                        slack();
-                        setTimeout(() => {
-                            window.location = "PrimaryDashboard.html";
-                        }, "2000")
-
-                        limparFormulario();
+                 
                     } else {
                         Swal.fire({
                             icon: 'error',
